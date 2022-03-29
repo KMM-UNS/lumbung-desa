@@ -52,6 +52,12 @@ return [
                 ], [
                     'url' => '/admin/master-data/pendidikan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
+                ], [
+                    'url' => '/admin/master-data/jenistanaman',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Tanaman'
+                ], [
+                    'url' => '/admin/master-data/tanaman',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
                 ]
             ]
         ]
