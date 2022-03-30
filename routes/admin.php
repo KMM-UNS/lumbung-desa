@@ -16,20 +16,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
-<<<<<<< HEAD
-        Route::resource('datapetani', 'DataPetaniController');
-
-        Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
-            Route::resource('agama', 'AgamaController');
-            // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');
-            // Route::post('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload.post');
-            Route::resource('pekerjaan', 'PekerjaanController');
-            Route::resource('status-kawin', 'StatusKawinController');
-            Route::resource('pendidikan', 'PendidikanController');
-            Route::resource('datapupuk', 'DataPupukController');
-            Route::resource('datalahan', 'DataLahanController');
-            Route::resource('datajenislahan', 'DataJenisLahanController');
-=======
 
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
             Route::resource('agama', 'AgamaController');
@@ -40,7 +26,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('tanaman', 'TanamanController');
             // Route::resource('jenis-lahan', 'JenisLahanController');
 
->>>>>>> 98457dfeaee73b9e1679cb1ad3b4b8bcfe06a29d
         });
     });
 });
