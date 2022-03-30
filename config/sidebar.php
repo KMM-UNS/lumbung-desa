@@ -58,6 +58,7 @@ return [
                 ], [
                     'url' => '/admin/master-data/pendidikan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
+<<<<<<< HEAD
                 ],[
                     'url' => '/admin/master-data/datapupuk',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pupuk'
@@ -67,6 +68,14 @@ return [
                 ],[
                     'url' => '/admin/master-data/datajenislahan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Jenis Lahan'
+=======
+                ], [
+                    'url' => '/admin/master-data/jenistanaman',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Tanaman'
+                ], [
+                    'url' => '/admin/master-data/tanaman',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
+>>>>>>> 98457dfeaee73b9e1679cb1ad3b4b8bcfe06a29d
                 ]
                 
             ]
