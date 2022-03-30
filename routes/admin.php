@@ -24,8 +24,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('pendidikan', 'PendidikanController');
             Route::resource('jenistanaman', 'JenisTanamanController');
             Route::resource('tanaman', 'TanamanController');
-            // Route::resource('jenis-lahan', 'JenisLahanController');
-
+            Route::resource('musim', 'MusimController');
         });
     });
 });

@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers\Admin\Master;
 
-use App\Datatables\Admin\Master\TanamanDataTable;
+use App\DataTables\Admin\Master\MusimDataTable;
 use App\Http\Controllers\Controller;
-use App\Models\JenisTanaman;
-use App\Models\Tanaman;
+use App\Models\Musim;
 use Illuminate\Http\Request;
 
-class TanamanController extends Controller
+class MusimController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(TanamanDataTable $dataTable)
+    public function index(MusimDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.master.tanaman.index');
+        return $dataTable->render('pages.admin.master.Musim.index');
     }
 
     /**
@@ -27,8 +26,7 @@ class TanamanController extends Controller
      */
     public function create()
     {
-        $jenistanaman=JenisTanaman::pluck('nama','id');
-        return view('pages.admin.master.tanaman.add-edit',['jenistanaman'=>$jenistanaman]);
+        return view('pages.admin.master.Musim.add-edit');
     }
 
     /**
@@ -46,21 +44,21 @@ class TanamanController extends Controller
         }
 
         try {
-            Tanaman::create($request->all());
+            Musim::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.tanaman.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.musim.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tanaman  $tanaman
+     * @param  \App\Models\Musim  $musim
      * @return \Illuminate\Http\Response
      */
-    public function show(Tanaman $tanaman)
+    public function show(Musim $musim)
     {
         //
     }
@@ -68,56 +66,51 @@ class TanamanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tanaman  $tanaman
+     * @param  \App\Models\Musim  $musim
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = Tanaman::findOrFail($id);
-        // dd($data);
-        $jenistanaman=JenisTanaman::pluck('nama','id');
-        return view('pages.admin.master.tanaman.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman]);    }
+        $data = Musim::findOrFail($id);
+        return view('pages.admin.master.musim.add-edit', ['data' => $data]);
+    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tanaman  $tanaman
+     * @param  \App\Models\Musim  $musim
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tanaman $id)
+    public function update(Request $request, $id)
     {
         try {
             $request->validate([
-                'jenis_tanaman_id' => 'required|min:3',
                 'nama' => 'required|min:3',
-                'masa_tanam' => 'required|min:3',
-                'keterangan' => 'required|min:3',
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            $data = Tanaman::findOrFail($id);
+            $data = Musim::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.jenistanaman.index'))->withToastSuccess('Data tersimpan');
-    }
+        return redirect(route('admin.master-data.musim.index'))->withToastSuccess('Data tersimpan');    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tanaman  $tanaman
+     * @param  \App\Models\Musim  $musim
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tanaman $id)
+    public function destroy($id)
     {
         try {
-            Tanaman::find($id)->delete();
+            Musim::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

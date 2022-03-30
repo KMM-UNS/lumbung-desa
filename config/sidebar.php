@@ -58,6 +58,9 @@ return [
                 ], [
                     'url' => '/admin/master-data/tanaman',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
+                ], [
+                    'url' => '/admin/master-data/musim',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Musim'
                 ]
             ]
         ]
