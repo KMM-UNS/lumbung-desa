@@ -32,6 +32,12 @@ return [
             'caret' => false,
         ],
         [
+            'icon' => 'fa fa-users',
+            'title' => 'Data Petani',
+            'url' => '/admin/datapetani',
+            'caret' => false,
+        ],
+        [
             'icon' => 'fa fa-cogs',
             'title' => 'Master',
             'url' => 'javascript:;',
@@ -52,6 +58,15 @@ return [
                 ], [
                     'url' => '/admin/master-data/pendidikan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
+                ],[
+                    'url' => '/admin/master-data/datapupuk',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pupuk'
+                ],[
+                    'url' => '/admin/master-data/datalahan',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Lahan'
+                ],[
+                    'url' => '/admin/master-data/datajenislahan',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Jenis Lahan'
                 ], [
                     'url' => '/admin/master-data/jenistanaman',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Tanaman'

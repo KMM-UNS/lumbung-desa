@@ -2,14 +2,14 @@
 
 namespace App\DataTables\Admin;
 
-use App\Models\Admin;
+use App\Models\DataPetani;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class AdminDataTable extends DataTable
+class DataPetaniDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,25 +20,25 @@ class AdminDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
-            ->addColumn('action', function ($row) {
-                $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.admin.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.admin.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '</div>';
-                return $btn;
-            });
+        ->eloquent($query)
+        ->addColumn('action', function ($row) {
+            $btn = '<div class="btn-group">';
+            $btn = $btn . '<a href="' . route('admin.datapetani.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.datapetani.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            $btn = $btn . '</div>';
+            return $btn;
+        });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Admin $model
+     * @param \Agama $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Admin $model)
+    public function query(DataPetani $model)
     {
-        return $model->with('department')->newQuery();
+        return $model->newQuery();
     }
 
     /**
@@ -49,7 +49,7 @@ class AdminDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('admins-table')
+            ->setTableId('data_petanis-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -71,16 +71,20 @@ class AdminDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id'),
+            Column::make('no_kk'),
+            Column::make('nik'),
+            Column::make('nama'),
+            Column::make('tempat_lahir'),
+            Column::make('tanggal_lahir'),
+            Column::make('jenis_kelamin'),
+            Column::make('alamat'),
+            Column::make('foto'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::make('name')->title('Nama'),
-            Column::make('email'),
-            Column::make('pangkat'),
-            Column::make('nrp')->title('NRP'),
-            Column::make('department.nama')->title('Departemen'),
         ];
     }
 
@@ -91,6 +95,6 @@ class AdminDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin_' . date('YmdHis');
+        return 'Admin\DataPetani_' . date('YmdHis');
     }
 }
