@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Master;
+namespace App\Http\Controllers\Admin\Pembelian;
 
-use App\DataTables\Admin\Master\MusimDataTable;
+use App\Datatables\Admin\Pembelian\PembelianDataTable;
 use App\Http\Controllers\Controller;
-use App\Models\Musim;
+use App\Models\Pembelian;
 use Illuminate\Http\Request;
 
-class MusimController extends Controller
+class PembelianController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(MusimDataTable $dataTable)
+    public function index(PembelianDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.master.musim.index');
+        return $dataTable->render('pages.admin.pembelian.index');
     }
 
     /**
@@ -26,7 +26,7 @@ class MusimController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.master.musim.add-edit');
+        return view('pages.admin.pembelian.add-edit');
     }
 
     /**
@@ -44,21 +44,20 @@ class MusimController extends Controller
         }
 
         try {
-            Musim::create($request->all());
+            Pembelian::create($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.musim.index'))->withToastSuccess('Data tersimpan');
-    }
+        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Musim  $musim
+     * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
-    public function show(Musim $musim)
+    public function show(Pembelian $pembelian)
     {
         //
     }
@@ -66,23 +65,22 @@ class MusimController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Musim  $musim
+     * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = Musim::findOrFail($id);
-        return view('pages.admin.master.musim.add-edit', ['data' => $data]);
-    }
+        $data = Pembelian::findOrFail($id);
+        return view('pages.admin.pembelian.add-edit', ['data' => $data]);    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Musim  $musim
+     * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pembelian $id)
     {
         try {
             $request->validate([
@@ -93,27 +91,25 @@ class MusimController extends Controller
         }
 
         try {
-            $data = Musim::findOrFail($id);
+            $data = Pembelian::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.musim.index'))->withToastSuccess('Data tersimpan');
-    }
+        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Musim  $musim
+     * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         try {
-            Musim::find($id)->delete();
+            Pembelian::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
-        }
-    }
+        }    }
 }

@@ -32,6 +32,24 @@ return [
             'caret' => false,
         ],
         [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Pembelian',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/pembelian/pembelian',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pembelian'
+                ]
+            ]
+        ],
+        [
+            'icon' => 'fa fa-warehouse',
+            'title' => 'Gudang Lumbung',
+            'url' => '/admin/gudang-lumbung',
+            'caret' => false,
+        ],
+        [
             'icon' => 'fa fa-users',
             'title' => 'Data Petani',
             'url' => '/admin/datapetani',
@@ -76,6 +94,9 @@ return [
                 ], [
                     'url' => '/admin/master-data/musim',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Musim'
+                ], [
+                    'url' => '/admin/master-data/kondisi-hasil-panen',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kondisi Hasil Panen'
                 ]
             ]
         ]
