@@ -16,6 +16,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
+        Route::group(['prefix' => '/pembelian', 'as' => 'pembelian.', 'namespace' => 'Pembelian'], function () {
+            Route::resource('pembelian', 'PembelianController');
+        });
 
         Route::resource('datapetani', 'DataPetaniController');
 
@@ -32,6 +35,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('jenistanaman', 'JenisTanamanController');
             Route::resource('tanaman', 'TanamanController');
             Route::resource('musim', 'MusimController');
+            Route::resource('kondisi-hasil-panen', 'KondisiHasilPanenController');
         });
     });
 });
