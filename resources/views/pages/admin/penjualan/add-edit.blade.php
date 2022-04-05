@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Data Lahan' : 'Create Data Lahan' )
+@section('title', isset($data) ? 'Edit Penjualan' : 'Create Penjualan' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.master-data.datalahan.update', $data->id) : route('admin.master-data.datalahan.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.penjualan.update', $data->id) : route('admin.penjualan.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -39,12 +39,17 @@
     <!-- begin panel-body -->
     <div class="panel-body">
       <div class="form-group">
-        <label for="name">Nama Petani</label>
-        <x-form.Dropdown name="petani_id" :options="$namapetani" selected="{{{ old('petani_id') ?? ($data['petani_id'] ?? null) }}}" required />
-        <label for="name">Jenis Lahan</label>
-        <x-form.Dropdown name="jenis_lahan" :options="$jenislahan" selected="{{{ old('jenis_lahan') ?? ($data['jenis_lahan'] ?? null) }}}" required />
-        <label for="name">Luas Tanah</label>
-        <input type="text" id="luas_tanah" name="luas_tanah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->luas_tanah ?? old('luas_tanah') }}}">
+        <label for="name">Nomor Penjualan</label>
+        <input type="text" id="no_penjualan" name="no_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_penjualan ?? old('no_penjualan') }}}">
+        <label for="name">Nama</label>
+        <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Kondisi</label>
+        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
+        <label for="name">Jumlah</label>
+        <input type="text" id="jumlah" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
+        <label for="name">Harga</label>
+        <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+       
       </div>
     </div>
     <!-- end panel-body -->

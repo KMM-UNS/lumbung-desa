@@ -18,7 +18,6 @@ class CreateDataLahansTable extends Migration
             $table->string('petani_id');
             $table->string('jenis_lahan');
             $table->string('luas_tanah');
-            $table->timestamps();
             $table->softDeletes();
         });
     }

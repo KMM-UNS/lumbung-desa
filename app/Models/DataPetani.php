@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\DataLahan;
 
 class DataPetani extends Model
 {
@@ -19,4 +20,8 @@ class DataPetani extends Model
         'id','no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat','foto'
     ];
     public $timestamps = false;
+    public function lahan()
+    {
+        return $this->hasMany(DataLahan::class);
+    }
 }

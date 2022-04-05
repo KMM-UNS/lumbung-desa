@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin\Master;
 
 use App\DataTables\Admin\Master\DataLahanDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\DataJenisLahan;
 use App\Models\DataLahan;
+use App\Models\DataPetani;
 use Illuminate\Http\Request;
 
 class DataLahanController extends Controller
@@ -15,14 +17,16 @@ class DataLahanController extends Controller
     }
     public function create()
     {
-        return view('pages.admin.master.datalahan.add-edit');
+        $namapetani=DataPetani::pluck('nama','id');
+        $jenislahan=DataJenisLahan::pluck('nama', 'id');
+        return view('pages.admin.master.datalahan.add-edit',['namapetani' => $namapetani, 'jenislahan' => $jenislahan]);
     }
 
     public function store(Request $request)
     {
         try {
             $request->validate([
-                'nama' => 'required|min:3'
+                'nama' => 'min:3'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
@@ -30,7 +34,8 @@ class DataLahanController extends Controller
 
         try {
             DataLahan::create($request->all());
-        } catch (\Throwable $th) {
+        } catch (\Throwable $th)
+         {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
@@ -40,7 +45,9 @@ class DataLahanController extends Controller
     public function edit($id)
     {
         $data = DataLahan::findOrFail($id);
-        return view('pages.admin.master.datalahan.add-edit', ['data' => $data]);
+        $namapetani=DataPetani::pluck('nama','id');
+        $jenislahan=DataJenisLahan::pluck('nama','id');
+        return view('pages.admin.master.datalahan.add-edit', ['data' => $data, 'namapetani' => $namapetani, 'jenislahan' => $jenislahan]);
     }
 
     public function update(Request $request, $id)

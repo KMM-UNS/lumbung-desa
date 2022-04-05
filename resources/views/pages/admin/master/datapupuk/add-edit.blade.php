@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit DataPetani' : 'Create DataPetani' )
+@section('title', isset($data) ? 'Edit Data Pupuk' : 'Create Data Pupuk' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -41,7 +41,13 @@
       <div class="form-group">
         <label for="name">Nama</label>
         <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
-      </div>
+        <label for="name">Jenis Pupuk</label>
+        <input type="text" id="jenis_pupuk" name="jenis_pupuk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_pupuk ?? old('jenis_pupuk') }}}">
+        <label for="name">Berat (per Kg)</label>
+        <input type="text" id="berat" name="berat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat ?? old('berat') }}}">
+        <label for="name">Harga (per Kg)</label>
+        <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+        </div>
     </div>
     <!-- end panel-body -->
     <!-- begin panel-footer -->

@@ -17,8 +17,8 @@ class CreateDataPupuksTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('jenis_pupuk');
-            $table->string('status');
-            $table->timestamps();
+            $table->string('berat');
+            $table->string('harga');
             $table->softDeletes();
         });
     }

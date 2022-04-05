@@ -6,17 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DataPupuk extends Model
+class Musim extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
-    protected $table = 'data_pupuks';
-    protected $fillable = 
-    [
-        'id','nama','jenis_pupuk','berat', 'harga'
-    ];
+    protected $table = 'musim';
+    protected $fillable = ['nama'];
     public $timestamps = false;
 }

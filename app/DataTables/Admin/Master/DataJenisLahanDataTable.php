@@ -83,8 +83,6 @@ class DataJenisLahanDataTable extends DataTable
             Column::make('id'),
             Column::make('nama'),
             Column::make('status'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 
