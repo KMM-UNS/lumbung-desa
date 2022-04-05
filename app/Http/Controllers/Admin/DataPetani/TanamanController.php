@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Master;
+namespace App\Http\Controllers\Admin\DataPetani;
 
-use App\Datatables\Admin\Master\TanamanDataTable;
+use App\Datatables\Admin\DataPetani\TanamanDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\JenisTanaman;
 use App\Models\Tanaman;
+use App\Models\DataPupuk;
 use Illuminate\Http\Request;
 
 class TanamanController extends Controller
@@ -17,7 +18,7 @@ class TanamanController extends Controller
      */
     public function index(TanamanDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.master.tanaman.index');
+        return $dataTable->render('pages.admin.data-petani.tanaman.index');
     }
 
     /**
@@ -28,7 +29,7 @@ class TanamanController extends Controller
     public function create()
     {
         $jenistanaman=JenisTanaman::pluck('nama','id');
-        return view('pages.admin.master.tanaman.add-edit',['jenistanaman'=>$jenistanaman]);
+        return view('pages.admin.data-petani.tanaman.add-edit',['jenistanaman'=>$jenistanaman]);
     }
 
     /**
@@ -40,7 +41,7 @@ class TanamanController extends Controller
     public function store(Request $request)
     {
         try {
-            $request->validate(['nama'=>'required|min:3']);
+            $request->validate(['nama'=>'required']);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
@@ -48,10 +49,11 @@ class TanamanController extends Controller
         try {
             Tanaman::create($request->all());
         } catch (\Throwable $th) {
+            dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.tanaman.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-petani.tanaman.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
@@ -76,7 +78,7 @@ class TanamanController extends Controller
         $data = Tanaman::findOrFail($id);
         // dd($data);
         $jenistanaman=JenisTanaman::pluck('nama','id');
-        return view('pages.admin.master.tanaman.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman]);    }
+        return view('pages.admin.data-petani.tanaman.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman]);    }
 
     /**
      * Update the specified resource in storage.
@@ -89,10 +91,10 @@ class TanamanController extends Controller
     {
         try {
             $request->validate([
-                'jenis_tanaman_id' => 'required|min:3',
-                'nama' => 'required|min:3',
-                'masa_tanam' => 'required|min:3',
-                'keterangan' => 'required|min:3',
+                'jenis_tanaman_id' => 'required',
+                'nama' => 'required',
+                'masa_tanam' => 'required',
+                'keterangan' => 'required',
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
@@ -105,7 +107,7 @@ class TanamanController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.jenistanaman.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-petani.jenistanaman.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**

@@ -33,6 +33,24 @@ return [
         ],
         [
             'icon' => 'fa fa-cogs',
+            'title' => 'Data Petani',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/data-petani/petani',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Petani'
+                ], [
+                    'url' => '/admin/data-petani/tanaman',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
+                ], [
+                    'url' => '/admin/data-petani/lahan',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Lahan'
+                ]
+            ]
+        ],
+        [
+            'icon' => 'fa fa-cogs',
             'title' => 'Pembelian',
             'url' => 'javascript:;',
             'caret' => true,
@@ -85,13 +103,10 @@ return [
                 ],[
                     'url' => '/admin/master-data/datajenislahan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Jenis Lahan'
-                ], [
+                ],[
                     'url' => '/admin/master-data/jenistanaman',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Tanaman'
-                ], [
-                    'url' => '/admin/master-data/tanaman',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
-                ], [
+                ],[
                     'url' => '/admin/master-data/musim',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Musim'
                 ], [

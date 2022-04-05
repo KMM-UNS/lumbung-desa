@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.master-data.tanaman.update', $data->id) : route('admin.master-data.tanaman.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.data-petani.tanaman.update', $data->id) : route('admin.data-petani.tanaman.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -46,6 +46,10 @@
             <label for="name">Nama</label>
             <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
           </div>
+          {{-- <div class="form-group">
+            <label for="name">Pupuk</label>
+            <input type="text" id="pupuk" name="pupuk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pupuk ?? old('pupuk') }}}">
+          </div> --}}
           <div class="form-group">
             <label for="name">Masa Tanam</label>
             <input type="text" id="masa_tanam" name="masa_tanam" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->masa_tanam ?? old('masa_tanam') }}}">

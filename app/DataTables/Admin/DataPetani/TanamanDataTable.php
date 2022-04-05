@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Admin\Master;
+namespace App\DataTables\Admin\DataPetani;
 
 use App\Models\Tanaman;
 use Yajra\DataTables\Html\Button;
@@ -26,8 +26,8 @@ class TanamanDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.master-data.tanaman.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.master-data.tanaman.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.data-petani.tanaman.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.data-petani.tanaman.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -37,7 +37,7 @@ class TanamanDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin\Master\Tanaman $model
+     * @param \App\App\Models\Admin\DataPetani\Tanaman $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Tanaman $model)
@@ -53,7 +53,7 @@ class TanamanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('tanaman-table')
+                    ->setTableId('tanamen-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -83,6 +83,7 @@ class TanamanDataTable extends DataTable
             Column::make('id'),
             Column::make('jenis_tanaman_id')->data('jenistanaman.nama'), //jenistanaman nama fungsi relasi
             Column::make('nama'),
+            // Column::make('pupuk'),//->data('pupuk.nama'),
             Column::make('masa_tanam'),
             Column::make('keterangan'),
             Column::make('status'),
@@ -96,6 +97,6 @@ class TanamanDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Master\Tanaman_' . date('YmdHis');
+        return 'Admin\DataPetani\Tanaman_' . date('YmdHis');
     }
 }
