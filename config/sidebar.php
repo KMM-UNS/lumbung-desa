@@ -74,6 +74,12 @@ return [
             'caret' => false,
         ],
         [
+            'icon' => 'fa fa-users',
+            'title' => 'Penjualan',
+            'url' => '/admin/penjualan',
+            'caret' => false,
+        ],
+        [
             'icon' => 'fa fa-cogs',
             'title' => 'Master',
             'url' => 'javascript:;',

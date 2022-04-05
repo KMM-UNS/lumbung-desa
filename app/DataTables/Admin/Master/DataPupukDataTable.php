@@ -26,8 +26,8 @@ class DataPupukDataTable extends DataTable
         })
         ->addColumn('action', function ($row) {
             $btn = '<div class="btn-group">';
-            $btn = $btn . '<a href="' . route('admin.master-data.agama.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.master-data.agama.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.master-data.datapupuk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.master-data.datapupuk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
             $btn = $btn . '</div>';
 
             return $btn;
@@ -53,7 +53,7 @@ class DataPupukDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('datapupuks-table')
+                    ->setTableId('data_pupuks-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -83,9 +83,8 @@ class DataPupukDataTable extends DataTable
             Column::make('id'),
             Column::make('nama'),
             Column::make('jenis_pupuk'),
-            Column::make('status'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('berat'),
+            Column::make('harga'),
         ];
     }
 

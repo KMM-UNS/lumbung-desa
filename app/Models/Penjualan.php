@@ -5,23 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\DataLahan;
 
-class DataPetani extends Model
+class Penjualan extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
-    protected $table = 'data_petanis';
+    protected $table = 'penjualans';
     protected $fillable = 
     [
-        'id','no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat','foto'
+        'id','no_penjualan','nama','kondisi','jumlah','harga'
     ];
     public $timestamps = false;
-    public function lahan()
-    {
-        return $this->hasMany(DataLahan::class);
-    }
+    
 }

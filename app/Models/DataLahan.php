@@ -19,4 +19,14 @@ class DataLahan extends Model
         'id','','petani_id','jenis_lahan','luas_tanah'
     ];
     public $timestamps = false;
+    
+    public function namapetani()
+    {
+        return $this->belongsTo(DataPetani::class,'petani_id');
+    }
+
+    public function jenislahan()
+    {
+        return $this->belongsTo(DataJenisLahan::class,'jenis_lahan');
+    }
 }

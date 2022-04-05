@@ -16,6 +16,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
+        Route::resource('datapetani', 'DataPetaniController');
+        Route::resource('penjualan', 'PenjualanController');
 
         Route::group(['prefix' => '/data-petani', 'as' => 'data-petani.', 'namespace' => 'DataPetani'], function () {
             //Route::resource('petani', 'PetaniController');
@@ -26,20 +28,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('pembelian', 'PembelianController');
         });
 
-        // Route::resource('datapetani', 'DataPetaniController');
-
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
-            Route::resource('agama', 'AgamaController');
             // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');
             // Route::post('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload.post');
-            Route::resource('pekerjaan', 'PekerjaanController');
-            Route::resource('status-kawin', 'StatusKawinController');
-            Route::resource('pendidikan', 'PendidikanController');
             Route::resource('datapupuk', 'DataPupukController');
-            // Route::resource('datalahan', 'DataLahanController');
             Route::resource('datajenislahan', 'DataJenisLahanController');
             Route::resource('jenistanaman', 'JenisTanamanController');
-            // Route::resource('tanaman', 'TanamanController');
             Route::resource('musim', 'MusimController');
             Route::resource('kondisi-hasil-panen', 'KondisiHasilPanenController');
         });

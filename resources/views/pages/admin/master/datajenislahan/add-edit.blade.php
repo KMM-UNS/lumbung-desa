@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit DataJenisLahan' : 'Create DataJenisLahan' )
+@section('title', isset($data) ? 'Edit Data Jenis Lahan' : 'Create Data Jenis Lahan' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -41,6 +41,9 @@
       <div class="form-group">
         <label for="name">Nama</label>
         <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Status</label>
+        <input type="text" id="status" name="status" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status ?? old('status') }}}">
+      
       </div>
     </div>
     <!-- end panel-body -->

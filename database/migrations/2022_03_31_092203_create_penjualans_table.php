@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDataJenisLahansTable extends Migration
+class CreatePenjualansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateDataJenisLahansTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_jenis_lahans', function (Blueprint $table) {
+        Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
+            $table->string('no_penjualan');
             $table->string('nama');
-            $table->string('status');
+            $table->string('kondisi');
+            $table->string('jumlah');
+            $table->string('harga');
             $table->softDeletes();
         });
     }
@@ -28,6 +31,6 @@ class CreateDataJenisLahansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_jenis_lahans');
+        Schema::dropIfExists('penjualans');
     }
 }

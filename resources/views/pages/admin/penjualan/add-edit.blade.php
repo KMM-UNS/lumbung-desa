@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Status Keluarga' : 'Create Status Keluarga' )
+@section('title', isset($data) ? 'Edit Penjualan' : 'Create Penjualan' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.master-data.status-keluarga.update', $data->id) : route('admin.master-data.status-keluarga.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.penjualan.update', $data->id) : route('admin.penjualan.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -39,8 +39,17 @@
     <!-- begin panel-body -->
     <div class="panel-body">
       <div class="form-group">
+        <label for="name">Nomor Penjualan</label>
+        <input type="text" id="no_penjualan" name="no_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_penjualan ?? old('no_penjualan') }}}">
         <label for="name">Nama</label>
         <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Kondisi</label>
+        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
+        <label for="name">Jumlah</label>
+        <input type="text" id="jumlah" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
+        <label for="name">Harga</label>
+        <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+       
       </div>
     </div>
     <!-- end panel-body -->
