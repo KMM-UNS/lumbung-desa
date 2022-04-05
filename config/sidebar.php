@@ -58,6 +58,9 @@ return [
                 [
                     'url' => '/admin/pembelian/pembelian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pembelian'
+                ],[
+                    'url' => '/admin/pembelian/perkiraan-pembelian',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perkiraan Pembelian'
                 ]
             ]
         ],

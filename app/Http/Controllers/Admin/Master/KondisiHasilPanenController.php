@@ -73,7 +73,8 @@ class KondisiHasilPanenController extends Controller
     public function edit($id)
     {
         $data = KondisiHasilPanen::findOrFail($id);
-        return view('pages.admin.master.kondisi-hasil-panen.add-edit', ['data' => $data]);    }
+        return view('pages.admin.master.kondisi-hasil-panen.add-edit', ['data' => $data]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -86,7 +87,7 @@ class KondisiHasilPanenController extends Controller
     {
         try {
             $request->validate([
-                'kondisi' => 'required|min:3',
+                'kondisi' => 'required',
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
@@ -96,6 +97,7 @@ class KondisiHasilPanenController extends Controller
             $data = KondisiHasilPanen::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
+            // dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
