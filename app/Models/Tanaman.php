@@ -16,7 +16,7 @@ class Tanaman extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'tanamen';
-    protected $fillable = ['jenis_tanaman_id','nama','masa_tanam','keterangan','status'];
+    protected $fillable = ['jenis_tanaman_id','nama','masa_tanam','keterangan'];
     public $timestamps = false;
 
     // public function setNamaAttribute($value)
@@ -32,5 +32,10 @@ class Tanaman extends Model
     public function jenistanaman()
     {
         return $this->belongsTo(JenisTanaman::class,'jenis_tanaman_id');
+    }
+
+    public function pupuk()
+    {
+        return $this->belongsTo(DataPupuk::class,'pupuk');
     }
 }

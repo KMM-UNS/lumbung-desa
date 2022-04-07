@@ -14,9 +14,14 @@ class DataPupuk extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'data_pupuks';
-    protected $fillable = 
+    protected $fillable =
     [
         'id','nama','jenis_pupuk','berat', 'harga'
     ];
     public $timestamps = false;
+
+    public function pupuktanaman()
+    {
+        return $this->hasMany(Tanaman::class);
+    }
 }

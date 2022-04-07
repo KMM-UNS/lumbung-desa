@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'DataPetani')
+@section('title', 'Data Petani')
 
 @push('css')
 <!-- datatables -->

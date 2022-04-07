@@ -32,9 +32,39 @@ return [
             'caret' => false,
         ],
         [
-            'icon' => 'fa fa-users',
+            'icon' => 'fa fa-cogs',
             'title' => 'Data Petani',
-            'url' => '/admin/datapetani',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/data-petani/petani',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Petani'
+                ], [
+                    'url' => '/admin/data-petani/tanaman',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
+                ], [
+                    'url' => '/admin/data-petani/datalahan',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Lahan'
+                ]
+            ]
+        ],
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Pembelian',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/pembelian/pembelian',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pembelian'
+                ]
+            ]
+        ],
+        [
+            'icon' => 'fa fa-warehouse',
+            'title' => 'Gudang Lumbung',
+            'url' => '/admin/gudang-lumbung',
             'caret' => false,
         ],
         [
@@ -50,21 +80,6 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/setting',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;App'
-                ], [
-                    'url' => '/admin/master-data/agama',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Agama'
-                ], [
-                    'url' => '/admin/master-data/pekerjaan',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pekerjaan'
-                ], [
-                    'url' => '/admin/master-data/status-kawin',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Status Kawin'
-                ], [
-                    'url' => '/admin/master-data/pendidikan',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Pendidikan'
-                ],[
                     'url' => '/admin/master-data/datapupuk',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pupuk'
                 ],[
@@ -73,15 +88,15 @@ return [
                 ],[
                     'url' => '/admin/master-data/datajenislahan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Jenis Lahan'
-                ], [
+                ],[
                     'url' => '/admin/master-data/jenistanaman',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Tanaman'
-                ], [
-                    'url' => '/admin/master-data/tanaman',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
-                ], [
+                ],[
                     'url' => '/admin/master-data/musim',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Musim'
+                ], [
+                    'url' => '/admin/master-data/kondisi-hasil-panen',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kondisi Hasil Panen'
                 ]
             ]
         ]

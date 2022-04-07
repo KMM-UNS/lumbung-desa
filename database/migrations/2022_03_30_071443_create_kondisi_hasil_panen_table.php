@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDataJenisLahansTable extends Migration
+class CreateKondisiHasilPanenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateDataJenisLahansTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_jenis_lahans', function (Blueprint $table) {
+        Schema::create('kondisi_hasil_panen', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('kondisi');
             $table->softDeletes();
         });
     }
@@ -27,6 +27,6 @@ class CreateDataJenisLahansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_jenis_lahans');
+        Schema::dropIfExists('kondisi_hasil_panen');
     }
 }

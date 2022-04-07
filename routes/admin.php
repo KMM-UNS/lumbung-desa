@@ -16,6 +16,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
+
+        Route::group(['prefix' => '/data-petani', 'as' => 'data-petani.', 'namespace' => 'DataPetani'], function () {
+            Route::resource('petani', 'DataPetaniController');
+           // Route::get('/image', 'DataPetaniController@index');
+           // Route::post('/images','DataPetaniController@upload');
+             Route::resource('tanaman', 'TanamanController');
+             Route::resource('datalahan', 'DataLahanController');
+        });
+
+        Route::group(['prefix' => '/pembelian', 'as' => 'pembelian.', 'namespace' => 'Pembelian'], function () {
+            Route::resource('pembelian', 'PembelianController');
+        });
+
+        Route::resource('datapetani', 'DataPetaniController');
         Route::resource('datapetani', 'DataPetaniController');
         Route::resource('penjualan', 'PenjualanController');
 
@@ -27,12 +41,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('status-kawin', 'StatusKawinController');
             Route::resource('pendidikan', 'PendidikanController');
             Route::resource('datapupuk', 'DataPupukController');
-            Route::resource('datalahan', 'DataLahanController');
+
             Route::resource('datajenislahan', 'DataJenisLahanController');
             Route::resource('jenistanaman', 'JenisTanamanController');
-            Route::resource('tanaman', 'TanamanController');
+            // Route::resource('tanaman', 'TanamanController');
             Route::resource('musim', 'MusimController');
-            
+            Route::resource('kondisi-hasil-panen', 'KondisiHasilPanenController');
+
         });
     });
 });

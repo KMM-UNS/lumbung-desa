@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Master;
+namespace App\Http\Controllers\Admin\DataPetani;
 
-use App\DataTables\Admin\Master\DataLahanDataTable;
+use App\DataTables\Admin\DataPetani\DataLahanDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\DataJenisLahan;
 use App\Models\DataLahan;
@@ -13,13 +13,13 @@ class DataLahanController extends Controller
 {
     public function index(DataLahanDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.master.datalahan.index');
+        return $dataTable->render('pages.admin.data-petani.datalahan.index');
     }
     public function create()
     {
         $namapetani=DataPetani::pluck('nama','id');
         $jenislahan=DataJenisLahan::pluck('nama', 'id');
-        return view('pages.admin.master.datalahan.add-edit',['namapetani' => $namapetani, 'jenislahan' => $jenislahan]);
+        return view('pages.admin.data-petani.datalahan.add-edit',['namapetani' => $namapetani, 'jenislahan' => $jenislahan]);
     }
 
     public function store(Request $request)
@@ -39,7 +39,7 @@ class DataLahanController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.datalahan.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-petani.datalahan.index'))->withToastSuccess('Data tersimpan');
     }
 
     public function edit($id)
@@ -47,16 +47,17 @@ class DataLahanController extends Controller
         $data = DataLahan::findOrFail($id);
         $namapetani=DataPetani::pluck('nama','id');
         $jenislahan=DataJenisLahan::pluck('nama','id');
-        return view('pages.admin.master.datalahan.add-edit', ['data' => $data, 'namapetani' => $namapetani, 'jenislahan' => $jenislahan]);
+        return view('pages.admin.data-petani.datalahan.add-edit', ['data' => $data, 'namapetani' => $namapetani, 'jenislahan' => $jenislahan]);
     }
 
     public function update(Request $request, $id)
     {
         try {
             $request->validate([
-                'nama' => 'required|min:3'
+
             ]);
         } catch (\Throwable $th) {
+            //dd($th);
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
@@ -67,7 +68,7 @@ class DataLahanController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.datalahan.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-petani.datalahan.index'))->withToastSuccess('Data tersimpan');
     }
 
     public function destroy($id)

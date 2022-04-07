@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Master;
+namespace App\Http\Controllers\Admin\Pembelian;
 
-use App\Datatables\Admin\Master\TanamanDataTable;
+use App\Datatables\Admin\Pembelian\PembelianDataTable;
 use App\Http\Controllers\Controller;
-use App\Models\JenisTanaman;
-use App\Models\Tanaman;
+use App\Models\Pembelian;
 use Illuminate\Http\Request;
 
-class TanamanController extends Controller
+class PembelianController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(TanamanDataTable $dataTable)
+    public function index(PembelianDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.master.tanaman.index');
+        return $dataTable->render('pages.admin.pembelian.index');
     }
 
     /**
@@ -27,8 +26,7 @@ class TanamanController extends Controller
      */
     public function create()
     {
-        $jenistanaman=JenisTanaman::pluck('nama','id');
-        return view('pages.admin.master.tanaman.add-edit',['jenistanaman'=>$jenistanaman]);
+        return view('pages.admin.pembelian.add-edit');
     }
 
     /**
@@ -46,22 +44,20 @@ class TanamanController extends Controller
         }
 
         try {
-            Tanaman::create($request->all());
+            Pembelian::create($request->all());
         } catch (\Throwable $th) {
-            dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.tanaman.index'))->withToastSuccess('Data tersimpan');
-    }
+        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tanaman  $tanaman
+     * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
-    public function show(Tanaman $tanaman)
+    public function show(Pembelian $pembelian)
     {
         //
     }
@@ -69,58 +65,51 @@ class TanamanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tanaman  $tanaman
+     * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = Tanaman::findOrFail($id);
-        // dd($data);
-        $jenistanaman=JenisTanaman::pluck('nama','id');
-        return view('pages.admin.master.tanaman.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman]);    }
+        $data = Pembelian::findOrFail($id);
+        return view('pages.admin.pembelian.add-edit', ['data' => $data]);    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tanaman  $tanaman
+     * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tanaman $id)
+    public function update(Request $request, Pembelian $id)
     {
         try {
             $request->validate([
-                'jenis_tanaman_id' => 'required',
-                'nama' => 'required',
-                'masa_tanam' => 'required',
-                'keterangan' => 'required',
+                'nama' => 'required|min:3',
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
         try {
-            $data = Tanaman::findOrFail($id);
+            $data = Pembelian::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.jenistanaman.index'))->withToastSuccess('Data tersimpan');
-    }
+        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tanaman  $tanaman
+     * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tanaman $id)
+    public function destroy($id)
     {
         try {
-            Tanaman::find($id)->delete();
+            Pembelian::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
-        }
-    }
+        }    }
 }

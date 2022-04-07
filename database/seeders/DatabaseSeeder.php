@@ -13,6 +13,7 @@ use Database\Seeders\StatusKawinSeeder;
 use Database\Seeders\KeperluanSkckSeeder;
 use Database\Seeders\StatusKeluargaSeeder;
 use Database\Seeders\ObjekPengawalanSeeder;
+use Database\Seeders\JenisLahanSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,7 +30,8 @@ class DatabaseSeeder extends Seeder
             PekerjaanSeeder::class,
             PendidikanSeeder::class,
             StatusKawinSeeder::class,
-            SettingSeeder::class
+            SettingSeeder::class,
+            JenisLahanSeeder::class
         ]);
     }
 }
