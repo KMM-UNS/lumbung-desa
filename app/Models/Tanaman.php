@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Musim;
+use App\Models\DataPupuk;
 use Illuminate\Support\Str;
 use App\Models\JenisTanaman;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tanaman extends Model
 {
@@ -16,7 +18,7 @@ class Tanaman extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'tanamen';
-    protected $fillable = ['jenis_tanaman_id','nama','masa_tanam','keterangan'];
+    protected $fillable = ['jenis_tanaman_id','nama','musim_tanam_id','waktu_tanam','jenis_pupuk_id','keterangan'];
     public $timestamps = false;
 
     // public function setNamaAttribute($value)
@@ -36,6 +38,11 @@ class Tanaman extends Model
 
     public function pupuk()
     {
-        return $this->belongsTo(DataPupuk::class,'pupuk');
+        return $this->belongsTo(DataPupuk::class,'jenis_pupuk_id');
+    }
+
+    public function musimtanam()
+    {
+        return $this->belongsTo(Musim::class,'musim_tanam_id');
     }
 }

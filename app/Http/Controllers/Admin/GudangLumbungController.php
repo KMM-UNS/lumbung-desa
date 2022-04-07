@@ -1,22 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Pembelian;
+namespace App\Http\Controllers\Admin;
 
-use App\Datatables\Admin\Pembelian\PembelianDataTable;
-use App\Http\Controllers\Controller;
-use App\Models\Pembelian;
+use App\Models\Tanaman;
+use App\Models\JenisTanaman;
 use Illuminate\Http\Request;
+use App\Models\GudangLumbung;
+use App\Http\Controllers\Controller;
+use App\DataTables\Admin\GudangLumbung\GudangLumbungDataTable;
 
-class PembelianController extends Controller
+class GudangLumbungController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(PembelianDataTable $dataTable)
+    public function index(GudangLumbungDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.pembelian.index');
+        return $dataTable->render('pages.admin.gudang-lumbung.index');
     }
 
     /**
@@ -26,7 +28,9 @@ class PembelianController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.pembelian.add-edit');
+        $jenistanaman=JenisTanaman::pluck('nama','id');
+        $tanaman=Tanaman::pluck('nama','id');
+        return view('pages.admin.gudang-lumbung.add-edit',['jenistanaman'=>$jenistanaman, 'tanaman'=>$tanaman]);
     }
 
     /**
@@ -38,28 +42,22 @@ class PembelianController extends Controller
     public function store(Request $request)
     {
         try {
-            $request->validate(['tanaman_id'=>'required']);
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        }
-
-        try {
-            Pembelian::create($request->all());
+            GudangLumbung::create($request->all());
         } catch (\Throwable $th) {
             dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.gudang-lumbung.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pembelian  $pembelian
+     * @param  \App\Models\GudangLumbung  $gudangLumbung
      * @return \Illuminate\Http\Response
      */
-    public function show(Pembelian $pembelian)
+    public function show(GudangLumbung $gudangLumbung)
     {
         //
     }
@@ -67,52 +65,46 @@ class PembelianController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pembelian  $pembelian
+     * @param  \App\Models\GudangLumbung  $gudangLumbung
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = Pembelian::findOrFail($id);
-        return view('pages.admin.pembelian.add-edit', ['data' => $data]);
+        $data = GudangLumbung::findOrFail($id);
+        $jenistanaman=JenisTanaman::pluck('nama','id');
+        $tanaman=Tanaman::pluck('nama','id');
+        return view('pages.admin.gudang-lumbung.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman, 'tanaman'=>$tanaman]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pembelian  $pembelian
+     * @param  \App\Models\GudangLumbung  $gudangLumbung
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pembelian $id)
+    public function update(Request $request, GudangLumbung $id)
     {
         try {
-            $request->validate([
-                'tanaman_id' => 'required',
-            ]);
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        }
-
-        try {
-            $data = Pembelian::findOrFail($id);
+            $data = GudangLumbung::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.gudang-lumbung.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pembelian  $pembelian
+     * @param  \App\Models\GudangLumbung  $gudangLumbung
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         try {
-            Pembelian::find($id)->delete();
+            GudangLumbung::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

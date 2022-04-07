@@ -26,7 +26,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => '/pembelian', 'as' => 'pembelian.', 'namespace' => 'Pembelian'], function () {
             Route::resource('pembelian', 'PembelianController');
+            // Route::resource('perkiraanpembelian', 'PerkiraanPembelianController');
         });
+
+        Route::resource('gudang-lumbung', 'GudangLumbungController');
 
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
             // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');

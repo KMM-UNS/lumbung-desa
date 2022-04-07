@@ -22,6 +22,7 @@ class CreatePembelianTable extends Migration
             $table->integer('jumlah');
             $table->string('kondisi');
             $table->string('harga');
+            $table->string('total');
             $table->softDeletes();
         });
     }

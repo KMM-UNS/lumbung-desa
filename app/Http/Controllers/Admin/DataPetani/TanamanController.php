@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\JenisTanaman;
 use App\Models\Tanaman;
 use App\Models\DataPupuk;
+use App\Models\Musim;
 use Illuminate\Http\Request;
 
 class TanamanController extends Controller
@@ -29,7 +30,9 @@ class TanamanController extends Controller
     public function create()
     {
         $jenistanaman=JenisTanaman::pluck('nama','id');
-        return view('pages.admin.data-petani.tanaman.add-edit',['jenistanaman'=>$jenistanaman]);
+        $pupuk=DataPupuk::pluck('nama','id');
+        $musimtanam=Musim::pluck('nama','id');
+        return view('pages.admin.data-petani.tanaman.add-edit',['jenistanaman'=>$jenistanaman, 'pupuk'=>$pupuk, 'musimtanam'=>$musimtanam]);
     }
 
     /**
@@ -40,11 +43,11 @@ class TanamanController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $request->validate(['nama'=>'required']);
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        }
+        // try {
+        //     $request->validate(['nama'=>'required']);
+        // } catch (\Throwable $th) {
+        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
+        // }
 
         try {
             Tanaman::create($request->all());
@@ -78,7 +81,10 @@ class TanamanController extends Controller
         $data = Tanaman::findOrFail($id);
         // dd($data);
         $jenistanaman=JenisTanaman::pluck('nama','id');
-        return view('pages.admin.data-petani.tanaman.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman]);    }
+        $pupuk=DataPupuk::pluck('nama','id');
+        $musimtanam=Musim::pluck('nama','id');
+        return view('pages.admin.data-petani.tanaman.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman, 'pupuk'=>$pupuk, 'musimtanam'=>$musimtanam]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -89,17 +95,6 @@ class TanamanController extends Controller
      */
     public function update(Request $request, Tanaman $id)
     {
-        try {
-            $request->validate([
-                'jenis_tanaman_id' => 'required',
-                'nama' => 'required',
-                'masa_tanam' => 'required',
-                'keterangan' => 'required',
-            ]);
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        }
-
         try {
             $data = Tanaman::findOrFail($id);
             $data->update($request->all());

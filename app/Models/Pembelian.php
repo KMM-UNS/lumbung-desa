@@ -15,14 +15,14 @@ class Pembelian extends Model
 
     protected $table = 'pembelian';
     protected $fillable = [
-        'musim',
-        'tanaman',
-        'lahan',
+        'musim_id',
+        'tanaman_id',
         'no_pembelian',
         'tanggal_pembelian',
         'jumlah',
         'kondisi',
         'harga',
+        'total'
     ];
     public $timestamps = false;
 }

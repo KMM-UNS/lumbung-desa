@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Tanaman;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Musim extends Model
 {
@@ -16,4 +17,9 @@ class Musim extends Model
     protected $table = 'musim';
     protected $fillable = ['nama'];
     public $timestamps = false;
+
+    public function tanammusim()
+    {
+        return $this->hasMany(Tanaman::class);
+    }
 }

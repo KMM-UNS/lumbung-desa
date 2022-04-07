@@ -40,27 +40,23 @@
     <div class="panel-body">
       <div class="form-group">
         <label for="name">Musim</label>
-        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
+        <input type="text" id="musim_id" name="musim_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->musim_id ?? old('musim_id') }}}">
       </div>
       <div class="form-group">
         <label for="name">Tanaman</label>
-        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
-      </div>
-      <div class="form-group">
-        <label for="name">Lahan</label>
-        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
+        <input type="text" id="tanaman_id" name="tanaman_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanaman_id ?? old('tanaman_id') }}}">
       </div>
       <div class="form-group">
         <label for="name">Nomor Pembelian</label>
-        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
+        <input type="text" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
       </div>
       <div class="form-group">
         <label for="name">Tanggal Pembelian</label>
-        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
+        <input type="text" id="tanggal_pembelian" name="tanggal_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_pembelian ?? old('tanggal_pembelian') }}}">
       </div>
       <div class="form-group">
         <label for="name">Jumlah Pembelian</label>
-        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
+        <input type="text" id="jumlah" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
       </div>
       <div class="form-group">
         <label for="name">Kondisi</label>
@@ -68,7 +64,11 @@
       </div>
       <div class="form-group">
         <label for="name">Harga</label>
-        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
+        <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+      </div>
+      <div class="form-group">
+        <label for="name">Total</label>
+        <input type="text" id="total" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
       </div>
     </div>
     <!-- end panel-body -->

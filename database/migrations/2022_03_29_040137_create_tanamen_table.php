@@ -17,7 +17,9 @@ class CreateTanamenTable extends Migration
             $table->id();
             $table->string('jenis_tanaman_id');
             $table->string('nama');
-            $table->string('masa_tanam');
+            $table->string('musim_tanam_id');
+            $table->string('waktu_tanam');
+            $table->string('jenis_pupuk_id');
             $table->string('keterangan');
             $table->enum('status', ['aktif', 'non-aktif'])->default('aktif');
             $table->softDeletes();
