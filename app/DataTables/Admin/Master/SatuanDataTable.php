@@ -2,14 +2,14 @@
 
 namespace App\DataTables\Admin\Master;
 
-use App\Models\KondisiHasilPanen;
+use App\Models\Satuan;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class KondisiHasilPanenDataTable extends DataTable
+class SatuanDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,27 +20,27 @@ class KondisiHasilPanenDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
-            ->setRowId(function ($row) {
-                return $row->id;
-            })
-            ->addColumn('action', function ($row) {
-                $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.master-data.kondisi-hasil-panen.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.master-data.kondisi-hasil-panen.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '</div>';
+        ->eloquent($query)
+        ->setRowId(function ($row) {
+            return $row->id;
+        })
+        ->addColumn('action', function ($row) {
+            $btn = '<div class="btn-group">';
+            $btn = $btn . '<a href="' . route('admin.master-data.satuan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.master-data.satuan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            $btn = $btn . '</div>';
 
-                return $btn;
-            });
+            return $btn;
+        });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin\Master\KondisiHasilPanen $model
+     * @param \App\App\Models\Admin\Master\SatuanDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(KondisiHasilPanen $model)
+    public function query(Satuan $model)
     {
         return $model->newQuery();
     }
@@ -53,7 +53,7 @@ class KondisiHasilPanenDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('kondisihasilpanen-table')
+                    ->setTableId('satuan-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -81,7 +81,7 @@ class KondisiHasilPanenDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             Column::make('id'),
-            Column::make('nama'),
+            Column::make('satuan'),
         ];
     }
 
@@ -92,6 +92,6 @@ class KondisiHasilPanenDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Master\KondisiHasilPanen_' . date('YmdHis');
+        return 'Admin\Master\Satuan_' . date('YmdHis');
     }
 }

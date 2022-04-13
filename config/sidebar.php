@@ -106,6 +106,9 @@ return [
                 ], [
                     'url' => '/admin/master-data/kondisi-hasil-panen',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kondisi Hasil Panen'
+                ], [
+                    'url' => '/admin/master-data/satuan',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Satuan'
                 ]
             ]
         ]

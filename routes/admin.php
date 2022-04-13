@@ -39,6 +39,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('jenistanaman', 'JenisTanamanController');
             Route::resource('musim', 'MusimController');
             Route::resource('kondisi-hasil-panen', 'KondisiHasilPanenController');
+            Route::resource('satuan', 'SatuanController');
         });
     });
 });

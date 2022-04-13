@@ -7,18 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class KondisiHasilPanen extends Model
+class Satuan extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
-    protected $table = 'kondisi_hasil_panen';
-    protected $fillable = ['nama'];
+    protected $table = 'satuan';
+    protected $fillable =
+    [
+        'satuan'
+    ];
     public $timestamps = false;
 
-    public function kondisitanamangudang()
+    public function satuangudang()
     {
         return $this->hasMany(GudangLumbung::class);
     }

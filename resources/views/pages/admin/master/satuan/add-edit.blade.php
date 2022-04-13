@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Data Gudang Lumbung' : 'Create Data Gudang Lumbung' )
+@section('title', isset($data) ? 'Edit Data Satuan' : 'Create Data Satuan' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -10,17 +10,17 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Gudang Lumbung</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Gudang Lumbung<small> @yield('title')</small></h1>
+<h1 class="page-header">Master Data<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.gudang-lumbung.update', $data->id) : route('admin.gudang-lumbung.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.master-data.satuan.update', $data->id) : route('admin.master-data.satuan.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -38,25 +38,9 @@
     <!-- end panel-heading -->
     <!-- begin panel-body -->
     <div class="panel-body">
-        <div class="form-group">
-          <label for="name">Jenis Tanaman</label>
-          <x-form.Dropdown name="jenis_tanaman_id" :options="$jenistanaman" selected="{{{ old('jenis_tanaman_id') ?? ($data['jenis_tanaman_id'] ?? null) }}}" required />
-        </div>
-      <div class="form-group">
-        <label for="name">Tanaman</label>
-        <x-form.Dropdown name="nama_tanaman_id" :options="$tanaman" selected="{{{ old('nama_tanaman_id') ?? ($data['nama_tanaman_id'] ?? null) }}}" required />
-    </div>
-      <div class="form-group">
-        <label for="name">Stok</label>
-        <input type="text" id="stok" name="stok" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->stok ?? old('stok') }}}">
-      </div>
       <div class="form-group">
         <label for="name">Satuan</label>
-        <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
-      </div>
-      <div class="form-group">
-        <label for="name">Kondisi</label>
-        <x-form.Dropdown name="kondisi_id" :options="$kondisi" selected="{{{ old('kondisi_id') ?? ($data['kondisi_id'] ?? null) }}}" required />
+        <input type="text" id="satuan" name="satuan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->satuan ?? old('satuan') }}}">
       </div>
     </div>
     <!-- end panel-body -->

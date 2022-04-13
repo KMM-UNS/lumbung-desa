@@ -42,7 +42,7 @@ class GudangLumbungDataTable extends DataTable
      */
     public function query(GudangLumbung $model)
     {
-        return $model->select('gudang_lumbung.*')->with(['jenistanaman','tanaman']);
+        return $model->select('gudang_lumbung.*')->with(['jenistanaman','tanaman','satuan','kondisi']);
     }
 
     /**
@@ -84,8 +84,8 @@ class GudangLumbungDataTable extends DataTable
             Column::make('jenis_tanaman_id')->data('jenistanaman.nama'),
             Column::make('nama_tanaman_id')->data('tanaman.nama'),
             Column::make('stok'),
-            Column::make('satuan'),
-            Column::make('kondisi_id'),
+            Column::make('satuan_id')->data('satuan.satuan'),
+            Column::make('kondisi_id')->data('kondisi.nama'),
         ];
     }
 

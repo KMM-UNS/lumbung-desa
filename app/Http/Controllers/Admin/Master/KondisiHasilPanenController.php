@@ -39,7 +39,7 @@ class KondisiHasilPanenController extends Controller
     {
         {
             try {
-                $request->validate(['kondisi'=>'required|min:3']);
+                $request->validate(['nama'=>'required|min:3']);
             } catch (\Throwable $th) {
                 return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
             }
@@ -87,7 +87,7 @@ class KondisiHasilPanenController extends Controller
     {
         try {
             $request->validate([
-                'kondisi' => 'required',
+                'nama' => 'required',
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
