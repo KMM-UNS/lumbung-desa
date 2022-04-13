@@ -40,11 +40,11 @@
     <div class="panel-body">
       <div class="form-group">
         <label for="name">Musim</label>
-        <input type="text" id="musim_id" name="musim_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->musim_id ?? old('musim_id') }}}">
+        <x-form.Dropdown name="musim_id" :options="$musim" selected="{{{ old('musim_id') ?? ($data['musim_id'] ?? null) }}}" required />
       </div>
       <div class="form-group">
         <label for="name">Tanaman</label>
-        <input type="text" id="tanaman_id" name="tanaman_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanaman_id ?? old('tanaman_id') }}}">
+        <x-form.Dropdown name="tanaman_id" :options="$tanaman" selected="{{{ old('tanaman_id') ?? ($data['tanaman_id'] ?? null) }}}" required />
       </div>
       <div class="form-group">
         <label for="name">Nomor Pembelian</label>
@@ -52,7 +52,7 @@
       </div>
       <div class="form-group">
         <label for="name">Tanggal Pembelian</label>
-        <input type="text" id="tanggal_pembelian" name="tanggal_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_pembelian ?? old('tanggal_pembelian') }}}">
+        <input type="date" id="tanggal_pembelian" name="tanggal_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_pembelian ?? old('tanggal_pembelian') }}}">
       </div>
       <div class="form-group">
         <label for="name">Jumlah Pembelian</label>
@@ -60,7 +60,7 @@
       </div>
       <div class="form-group">
         <label for="name">Kondisi</label>
-        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
+        <x-form.Dropdown name="kondisi_id" :options="$kondisi" selected="{{{ old('kondisi_id') ?? ($data['kondisi_id'] ?? null) }}}" required />
       </div>
       <div class="form-group">
         <label for="name">Harga</label>

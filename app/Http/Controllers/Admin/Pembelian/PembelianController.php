@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Pembelian;
 
-use App\Datatables\Admin\Pembelian\PembelianDataTable;
-use App\Http\Controllers\Controller;
+use App\Models\Musim;
+use App\Models\Tanaman;
 use App\Models\Pembelian;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Datatables\Admin\Pembelian\PembelianDataTable;
+use App\Models\KondisiHasilPanen;
 
 class PembelianController extends Controller
 {
@@ -26,7 +29,10 @@ class PembelianController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.pembelian.add-edit');
+        $musim=Musim::pluck('nama','id');
+        $tanaman=Tanaman::pluck('nama','id');
+        $kondisi=KondisiHasilPanen::pluck('nama','id');
+        return view('pages.admin.pembelian.add-edit', ['musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi]);
     }
 
     /**
@@ -73,7 +79,10 @@ class PembelianController extends Controller
     public function edit($id)
     {
         $data = Pembelian::findOrFail($id);
-        return view('pages.admin.pembelian.add-edit', ['data' => $data]);
+        $musim=Musim::pluck('nama','id');
+        $tanaman=Tanaman::pluck('nama','id');
+        $kondisi=KondisiHasilPanen::pluck('nama','id');
+        return view('pages.admin.pembelian.add-edit', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi]);
     }
 
     /**

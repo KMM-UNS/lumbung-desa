@@ -20,7 +20,7 @@ class CreatePembelianTable extends Migration
             $table->integer('no_pembelian');
             $table->string('tanggal_pembelian');
             $table->integer('jumlah');
-            $table->string('kondisi');
+            $table->string('kondisi_id');
             $table->string('harga');
             $table->string('total');
             $table->softDeletes();

@@ -42,7 +42,7 @@ class PembelianDataTable extends DataTable
      */
     public function query(Pembelian $model)
     {
-        return $model->newQuery();
+        return $model->select('pembelian.*')->with(['musim','tanaman','kondisi']);
     }
 
     /**
@@ -81,12 +81,12 @@ class PembelianDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             Column::make('id'),
-            Column::make('musim_id'),
-            Column::make('tanaman_id'),
+            Column::make('musim_id')->data('musim.nama'),
+            Column::make('tanaman_id')->data('tanaman.nama'),
             Column::make('no_pembelian'),
             Column::make('tanggal_pembelian'),
             Column::make('jumlah'),
-            Column::make('kondisi'),
+            Column::make('kondisi_id')->data('kondisi.nama'),
             Column::make('harga'),
             Column::make('total'),
         ];

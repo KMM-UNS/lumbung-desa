@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Musim;
 use App\Models\DataPupuk;
+use App\Models\Pembelian;
 use Illuminate\Support\Str;
 use App\Models\JenisTanaman;
 use Illuminate\Database\Eloquent\Model;
@@ -44,5 +45,10 @@ class Tanaman extends Model
     public function musimtanam()
     {
         return $this->belongsTo(Musim::class,'musim_tanam_id');
+    }
+
+    public function pembeliantanaman()
+    {
+        return $this->hasMany(Pembelian::class);
     }
 }

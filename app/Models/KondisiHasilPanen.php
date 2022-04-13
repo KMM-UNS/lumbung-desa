@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Pembelian;
 use App\Models\GudangLumbung;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -21,5 +22,10 @@ class KondisiHasilPanen extends Model
     public function kondisitanamangudang()
     {
         return $this->hasMany(GudangLumbung::class);
+    }
+
+    public function kondisipembelian()
+    {
+        return $this->hasMany(Pembelian::class);
     }
 }

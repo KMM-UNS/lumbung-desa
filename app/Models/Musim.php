@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Tanaman;
+use App\Models\Pembelian;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,5 +22,10 @@ class Musim extends Model
     public function tanammusim()
     {
         return $this->hasMany(Tanaman::class);
+    }
+
+    public function pembelianmusim()
+    {
+        return $this->hasMany(Pembelian::class);
     }
 }

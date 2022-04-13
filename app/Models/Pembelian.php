@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Musim;
+use App\Models\Tanaman;
+use App\Models\KondisiHasilPanen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pembelian extends Model
 {
@@ -20,9 +23,24 @@ class Pembelian extends Model
         'no_pembelian',
         'tanggal_pembelian',
         'jumlah',
-        'kondisi',
+        'kondisi_id',
         'harga',
         'total'
     ];
     public $timestamps = false;
+
+    public function musim()
+    {
+        return $this->belongsTo(Musim::class,'musim_id');
+    }
+
+    public function tanaman()
+    {
+        return $this->belongsTo(Tanaman::class,'tanaman_id');
+    }
+
+    public function kondisi()
+    {
+        return $this->belongsTo(KondisiHasilPanen::class,'kondisi_id');
+    }
 }
