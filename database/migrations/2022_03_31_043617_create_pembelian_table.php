@@ -17,6 +17,7 @@ class CreatePembelianTable extends Migration
             $table->id();
             $table->integer('musim_id');
             $table->integer('tanaman_id');
+            $table->string('petani_id');
             $table->integer('no_pembelian');
             $table->string('tanggal_pembelian');
             $table->integer('jumlah');

@@ -20,6 +20,7 @@ class Pembelian extends Model
     protected $fillable = [
         'musim_id',
         'tanaman_id',
+        'petani_id',
         'no_pembelian',
         'tanggal_pembelian',
         'jumlah',

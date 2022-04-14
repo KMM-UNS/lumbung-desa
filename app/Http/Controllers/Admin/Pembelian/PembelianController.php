@@ -92,7 +92,7 @@ class PembelianController extends Controller
      * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pembelian $id)
+    public function update(Request $request, $id)
     {
         try {
             $request->validate([
@@ -106,6 +106,7 @@ class PembelianController extends Controller
             $data = Pembelian::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
+            dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 

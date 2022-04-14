@@ -80,14 +80,12 @@ class TanamanDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('jenis_tanaman')->data('jenistanaman.nama'), //jenistanaman nama fungsi relasi
+            Column::make('jenis_tanaman_id')->data('jenistanaman.nama')->title('Jenis Tanaman'), //jenistanaman nama fungsi relasi
             Column::make('nama'),
-            Column::make('musim_tanam_id')->data('musimtanam.nama'),
+            Column::make('musim_tanam_id')->data('musimtanam.nama')->title('Musim Tanam'),
             Column::make('waktu_tanam'),
-            Column::make('jenis_pupuk_id')->data('pupuk.nama'),
+            Column::make('jenis_pupuk_id')->data('pupuk.nama')->title('Jenis Pupuk'),
             Column::make('keterangan'),
-            Column::make('status'),
         ];
     }
 

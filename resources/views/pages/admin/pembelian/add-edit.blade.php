@@ -41,17 +41,27 @@
       <div class="form-group">
         <div class="row">
           <div class="col-md-1 my-auto">
-            <label for="name"><strong>Kode Pembelian</strong></label>
+            <label for="name"><strong>Nomor Pembelian</strong></label>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-11">
             <input type="text" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
           </div>
-          <div class="col-md-1 my-auto">
-            <label for="name"><strong>Tanggal Pembelian</strong></label>
-          </div>
-          <div class="col-md-5">
-            <input type="date" id="tanggal_pembelian" name="tanggal_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_pembelian ?? old('tanggal_pembelian') }}}">
-          </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-1 my-auto">
+              <label for="name"><strong>Tanggal Pembelian</strong></label>
+            </div>
+            <div class="col-md-5">
+              <input type="date" id="tanggal_pembelian" name="tanggal_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_pembelian ?? old('tanggal_pembelian') }}}">
+            </div>
+            <div class="col-md-1 my-auto">
+              <label for="name"><strong>Nama Petani Penjual</strong></label>
+            </div>
+            <div class="col-md-5">
+              <input type="text" id="petani_id" name="petani_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->petani_id ?? old('petani_id') }}}">
+            </div>
         </div>
       </div>
       <div class="form-group">
