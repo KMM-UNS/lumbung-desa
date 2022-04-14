@@ -80,13 +80,12 @@ class PembelianDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('musim_id')->data('musim.nama'),
-            Column::make('tanaman_id')->data('tanaman.nama'),
-            Column::make('no_pembelian'),
             Column::make('tanggal_pembelian'),
+            Column::make('no_pembelian'),
+            Column::make('musim_id')->data('musim.nama')->title('Musim'),
+            Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
             Column::make('jumlah'),
-            Column::make('kondisi_id')->data('kondisi.nama'),
+            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
             Column::make('harga'),
             Column::make('total'),
         ];

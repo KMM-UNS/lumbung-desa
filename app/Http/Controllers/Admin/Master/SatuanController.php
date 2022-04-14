@@ -53,8 +53,7 @@ class SatuanController extends Controller
      */
     public function show(Satuan $id)
     {
-        $data = Satuan::findOrFail($id);
-        return view('pages.admin.master.satuan.add-edit', ['data' => $data]);    }
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -62,9 +61,10 @@ class SatuanController extends Controller
      * @param  \App\Models\Satuan  $satuan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Satuan $satuan)
+    public function edit($id)
     {
-        //
+        $data = Satuan::findOrFail($id);
+        return view('pages.admin.master.satuan.add-edit', ['data' => $data]);
     }
 
     /**
@@ -74,7 +74,7 @@ class SatuanController extends Controller
      * @param  \App\Models\Satuan  $satuan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Satuan $id)
+    public function update(Request $request, $id)
     {
         try {
             $data = Satuan::findOrFail($id);
@@ -83,7 +83,8 @@ class SatuanController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.satuan.index'))->withToastSuccess('Data tersimpan');    }
+        return redirect(route('admin.master-data.satuan.index'))->withToastSuccess('Data tersimpan');
+    }
 
     /**
      * Remove the specified resource from storage.

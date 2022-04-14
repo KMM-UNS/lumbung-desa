@@ -39,24 +39,40 @@
     <!-- begin panel-body -->
     <div class="panel-body">
         <div class="form-group">
-          <label for="name">Jenis Tanaman</label>
-          <x-form.Dropdown name="jenis_tanaman_id" :options="$jenistanaman" selected="{{{ old('jenis_tanaman_id') ?? ($data['jenis_tanaman_id'] ?? null) }}}" required />
+            <div class="row">
+                <div class="col-md-1 my-auto">
+                    <label for="name"><strong>Tanaman</strong></label>
+                </div>
+                <div class="col-md-11">
+                    <x-form.Dropdown name="nama_tanaman_id" :options="$tanaman" selected="{{{ old('nama_tanaman_id') ?? ($data['nama_tanaman_id'] ?? null) }}}" required />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1 my-auto">
+                    <label for="name"><strong>Kondisi</strong></label>
+                </div>
+                <div class="col-md-11">
+                    <x-form.Dropdown name="kondisi_id" :options="$kondisi" selected="{{{ old('kondisi_id') ?? ($data['kondisi_id'] ?? null) }}}" required />
+                </div>
+            </div>
         </div>
       <div class="form-group">
-        <label for="name">Tanaman</label>
-        <x-form.Dropdown name="nama_tanaman_id" :options="$tanaman" selected="{{{ old('nama_tanaman_id') ?? ($data['nama_tanaman_id'] ?? null) }}}" required />
-    </div>
-      <div class="form-group">
-        <label for="name">Stok</label>
-        <input type="text" id="stok" name="stok" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->stok ?? old('stok') }}}">
-      </div>
-      <div class="form-group">
-        <label for="name">Satuan</label>
-        <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
-      </div>
-      <div class="form-group">
-        <label for="name">Kondisi</label>
-        <x-form.Dropdown name="kondisi_id" :options="$kondisi" selected="{{{ old('kondisi_id') ?? ($data['kondisi_id'] ?? null) }}}" required />
+          <div class="row">
+              <div class="col-md-1 my-auto">
+                  <label for="name"><strong>Stok</strong></label>
+              </div>
+              <div class="col-md-8">
+                  <input type="text" id="stok" name="stok" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->stok ?? old('stok') }}}">
+              </div>
+              <div class="col-md-1 my-auto">
+                  <label for="name"><strong>Satuan</strong></label>
+              </div>
+              <div class="col-md-2">
+                  <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
+              </div>
+          </div>
       </div>
     </div>
     <!-- end panel-body -->

@@ -21,7 +21,7 @@ class KondisiHasilPanenSeeder extends Seeder
 
         foreach ($kondisihasilpanens as $kondisihasilpanens) :
             KondisiHasilPanen::firstOrCreate([
-                'kondisi' => $kondisihasilpanens
+                'nama' => $kondisihasilpanens
             ]);
         endforeach;
     }

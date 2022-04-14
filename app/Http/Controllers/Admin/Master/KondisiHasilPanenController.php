@@ -83,7 +83,7 @@ class KondisiHasilPanenController extends Controller
      * @param  \App\Models\KondisiHasilPanen  $kondisiHasilPanen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KondisiHasilPanen $id)
+    public function update(Request $request, $id)
     {
         try {
             $request->validate([

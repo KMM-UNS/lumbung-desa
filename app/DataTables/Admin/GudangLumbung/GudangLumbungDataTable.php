@@ -80,12 +80,11 @@ class GudangLumbungDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('jenis_tanaman_id')->data('jenistanaman.nama'),
-            Column::make('nama_tanaman_id')->data('tanaman.nama'),
+            Column::make('jenis_tanaman_id')->data('jenistanaman.nama')->title('Jenis Tanaman')->width(120),
+            Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Nama'),
             Column::make('stok'),
-            Column::make('satuan_id')->data('satuan.satuan'),
-            Column::make('kondisi_id')->data('kondisi.nama'),
+            Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
+            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
         ];
     }
 

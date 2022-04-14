@@ -17,13 +17,8 @@ class GudangLumbung extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'gudang_lumbung';
-    protected $fillable = ['nama_tanaman_id','jenis_tanaman_id','stok','satuan_id','kondisi_id'];
+    protected $fillable = ['nama_tanaman_id','stok','satuan_id','kondisi_id'];
     public $timestamps = false;
-
-    public function jenistanaman()
-    {
-        return $this->belongsTo(JenisTanaman::class,'jenis_tanaman_id');
-    }
 
     public function tanaman()
     {

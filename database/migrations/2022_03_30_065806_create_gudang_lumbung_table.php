@@ -16,7 +16,6 @@ class CreateGudangLumbungTable extends Migration
         Schema::create('gudang_lumbung', function (Blueprint $table) {
             $table->id();
             $table->string('nama_tanaman_id');
-            $table->string('jenis_tanaman_id');
             $table->string('stok');
             $table->string('satuan_id');
             $table->string('kondisi_id');
