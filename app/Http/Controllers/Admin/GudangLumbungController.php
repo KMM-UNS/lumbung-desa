@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\GudangLumbung;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\GudangLumbung\GudangLumbungDataTable;
+use App\Http\Requests\GudangLumbungForm;
 use App\Models\KondisiHasilPanen;
 
 class GudangLumbungController extends Controller
@@ -43,7 +44,7 @@ class GudangLumbungController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GudangLumbungForm $request)
     {
         try {
             GudangLumbung::create($request->all());
@@ -89,12 +90,13 @@ class GudangLumbungController extends Controller
      * @param  \App\Models\GudangLumbung  $gudangLumbung
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GudangLumbung $id)
+    public function update(GudangLumbungForm $request, $id)
     {
         try {
             $data = GudangLumbung::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
+            dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 

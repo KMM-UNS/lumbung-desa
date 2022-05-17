@@ -42,7 +42,7 @@ class PembelianDataTable extends DataTable
      */
     public function query(Pembelian $model)
     {
-        return $model->select('pembelian.*')->with(['musim','tanaman','kondisi']);
+        return $model->select('pembelian.*')->with(['musim','tanaman','kondisi','satuan']);
     }
 
     /**
@@ -80,14 +80,15 @@ class PembelianDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('tanggal_pembelian'),
-            Column::make('no_pembelian'),
-            Column::make('petani_id')->title('Nama Petani Penjual'),
-            Column::make('musim_id')->data('musim.nama')->title('Musim'),
+            Column::make('tanggal_pembelian')->width(80),
+            Column::make('no_pembelian')->width(120),
+            Column::make('petani_id')->title('Nama Petani Penjual')->width(120),
+            Column::make('musim_id')->data('musim.nama')->title('Musim')->width(100),
             Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
-            Column::make('jumlah'),
-            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
-            Column::make('harga'),
+            Column::make('jumlah')->width(50),
+            Column::make('satuan_id')->data('satuan.satuan')->title('Satuan')->width(50),
+            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi')->width(60),
+            Column::make('harga')->title('Harga (/kg)')->width(60),
             Column::make('total'),
         ];
     }

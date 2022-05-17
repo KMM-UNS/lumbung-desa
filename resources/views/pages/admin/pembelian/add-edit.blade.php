@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.pembelian.pembelian.update', $data->id) : route('admin.pembelian.pembelian.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.pembelian.perkiraan-pembelian.update', $data->id) : route('admin.pembelian.perkiraan-pembelian.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -85,8 +85,11 @@
           <div class="col-md-1 my-auto">
             <label for="name"><strong>Jumlah Pembelian</strong></label>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-4">
             <input type="text" id="jumlah" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
+          </div>
+          <div class="col-md-1">
+            <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
           </div>
           <div class="col-md-1 my-auto">
             <label for="name"><strong>Kondisi</strong></label>
@@ -97,19 +100,19 @@
         </div>
       </div>
       <div class="form-group">
-        <div class="row">
-          <div class="col-md-1 my-auto">
-            <label for="name"><strong>Harga</strong></label>
-          </div>
-          <div class="col-md-5">
-            <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
-          </div>
-          <div class="col-md-1 my-auto">
-            <label for="name"><strong>Total</strong></label>
-          </div>
-          <div class="col-md-5">
-            <input type="text" id="total" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
-          </div>
+          <div class="row">
+              <div class="col-md-1 my-auto">
+                <label for="name"><strong>Harga</strong></label>
+            </div>
+            <div class="col-md-5">
+                <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+            </div>
+            <div class="col-md-1 my-auto">
+                <label for="name"><strong>Total</strong></label>
+            </div>
+            <div class="col-md-5">
+                <input type="text" id="total" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
+            </div>
         </div>
       </div>
     </div>

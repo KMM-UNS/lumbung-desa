@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables\Admin\GudangLumbung;
+namespace App\DataTables\Admin;
 
-use App\Models\GudangLumbung;
+use App\Models\Kas;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class GudangLumbungDataTable extends DataTable
+class KasDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -26,8 +26,8 @@ class GudangLumbungDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.gudang-lumbung.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.gudang-lumbung.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.kas.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.kas.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -37,12 +37,12 @@ class GudangLumbungDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin\GudangLumbung\GudangLumbungDataTable $model
+     * @param \App\App\Models\Admin\Kas $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(GudangLumbung $model)
+    public function query(Kas $model)
     {
-        return $model->select('gudang_lumbung.*')->with(['tanaman','satuan','kondisi']);
+        return $model->newQuery();
     }
 
     /**
@@ -53,7 +53,7 @@ class GudangLumbungDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('gudanglumbung-table')
+                    ->setTableId('kas-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -80,11 +80,12 @@ class GudangLumbungDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            // Column::make('jenis_tanaman_id')->data('jenistanaman.nama')->title('Jenis Tanaman')->width(120),
-            Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Nama'),
-            Column::make('stok'),
-            Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
-            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
+            Column::make('tanggal'),
+            Column::make('kategori_id'),
+            Column::make('keterangan'),
+            Column::make('pembayaran'),
+            Column::make('jumlah'),
+            Column::make('saldo'),
         ];
     }
 
@@ -95,6 +96,6 @@ class GudangLumbungDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\GudangLumbung\GudangLumbung_' . date('YmdHis');
+        return 'Admin\Kas_' . date('YmdHis');
     }
 }

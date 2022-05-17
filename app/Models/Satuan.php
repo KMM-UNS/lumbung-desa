@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Pembelian;
 use App\Models\GudangLumbung;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,5 +25,15 @@ class Satuan extends Model
     public function satuangudang()
     {
         return $this->hasMany(GudangLumbung::class);
+    }
+
+    public function satuanpembelian()
+    {
+        return $this->hasMany(Pembelian::class);
+    }
+
+    public function satuanperkiraanpembelian()
+    {
+        return $this->hasMany(PerkiraanPembelian::class);
     }
 }

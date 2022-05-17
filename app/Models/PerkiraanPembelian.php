@@ -2,35 +2,30 @@
 
 namespace App\Models;
 
-use App\Models\Musim;
-use App\Models\Satuan;
-use App\Models\Tanaman;
-use App\Models\KondisiHasilPanen;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Pembelian extends Model
+class PerkiraanPembelian extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
-    protected $table = 'pembelian';
+    protected $table = 'perkiraan_pembelian';
     protected $fillable = [
         'musim_id',
         'tanaman_id',
         'petani_id',
-        'no_pembelian',
-        'tanggal_pembelian',
+        'lahan_id',
+        'luas_lahan',
         'jumlah',
         'satuan_id',
         'kondisi_id',
         'harga',
         'total'
     ];
-    public $timestamps = false;
 
     public function musim()
     {

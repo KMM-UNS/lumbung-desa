@@ -23,4 +23,21 @@ class RequestRuleConstant
             'department_id' => 'required'
         ];
     }
+
+    public static function gudangTable()
+    {
+        return [
+            'stok' => 'nullable|integer'
+        ];
+    }
+
+    public static function pembelianTable()
+    {
+        return [
+            'no_pembelian' => 'nullable|integer',
+            'jumlah' => 'nullable|integer',
+            'harga' => 'nullable|integer',
+            'total' => 'nullable|integer'
+        ];
+    }
 }

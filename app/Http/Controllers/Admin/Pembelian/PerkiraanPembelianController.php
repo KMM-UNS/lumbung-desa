@@ -3,25 +3,24 @@
 namespace App\Http\Controllers\Admin\Pembelian;
 
 use App\Models\Musim;
-use App\Models\Tanaman;
-use App\Models\Pembelian;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Datatables\Admin\Pembelian\PembelianDataTable;
-use App\Http\Requests\PembelianForm;
-use App\Models\KondisiHasilPanen;
 use App\Models\Satuan;
+use App\Models\Tanaman;
+use Illuminate\Http\Request;
+use App\Models\KondisiHasilPanen;
+use App\Models\PerkiraanPembelian;
+use App\Http\Controllers\Controller;
+use App\DataTables\Admin\Pembelian\PerkiraanPembelianDataTable;
 
-class PembelianController extends Controller
+class PerkiraanPembelianController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(PembelianDataTable $dataTable)
+    public function index(PerkiraanPembelianDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.pembelian.index');
+        return $dataTable->render('pages.admin.perkiraan-pembelian.index');
     }
 
     /**
@@ -35,8 +34,7 @@ class PembelianController extends Controller
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
-        return view('pages.admin.pembelian.add-edit', ['musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);
-    }
+        return view('pages.admin.perkiraan-pembelian.add-edit', ['musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);    }
 
     /**
      * Store a newly created resource in storage.
@@ -44,31 +42,24 @@ class PembelianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PembelianForm $request)
+    public function store(Request $request)
     {
-        // try {
-        //     $request->validate(['tanaman_id'=>'required']);
-        // } catch (\Throwable $th) {
-        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        // }
-
         try {
-            Pembelian::create($request->all());
+            PerkiraanPembelian::create($request->all());
         } catch (\Throwable $th) {
             dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');
-    }
+        return redirect(route('admin.pembelian.perkiraan-pembelian.index'))->withToastSuccess('Data tersimpan');    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pembelian  $pembelian
+     * @param  \App\Models\PerkiraanPembelian  $perkiraanPembelian
      * @return \Illuminate\Http\Response
      */
-    public function show(Pembelian $pembelian)
+    public function show(PerkiraanPembelian $perkiraanPembelian)
     {
         //
     }
@@ -76,59 +67,48 @@ class PembelianController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pembelian  $pembelian
+     * @param  \App\Models\PerkiraanPembelian  $perkiraanPembelian
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = Pembelian::findOrFail($id);
+        $data = PerkiraanPembelian::findOrFail($id);
         $musim=Musim::pluck('nama','id');
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
-        return view('pages.admin.pembelian.add-edit', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);
-    }
+        return view('pages.admin.perkiraan-pembelian.add-edit', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pembelian  $pembelian
+     * @param  \App\Models\PerkiraanPembelian  $perkiraanPembelian
      * @return \Illuminate\Http\Response
      */
-    public function update(PembelianForm $request, $id)
+    public function update(Request $request, $id)
     {
-        // try {
-        //     $request->validate([
-        //         'tanaman_id' => 'required',
-        //     ]);
-        // } catch (\Throwable $th) {
-        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        // }
-
         try {
-            $data = Pembelian::findOrFail($id);
+            $data = PerkiraanPembelian::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');
-    }
+        return redirect(route('admin.pembelian.perkiraan-pembelian.index'))->withToastSuccess('Data tersimpan');    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pembelian  $pembelian
+     * @param  \App\Models\PerkiraanPembelian  $perkiraanPembelian
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         try {
-            Pembelian::find($id)->delete();
+            PerkiraanPembelian::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
-        }
-    }
+        }    }
 }

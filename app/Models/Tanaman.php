@@ -7,6 +7,7 @@ use App\Models\DataPupuk;
 use App\Models\Pembelian;
 use Illuminate\Support\Str;
 use App\Models\JenisTanaman;
+use App\Models\PerkiraanPembelian;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -50,5 +51,10 @@ class Tanaman extends Model
     public function pembeliantanaman()
     {
         return $this->hasMany(Pembelian::class);
+    }
+
+    public function perkiraanpembeliantanaman()
+    {
+        return $this->hasMany(PerkiraanPembelian::class);
     }
 }

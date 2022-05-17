@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.pembelian.perkiraanpembelian.update', $data->id) : route('admin.pembelian.perkiraanpembelian.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.pembelian.perkiraan-pembelian.update', $data->id) : route('admin.pembelian.perkiraan-pembelian.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -39,36 +39,67 @@
     <!-- begin panel-body -->
     <div class="panel-body">
         <div class="form-group">
-          <label for="name">Musim</label>
-          <input type="text" id="musim_id" name="musim_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->musim_id ?? old('musim_id') }}}">
-        </div>
-        <div class="form-group">
-          <label for="name">Tanaman</label>
-          <input type="text" id="tanaman_id" name="tanaman_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanaman_id ?? old('tanaman_id') }}}">
-        </div>
+            <div class="row">
+              <div class="col-md-1 my-auto">
+                <label for="name"><strong>Musim</strong></label>
+              </div>
+              <div class="col-md-5">
+                <x-form.Dropdown name="musim_id" :options="$musim" selected="{{{ old('musim_id') ?? ($data['musim_id'] ?? null) }}}" required />
+              </div>
+              <div class="col-md-1 my-auto">
+                <label for="name"><strong>Tanaman</strong></label>
+              </div>
+              <div class="col-md-5">
+                <x-form.Dropdown name="tanaman_id" :options="$tanaman" selected="{{{ old('tanaman_id') ?? ($data['tanaman_id'] ?? null) }}}" required />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name">Petani</label>
+            <input type="text" id="petani_id" name="petani_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->petani_id ?? old('petani_id') }}}">
+          </div>
         <div class="form-group">
           <label for="name">Lahan</label>
-          <input type="text" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
+          <input type="text" id="lahan_id" name="lahan_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->lahan_id ?? old('lahan_id') }}}">
         </div>
         <div class="form-group">
           <label for="name">Luas Tanam</label>
-          <input type="text" id="tanggal_pembelian" name="tanggal_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_pembelian ?? old('tanggal_pembelian') }}}">
+          <input type="text" id="luas_lahan" name="luas_lahan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->luas_lahan ?? old('luas_lahan') }}}">
         </div>
         <div class="form-group">
-            <label for="name">Kondisi</label>
-            <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
-        </div>
+            <div class="row">
+              <div class="col-md-1 my-auto">
+                <label for="name"><strong>Jumlah Pembelian</strong></label>
+              </div>
+              <div class="col-md-4">
+                <input type="text" id="jumlah" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
+              </div>
+              <div class="col-md-1">
+                <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
+              </div>
+              <div class="col-md-1 my-auto">
+                <label for="name"><strong>Kondisi</strong></label>
+              </div>
+              <div class="col-md-5">
+                <x-form.Dropdown name="kondisi_id" :options="$kondisi" selected="{{{ old('kondisi_id') ?? ($data['kondisi_id'] ?? null) }}}" required />
+              </div>
+            </div>
+          </div>
         <div class="form-group">
-          <label for="name">Jumlah Pembelian</label>
-          <input type="text" id="jumlah" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
-        </div>
-        <div class="form-group">
-          <label for="name">Harga</label>
-          <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
-        </div>
-        <div class="form-group">
-          <label for="name">Total</label>
-          <input type="text" id="total" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
+            <div class="row">
+                <div class="col-md-1 my-auto">
+                  <label for="name"><strong>Harga</strong></label>
+              </div>
+              <div class="col-md-5">
+                  <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+              </div>
+              <div class="col-md-1 my-auto">
+                  <label for="name"><strong>Total</strong></label>
+              </div>
+              <div class="col-md-5">
+                  <input type="text" id="total" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
+              </div>
+          </div>
         </div>
       </div>
     <!-- end panel-body -->

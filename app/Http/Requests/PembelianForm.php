@@ -2,18 +2,26 @@
 
 namespace App\Http\Requests;
 
+use App\Constants\RequestRuleConstant;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreJenisTanamanRequest extends FormRequest
+class PembelianForm extends FormRequest
 {
-    /**
+   /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
     public function authorize()
     {
-        return false;
+        return true;
+    }
+
+    public function withValidator($validator)
+    {
+        if ($validator->fails()) {
+            return back()->withInput()->withToastError($validator->messages()->all()[0]);
+        }
     }
 
     /**
@@ -23,8 +31,6 @@ class StoreJenisTanamanRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return RequestRuleConstant::pembelianTable();
     }
 }

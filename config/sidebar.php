@@ -61,6 +61,9 @@ return [
                 ],[
                     'url' => '/admin/pembelian/perkiraan-pembelian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perkiraan Pembelian'
+                ],[
+                    'url' => '/admin/pembelian/perbandingan-pembelian',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perbandingan Pembelian'
                 ]
             ]
         ],
@@ -80,6 +83,12 @@ return [
             'icon' => 'fa fa-users',
             'title' => 'Penjualan',
             'url' => '/admin/penjualan',
+            'caret' => false,
+        ],
+        [
+            'icon' => 'fa fa-users',
+            'title' => 'Kas',
+            'url' => '/admin/kas',
             'caret' => false,
         ],
         [
