@@ -68,9 +68,14 @@ class PembelianController extends Controller
      * @param  \App\Models\Pembelian  $pembelian
      * @return \Illuminate\Http\Response
      */
-    public function show(Pembelian $pembelian)
+    public function show($id)
     {
-        //
+        $data = Pembelian::findOrFail($id);
+        $musim=Musim::pluck('nama','id');
+        $tanaman=Tanaman::pluck('nama','id');
+        $kondisi=KondisiHasilPanen::pluck('nama','id');
+        $satuan=Satuan::pluck('satuan','id');
+        return view('pages.admin.pembelian.show', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Data Perkiraan Pembelian' : 'Create Data Perkiraan Pembelian' )
+@section('title', 'Detail Data Perkiraan Pembelian' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -44,7 +44,7 @@
                     <label for="name"><strong>Musim</strong></label>
                 </div>
                 <div class="col-md-11">
-                    <x-form.Dropdown name="musim_id" :options="$musim" selected="{{{ old('musim_id') ?? ($data['musim_id'] ?? null) }}}" required />
+                    <x-form.Dropdown disabled name="musim_id" :options="$musim" selected="{{{ old('musim_id') ?? ($data['musim_id'] ?? null) }}}" required />
                 </div>
             </div>
         </div>
@@ -54,13 +54,13 @@
                     <label for="name"><strong>Petani</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" id="petani_id" name="petani_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->petani_id ?? old('petani_id') }}}">
+                    <input disabled class="form-control" value="{{ $data->petani_id }}">
                 </div>
                 <div class="col-md-1 my-auto">
                     <label for="name"><strong>Tanaman</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <x-form.Dropdown name="tanaman_id" :options="$tanaman" selected="{{{ old('tanaman_id') ?? ($data['tanaman_id'] ?? null) }}}" required />
+                    <x-form.Dropdown disabled name="tanaman_id" :options="$tanaman" selected="{{{ old('tanaman_id') ?? ($data['tanaman_id'] ?? null) }}}" required />
                 </div>
             </div>
           </div>
@@ -70,13 +70,13 @@
                     <label for="name"><strong>Lahan</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" id="lahan_id" name="lahan_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->lahan_id ?? old('lahan_id') }}}">
+                    <input disabled class="form-control" value="{{ $data->lahan_id }}">
                 </div>
                 <div class="col-md-1">
                     <label for="name"><strong>Luas Tanam</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" id="luas_lahan" name="luas_lahan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->luas_lahan ?? old('luas_lahan') }}}">
+                    <input disabled class="form-control" value="{{ $data->luas_lahan }}">
                 </div>
             </div>
         </div>
@@ -86,16 +86,16 @@
                   <label for="name"><strong>Jumlah Pembelian</strong></label>
                 </div>
                 <div class="col-md-4">
-                  <input type="text" id="jumlah" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
+                  <input disabled class="form-control" value="{{ $data->jumlah }}">
                 </div>
                 <div class="col-md-1">
-                  <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
+                  <x-form.Dropdown disabled name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
                 </div>
                 <div class="col-md-1 my-auto">
                   <label for="name"><strong>Kondisi</strong></label>
                 </div>
                 <div class="col-md-5">
-                  <x-form.Dropdown name="kondisi_id" :options="$kondisi" selected="{{{ old('kondisi_id') ?? ($data['kondisi_id'] ?? null) }}}" required />
+                  <x-form.Dropdown disabled name="kondisi_id" :options="$kondisi" selected="{{{ old('kondisi_id') ?? ($data['kondisi_id'] ?? null) }}}" required />
                 </div>
             </div>
         </div>
@@ -105,24 +105,18 @@
                     <label for="name"><strong>Harga</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+                    <input disabled class="form-control" value="{{ $data->harga }}">
                 </div>
                 <div class="col-md-1 my-auto">
                     <label for="name"><strong>Total</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" id="total" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
+                    <input disabled class="form-control"value="{{ $data->total }}">
                 </div>
             </div>
         </div>
     </div>
     <!-- end panel-body -->
-    <!-- begin panel-footer -->
-    <div class="panel-footer">
-      <button type="submit" class="btn btn-primary">Simpan</button>
-      <button type="reset" class="btn btn-default">Reset</button>
-    </div>
-    <!-- end panel-footer -->
   </div>
   <!-- end panel -->
 </form>

@@ -28,6 +28,7 @@ class PembelianDataTable extends DataTable
                 $btn = '<div class="btn-group">';
                 $btn = $btn . '<a href="' . route('admin.pembelian.pembelian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.pembelian.pembelian.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -80,16 +81,11 @@ class PembelianDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('tanggal_pembelian')->width(80),
-            Column::make('no_pembelian')->width(120),
-            Column::make('petani_id')->title('Nama Petani Penjual')->width(120),
-            Column::make('musim_id')->data('musim.nama')->title('Musim')->width(100),
+            Column::make('tanggal_pembelian'),
+            Column::make('no_pembelian'),
+            Column::make('petani_id')->title('Nama Petani Penjual'),
             Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
-            Column::make('jumlah')->width(50),
-            Column::make('satuan_id')->data('satuan.satuan')->title('Satuan')->width(50),
-            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi')->width(60),
-            Column::make('harga')->title('Harga (/kg)')->width(60),
-            Column::make('total'),
+            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
         ];
     }
 

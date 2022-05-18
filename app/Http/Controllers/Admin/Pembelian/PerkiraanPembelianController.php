@@ -34,7 +34,8 @@ class PerkiraanPembelianController extends Controller
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
-        return view('pages.admin.perkiraan-pembelian.add-edit', ['musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);    }
+        return view('pages.admin.perkiraan-pembelian.add-edit', ['musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -59,9 +60,14 @@ class PerkiraanPembelianController extends Controller
      * @param  \App\Models\PerkiraanPembelian  $perkiraanPembelian
      * @return \Illuminate\Http\Response
      */
-    public function show(PerkiraanPembelian $perkiraanPembelian)
+    public function show($id)
     {
-        //
+        $data = PerkiraanPembelian::findOrFail($id);
+        $musim=Musim::pluck('nama','id');
+        $tanaman=Tanaman::pluck('nama','id');
+        $kondisi=KondisiHasilPanen::pluck('nama','id');
+        $satuan=Satuan::pluck('satuan','id');
+        return view('pages.admin.perkiraan-pembelian.show', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);
     }
 
     /**
