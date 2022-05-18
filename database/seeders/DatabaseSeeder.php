@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-
 use Illuminate\Database\Seeder;
 use Database\Seeders\MusimSeeder;
 use Database\Seeders\SatuanSeeder;
@@ -11,6 +10,7 @@ use Database\Seeders\SettingSeeder;
 use Database\Seeders\IndoRegionSeeder;
 use Database\Seeders\JenisTanamanSeeder;
 use Database\Seeders\KondisiHasilPanenSeeder;
+use Database\Seeders\KategoriKasSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             JenisTanamanSeeder::class,
             MusimSeeder::class,
             SatuanSeeder::class,
+            KategoriKasSeeder::class,
         ]);
     }
 }

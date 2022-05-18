@@ -42,6 +42,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('musim', 'MusimController');
             Route::resource('kondisi-hasil-panen', 'KondisiHasilPanenController');
             Route::resource('satuan', 'SatuanController');
+            Route::resource('kategori-kas', 'KategoriKasController');
         });
     });
 });

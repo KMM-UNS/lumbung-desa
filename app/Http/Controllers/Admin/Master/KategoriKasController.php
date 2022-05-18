@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Master;
 
-use App\DataTables\Admin\KasDataTable;
+use App\DataTables\Admin\Master\KategoriKasDataTable;
 use App\Http\Controllers\Controller;
-use App\Models\Kas;
 use App\Models\KategoriKas;
 use Illuminate\Http\Request;
 
-class KasController extends Controller
+class KategoriKasController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(KasDataTable $dataTable)
+    public function index(KategoriKasDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.kas.index');
+        return $dataTable->render('pages.admin.master.kategori-kas.index');
     }
 
     /**
@@ -27,8 +26,7 @@ class KasController extends Controller
      */
     public function create()
     {
-        $kategorikas=KategoriKas::pluck('nama','id');
-        return view('pages.admin.kas.add-edit',['kategorikas'=>$kategorikas]);
+        return view('pages.admin.master.kategori-kas.add-edit');
     }
 
     /**
@@ -40,21 +38,21 @@ class KasController extends Controller
     public function store(Request $request)
     {
         try {
-            Kas::create($request->all());
+            KategoriKas::create($request->all());
         } catch (\Throwable $th) {
             dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
-
-        return redirect(route('admin.kas.index'))->withToastSuccess('Data tersimpan');    }
+        return redirect(route('admin.master-data.kategori-kas.index'))->withToastSuccess('Data tersimpan');
+    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kas  $kas
+     * @param  \App\Models\KategoriKas  $kategoriKas
      * @return \Illuminate\Http\Response
      */
-    public function show(Kas $kas)
+    public function show(KategoriKas $kategoriKas)
     {
         //
     }
@@ -62,47 +60,46 @@ class KasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kas  $kas
+     * @param  \App\Models\KategoriKas  $kategoriKas
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = Kas::findOrFail($id);
-        $kategorikas=KategoriKas::pluck('nama','id');
-        return view('pages.admin.kas.add-edit', ['data' => $data, 'kategorikas'=>$kategorikas]);
+        $data = KategoriKas::findOrFail($id);
+        return view('pages.admin.master.kategori-kas.add-edit', ['data' => $data]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kas  $kas
+     * @param  \App\Models\KategoriKas  $kategoriKas
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         try {
-            $data = Kas::findOrFail($id);
+            $data = KategoriKas::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
-            dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.kas.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.master-data.kategori-kas.index'))->withToastSuccess('Data tersimpan');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kas  $kas
+     * @param  \App\Models\KategoriKas  $kategoriKas
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         try {
-            Kas::find($id)->delete();
+            KategoriKas::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
-        }    }
+        }
+    }
 }

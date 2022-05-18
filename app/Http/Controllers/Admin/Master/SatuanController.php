@@ -43,7 +43,8 @@ class SatuanController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.satuan.index'))->withToastSuccess('Data tersimpan');    }
+        return redirect(route('admin.master-data.satuan.index'))->withToastSuccess('Data tersimpan');
+    }
 
     /**
      * Display the specified resource.

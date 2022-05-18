@@ -118,6 +118,9 @@ return [
                 ], [
                     'url' => '/admin/master-data/satuan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Satuan'
+                ], [
+                    'url' => '/admin/master-data/kategori-kas',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kategori Kas'
                 ]
             ]
         ]

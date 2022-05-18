@@ -54,7 +54,7 @@
                     <label for="name"><strong>Kategori</strong></label>
                 </div>
                 <div class="col-md-11">
-                    <input type="text" id="kategori_id" name="kategori_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kategori_id ?? old('kategori_id') }}}">
+                    <x-form.Dropdown name="kategori_id" :options="$kategorikas" selected="{{{ old('kategori_id') ?? ($data['kategori_id'] ?? null) }}}" required />
                 </div>
             </div>
         </div>
