@@ -16,7 +16,6 @@ class CreateDataJenisLahansTable extends Migration
         Schema::create('data_jenis_lahans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('status');
             $table->softDeletes();
         });
     }

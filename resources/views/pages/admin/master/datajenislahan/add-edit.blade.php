@@ -41,9 +41,6 @@
       <div class="form-group">
         <label for="name">Nama</label>
         <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
-        <label for="name">Status</label>
-        <input type="text" id="status" name="status" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->status ?? old('status') }}}">
-      
       </div>
     </div>
     <!-- end panel-body -->

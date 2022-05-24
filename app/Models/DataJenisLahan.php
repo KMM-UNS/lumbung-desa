@@ -14,9 +14,9 @@ class DataJenisLahan extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'data_jenis_lahans';
-    protected $fillable = 
+    protected $fillable =
     [
-        'id','','nama','status',
+        'id','','nama',
     ];
     public $timestamps = false;
 }

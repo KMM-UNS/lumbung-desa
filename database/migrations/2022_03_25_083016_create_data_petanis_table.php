@@ -22,7 +22,7 @@ class CreateDataPetanisTable extends Migration
             $table->string('tanggal_lahir');
             $table->string('jenis_kelamin');
             $table->string('alamat');
-            $table->string('foto');
+            $table->string('filename');
             $table->softDeletes();
         });
     }

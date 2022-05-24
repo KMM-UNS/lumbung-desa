@@ -19,9 +19,12 @@
 <!-- end page-header -->
 
 
-<!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.datapetani.update', $data->id) : route('admin.datapetani.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<!-- begin panel //enctype="multipart/form-data"  -->
+<form action="{{  isset($data) ? route('admin.data-petani.petani.update', $data->id) :
+route('admin.data-petani.petani.store')  }}"  id="form" name="form" method="POST"
+enctype="multipart/form-data" data-parsley-validate="true">
   @csrf
+
   @if(isset($data))
   {{ method_field('PUT') }}
   @endif
@@ -46,17 +49,21 @@
         <label for="name">Nama</label>
         <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
         <label for="name">Tempat Lahir</label>
-        <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempatlahir') }}}">
+        <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempat_lahir') }}}">
         <label for="name">Tanggal Lahir</label>
-        <input type="text" id="tanggal_lahir" name="tanggal_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggallahir') }}}">
+        <input type="text" id="tanggal_lahir" name="tanggal_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}}">
         <label for="name">Jenis Kelamin</label>
-        <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jeniskelamin') }}}">
+        <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}">
         <label for="name">Alamat</label>
         <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
-        <label for="name">Foto</label>
+       <!-- <label for="name">Foto</label>
         <input type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}">
-
+-->
+       <label for="filename">Foto</label>
+        <input type="file" id='filename' name="filename" class="form-control" autofocus data-parsley-required="true"
+        value="{{{ $data->filename ?? old('filename') }}}">
       </div>
+
     </div>
     <!-- end panel-body -->
     <!-- begin panel-footer -->

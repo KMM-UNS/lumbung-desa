@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Admin\Master;
+namespace App\DataTables\Admin\DataPetani;
 
 use App\Models\DataLahan;
 use Yajra\DataTables\Html\Button;
@@ -26,8 +26,8 @@ class DataLahanDataTable extends DataTable
         })
         ->addColumn('action', function ($row) {
             $btn = '<div class="btn-group">';
-            $btn = $btn . '<a href="' . route('admin.master-data.datalahan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.master-data.datalahan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.data-petani.datalahan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.data-petani.datalahan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
             $btn = $btn . '</div>';
 
             return $btn;
@@ -94,6 +94,6 @@ class DataLahanDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Master\DataLahan_' . date('YmdHis');
+        return 'Admin\DataLahan_' . date('YmdHis');
     }
 }

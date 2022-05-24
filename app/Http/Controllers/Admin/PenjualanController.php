@@ -63,7 +63,7 @@ class PenjualanController extends Controller
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
-        
+
 
         return redirect(route('admin.penjualan.index'))->withToastSuccess('Data tersimpan');
     }
@@ -75,6 +75,11 @@ class PenjualanController extends Controller
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
+    }
+
+    public function detail($id)
+    {
+
     }
 
 }

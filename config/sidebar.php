@@ -44,8 +44,8 @@ return [
                     'url' => '/admin/data-petani/tanaman',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
                 ], [
-                    'url' => '/admin/data-petani/lahan',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Lahan'
+                    'url' => '/admin/data-petani/datalahan',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Lahan'
                 ]
             ]
         ],
@@ -71,12 +71,6 @@ return [
             'icon' => 'fa fa-warehouse',
             'title' => 'Gudang Lumbung',
             'url' => '/admin/gudang-lumbung',
-            'caret' => false,
-        ],
-        [
-            'icon' => 'fa fa-users',
-            'title' => 'Data Petani',
-            'url' => '/admin/datapetani',
             'caret' => false,
         ],
         [
