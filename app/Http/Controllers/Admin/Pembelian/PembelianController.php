@@ -11,6 +11,7 @@ use App\Datatables\Admin\Pembelian\PembelianDataTable;
 use App\Http\Requests\PembelianForm;
 use App\Models\KondisiHasilPanen;
 use App\Models\Satuan;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class PembelianController extends Controller
 {
@@ -135,5 +136,25 @@ class PembelianController extends Controller
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
+    }
+
+    public function invoice($id)
+    {
+        $data = Pembelian::findOrFail($id);
+        $pdf = PDF::loadview('pages.admin.pembelian.invoice',
+        [
+        'musim_id'=>$data->musim_id,
+        'tanaman_id'=>$data->tanaman->jenis_tanaman_id,
+        'petani_id'=>$data->petani_id,
+        'no_pembelian'=>$data->no_pembelian,
+        'tanggal_pembelian'=>$data->tanggal_pembelian,
+        'jumlah'=>$data->jumlah,
+        'satuan_id'=>$data->satuan_id,
+        'kondisi_id'=>$data->kondisi_id,
+        'harga'=>$data->harga,
+        'total'=>$data->total
+        ]);
+        return $pdf->download('invoice.pdf');
+        // return view('pages.admin.pembelian.invoice', ['data' => $data]);
     }
 }

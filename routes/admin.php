@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DataPetani\TanamanController;
+use App\Http\Controllers\Admin\Pembelian\PembelianController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     require base_path('vendor/laravel/fortify/routes/routes.php');
@@ -26,6 +28,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => '/pembelian', 'as' => 'pembelian.', 'namespace' => 'Pembelian'], function () {
             Route::resource('pembelian', 'PembelianController');
+            Route::get('invoice/{id}', [PembelianController::class, 'invoice'])->name('invoice');
             Route::resource('perkiraan-pembelian', 'PerkiraanPembelianController');
         });
 

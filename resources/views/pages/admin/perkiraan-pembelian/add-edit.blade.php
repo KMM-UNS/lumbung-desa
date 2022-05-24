@@ -86,7 +86,7 @@
                   <label for="name"><strong>Jumlah Pembelian</strong></label>
                 </div>
                 <div class="col-md-4">
-                  <input type="text" id="jumlah" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
+                  <input type="number" id="jumlah" onkeyup="sum();" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
                 </div>
                 <div class="col-md-1">
                   <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
@@ -105,13 +105,13 @@
                     <label for="name"><strong>Harga</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+                    <input type="number" id="harga" onkeyup="sum();" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
                 </div>
                 <div class="col-md-1 my-auto">
                     <label for="name"><strong>Total</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" id="total" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
+                    <input readonly type="number" id="total" onkeyup="sum();" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
                 </div>
             </div>
         </div>
@@ -134,4 +134,14 @@
 
 @push('scripts')
 <script src="{{ asset('/assets/plugins/parsleyjs/dist/parsley.js') }}"></script>
+<script>
+    function sum() {
+        var txtFirstNumberValue = document.getElementById('jumlah').value;
+        var txtSecondNumberValue = document.getElementById('harga').value;
+        var result = parseInt(txtFirstNumberValue) * parseInt(txtSecondNumberValue);
+        if (!isNaN(result)) {
+            document.getElementById('total').value=result;
+        }
+    }
+</script>
 @endpush
