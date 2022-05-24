@@ -14,14 +14,10 @@ class Penjualan extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'penjualans';
-    protected $fillable =
+    protected $fillable = 
     [
         'id','no_penjualan','nama','kondisi','jumlah','harga'
     ];
     public $timestamps = false;
-
-    public function detail($id)
-    {
-    return DB::table('penjualans')->where('id','$id')->first();
-    }
+    
 }

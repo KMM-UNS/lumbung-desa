@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DataPetani\TanamanController;
+use App\Http\Controllers\Admin\Pembelian\PembelianController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     require base_path('vendor/laravel/fortify/routes/routes.php');
@@ -16,6 +18,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
+        Route::resource('datapetani', 'DataPetaniController');
+        Route::resource('penjualan', 'PenjualanController');
 
         Route::group(['prefix' => '/data-petani', 'as' => 'data-petani.', 'namespace' => 'DataPetani'], function () {
             Route::resource('petani', 'DataPetaniController');
@@ -27,27 +31,29 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => '/pembelian', 'as' => 'pembelian.', 'namespace' => 'Pembelian'], function () {
             Route::resource('pembelian', 'PembelianController');
+            Route::get('invoice/{id}', [PembelianController::class, 'invoice'])->name('invoice');
+            Route::resource('perkiraan-pembelian', 'PerkiraanPembelianController');
         });
 
         Route::resource('datapetani', 'DataPetaniController');
         Route::resource('datapetani', 'DataPetaniController');
         Route::resource('penjualan', 'PenjualanController');
+        Route::resource('gudang-lumbung', 'GudangLumbungController');
+
+        Route::resource('kas', 'KasController');
 
         Route::group(['prefix' => '/master-data', 'as' => 'master-data.', 'namespace' => 'Master'], function () {
-            Route::resource('agama', 'AgamaController');
             // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');
             // Route::post('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload.post');
-            Route::resource('pekerjaan', 'PekerjaanController');
-            Route::resource('status-kawin', 'StatusKawinController');
-            Route::resource('pendidikan', 'PendidikanController');
             Route::resource('datapupuk', 'DataPupukController');
 
             Route::resource('datajenislahan', 'DataJenisLahanController');
             Route::resource('jenistanaman', 'JenisTanamanController');
-            // Route::resource('tanaman', 'TanamanController');
             Route::resource('musim', 'MusimController');
             Route::resource('kondisi-hasil-panen', 'KondisiHasilPanenController');
 
+            Route::resource('satuan', 'SatuanController');
+            Route::resource('kategori-kas', 'KategoriKasController');
         });
     });
 });

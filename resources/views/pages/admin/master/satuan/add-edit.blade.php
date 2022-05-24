@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Status Keluarga' : 'Create Status Keluarga' )
+@section('title', isset($data) ? 'Edit Data Satuan' : 'Create Data Satuan' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.master-data.status-keluarga.update', $data->id) : route('admin.master-data.status-keluarga.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.master-data.satuan.update', $data->id) : route('admin.master-data.satuan.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -39,8 +39,8 @@
     <!-- begin panel-body -->
     <div class="panel-body">
       <div class="form-group">
-        <label for="name">Nama</label>
-        <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Satuan</label>
+        <input type="text" id="satuan" name="satuan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->satuan ?? old('satuan') }}}">
       </div>
     </div>
     <!-- end panel-body -->

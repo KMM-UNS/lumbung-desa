@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Tahun' : 'Create Tahun' )
+@section('title', isset($data) ? 'Edit Kategori Kas' : 'Create Kategori Kas' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.master-data.tahun.update', $data->id) : route('admin.master-data.tahun.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.master-data.kategori-kas.update', $data->id) : route('admin.master-data.kategori-kas.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -39,17 +39,8 @@
     <!-- begin panel-body -->
     <div class="panel-body">
       <div class="form-group">
-        <label for="name">Tahun</label>
-        <input type="text" id="tahun" name="tahun" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tahun ?? old('tahun') }}}">
-      </div>
-      <div class="form-group">
-        <label for="name">Status</label>
-        <select class="form-select" name="status" autofocus data-parsley-required="true" value="{{{ $data->status ?? old('status') }}}" required>
-          <option selected>Pilih</option>
-          <option value="Aktif">Aktif</option>
-          <option value="Non-Aktif">Non-Aktif</option>
-          {{-- <x-form.Dropdown name="permohonan_skck_keperluan_skck_id" :options="$keperluan" placeholder="PILIH JENIS KEPERLUAN" selected="{{{ old('permohonan_skck_keperluan_skck_id') ?? $data->keperluan_skck_id ?? null }}}" required /> --}}
-        </select>
+        <label for="name">Nama</label>
+        <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
       </div>
     </div>
     <!-- end panel-body -->
@@ -65,7 +56,7 @@
 <a href="javascript:history.back(-1);" class="btn btn-success">
   <i class="fa fa-arrow-circle-left"></i> Kembali
 </a>
-i
+
 @endsection
 
 @push('scripts')

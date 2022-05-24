@@ -39,25 +39,53 @@
     <!-- begin panel-body -->
     <div class="panel-body">
         <div class="form-group">
-            <label for="name">Jenis Tanaman Id</label>
-            <x-form.Dropdown name="jenis_tanaman_id" :options="$jenistanaman" selected="{{{ old('jenis_tanaman_id') ?? ($data['jenis_tanaman_id'] ?? null) }}}" required />
+            <div class="row">
+                <div class="col-md-1 my-auto">
+                    <label for="name">Jenis Tanaman Id</label>
+                </div>
+                <div class="col-md-5">
+                    <x-form.Dropdown name="jenis_tanaman_id" :options="$jenistanaman" selected="{{{ old('jenis_tanaman_id') ?? ($data['jenis_tanaman_id'] ?? null) }}}" required />
+                </div>
+                <div class="col-md-1 my-auto">
+                    <label for="name">Nama</label>
+                </div>
+                <div class="col-md-5 my-auto">
+                    <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+                </div>
+            </div>
         </div>
-          <div class="form-group">
-            <label for="name">Nama</label>
-            <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
-          </div>
-          {{-- <div class="form-group">
-            <label for="name">Pupuk</label>
-            <input type="text" id="pupuk" name="pupuk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pupuk ?? old('pupuk') }}}">
-          </div> --}}
-          <div class="form-group">
-            <label for="name">Masa Tanam</label>
-            <input type="text" id="masa_tanam" name="masa_tanam" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->masa_tanam ?? old('masa_tanam') }}}">
-          </div>
-          <div class="form-group">
-            <label for="name">Keterangan</label>
-            <input type="text" id="keterangan" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('keterangan') }}}">
-          </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1 my-auto">
+                    <label for="name">Musim Tanam</label>
+                </div>
+                <div class="col-md-5">
+                    <x-form.Dropdown name="musim_tanam_id" :options="$musimtanam" selected="{{{ old('musim_tanam_id') ?? ($data['musim_tanam_id'] ?? null) }}}" required />
+                </div>
+                <div class="col-md-1 my-auto">
+                    <label for="name">Waktu Tanam</label>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" id="waktu_tanam" name="waktu_tanam" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->waktu_tanam ?? old('waktu_tanam') }}}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1 my-auto">
+                    <label for="name">Pupuk</label>
+                </div>
+                <div class="col-md-5">
+                    <x-form.Dropdown name="jenis_pupuk_id" :options="$pupuk" selected="{{{ old('jenis_pupuk_id') ?? ($data['jenis_pupuk_id'] ?? null) }}}" required />
+                </div>
+                <div class="col-md-1 my-auto">
+                    <label for="name">Keterangan</label>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" id="keterangan" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('keterangan') }}}">
+                </div>
+            </div>
+        </div>
     </div>
     <!-- end panel-body -->
     <!-- begin panel-footer -->
