@@ -36,6 +36,11 @@ class DataPetaniController extends Controller
 
     public function store(Request $request)
     {
+        $validateData= $request->validate([
+            'filename' => 'image|file|max:1024'
+
+        ]);
+        //return $request->file('filename')->store('public/post-images');
         // try {
         //     $request->validate([
         //      //   'filename',

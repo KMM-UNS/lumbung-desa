@@ -20,7 +20,9 @@
 
 
 <!-- begin panel //enctype="multipart/form-data"  -->
-<form action="{{  isset($data) ? route('admin.data-petani.petani.update', $data->id) : route('admin.data-petani.petani.store')  }}"  id="form" name="form" method="POST"  data-parsley-validate="true">
+<form action="{{  isset($data) ? route('admin.data-petani.petani.update', $data->id) :
+route('admin.data-petani.petani.store')  }}"  id="form" name="form" method="POST"
+enctype="multipart/form-data" data-parsley-validate="true">
   @csrf
 
   @if(isset($data))
@@ -54,12 +56,12 @@
         <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}">
         <label for="name">Alamat</label>
         <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
-        <label for="name">Foto</label>
-        <input type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}">
-
        <!-- <label for="name">Foto</label>
-        <input type="file"  name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->filename ?? old('filename') }}}">
-      -->
+        <input type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}">
+-->
+       <label for="filename">Foto</label>
+        <input type="file" id='filename' name="filename" class="form-control" autofocus data-parsley-required="true"
+        value="{{{ $data->filename ?? old('filename') }}}">
       </div>
 
     </div>
