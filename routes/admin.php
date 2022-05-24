@@ -54,6 +54,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
             Route::resource('satuan', 'SatuanController');
             Route::resource('kategori-kas', 'KategoriKasController');
+            // vvvvhfukgut
         });
     });
 });
