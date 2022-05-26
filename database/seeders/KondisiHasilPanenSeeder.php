@@ -19,9 +19,9 @@ class KondisiHasilPanenSeeder extends Seeder
             'dikeringkan',
         ];
 
-        foreach ($kondisihasilpanens as $kondisihasilpanens) :
+        foreach ($kondisihasilpanens as $kondisihasilpanen) :
             KondisiHasilPanen::firstOrCreate([
-                'nama' => $kondisihasilpanens
+                'kondisi' => $kondisihasilpanen
             ]);
         endforeach;
     }

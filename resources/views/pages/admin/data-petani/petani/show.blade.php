@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Data Petani' : 'Create Data Petani' )
+@section('title', isset($data) ? 'Detail Data Petani' : 'Create Data Petani' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -43,15 +43,15 @@ enctype="multipart/form-data" data-parsley-validate="true">
     <div class="panel-body">
       <div class="form-group">
         <label for="name">No.kk</label>
-        <input type="number" id="no_kk" name="no_kk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_kk ?? old('no_kk') }}}">
+        <input disabled type="number" id="no_kk" name="no_kk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_kk ?? old('no_kk') }}}">
         <label for="name">NIK</label>
-        <input type="number" id="nik" name="nik" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nik ?? old('nik') }}}">
+        <input disabled type="number" id="nik" name="nik" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nik ?? old('nik') }}}">
         <label for="name">Nama</label>
-        <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input disabled type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
         <label for="name">Tempat Lahir</label>
-        <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempat_lahir') }}}">
+        <input disabled type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempat_lahir') }}}">
         <label for="name">Tanggal Lahir</label>
-        <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}}">
+        <input disabled type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}}">
         <label for="name">Jenis Kelamin</label>
               </div>
               <div class="col-md-3">
@@ -59,9 +59,9 @@ enctype="multipart/form-data" data-parsley-validate="true">
                   {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}"> --}}
               </div>
         <label for="name">Alamat</label>
-        <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
+        <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
        <label for="name">Foto</label>
-        <input type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}">
+        <input disabled type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}">
 
        {{-- <label for="filename">Foto</label> --}}
         {{-- <input type="file" id='filename' name="filename" class="form-control" autofocus data-parsley-required="true" --}}

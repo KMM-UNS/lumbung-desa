@@ -110,5 +110,10 @@ class DataPetaniController extends Controller
             return response(['error' => 'Something went wrong']);
         }
     }
+    public function show($id)
+    {
+        $data = DataPetani::findOrFail($id);
+        return view('pages.admin.data-petani.petani.show', ['data' => $data]);
+    }
 
 }

@@ -16,10 +16,13 @@ class CreatePenjualansTable extends Migration
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
             $table->string('no_penjualan');
+            $table->string('tgl_penjualan');
             $table->string('nama');
-            $table->string('kondisi');
             $table->string('jumlah');
             $table->string('harga');
+            $table->string('kondisi');
+            $table->string('produk');
+            $table->string('total');
             $table->softDeletes();
         });
     }

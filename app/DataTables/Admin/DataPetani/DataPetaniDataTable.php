@@ -25,6 +25,8 @@ class DataPetaniDataTable extends DataTable
             $btn = '<div class="btn-group">';
             $btn = $btn . '<a href="' . route('admin.data-petani.petani.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
             $btn = $btn . '<a href="' . route('admin.data-petani.petani.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.data-petani.petani.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+
             $btn = $btn . '</div>';
             return $btn;
         });
@@ -85,7 +87,7 @@ class DataPetaniDataTable extends DataTable
             Column::make('jenis_kelamin'),
             Column::make('alamat'),
             Column::make('foto'),
-            
+
         ];
     }
 

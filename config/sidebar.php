@@ -83,9 +83,6 @@ return [
                     'url' => '/admin/master-data/datapupuk',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pupuk'
                 ],[
-                    'url' => '/admin/master-data/datalahan',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Lahan'
-                ],[
                     'url' => '/admin/master-data/datajenislahan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Jenis Lahan'
                 ],[

@@ -14,10 +14,14 @@ class Penjualan extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'penjualans';
-    protected $fillable = 
+    protected $fillable =
     [
-        'id','no_penjualan','nama','kondisi','jumlah','harga'
+        'id','no_penjualan','tgl_penjualan','nama','jumlah', 'harga','kondisi','produk','total'
     ];
     public $timestamps = false;
-    
+
+    public function kondisihasilpanen()
+    {
+        return $this->belongsTo(KondisiHasilPanen::class,'kondisi_hasil_panen');
+    }
 }

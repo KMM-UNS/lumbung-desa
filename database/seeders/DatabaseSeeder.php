@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             PendidikanSeeder::class,
             StatusKawinSeeder::class,
             SettingSeeder::class,
-            JenisLahanSeeder::class
+            JenisLahanSeeder::class,
             KondisiHasilPanenSeeder::class,
             SettingSeeder::class,
             JenisTanamanSeeder::class,
