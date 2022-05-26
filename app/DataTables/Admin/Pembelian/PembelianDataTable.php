@@ -29,7 +29,7 @@ class PembelianDataTable extends DataTable
                 $btn = $btn . '<a href="' . route('admin.pembelian.pembelian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.pembelian.pembelian.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.pembelian.pembelian.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.pembelian.invoice', $row->id) . '" class="btn btn-info buttons-invoice"><i class="fas fa-info fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.pembelian.invoice', $row->id) . '" class="btn btn-warning buttons-invoice"><i class="fas fa-download fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;

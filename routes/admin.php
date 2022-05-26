@@ -46,15 +46,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');
             // Route::post('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload.post');
             Route::resource('datapupuk', 'DataPupukController');
-
             Route::resource('datajenislahan', 'DataJenisLahanController');
             Route::resource('jenistanaman', 'JenisTanamanController');
             Route::resource('musim', 'MusimController');
             Route::resource('kondisi-hasil-panen', 'KondisiHasilPanenController');
-
             Route::resource('satuan', 'SatuanController');
             Route::resource('kategori-kas', 'KategoriKasController');
-            // vvvvhfukgut
+            Route::resource('keterangan-gudang', 'KeteranganGudangController');
         });
     });
 });

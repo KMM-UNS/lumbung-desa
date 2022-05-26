@@ -10,6 +10,7 @@ use App\Models\GudangLumbung;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\GudangLumbung\GudangLumbungDataTable;
 use App\Http\Requests\GudangLumbungForm;
+use App\Models\KeteranganGudang;
 use App\Models\KondisiHasilPanen;
 
 class GudangLumbungController extends Controller
@@ -35,7 +36,8 @@ class GudangLumbungController extends Controller
         $tanaman=Tanaman::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
-        return view('pages.admin.gudang-lumbung.add-edit',['jenistanaman'=>$jenistanaman, 'tanaman'=>$tanaman, 'satuan'=>$satuan,'kondisi'=>$kondisi]);
+        $keterangangudang=KeteranganGudang::pluck('nama','id');
+        return view('pages.admin.gudang-lumbung.add-edit',['jenistanaman'=>$jenistanaman, 'tanaman'=>$tanaman, 'satuan'=>$satuan,'kondisi'=>$kondisi, 'keterangangudang'=>$keterangangudang]);
     }
 
     /**
@@ -80,7 +82,8 @@ class GudangLumbungController extends Controller
         $tanaman=Tanaman::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
-        return view('pages.admin.gudang-lumbung.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman, 'tanaman'=>$tanaman, 'satuan'=>$satuan, 'kondisi'=>$kondisi]);
+        $keterangangudang=KeteranganGudang::pluck('nama','id');
+        return view('pages.admin.gudang-lumbung.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman, 'tanaman'=>$tanaman, 'satuan'=>$satuan, 'kondisi'=>$kondisi, 'keterangangudang'=>$keterangangudang]);
     }
 
     /**

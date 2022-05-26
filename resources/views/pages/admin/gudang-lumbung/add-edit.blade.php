@@ -58,6 +58,16 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1 my-auto">
+                    <label for="name"><strong>Keterangan</strong></label>
+                </div>
+                <div class="col-md-11">
+                    <x-form.Dropdown name="keterangan_id" :options="$keterangangudang" selected="{{{ old('keterangan_id') ?? ($data['keterangan_id'] ?? null) }}}" required />
+                </div>
+            </div>
+        </div>
       <div class="form-group">
           <div class="row">
               <div class="col-md-1 my-auto">

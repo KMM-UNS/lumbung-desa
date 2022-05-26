@@ -17,7 +17,7 @@ class GudangLumbung extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'gudang_lumbung';
-    protected $fillable = ['nama_tanaman_id','stok','satuan_id','kondisi_id'];
+    protected $fillable = ['nama_tanaman_id','stok','satuan_id','kondisi_id','keterangan_id'];
     public $timestamps = false;
 
     public function tanaman()
@@ -33,5 +33,10 @@ class GudangLumbung extends Model
     public function kondisi()
     {
         return $this->belongsTo(KondisiHasilPanen::class,'kondisi_id');
+    }
+
+    public function keterangangudang()
+    {
+        return $this->belongsTo(KeteranganGudang::class,'keterangan_id');
     }
 }

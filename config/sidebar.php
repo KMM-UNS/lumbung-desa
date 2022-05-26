@@ -95,9 +95,6 @@ return [
                     'url' => '/admin/master-data/datapupuk',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pupuk'
                 ],[
-                    'url' => '/admin/master-data/datalahan',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Lahan'
-                ],[
                     'url' => '/admin/master-data/datajenislahan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Jenis Lahan'
                 ],[
@@ -115,6 +112,9 @@ return [
                 ], [
                     'url' => '/admin/master-data/kategori-kas',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kategori Kas'
+                ], [
+                    'url' => '/admin/master-data/keterangan-gudang',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Keterangan Gudang'
                 ]
             ]
         ]
@@ -125,6 +125,11 @@ return [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
             'url' => '/',
+            'caret' => false
+        ], [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Ketersediaan Produk',
+            'url' => '/user/ketersediaan-produk',
             'caret' => false
         ], [
             'icon' => 'fa fa-cogs',

@@ -21,12 +21,13 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
     Route::view('/', 'home')->name('home');
 
     Route::group(['namespace' => 'User'], function () {
+        Route::resource('ketersediaan-produk', 'KetersediaanProdukController');
 
     });
 
 
-    
-    
+
+
 });
 
 

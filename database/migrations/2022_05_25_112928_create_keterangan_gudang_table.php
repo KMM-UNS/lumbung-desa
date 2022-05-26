@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGudangLumbungTable extends Migration
+class CreateKeteranganGudangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateGudangLumbungTable extends Migration
      */
     public function up()
     {
-        Schema::create('gudang_lumbung', function (Blueprint $table) {
+        Schema::create('keterangan_gudang', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_tanaman_id');
-            $table->string('stok');
-            $table->string('satuan_id');
-            $table->string('kondisi_id');
-            $table->string('keterangan_id');
+            $table->string('nama');
+            $table->timestamps();
             $table->softDeletes();
         });
     }
@@ -31,6 +28,6 @@ class CreateGudangLumbungTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gudang_lumbung');
+        Schema::dropIfExists('keterangan_gudang');
     }
 }
