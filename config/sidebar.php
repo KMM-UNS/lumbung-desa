@@ -129,7 +129,7 @@ return [
         ], [
             'icon' => 'fa fa-cogs',
             'title' => 'Ketersediaan Produk',
-            'url' => '/user/ketersediaan-produk',
+            'url' => '/ketersediaan-produk',
             'caret' => false
         ], [
             'icon' => 'fa fa-cogs',
