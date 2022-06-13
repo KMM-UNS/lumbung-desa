@@ -70,7 +70,7 @@
                     <label for="name"><strong>Lahan</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" id="lahan_id" name="lahan_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->lahan_id ?? old('lahan_id') }}}">
+                    <x-form.Dropdown name="lahan_id" :options="$lahan" selected="{{{ old('lahan_id') ?? ($data['lahan_id'] ?? null) }}}" required />
                 </div>
                 <div class="col-md-1">
                     <label for="name"><strong>Luas Tanam</strong></label>

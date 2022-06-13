@@ -26,4 +26,9 @@ class DataPetani extends Model
     {
         return $this->hasMany(DataLahan::class);
     }
+
+    public function pembelian()
+    {
+        return $this->hasMany(Pembelian::class);
+    }
 }

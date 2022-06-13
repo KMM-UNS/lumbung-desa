@@ -10,7 +10,7 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Pembelian</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
@@ -44,7 +44,7 @@
                     <label for="name"><strong>Musim</strong></label>
                 </div>
                 <div class="col-md-11">
-                    <x-form.Dropdown disabled name="musim_id" :options="$musim" selected="{{{ old('musim_id') ?? ($data['musim_id'] ?? null) }}}" required />
+                    <td>: {{ $data->musim->nama }}</td>
                 </div>
             </div>
         </div>
@@ -54,13 +54,13 @@
                     <label for="name"><strong>Petani</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input disabled class="form-control" value="{{ $data->petani_id }}">
+                    <td>: {{ $data->petani_id }}</td>
                 </div>
                 <div class="col-md-1 my-auto">
                     <label for="name"><strong>Tanaman</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <x-form.Dropdown disabled name="tanaman_id" :options="$tanaman" selected="{{{ old('tanaman_id') ?? ($data['tanaman_id'] ?? null) }}}" required />
+                    <td>: {{ $data->tanaman->nama }}</td>
                 </div>
             </div>
           </div>
@@ -70,32 +70,32 @@
                     <label for="name"><strong>Lahan</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input disabled class="form-control" value="{{ $data->lahan_id }}">
+                    <td>: {{ $data->lahan_id }}</td>
                 </div>
                 <div class="col-md-1">
                     <label for="name"><strong>Luas Tanam</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input disabled class="form-control" value="{{ $data->luas_lahan }}">
+                    <td>: {{ $data->luas_lahan }}</td>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                  <label for="name"><strong>Jumlah Pembelian</strong></label>
+                    <label for="name"><strong>Jumlah Pembelian</strong></label>
                 </div>
                 <div class="col-md-4">
-                  <input disabled class="form-control" value="{{ $data->jumlah }}">
+                    <td>: {{ $data->jumlah }}</td>
                 </div>
                 <div class="col-md-1">
-                  <x-form.Dropdown disabled name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
+                    <td>{{$data->satuan->satuan }}</td>
                 </div>
                 <div class="col-md-1 my-auto">
-                  <label for="name"><strong>Kondisi</strong></label>
+                    <label for="name"><strong>Kondisi</strong></label>
                 </div>
                 <div class="col-md-5">
-                  <x-form.Dropdown disabled name="kondisi_id" :options="$kondisi" selected="{{{ old('kondisi_id') ?? ($data['kondisi_id'] ?? null) }}}" required />
+                    <td>: {{ $data->kondisi->nama }}</td>
                 </div>
             </div>
         </div>
@@ -105,13 +105,13 @@
                     <label for="name"><strong>Harga</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input disabled class="form-control" value="{{ $data->harga }}">
+                    <td>: {{ $data->harga }}</td>
                 </div>
                 <div class="col-md-1 my-auto">
                     <label for="name"><strong>Total</strong></label>
                 </div>
                 <div class="col-md-5">
-                    <input disabled class="form-control"value="{{ $data->total }}">
+                    <td>: {{ $data->total }}</td>
                 </div>
             </div>
         </div>

@@ -14,12 +14,12 @@ class DataLahan extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'data_lahans';
-    protected $fillable = 
+    protected $fillable =
     [
         'id','','petani_id','jenis_lahan','luas_tanah'
     ];
     public $timestamps = false;
-    
+
     public function namapetani()
     {
         return $this->belongsTo(DataPetani::class,'petani_id');
@@ -28,5 +28,10 @@ class DataLahan extends Model
     public function jenislahan()
     {
         return $this->belongsTo(DataJenisLahan::class,'jenis_lahan');
+    }
+
+    public function petani()
+    {
+        return $this->hasMany(DataPetani::class);
     }
 }

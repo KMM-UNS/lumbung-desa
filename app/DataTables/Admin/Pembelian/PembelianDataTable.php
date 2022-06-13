@@ -44,7 +44,7 @@ class PembelianDataTable extends DataTable
      */
     public function query(Pembelian $model)
     {
-        return $model->select('pembelian.*')->with(['musim','tanaman','kondisi','satuan']);
+        return $model->select('pembelian.*')->with(['musim','tanaman','kondisi','satuan','petani']);
     }
 
     /**

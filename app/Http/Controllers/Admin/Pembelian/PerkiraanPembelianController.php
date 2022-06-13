@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Pembelian;
 use App\Models\Musim;
 use App\Models\Satuan;
 use App\Models\Tanaman;
+use App\Models\DataLahan;
+use App\Models\DataPetani;
 use Illuminate\Http\Request;
 use App\Models\KondisiHasilPanen;
 use App\Models\PerkiraanPembelian;
@@ -34,7 +36,9 @@ class PerkiraanPembelianController extends Controller
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
-        return view('pages.admin.perkiraan-pembelian.add-edit', ['musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);
+        $petani=DataPetani::pluck('nama','id');
+        $lahan=DataLahan::pluck('jenis_lahan','id');
+        return view('pages.admin.perkiraan-pembelian.add-edit', ['musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan, 'petani'=>$petani, 'lahan'=>$lahan]);
     }
 
     /**
@@ -67,7 +71,9 @@ class PerkiraanPembelianController extends Controller
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
-        return view('pages.admin.perkiraan-pembelian.show', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);
+        $petani=DataPetani::pluck('nama','id');
+        $lahan=DataLahan::pluck('jenis_lahan','id');
+        return view('pages.admin.perkiraan-pembelian.show', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan, 'petani'=>$petani, 'lahan'=>$lahan]);
     }
 
     /**
@@ -83,7 +89,10 @@ class PerkiraanPembelianController extends Controller
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
-        return view('pages.admin.perkiraan-pembelian.add-edit', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);    }
+        $petani=DataPetani::pluck('nama','id');
+        $lahan=DataLahan::pluck('jenis_lahan','id');
+        return view('pages.admin.perkiraan-pembelian.add-edit', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan, 'petani'=>$petani, 'lahan'=>$lahan]);
+    }
 
     /**
      * Update the specified resource in storage.

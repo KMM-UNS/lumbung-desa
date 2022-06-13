@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Datatables\Admin\Pembelian\PembelianDataTable;
 use App\Http\Requests\PembelianForm;
+use App\Models\DataPetani;
 use App\Models\KondisiHasilPanen;
 use App\Models\Satuan;
 use Barryvdh\DomPDF\Facade\PDF;
@@ -36,7 +37,8 @@ class PembelianController extends Controller
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
-        return view('pages.admin.pembelian.add-edit', ['musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);
+        $petani=DataPetani::pluck('nama','id');
+        return view('pages.admin.pembelian.add-edit', ['musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan, 'petani'=>$petani]);
     }
 
     /**
@@ -76,7 +78,8 @@ class PembelianController extends Controller
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
-        return view('pages.admin.pembelian.show', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan]);
+        $petani=DataPetani::pluck('nama','id');
+        return view('pages.admin.pembelian.show', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan, 'petani'=>$petani]);
     }
 
     /**

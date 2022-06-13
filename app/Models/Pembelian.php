@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Models\Musim;
 use App\Models\Satuan;
 use App\Models\Tanaman;
+use App\Models\DataLahan;
+use App\Models\DataPetani;
 use App\Models\KondisiHasilPanen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -50,5 +52,15 @@ class Pembelian extends Model
     public function satuan()
     {
         return $this->belongsTo(Satuan::class,'satuan_id');
+    }
+
+    public function petani()
+    {
+        return $this->belongsTo(DataPetani::class,'petani_id');
+    }
+
+    public function lahan()
+    {
+        return $this->belongsTo(DataLahan::class,'lahan_id');
     }
 }
