@@ -19,7 +19,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
-        Route::resource('datapetani', 'DataPetaniController');
+      //  Route::resource('datapetani', 'DataPetaniController');
         Route::resource('penjualan', 'PenjualanController');
 
         Route::group(['prefix' => '/data-petani', 'as' => 'data-petani.', 'namespace' => 'DataPetani'], function () {
@@ -38,8 +38,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
 
 
-        Route::resource('datapetani', 'DataPetaniController');
-        Route::resource('datapetani', 'DataPetaniController');
+        //Route::resource('datapetani', 'DataPetaniController');
+
         Route::resource('penjualan', 'PenjualanController');
         Route::get('invoice/{id}', [PenjualanController::class, 'invoice'])->name('invoice');
         Route::resource('gudang-lumbung', 'GudangLumbungController');

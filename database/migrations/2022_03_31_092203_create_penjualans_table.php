@@ -18,9 +18,12 @@ class CreatePenjualansTable extends Migration
             $table->string('no_penjualan');
             $table->string('tgl_penjualan');
             $table->string('nama');
+            $table->string('email');
+            $table->string('no_hp');
+            $table->string('alamat');
             $table->string('jumlah');
             $table->string('harga');
-            $table->string('kondisi');
+           // $table->string('kondisi');
             $table->string('produk');
             $table->string('total');
             $table->softDeletes();

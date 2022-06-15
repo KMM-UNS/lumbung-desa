@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 
 
+
 class PenjualanController extends Controller
 {
     public function index(PenjualanDataTable $dataTable)
@@ -88,15 +89,21 @@ class PenjualanController extends Controller
     public function invoice($id)
     {
         $data = Penjualan::findOrFail($id);
+
+
         $pdf = PDF::loadview('pages.admin.penjualan.invoice',
+
         [
 
         'no_penjualan'=>$data->no_penjualan,
         'tgl_penjualan'=>$data->tgl_penjualan,
         'nama'=>$data->nama,
+        'email'=>$data->email,
+        'no_hp'=>$data->no_hp,
+        'alamat'=>$data->alamat,
         'jumlah'=>$data->jumlah,
         'harga'=>$data->harga,
-        'kondisi'=>$data->kondisi,
+       // 'kondisi'=>$data->kondisi,
         'produk'=>$data->produk,
         'total'=>$data->total
         ]);

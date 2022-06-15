@@ -43,9 +43,9 @@ enctype="multipart/form-data" data-parsley-validate="true">
     <div class="panel-body">
       <div class="form-group">
         <label for="name">No.kk</label>
-        <input type="number" id="no_kk" name="no_kk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_kk ?? old('no_kk') }}}">
+        <input type="number" id="no_kk" name="no_kk" maxlength="16" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_kk ?? old('no_kk') }}}">
         <label for="name">NIK</label>
-        <input type="number" id="nik" name="nik" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nik ?? old('nik') }}}">
+        <input type="number" id="nik" name="nik" maxlength="16" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nik ?? old('nik') }}}">
         <label for="name">Nama</label>
         <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
         <label for="name">Tempat Lahir</label>

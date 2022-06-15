@@ -45,6 +45,12 @@
         <input disabled class="form-control" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
         <label for="name">Nama Petani Pembeli</label>
         <input disabled class="form-control" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Email</label>
+        <input disabled type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Nomor Handphone</label>
+        <input disabled type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Alamat</label>
+        <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
         <label for="name">Jumlah Penjualan</label>
         <input disabled class="form-control" value="{{{ $data->jumlah ?? old('jumlah') }}}">
         <label for="name">Harga</label>

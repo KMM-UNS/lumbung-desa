@@ -16,12 +16,12 @@ class Penjualan extends Model
     protected $table = 'penjualans';
     protected $fillable =
     [
-        'id','no_penjualan','tgl_penjualan','nama','jumlah', 'harga','kondisi','produk','total'
+        'id','no_penjualan','tgl_penjualan','nama','email','no_hp','alamat','jumlah', 'harga','produk','total'
     ];
     public $timestamps = false;
 
     public function kondisihasilpanen()
     {
-        return $this->belongsTo(KondisiHasilPanen::class,'kondisi_hasil_panen');
+        return $this->belongsTo(KondisiHasilPanen::class,'kondisi');
     }
 }

@@ -32,7 +32,7 @@ return [
             'caret' => false,
         ],
         [
-            'icon' => 'fa fa-cogs',
+            'icon' => 'fa fa-users',
             'title' => 'Data Petani',
             'url' => 'javascript:;',
             'caret' => true,
@@ -68,7 +68,7 @@ return [
             'caret' => false,
         ],
         [
-            'icon' => 'fa fa-users',
+            'icon' => 'fa fa-cogs',
             'title' => 'Penjualan',
             'url' => '/admin/penjualan',
             'caret' => false,
@@ -96,8 +96,25 @@ return [
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kondisi Hasil Panen'
                 ]
             ]
+        ],
+            [
+                'icon' => 'fa fa-cogs',
+                'title' => 'Riwayat',
+                'url' => 'javascript:;',
+                'caret' => true,
+                'sub_menu' => [
+                    [
+                        'url' => '/admin/riwayat/riwayatpembelian',
+                        'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Pembelian'
+                    ],[
+                        'url' => '/admin/riwayat/riwayatpenjualan',
+                        'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Penjualan'
+                    ]
+                ]
+            ]
+
         ]
-    ],
+    ,
 
     'menu_user' => [
         [
@@ -106,6 +123,11 @@ return [
             'url' => '/',
             'caret' => false
         ], [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Data Diri Petani',
+            'url' => 'menampilkandatapetani',
+            'caret' => false
+        ],[
             'icon' => 'fa fa-cogs',
             'title' => 'Ganti Password',
             'url' => '#',
