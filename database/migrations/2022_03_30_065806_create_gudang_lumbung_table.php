@@ -17,10 +17,12 @@ class CreateGudangLumbungTable extends Migration
             $table->id();
             $table->string('nama_tanaman_id');
             $table->string('stok');
-            $table->string('satuan_id');
+            // $table->string('satuan_id');
+            // $table->enum('kondisi', ['Belum Diproses', 'Dikeringkan', 'Digiling']);
             $table->string('kondisi_id');
             $table->string('keterangan_id');
-            $table->softDeletes();
+            // $table->softDeletes();
+            $table->timestamps();
         });
     }
 

@@ -19,4 +19,9 @@ class DataJenisLahan extends Model
         'id','','nama',
     ];
     public $timestamps = false;
+
+    public function perkiraanpembelian()
+    {
+        return $this->hasMany(PerkiraanPembelian::class);
+    }
 }

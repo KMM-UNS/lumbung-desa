@@ -20,25 +20,19 @@
 
 
 <!-- begin panel -->
-<form action="" id="form" name="form" method="POST" data-parsley-validate="true">
-  @csrf
-  @if(isset($data))
-  {{ method_field('PUT') }}
-  @endif
-
-  <div class="panel panel-inverse">
+<div class="panel panel-inverse">
     <!-- begin panel-heading -->
     <div class="panel-heading">
-      <h4 class="panel-title">Form @yield('title')</h4>
-      <div class="panel-heading-btn">
-        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-      </div>
+        <h4 class="panel-title">@yield('title')</h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+        </div>
     </div>
     <!-- end panel-heading -->
     <!-- begin panel-body -->
     <div class="panel-body">
-      <div class="form-group">
+    <div class="form-group">
         <div class="row">
           <div class="col-md-1 my-auto">
             <label for="name"><strong>Nomor Pembelian</strong></label>
@@ -63,63 +57,62 @@
               <td>: {{ $data->petani_id }}</td>
             </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-1 my-auto">
-            <label for="name"><strong>Musim</strong></label>
-          </div>
-          <div class="col-md-5">
-            <td>: {{ $data->musim->nama }}</td>
-          </div>
-          <div class="col-md-1 my-auto">
-            <label for="name"><strong>Tanaman</strong></label>
-          </div>
-          <div class="col-md-5">
-            <td>: {{ $data->tanaman->nama }}</td>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-1 my-auto">
-            <label for="name"><strong>Jumlah Pembelian</strong></label>
-          </div>
-          <div class="col-md-1">
-            <td>: {{ $data->jumlah }}</td>
-          </div>
-          <div class="col-md-4">
-              <td>{{ $data->satuan->satuan }}</td>
-          </div>
-          <div class="col-md-1 my-auto">
-            <label for="name"><strong>Kondisi</strong></label>
-          </div>
-          <div class="col-md-5">
-              <td>: {{ $data->kondisi->nama }}</td>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
+        <div class="form-group">
           <div class="row">
-              <div class="col-md-1 my-auto">
-                <label for="name"><strong>Harga</strong></label>
+            <div class="col-md-1 my-auto">
+              <label for="name"><strong>Musim</strong></label>
             </div>
             <div class="col-md-5">
-                <td>: {{ $data->harga }}</td>
+              <td>: {{ $data->musim->nama }}</td>
             </div>
             <div class="col-md-1 my-auto">
-                <label for="name"><strong>Total</strong></label>
+              <label for="name"><strong>Tanaman</strong></label>
             </div>
             <div class="col-md-5">
-                <td>: {{ $data->total }}</td>
+              <td>: {{ $data->tanaman->nama }}</td>
             </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-1 my-auto">
+              <label for="name"><strong>Jumlah Pembelian</strong></label>
+            </div>
+            <div class="col-md-1">
+              <td>: {{ $data->jumlah }}</td>
+            </div>
+            <div class="col-md-4">
+                {{-- <td>{{ $data->satuan->satuan }}</td> --}}
+            </div>
+            <div class="col-md-1 my-auto">
+              <label for="name"><strong>Kondisi</strong></label>
+            </div>
+            <div class="col-md-5">
+                <td>: {{ $data->kondisi->nama }}</td>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-1 my-auto">
+                  <label for="name"><strong>Harga</strong></label>
+              </div>
+              <div class="col-md-5">
+                  <td>: {{ $data->harga }}</td>
+              </div>
+              <div class="col-md-1 my-auto">
+                  <label for="name"><strong>Total</strong></label>
+              </div>
+              <div class="col-md-5">
+                  <td>: {{ $data->total }}</td>
+              </div>
+          </div>
         </div>
       </div>
     </div>
     <!-- end panel-body -->
-  </div>
-  <!-- end panel -->
-</form>
+</div>
+<!-- end panel -->
 <a href="javascript:history.back(-1);" class="btn btn-success">
   <i class="fa fa-arrow-circle-left"></i> Kembali
 </a>

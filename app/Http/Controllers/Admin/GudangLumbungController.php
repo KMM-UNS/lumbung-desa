@@ -32,12 +32,16 @@ class GudangLumbungController extends Controller
      */
     public function create()
     {
-        $jenistanaman=JenisTanaman::pluck('nama','id');
         $tanaman=Tanaman::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $keterangangudang=KeteranganGudang::pluck('nama','id');
-        return view('pages.admin.gudang-lumbung.add-edit',['jenistanaman'=>$jenistanaman, 'tanaman'=>$tanaman, 'satuan'=>$satuan,'kondisi'=>$kondisi, 'keterangangudang'=>$keterangangudang]);
+        return view('pages.admin.gudang-lumbung.add-edit',[
+            'tanaman'=>$tanaman,
+            'satuan'=>$satuan,
+            'kondisi'=>$kondisi,
+            'keterangangudang'=>$keterangangudang
+        ]);
     }
 
     /**
@@ -46,10 +50,24 @@ class GudangLumbungController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GudangLumbungForm $request)
+    public function store(Request $request)
     {
         try {
-            GudangLumbung::create($request->all());
+            // get data gudang yang di inputkan
+            $gudangLumbung = GudangLumbung::where('nama_tanaman_id', $request->nama_tanaman_id)->where('kondisi_id', $request->kondisi_id)->where('keterangan_id', $request->keterangan_id)->first();
+            // dd($gudangLumbung);
+
+            // percabangan untuk cek apakah data gudang sudah ada atau belum
+            if(isset($gudangLumbung)){
+                // jika sudah maka update stok
+                $gudangLumbung->stok = $gudangLumbung->stok + $request->stok;
+                $gudangLumbung->save();
+            }
+            else {
+                // jika belum maka create data baru
+                GudangLumbung::create($request->all());
+            }
+
         } catch (\Throwable $th) {
             dd($th);
             return back()->withInput()->withToastError('Something went wrong');
@@ -80,10 +98,16 @@ class GudangLumbungController extends Controller
         $data = GudangLumbung::findOrFail($id);
         $jenistanaman=JenisTanaman::pluck('nama','id');
         $tanaman=Tanaman::pluck('nama','id');
-        $satuan=Satuan::pluck('satuan','id');
+        // $satuan=Satuan::pluck('satuan','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $keterangangudang=KeteranganGudang::pluck('nama','id');
-        return view('pages.admin.gudang-lumbung.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman, 'tanaman'=>$tanaman, 'satuan'=>$satuan, 'kondisi'=>$kondisi, 'keterangangudang'=>$keterangangudang]);
+        return view('pages.admin.gudang-lumbung.add-edit', [
+            'data' => $data,
+            'jenistanaman'=>$jenistanaman,
+            'tanaman'=>$tanaman,
+            'kondisi'=>$kondisi,
+            'keterangangudang'=>$keterangangudang
+        ]);
     }
 
     /**

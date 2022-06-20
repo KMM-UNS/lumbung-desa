@@ -16,7 +16,8 @@ class CreateKondisiHasilPanenTable extends Migration
         Schema::create('kondisi_hasil_panen', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->softDeletes();
+            // $table->softDeletes();
+            $table->timestamps();
         });
     }
 

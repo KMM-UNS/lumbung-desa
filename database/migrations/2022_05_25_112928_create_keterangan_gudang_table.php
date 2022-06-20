@@ -17,7 +17,7 @@ class CreateKeteranganGudangTable extends Migration
             $table->id();
             $table->string('nama');
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 

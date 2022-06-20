@@ -2,15 +2,16 @@
 
 namespace App\DataTables\Admin\Pembelian;
 
-use App\Models\Musim;
+use App\Models\PembelianModal;
 use App\Models\PerkiraanPembelian;
+use App\Models\Tanaman;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class PerkiraanPembelianDataTable extends DataTable
+class PembelianModalDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -21,28 +22,27 @@ class PerkiraanPembelianDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
-            ->setRowId(function ($row) {
-                return $row->id;
-            })
-            ->addColumn('action', function ($row) {
-                $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
-                return $btn;
-            });
+        ->eloquent($query)
+        ->setRowId(function ($row) {
+            return $row->id;
+        })
+        ->addColumn('action', function ($row) {
+            $btn = '<div class="btn-group">';
+            $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            return $btn;
+        });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin\Pembelian\PerkiraanPembelianDataTable $model
+     * @param \App\App\Models\Admin/Pembelian/PembelianModalDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(PerkiraanPembelian $model)
+    public function query(PembelianModal $model)
     {
-        return $model->newQuery();
+        return $model->select('pembelian_modal.*')->with(['tanaman','petani','lahan','kondisi']);
     }
 
     /**
@@ -53,7 +53,7 @@ class PerkiraanPembelianDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('perkiraan-pembelian-table')
+                    ->setTableId('pembelianmodal-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -80,11 +80,10 @@ class PerkiraanPembelianDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('musim_panen'),
-            Column::make('tahun'),
-            // Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
-            // Column::make('petani_id')->title('Petani'),
-            // Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
+            Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
+            Column::make('petani_id')->data('petani.nama')->title('Petani'),
+            Column::make('lahan_id')->data('lahan.nama'),
+            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
         ];
     }
 
@@ -95,6 +94,6 @@ class PerkiraanPembelianDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Pembelian\PerkiraanPembelian_' . date('YmdHis');
+        return 'Admin/Pembelian/PembelianModal_' . date('YmdHis');
     }
 }

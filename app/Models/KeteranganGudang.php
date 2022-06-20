@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Tanaman;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class KeteranganGudang extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    // use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
@@ -19,6 +20,6 @@ class KeteranganGudang extends Model
 
     public function keterangan()
     {
-        return $this->hasMany(GudangLumbung::class);
+        return $this->hasMany(Tanaman::class);
     }
 }

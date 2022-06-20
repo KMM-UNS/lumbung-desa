@@ -15,17 +15,17 @@ class CreatePerkiraanPembelianTable extends Migration
     {
         Schema::create('perkiraan_pembelian', function (Blueprint $table) {
             $table->id();
-            $table->integer('musim_id');
-            $table->integer('tanaman_id');
-            $table->string('petani_id');
-            $table->string('lahan_id');
-            $table->string('luas_lahan');
-            $table->integer('jumlah');
-            $table->integer('satuan_id');
-            $table->string('kondisi_id');
-            $table->string('harga');
-            $table->string('total');
-            $table->softDeletes();
+            $table->integer('musim_panen');
+            $table->string('tahun');
+            // $table->integer('tanaman_id');
+            // $table->string('petani_id');
+            // $table->string('lahan_id');
+            // $table->string('luas_lahan');
+            // $table->integer('jumlah');
+            // $table->integer('satuan_id');
+            // $table->string('kondisi_id');
+            // $table->string('harga');
+            // $table->string('total');
             $table->timestamps();
         });
     }

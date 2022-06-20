@@ -55,6 +55,12 @@
                 </div>
                 <div class="col-md-11">
                     <x-form.Dropdown name="kondisi_id" :options="$kondisi" selected="{{{ old('kondisi_id') ?? ($data['kondisi_id'] ?? null) }}}" required />
+                    {{-- <select name="kondisi" id="name" class="form-select">
+                        <option selected disabled>Pilih Kondisi</option>
+                        <option value="Belum Diproses"> Belum Diproses</option>
+                        <option value="Dikeringkan">Dikeringkan</option>
+                        <option value="Digiling">Digiling</option>
+                    </select> --}}
                 </div>
             </div>
         </div>
@@ -71,17 +77,17 @@
       <div class="form-group">
           <div class="row">
               <div class="col-md-1 my-auto">
-                  <label for="name"><strong>Stok</strong></label>
+                  <label for="name"><strong>Stok</strong> (/kg)</label>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-11">
                   <input type="text" id="stok" name="stok" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->stok ?? old('stok') }}}">
               </div>
-              <div class="col-md-1 my-auto">
+              {{-- <div class="col-md-1 my-auto">
                   <label for="name"><strong>Satuan</strong></label>
               </div>
               <div class="col-md-2">
                   <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
-              </div>
+              </div> --}}
           </div>
       </div>
     </div>

@@ -25,6 +25,8 @@ class PenjualanDataTable extends DataTable
             $btn = '<div class="btn-group">';
             $btn = $btn . '<a href="' . route('admin.penjualan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
             $btn = $btn . '<a href="' . route('admin.penjualan.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.penjualan.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.invoice', $row->id) . '" class="btn btn-warning buttons-invoice"><i class="fas fa-download fa-fw"></i></a>';
             $btn = $btn . '</div>';
             return $btn;
         });
@@ -78,10 +80,13 @@ class PenjualanDataTable extends DataTable
                   ->addClass('text-center'),
             Column::make('id'),
             Column::make('no_penjualan'),
+            Column::make('tgl_penjualan'),
             Column::make('nama'),
-            Column::make('kondisi'),
             Column::make('jumlah'),
             Column::make('harga'),
+            Column::make('kondisi')->data('kondisi-hasil-panen.kondisi'),
+            Column::make('produk'),
+            Column::make('total'),
         ];
     }
 
@@ -94,4 +99,5 @@ class PenjualanDataTable extends DataTable
     {
         return 'Admin\Penjualan_' . date('YmdHis');
     }
+
 }

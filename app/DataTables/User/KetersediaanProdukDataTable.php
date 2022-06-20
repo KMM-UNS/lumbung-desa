@@ -74,7 +74,7 @@ class KetersediaanProdukDataTable extends DataTable
                   ->addClass('text-center'),
                   Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Nama'),
                   Column::make('stok'),
-                  Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
+                //   Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
                   Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
                   Column::make('keterangan_id')->data('keterangangudang.nama')->title('Keterangan'),
         ];

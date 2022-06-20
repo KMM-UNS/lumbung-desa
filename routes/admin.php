@@ -33,10 +33,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('pembelian', 'PembelianController');
             Route::get('invoice/{id}', [PembelianController::class, 'invoice'])->name('invoice');
             Route::resource('perkiraan-pembelian', 'PerkiraanPembelianController');
+            Route::resource('perkiraan-pembelian/{id}', 'PembelianModalController');
+            // Route::resource('perkiraan-pembelian/{id}/pembelian-modal', 'PembelianModalController');
+
         });
 
-        // Route::resource('datapetani', 'DataPetaniController');
-        // Route::resource('datapetani', 'DataPetaniController');
         Route::resource('penjualan', 'PenjualanController');
         Route::resource('gudang-lumbung', 'GudangLumbungController');
 

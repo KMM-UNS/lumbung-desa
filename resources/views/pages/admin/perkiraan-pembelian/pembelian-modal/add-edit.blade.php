@@ -40,32 +40,6 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                    <label for="name"><strong>Musim Panen</strong></label>
-                </div>
-                <div class="col-md-5">
-                    <input type="text" id="musim_panen" name="musim_panen" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->musim_panen ?? old('musim_panen') }}}">
-                </div>
-                <div class="col-md-1">
-                    <label for="name"><strong>Tahun</strong></label>
-                </div>
-                <div class="col-md-5">
-                    <input type="text" id="tahun" name="tahun" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tahun ?? old('tahun') }}}">
-                </div>
-            </div>
-        </div>
-        {{-- <div class="form-group">
-            <div class="row">
-                <div class="col-md-1 my-auto">
-                    <label for="name"><strong>Musim</strong></label>
-                </div>
-                <div class="col-md-11">
-                    <x-form.Dropdown name="musim_id" :options="$musim" selected="{{{ old('musim_id') ?? ($data['musim_id'] ?? null) }}}" required />
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-1 my-auto">
                     <label for="name"><strong>Petani</strong></label>
                 </div>
                 <div class="col-md-5">
@@ -100,12 +74,12 @@
                 <div class="col-md-1 my-auto">
                   <label for="name"><strong>Jumlah Pembelian</strong></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                   <input type="number" id="jumlah" onkeyup="sum();" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
                 </div>
-                <div class="col-md-1">
+                {{-- <div class="col-md-1">
                   <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
-                </div>
+                </div> --}}
                 <div class="col-md-1 my-auto">
                   <label for="name"><strong>Kondisi</strong></label>
                 </div>
@@ -129,7 +103,7 @@
                     <input readonly type="number" id="total" onkeyup="sum();" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
     <!-- end panel-body -->
     <!-- begin panel-footer -->

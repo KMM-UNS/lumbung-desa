@@ -36,28 +36,28 @@ class DataPetaniController extends Controller
 
     public function store(Request $request)
     {
-        $validateData= $request->validate([
-            'filename' => 'image|file|max:1024'
+        // $validateData= $request->validate([
+        //     'filename' => 'image|file|max:1024'
 
-        ]);
-        //return $request->file('filename')->store('public/post-images');
+        // ]);
+        // return $request->file('filename')->store('public/post-images');
         // try {
         //     $request->validate([
-        //      //   'filename',
-        //        // 'filename.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000'
+        //        'filename',
+        //        'filename.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000'
         //     ]);
-        //    // if ($request->hasfile('filename')) {
-        //      //   $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('filename')->getClientOriginalName());
-        //        // $request->file('filename')->move(public_path('images'), $filename);
-        //          //DataPetani::create(
-        //            //     [
-        //              //       'foto' =>$filename
-        //                // ]
-        //             //);
-        //       //  echo'Success';
-        //     //}else{
-        //       //  echo'Gagal';
-        //    // }
+        //    if ($request->hasfile('filename')) {
+        //        $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('filename')->getClientOriginalName());
+        //        $request->file('filename')->move(public_path('images'), $filename);
+        //          DataPetani::create(
+        //                [
+        //                    'foto' =>$filename
+        //                ]
+        //             );
+        //        echo'Success';
+        //     }else{
+        //        echo'Gagal';
+        //    }
 
 
         // } catch (\Throwable $th) {

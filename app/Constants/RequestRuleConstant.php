@@ -27,7 +27,10 @@ class RequestRuleConstant
     public static function gudangTable()
     {
         return [
-            'stok' => 'nullable|integer'
+            'nama_tanaman_id' =>'exist:tanamen,id',
+            'stok' => 'nullable|integer',
+            'kondisi_id' => 'exist:kondisi_hasil_panen,id',
+            'keterangan_id' => 'exist:keterangan_gudang,id'
         ];
     }
 

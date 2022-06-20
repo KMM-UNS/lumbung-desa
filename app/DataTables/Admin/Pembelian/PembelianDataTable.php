@@ -44,7 +44,12 @@ class PembelianDataTable extends DataTable
      */
     public function query(Pembelian $model)
     {
-        return $model->select('pembelian.*')->with(['musim','tanaman','kondisi','satuan','petani']);
+        return $model->select('pembelian.*')->with([
+            'musim',
+            'tanaman',
+            'kondisi',
+            'petani'
+        ]);
     }
 
     /**
@@ -84,7 +89,7 @@ class PembelianDataTable extends DataTable
                   ->addClass('text-center'),
             Column::make('tanggal_pembelian'),
             Column::make('no_pembelian'),
-            Column::make('petani_id')->title('Nama Petani Penjual'),
+            Column::make('petani_id')->data('petani.nama')->title('Nama Petani Penjual'),
             Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
             Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
         ];

@@ -25,12 +25,12 @@ return [
             'url' => '/admin/user',
             'caret' => false,
         ],
-        [
-            'icon' => 'fa fa-users',
-            'title' => 'Admin',
-            'url' => '/admin/admin',
-            'caret' => false,
-        ],
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Admin',
+        //     'url' => '/admin/admin',
+        //     'caret' => false,
+        // ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Data Petani',

@@ -12,12 +12,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class GudangLumbung extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    // use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
     protected $table = 'gudang_lumbung';
-    protected $fillable = ['nama_tanaman_id','stok','satuan_id','kondisi_id','keterangan_id'];
+    protected $fillable = ['nama_tanaman_id','stok','kondisi_id','keterangan_id'];
     public $timestamps = false;
 
     public function tanaman()

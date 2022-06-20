@@ -4,15 +4,13 @@ namespace App\Models;
 
 use App\Models\Pembelian;
 use App\Models\GudangLumbung;
-use App\Models\PerkiraanPembelian;
+use App\Models\PembelianModal;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class KondisiHasilPanen extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
@@ -32,6 +30,6 @@ class KondisiHasilPanen extends Model
 
     public function kondisiperkiraanpembelian()
     {
-        return $this->hasMany(PerkiraanPembelian::class);
+        return $this->hasMany(PembelianModal::class);
     }
 }

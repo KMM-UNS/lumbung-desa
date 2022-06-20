@@ -27,7 +27,6 @@ class Pembelian extends Model
         'no_pembelian',
         'tanggal_pembelian',
         'jumlah',
-        'satuan_id',
         'kondisi_id',
         'harga',
         'total'
@@ -49,10 +48,10 @@ class Pembelian extends Model
         return $this->belongsTo(KondisiHasilPanen::class,'kondisi_id');
     }
 
-    public function satuan()
-    {
-        return $this->belongsTo(Satuan::class,'satuan_id');
-    }
+    // public function satuan()
+    // {
+    //     return $this->belongsTo(Satuan::class,'satuan_id');
+    // }
 
     public function petani()
     {

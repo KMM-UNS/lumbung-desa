@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin\Pembelian;
 
 use App\Models\Musim;
-use App\Models\Satuan;
 use App\Models\Tanaman;
-use App\Models\DataLahan;
 use App\Models\DataPetani;
 use Illuminate\Http\Request;
+use App\Models\DataJenisLahan;
 use App\Models\KondisiHasilPanen;
 use App\Models\PerkiraanPembelian;
 use App\Http\Controllers\Controller;
+use App\DataTables\Admin\Pembelian\PembelianModalDataTable;
 use App\DataTables\Admin\Pembelian\PerkiraanPembelianDataTable;
 
 class PerkiraanPembelianController extends Controller
@@ -32,13 +32,7 @@ class PerkiraanPembelianController extends Controller
      */
     public function create()
     {
-        $musim=Musim::pluck('nama','id');
-        $tanaman=Tanaman::pluck('nama','id');
-        $kondisi=KondisiHasilPanen::pluck('nama','id');
-        $satuan=Satuan::pluck('satuan','id');
-        $petani=DataPetani::pluck('nama','id');
-        $lahan=DataLahan::pluck('jenis_lahan','id');
-        return view('pages.admin.perkiraan-pembelian.add-edit', ['musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan, 'petani'=>$petani, 'lahan'=>$lahan]);
+        return view('pages.admin.perkiraan-pembelian.add-edit');
     }
 
     /**
@@ -56,7 +50,8 @@ class PerkiraanPembelianController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.pembelian.perkiraan-pembelian.index'))->withToastSuccess('Data tersimpan');    }
+        return redirect(route('admin.pembelian.perkiraan-pembelian.index'))->withToastSuccess('Data tersimpan');
+    }
 
     /**
      * Display the specified resource.
@@ -64,16 +59,10 @@ class PerkiraanPembelianController extends Controller
      * @param  \App\Models\PerkiraanPembelian  $perkiraanPembelian
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PembelianModalDataTable $dataTable,$id)
     {
         $data = PerkiraanPembelian::findOrFail($id);
-        $musim=Musim::pluck('nama','id');
-        $tanaman=Tanaman::pluck('nama','id');
-        $kondisi=KondisiHasilPanen::pluck('nama','id');
-        $satuan=Satuan::pluck('satuan','id');
-        $petani=DataPetani::pluck('nama','id');
-        $lahan=DataLahan::pluck('jenis_lahan','id');
-        return view('pages.admin.perkiraan-pembelian.show', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan, 'petani'=>$petani, 'lahan'=>$lahan]);
+        return $dataTable->render('pages.admin.perkiraan-pembelian.show', ['data'=>$data]);
     }
 
     /**
@@ -85,13 +74,7 @@ class PerkiraanPembelianController extends Controller
     public function edit($id)
     {
         $data = PerkiraanPembelian::findOrFail($id);
-        $musim=Musim::pluck('nama','id');
-        $tanaman=Tanaman::pluck('nama','id');
-        $kondisi=KondisiHasilPanen::pluck('nama','id');
-        $satuan=Satuan::pluck('satuan','id');
-        $petani=DataPetani::pluck('nama','id');
-        $lahan=DataLahan::pluck('jenis_lahan','id');
-        return view('pages.admin.perkiraan-pembelian.add-edit', ['data' => $data, 'musim'=>$musim, 'tanaman'=>$tanaman, 'kondisi'=>$kondisi, 'satuan'=>$satuan, 'petani'=>$petani, 'lahan'=>$lahan]);
+        return view('pages.admin.perkiraan-pembelian.add-edit', ['data'=>$data]);
     }
 
     /**
