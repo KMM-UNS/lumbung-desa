@@ -38,9 +38,10 @@
     <!-- end panel-heading -->
     <!-- begin panel-body -->
     <div class="panel-body">
-      <div class="form-group">
-        <label for="name">Nomor Penjualan</label>
-        <input type="text" id="no_penjualan" name="no_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_penjualan ?? old('no_penjualan') }}}">
+      {{-- <div class="form-group"> --}}
+        <div class="control-group after-add-more">
+        {{-- <label for="name">Nomor Penjualan</label> --}}
+        <input type="hidden" id="no_penjualan" name="no_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_penjualan ?? old('no_penjualan') }}}">
         <label for="name">Tanggal Penjualan</label>
         <input type="date" id="tgl_penjualan" name="tgl_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
         <label for="name">Nama Petani Pembeli</label>
@@ -51,20 +52,29 @@
         <input type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
         <label for="name">Alamat</label>
         <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
-        <label for="name">Jumlah Penjualan</label>
-        <input type="number" id="jumlah" name="jumlah" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
-        <label for="name">Harga</label>
-        <input type="number" id="harga" name="harga" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
-       {{-- <label for="name">Kondisi</label>
+        {{-- <label for="name">Kondisi</label>
         <x-form.Dropdown name="kondisi" :options="$kondisihasilpanen" selected="{{{ old('kondisihasilpanen') ?? ($data['kondisihasilpanen'] ?? null) }}}" required />
        --}}  <label for="name">Produk</label>
         <input type="text" id="produk" name="produk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->produk ?? old('produk') }}}">
-        <label for="name">Total</label>
+        <label for="name">Kondisi</label>
+        <input type="text" id="kondisi" name="kondisi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->kondisi ?? old('kondisi') }}}">
+        <label for="name">Keterangan</label>
+        <input type="text" id="keterangan" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keterangan ?? old('keterangan') }}}">
+        <label for="name">Jumlah</label>
+        <input type="number" id="jumlah" name="jumlah" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
+        <label for="name">Harga</label>
+        <input type="number" id="harga" name="harga" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+       <label for="name">Total</label>
         <input readonly type="number" id="total" onkeyup="sum();" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
       </div>
     </div>
     <!-- end panel-body -->
     <!-- begin panel-footer -->
+    <div class="panel-footer">
+    <button class="btn btn-success add-more" type="button">
+        <i class="glyphicon glyphicon-plus"></i> Add
+      </button>
+    </div>
     <div class="panel-footer">
       <button type="submit" class="btn btn-primary">Simpan</button>
       <button type="reset" class="btn btn-default">Reset</button>
@@ -73,6 +83,58 @@
   </div>
   <!-- end panel -->
 </form>
+<div class="copy hide">
+    <div class="control-group">
+        <label disabled for="name">Nomor Penjualan</label>
+        <input type="text" id="no_penjualan" name="no_penjualan"  value="{{{ 'no_penjualan' ?? old('no_penjualan') }}}">
+        <label for="name">Tanggal Penjualan</label>
+        <input type="date" id="tgl_penjualan" name="tgl_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
+        <label for="name">Nama Petani Pembeli</label>
+        <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Email</label>
+        <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Nomor Handphone</label>
+        <input type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Alamat</label>
+        <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <label for="name">Produk</label>
+        <input type="text" id="produk" name="produk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->produk ?? old('produk') }}}">
+        <label for="name">Harga</label>
+        <input type="number" id="harga" name="harga" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+        <label for="name">Jumlah</label>
+        <input type="number" id="jumlah" name="jumlah" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
+        {{-- <label for="name">Kondisi</label>
+        <x-form.Dropdown name="kondisi" :options="$kondisihasilpanen" selected="{{{ old('kondisihasilpanen') ?? ($data['kondisihasilpanen'] ?? null) }}}" required />
+       --}}
+       <label for="name">Total</label>
+        <input readonly type="number" id="total" onkeyup="sum();" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
+
+      <br>
+      <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+      <hr>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!-- fungsi javascript untuk menampilkan form dinamis  -->
+<!-- penjelasan :
+saat tombol add-more ditekan, maka akan memunculkan div dengan class copy -->
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".add-more").click(function(){
+          var html = $(".copy").html();
+          $(".after-add-more").after(html);
+      });
+
+      // saat tombol remove dklik control group akan dihapus
+      $("body").on("click",".remove",function(){
+          $(this).parents(".control-group").remove();
+      });
+    });
+</script>
+
 <a href="javascript:history.back(-1);" class="btn btn-success">
   <i class="fa fa-arrow-circle-left"></i> Kembali
 </a>

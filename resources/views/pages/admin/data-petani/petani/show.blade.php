@@ -41,6 +41,15 @@ enctype="multipart/form-data" data-parsley-validate="true">
     <!-- end panel-heading -->
     <!-- begin panel-body -->
     <div class="panel-body">
+        {{-- @php $no=0 @endphp --}}
+        {{-- @foreach($data as $data)
+        {{$data->foto}} --}}
+
+
+{{-- @foreach($data as $data)
+    {{ $data }} --}}
+
+        {{-- @php $no++ @endphp --}}
       <div class="form-group">
         <label for="name">No.kk</label>
         <input disabled type="number" id="no_kk" name="no_kk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_kk ?? old('no_kk') }}}">
@@ -60,15 +69,21 @@ enctype="multipart/form-data" data-parsley-validate="true">
               </div>
         <label for="name">Alamat</label>
         <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
-       <label for="name">Foto</label>
+
+        <label for="name">Foto</label>
+        {{-- <img src="{{ asset->(auth()->user()->foto)}}" > --}}
+ {{-- <img src="{{asset('storage/' . $data)}}" > --}}
+ {{-- alt="{{$data->category}}"
+ class="img-fluid mt-3" --}}
         <input disabled type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}">
 
        {{-- <label for="filename">Foto</label> --}}
         {{-- <input type="file" id='filename' name="filename" class="form-control" autofocus data-parsley-required="true" --}}
         {{-- value="{{{ $data->filename ?? old('filename') }}}"> --}}
       </div>
-
+{{-- @endforeach --}}
     </div>
+
     <!-- end panel-body -->
     <!-- begin panel-footer -->
     <div class="panel-footer">

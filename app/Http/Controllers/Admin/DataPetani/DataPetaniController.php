@@ -10,6 +10,7 @@ use App\Models\DataPetani;
 use Illuminate\Http\Request;
 
 
+
 class DataPetaniController extends Controller
 {
     public function index(DataPetaniDataTable $dataTable)
@@ -36,9 +37,12 @@ class DataPetaniController extends Controller
 
     public function store(Request $request)
     {
-        $validateData= $request->validate([
-            'filename' => 'image|file|max:1024'
 
+        $validateData= $request->validate([
+            // 'unique' => ':data sudah ada',
+            // 'filename' => 'image|file|max:1024',
+            'no_kk' => 'unique:data_petanis,no_kk',
+            'nik' => 'unique:connection.data_petanis,nik',
         ]);
         //return $request->file('filename')->store('public/post-images');
         // try {

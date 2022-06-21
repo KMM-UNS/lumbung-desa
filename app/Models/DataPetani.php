@@ -19,9 +19,10 @@ class DataPetani extends Model
     protected $table = 'data_petanis';
     protected $fillable =
     [
-        'id','no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat','foto'
+    'no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat','foto'
     ];
     public $timestamps = false;
+
     public function lahan()
     {
         return $this->hasMany(DataLahan::class);

@@ -26,18 +26,16 @@ class menampilkandatapetaniDataTable extends DataTable
             })
             ->addColumn('No', function ($row) {
                 return $row->id;
-            });
-        // return datatables()
-        // ->eloquent($query)
-        // ->addColumn('action', function ($row) {
-        //     $btn = '<div class="btn-group">';
-        //     $btn = $btn . '<a href="' . route('admin.data-petani.petani.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-        //     $btn = $btn . '<a href="' . route('admin.data-petani.petani.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-        //     $btn = $btn . '<a href="' . route('admin.data-petani.petani.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+            })
+        ->addColumn('action', function ($row) {
+            $btn = '<div class="btn-group">';
+            // $btn = $btn . '<a href="' . route('admin.data-petani.petani.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+            // $btn = $btn . '<a href="' . route('admin.data-petani.petani.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            // $btn = $btn . '<a href="' . route('admin.data-petani.petani.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
 
-        //     $btn = $btn . '</div>';
-        //     return $btn;
-        // });
+            $btn = $btn . '</div>';
+            return $btn;
+        });
     }
 
     /**
@@ -49,7 +47,7 @@ class menampilkandatapetaniDataTable extends DataTable
     public function query(DataPetani $model)
     {
         // return $model->newQuery();
-        return $model->select('data_petanis.*')->with(['id','no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat','foto']);
+        return $model->newQuery();
     }
 
     /**
@@ -62,7 +60,7 @@ class menampilkandatapetaniDataTable extends DataTable
 
         return $this->builder()
 
-            ->setTableId('user\menampilkandatapetanidatatable-table')
+            ->setTableId('menampilkandatapetani-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -89,7 +87,7 @@ class menampilkandatapetaniDataTable extends DataTable
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::make('id'),
+            // Column::make('id'),
             Column::make('no_kk'),
             Column::make('nik'),
             Column::make('nama'),

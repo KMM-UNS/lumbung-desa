@@ -24,8 +24,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => '/data-petani', 'as' => 'data-petani.', 'namespace' => 'DataPetani'], function () {
             Route::resource('petani', 'DataPetaniController');
-           // Route::get('/image', 'DataPetaniController@index');
-           // Route::post('/images','DataPetaniController@upload');
+        //    Route::get('/storage', 'DataPetaniController@index');
+        //    Route::post('/images','DataPetaniController@upload');
              Route::resource('tanaman', 'TanamanController');
              Route::resource('datalahan', 'DataLahanController');
         });

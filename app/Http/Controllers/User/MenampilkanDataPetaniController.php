@@ -8,7 +8,7 @@ use App\DataTables\User\menampilkandatapetaniDataTable;
 //use App\DataTables\MenampilkanDataPetaniDataTable;
 use App\Http\Controllers\Controller;
 
-//use App\Models\DataPetani;
+use App\Models\DataPetani;
 
 use Illuminate\Http\Request;
 
@@ -16,11 +16,12 @@ use Illuminate\Http\Request;
 class MenampilkanDataPetaniController extends Controller
 {
 
-    public function index(menampilkandatapetaniDataTable $dataTable)
+    public function index()
     {
-      //  $petani = DataPetani::where('createable_id', auth()->user()->id)->first();
-       return $dataTable->render('pages.user.menampilkandatapetani.index');//,['petani'=> $petani]);
-
+    //   //  $petani = DataPetani::where('createable_id', auth()->user()->id)->first();
+    //    return $dataTable->render('pages.user.menampilkandatapetani.index');//,['petani'=> $petani]);
+    $datapetani = DataPetani::with('user')->get();
+    return view('pages.user.menampilkandatapetani.show',['datapetani'=>$datapetani]);
     }
 
    // public function upload(Request $request){
@@ -44,9 +45,9 @@ class MenampilkanDataPetaniController extends Controller
     //     DB::transaction(function () use ($request) {
     //         try {
     //             // dd($request->all());
-    //             $petani = DataPetani::create($request->all());
-    //             $petani->createable()->associate($request->user());
-    //             $petani->save();
+    //             $datapetani = DataPetani::create($request->all());
+    //             //$datapetani->createable()->associate($request->user());
+    //             $datapetani->save();
 
     //             // dd($dataanak);
     //         } catch (\Throwable $th) {
@@ -124,12 +125,12 @@ class MenampilkanDataPetaniController extends Controller
         //} catch (\Throwable $th) {
           //  return response(['error' => 'Something went wrong']);
         //}
-    //}
-    //public function show($id)
-    //{
-      //  $data = DataPetani::findOrFail($id);
-        //return view('pages.user.menampilkandatapetani.show', ['data' => $data]);
-    //}
+    }
+    public function show($id)
+    {
+       $datapetani = DataPetani::findOrFail($id);
+        return view('pages.user.menampilkandatapetani.show', ['data' => $datapetani]);
+    }
 
-}
+
 }

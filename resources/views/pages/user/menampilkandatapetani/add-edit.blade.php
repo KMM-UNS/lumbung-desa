@@ -47,7 +47,7 @@ enctype="multipart/form-data" data-parsley-validate="true">
                 <label for="name">No KK</label>
             </div>
             <div class="col-md-3">
-                <input type="text" id="nama_anak" name="nama_anak" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama_anak ?? old('nama_anak') }}}">
+                <input type="text" id="no_kk" name="no_kk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_kk ?? old('no_kk') }}}">
             </div>
             <div class="col-md-1">
                 <label for="name">NIK</label>

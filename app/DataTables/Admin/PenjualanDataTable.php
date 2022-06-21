@@ -86,6 +86,8 @@ class PenjualanDataTable extends DataTable
             Column::make('no_hp'),
             Column::make('alamat'),
             Column::make('produk'),
+            Column::make('kondisi'),
+            Column::make('keterangan'),
             Column::make('harga'),
             Column::make('jumlah'),
             //Column::make('kondisi')->data('kondisihasilpanen.kondisi'),

@@ -1,7 +1,5 @@
 <!doctype html>
-<?php
-$mytime = Carbon::now();
-?>
+
 <html lang="en">
 
     <head>

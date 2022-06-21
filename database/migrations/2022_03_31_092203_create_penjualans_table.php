@@ -21,10 +21,12 @@ class CreatePenjualansTable extends Migration
             $table->string('email');
             $table->string('no_hp');
             $table->string('alamat');
-            $table->string('jumlah');
-            $table->string('harga');
-           // $table->string('kondisi');
             $table->string('produk');
+            $table->string('kondisi');
+            $table->string('keterangan');
+            $table->string('harga');
+            $table->string('jumlah');
+           // $table->string('kondisi');
             $table->string('total');
             $table->softDeletes();
         });

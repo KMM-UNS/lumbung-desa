@@ -19,9 +19,42 @@ class PenjualanController extends Controller
     }
     public function create()
     {
-        $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
-        return view('pages.admin.penjualan.add-edit',['kondisihasilpanen' => $kondisihasilpanen]);
+        // $no_penjualan = Penjualan::create([
+        //     'tgl_penjualan' => '',
+        // 'nama' => '',
+        // 'email' => '',
+        // 'no_hp' => '',
+        // 'alamat' => '',
+        // 'produk' => '',
+        // 'harga' => '',
+        // 'jumlah' => '',
+        // 'total' => '',
+        //     ]);
+// echo $no_penjualan->no_penjualan;
+        // $totals = count($total);
+        // for($i=0; $i<$totals; $i++){
+
+            // mysqli_query( "insert into penjualans set
+            //     no_penjualan    = '$no_penjualan[$i]',
+            //     tgl_penjualan      = '$tgl_penjualan[$i]',
+            //     nama  = '$nama[$i]',
+            //     email = '$email[$i]',
+            //     no_hp = '$no_hp[$i]',
+            //     alamat = '$alamat[$i]',
+            //     jumlah = '$jumlah[$i]',
+            //     harga = '$harga[$i]',
+            // ");
+
+        // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
+
+        return view('pages.admin.penjualan.add-edit');
     }
+    public function show($id)
+    {
+        $data = Penjualan::findOrFail($id);
+        return view('pages.admin.penjualan.show', ['data' => $data]);
+    }
+
 
     public function store(Request $request)
     {
@@ -46,8 +79,8 @@ class PenjualanController extends Controller
     public function edit($id)
     {
         $data = Penjualan::findOrFail($id);
-        $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
-        return view('pages.admin.penjualan.add-edit', ['data' => $data, 'kondisihasilpanen' => $kondisihasilpanen]);
+        // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
+        return view('pages.admin.penjualan.add-edit', ['data' => $data]);
     }
 
     public function update(Request $request, $id)
@@ -80,11 +113,6 @@ class PenjualanController extends Controller
         }
     }
 
-    public function show($id)
-    {
-        $data = Penjualan::findOrFail($id);
-        return view('pages.admin.penjualan.show', ['data' => $data]);
-    }
 
     public function invoice($id)
     {
