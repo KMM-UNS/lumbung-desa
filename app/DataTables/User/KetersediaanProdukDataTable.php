@@ -20,13 +20,11 @@ class KetersediaanProdukDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
-            ->setRowId(function ($row) {
-                return $row->id;
-            })
-            ->addColumn('No', function ($row) {
-                return $row->id;
-            });
+        ->eloquent($query)
+        ->addIndexColumn()
+        ->addColumn('No', function ($row) {
+            return $row->id;
+        });
     }
 
     /**
@@ -51,12 +49,12 @@ class KetersediaanProdukDataTable extends DataTable
                     ->setTableId('ketersediaanprodukdatatable-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
+                    // ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
                     ->orderBy(1)
-                    ->buttons(
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+                    ->parameters([
+                        'responsive' => true,
+                        'autoWidth' => false
+                    ]);
     }
 
     /**
@@ -67,16 +65,12 @@ class KetersediaanProdukDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('No')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-                  Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Nama'),
-                  Column::make('stok'),
-                //   Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
-                  Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
-                  Column::make('keterangan_id')->data('keterangangudang.nama')->title('Keterangan'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false),
+            Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Nama'),
+            Column::make('stok'),
+            // Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
+            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
+            Column::make('keterangan_id')->data('keterangangudang.nama')->title('Keterangan'),
         ];
     }
 

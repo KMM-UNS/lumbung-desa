@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePerkiraanPembelianTable extends Migration
+class CreateAutoNumbers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreatePerkiraanPembelianTable extends Migration
      */
     public function up()
     {
-        Schema::create('perkiraan_pembelian', function (Blueprint $table) {
-            $table->id();
-            $table->integer('musim_panen');
-            $table->string('tahun');
-            // $table->string('modal');
+        Schema::create('auto_numbers', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name', 32);
+            $table->integer('number');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreatePerkiraanPembelianTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('perkiraan_pembelian');
+        Schema::dropIfExists('auto_numbers');
     }
 }

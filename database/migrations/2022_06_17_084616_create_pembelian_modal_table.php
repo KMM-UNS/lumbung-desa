@@ -26,7 +26,10 @@ class CreatePembelianModalTable extends Migration
             $table->string('harga');
             $table->string('total');
             $table->timestamps();
+
+            $table->foreign('musim_panen_id')->references('id')->on('perkiraan_pembelian')->onDelete('cascade');
         });
+
     }
 
     /**

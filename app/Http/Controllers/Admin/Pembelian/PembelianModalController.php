@@ -8,38 +8,29 @@ use Illuminate\Http\Request;
 use App\Models\DataJenisLahan;
 use App\Models\PembelianModal;
 use App\Models\KondisiHasilPanen;
-use App\Http\Controllers\Controller;
-use App\DataTables\Admin\Pembelian\PerkiraanPembelianDataTable;
 use App\Models\PerkiraanPembelian;
+use App\Http\Controllers\Controller;
+use App\DataTables\Admin\Pembelian\PembelianModalDataTable;
 
 class PembelianModalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(PerkiraanPembelianDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('pages.admin.perkiraan-pembelian.pembelian-modal.index');
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create($id)
+    public function create()
     {
-        $data = PerkiraanPembelian::findOrFail($id);
-        $musim_panen=PerkiraanPembelian::pluck('musim_panen','id');
+        // ERORR!! Gabisa di create data
+        // $data = PerkiraanPembelian::findOrFail($id);
+        // $musim_panen=PembelianModal::where('musim_panen_id',$id);
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $petani=DataPetani::pluck('nama','id');
         $lahan=DataJenisLahan::pluck('nama','id');
-        return view('pages.admin.perkiraan-pembelian.pembelian-modal.add-edit', compact('id'), [
-            'data'=>$data,
-            'musim_panen'=>$musim_panen,
+        return view('pages.admin.perkiraan-pembelian.pembelian-modal.add-edit', [
+            // 'data'=>$data,
+            // 'musim_panen'=>$musim_panen,
             'tanaman'=>$tanaman,
             'kondisi'=>$kondisi,
             'petani'=>$petani,
@@ -47,13 +38,7 @@ class PembelianModalController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
         try {
             PembelianModal::create($request->all());
@@ -76,46 +61,22 @@ class PembelianModalController extends Controller
         return redirect(route('pages.admin.perkiraan-pembelian.pembelian-modal.index'))->withToastSuccess('Data tersimpan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PembelianModal  $pembelianModal
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PembelianModal $pembelianModal)
+    public function show(PembelianModalDataTable $dataTable, $id)
     {
-        //
+        $modal['modal'] = PembelianModal::where('musim_panen_id', $id)->get();
+        return $dataTable->render('pages.admin.perkiraan-pembelian.pembelian-modal.index', $modal, compact('id'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PembelianModal  $pembelianModal
-     * @return \Illuminate\Http\Response
-     */
     public function edit(PembelianModal $pembelianModal)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PembelianModal  $pembelianModal
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, PembelianModal $pembelianModal)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PembelianModal  $pembelianModal
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         try {

@@ -17,7 +17,6 @@ class PembelianModal extends Model
         'lahan_id',
         'luas_lahan',
         'jumlah',
-        // 'satuan_id',
         'kondisi_id',
         'harga',
         'total'
@@ -40,11 +39,11 @@ class PembelianModal extends Model
 
     public function lahan()
     {
-        return $this->belongsTo(DataJenisLahan::class,'nama');
+        return $this->belongsTo(DataJenisLahan::class,'lahan_id');
     }
 
     public function petani()
     {
-        return $this->belongsTo(DataPetani::class,'nama');
+        return $this->belongsTo(DataPetani::class,'petani_id');
     }
 }

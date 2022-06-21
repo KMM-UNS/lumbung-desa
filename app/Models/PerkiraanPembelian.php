@@ -15,15 +15,7 @@ class PerkiraanPembelian extends Model
     protected $fillable = [
         'musim_panen',
         'tahun',
-        // 'tanaman_id',
-        // 'petani_id',
-        // 'lahan_id',
-        // 'luas_lahan',
-        // 'jumlah',
-        // 'satuan_id',
-        // 'kondisi_id',
-        // 'harga',
-        // 'total'
+        // 'modal'
     ];
 
     public function musim_panen()
@@ -31,28 +23,8 @@ class PerkiraanPembelian extends Model
         return $this->hasMany(PembelianModal::class);
     }
 
-    // public function tanaman()
-    // {
-    //     return $this->belongsTo(Tanaman::class,'tanaman_id');
-    // }
-
-    // public function kondisi()
-    // {
-    //     return $this->belongsTo(KondisiHasilPanen::class,'kondisi_id');
-    // }
-
-    // public function satuan()
-    // {
-    //     return $this->belongsTo(Satuan::class,'satuan_id');
-    // }
-
-    // public function lahan()
-    // {
-    //     return $this->belongsTo(DataJenisLahan::class,'nama');
-    // }
-
-    // public function petani()
-    // {
-    //     return $this->belongsTo(DataPetani::class,'nama');
-    // }
+    public function modal()
+    {
+        return $this->hasMany(PembelianModal::class);
+    }
 }

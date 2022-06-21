@@ -11,11 +11,13 @@ use App\Models\KondisiHasilPanen;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Alfa6661\AutoNumber\AutoNumberTrait;
 
 class Pembelian extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use AutoNumberTrait;
 
     public const ACTIVE = "aktif";
 
@@ -61,5 +63,15 @@ class Pembelian extends Model
     public function lahan()
     {
         return $this->belongsTo(DataLahan::class,'lahan_id');
+    }
+
+    public function getAutoNumberOptions()
+    {
+        return [
+            'no_pembelian' => [
+                'format' => 'LDB.?', // Format kode yang akan digunakan.
+                'length' => 5 // Jumlah digit yang akan digunakan sebagai nomor urut
+            ]
+        ];
     }
 }

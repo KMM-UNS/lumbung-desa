@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
 
     Route::group(['namespace' => 'User'], function () {
         Route::resource('ketersediaan-produk', 'KetersediaanProdukController');
-
+        Route::resource('riwayat-penjualan', 'RiwayatPenjualanController');
     });
 });
 

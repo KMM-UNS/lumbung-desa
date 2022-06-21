@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DataPetani\TanamanController;
 use App\Http\Controllers\Admin\Pembelian\PembelianController;
+use App\Http\Controllers\admin\pembelian\PembelianModalController;
+use App\Models\PembelianModal;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     require base_path('vendor/laravel/fortify/routes/routes.php');
@@ -33,13 +35,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('pembelian', 'PembelianController');
             Route::get('invoice/{id}', [PembelianController::class, 'invoice'])->name('invoice');
             Route::resource('perkiraan-pembelian', 'PerkiraanPembelianController');
-            Route::resource('perkiraan-pembelian/{id}', 'PembelianModalController');
-            // Route::resource('perkiraan-pembelian/{id}/pembelian-modal', 'PembelianModalController');
-
+            Route::resource('pembelian-modal', 'PembelianModalController');
+            // Route::resource('pembelian-modal/{id}', [PembelianModalController::class, 'create']);
+            // Route::resource('perkiraan-pembelian/{id}', 'PembelianModalController');
+            // Route::get('perkiraan-pembelian/update/{id}', [PembelianModalController::class, 'update']);
         });
 
         Route::resource('penjualan', 'PenjualanController');
         Route::resource('gudang-lumbung', 'GudangLumbungController');
+
+        Route::group(['prefix' => '/riwayat', 'as' => 'riwayat.', 'namespace' => 'Riwayat'], function () {
+            Route::resource('pembelian', 'RiwayatPembelianController');
+        });
 
         Route::resource('kas', 'KasController');
 

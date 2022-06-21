@@ -19,7 +19,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.pembelian.perkiraan-pembelian.update', $data->id) : route('admin.pembelian.perkiraan-pembelian.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.pembelian.pembelian-modal.update', $data->id) : route('admin.pembelian.pembelian-modal.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -37,6 +37,13 @@
     <!-- end panel-heading -->
     <!-- begin panel-body -->
     <div class="panel-body">
+        {{-- <div class="form-group">
+            <div class="row">
+                <div class="col-md-12">
+                <input type="hidden" id="musim_panen_id" name="musim_panen_id" class="form-control" autofocus data-parsley-required="true" value="">
+                </div>
+            </div>
+        </div> --}}
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
@@ -52,7 +59,7 @@
                     <x-form.Dropdown name="tanaman_id" :options="$tanaman" selected="{{{ old('tanaman_id') ?? ($data['tanaman_id'] ?? null) }}}" required />
                 </div>
             </div>
-          </div>
+        </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">

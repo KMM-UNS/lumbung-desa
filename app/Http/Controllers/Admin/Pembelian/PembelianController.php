@@ -18,21 +18,11 @@ use App\Models\GudangLumbung;
 
 class PembelianController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(PembelianDataTable $dataTable)
     {
         return $dataTable->render('pages.admin.pembelian.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $musim=Musim::pluck('nama','id');
@@ -48,24 +38,14 @@ class PembelianController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(PembelianForm $request)
     {
-        // try {
-        //     $request->validate(['tanaman_id'=>'required']);
-        // } catch (\Throwable $th) {
-        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        // }
-
         DB::transaction(function () use ($request) {
             try {
+                // menyimpan semua data pembelian yang diinputkan
                 $pembelian=Pembelian::create($request->all());
                 $pembelian->save();
+                // get data gudang yang diinputkan
                 $gudangLumbung = GudangLumbung::where('nama_tanaman_id', $pembelian->tanaman_id)->where('kondisi_id', $pembelian->kondisi_id)->where('keterangan_id', '1')->first();
                 // dd($gudangLumbung);
                 // percabangan untuk cek apakah data gudang sudah ada atau belum
@@ -87,7 +67,7 @@ class PembelianController extends Controller
                     $gudang->save();
                 }
             } catch (\Throwable $th) {
-                dd($th);
+                // dd($th);
                 DB::rollback();
                 return back()->withInput()->withToastError('Something went wrong');
             }
@@ -96,12 +76,6 @@ class PembelianController extends Controller
         return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pembelian  $pembelian
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $data = Pembelian::findOrFail($id);
@@ -120,12 +94,6 @@ class PembelianController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pembelian  $pembelian
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $data = Pembelian::findOrFail($id);
@@ -142,13 +110,6 @@ class PembelianController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pembelian  $pembelian
-     * @return \Illuminate\Http\Response
-     */
     public function update(PembelianForm $request, $id)
     {
         // try {
@@ -170,12 +131,6 @@ class PembelianController extends Controller
         return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pembelian  $pembelian
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         try {

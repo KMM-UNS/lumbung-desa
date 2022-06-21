@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
+use App\Models\DataPetani;
+use App\Models\Pembelian;
 use Illuminate\Http\Request;
 
-class PembelianModal extends Controller
+class RiwayatPenjualanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,9 @@ class PembelianModal extends Controller
      */
     public function index()
     {
-        //
+        $datapetani = DataPetani::get();
+        $riwayatpenjualan = Pembelian::where('petani_id', $datapetani)->get();
+        return view('pages.user.riwayat-penjualan.index', ['riwayatpenjualan'=>$riwayatpenjualan]);
     }
 
     /**

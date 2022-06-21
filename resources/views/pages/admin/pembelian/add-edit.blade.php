@@ -40,11 +40,11 @@
     <div class="panel-body">
       <div class="form-group">
         <div class="row">
-          <div class="col-md-1 my-auto">
+          {{-- <div class="col-md-1 my-auto">
             <label for="name"><strong>Nomor Pembelian</strong></label>
-          </div>
+          </div> --}}
           <div class="col-md-11">
-            <input type="text" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
+            <input type="hidden" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
           </div>
         </div>
     </div>
