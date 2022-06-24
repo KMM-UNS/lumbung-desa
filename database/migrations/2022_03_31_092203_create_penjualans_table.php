@@ -21,7 +21,7 @@ class CreatePenjualansTable extends Migration
             $table->string('email');
             $table->string('no_hp');
             $table->string('alamat');
-            $table->string('produk');
+            $table->string('produk_id');
             $table->string('kondisi');
             $table->string('keterangan');
             $table->string('harga');

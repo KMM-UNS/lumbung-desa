@@ -20,7 +20,7 @@ class MenampilkanDataPetaniController extends Controller
     {
     //   //  $petani = DataPetani::where('createable_id', auth()->user()->id)->first();
     //    return $dataTable->render('pages.user.menampilkandatapetani.index');//,['petani'=> $petani]);
-    $datapetani = DataPetani::with('user')->get();
+    $datapetani = DataPetani::get();
     return view('pages.user.menampilkandatapetani.show',['datapetani'=>$datapetani]);
     }
 

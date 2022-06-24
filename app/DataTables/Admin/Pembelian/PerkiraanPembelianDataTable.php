@@ -2,7 +2,6 @@
 
 namespace App\DataTables\Admin\Pembelian;
 
-use App\Models\Musim;
 use App\Models\PerkiraanPembelian;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -29,7 +28,7 @@ class PerkiraanPembelianDataTable extends DataTable
                 $btn = '<div class="btn-group">';
                 $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-modal.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
                 return $btn;
             });
     }
@@ -42,7 +41,7 @@ class PerkiraanPembelianDataTable extends DataTable
      */
     public function query(PerkiraanPembelian $model)
     {
-        return $model->select('perkiraan_pembelian.*')->with(['musim','tanaman','kondisi','satuan']);
+        return $model->newQuery();
     }
 
     /**
@@ -80,10 +79,12 @@ class PerkiraanPembelianDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('musim_id')->data('musim.nama')->title('Musim'),
-            Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
-            Column::make('petani_id')->title('Petani'),
-            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
+            Column::make('musim_panen'),
+            Column::make('tahun'),
+            // Column::make('modal')
+            // Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
+            // Column::make('petani_id')->title('Petani'),
+            // Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
         ];
     }
 

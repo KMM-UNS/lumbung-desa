@@ -42,7 +42,7 @@ class TanamanDataTable extends DataTable
      */
     public function query(Tanaman $model)
     {
-        return $model->select('tanamen.*')->with(['jenistanaman']);
+        return $model->select('tanamen.*')->with(['jenistanaman','pupuk','musimtanam']);
     }
 
     /**
@@ -80,13 +80,12 @@ class TanamanDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('jenis_tanaman_id')->data('jenistanaman.nama'), //jenistanaman nama fungsi relasi
+            Column::make('jenis_tanaman_id')->data('jenistanaman.nama')->title('Jenis Tanaman'), //jenistanaman nama fungsi relasi
             Column::make('nama'),
-            // Column::make('pupuk'),//->data('pupuk.nama'),
-            Column::make('masa_tanam'),
+            Column::make('musim_tanam_id')->data('musimtanam.nama')->title('Musim Tanam'),
+            Column::make('waktu_tanam'),
+            Column::make('jenis_pupuk_id')->data('pupuk.nama')->title('Jenis Pupuk'),
             Column::make('keterangan'),
-            Column::make('status'),
         ];
     }
 

@@ -76,17 +76,17 @@ class DataPetaniDataTable extends DataTable
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
+                //->width(60)
                 ->addClass('text-center'),
-            Column::make('id'),
+           // Column::make('id'),
             Column::make('no_kk'),
             Column::make('nik'),
             Column::make('nama'),
-            Column::make('tempat_lahir'),
+            //Column::make('tempat_lahir'),
             Column::make('tanggal_lahir'),
             Column::make('jenis_kelamin'),
-            Column::make('alamat'),
-            Column::make('foto'),
+            //Column::make('alamat'),
+            //Column::make('foto'),
 
         ];
     }

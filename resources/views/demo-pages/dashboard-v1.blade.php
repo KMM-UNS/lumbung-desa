@@ -18,7 +18,7 @@
 	<!-- begin page-header -->
 	<h1 class="page-header">Dashboard <small>header small text goes here...</small></h1>
 	<!-- end page-header -->
-	
+
 	<!-- begin row -->
 	<div class="row">
 		<!-- begin col-3 -->
@@ -27,7 +27,7 @@
 				<div class="stats-icon"><i class="fa fa-desktop"></i></div>
 				<div class="stats-info">
 					<h4>TOTAL VISITORS</h4>
-					<p>3,291,922</p>	
+					<p>3,291,922</p>
 				</div>
 				<div class="stats-link">
 					<a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -41,7 +41,7 @@
 				<div class="stats-icon"><i class="fa fa-link"></i></div>
 				<div class="stats-info">
 					<h4>BOUNCE RATE</h4>
-					<p>20.44%</p>	
+					<p>20.44%</p>
 				</div>
 				<div class="stats-link">
 					<a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -55,7 +55,7 @@
 				<div class="stats-icon"><i class="fa fa-users"></i></div>
 				<div class="stats-info">
 					<h4>UNIQUE VISITORS</h4>
-					<p>1,291,922</p>	
+					<p>1,291,922</p>
 				</div>
 				<div class="stats-link">
 					<a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -69,7 +69,7 @@
 				<div class="stats-icon"><i class="fa fa-clock"></i></div>
 				<div class="stats-info">
 					<h4>AVG TIME ON SITE</h4>
-					<p>00:12:23</p>	
+					<p>00:12:23</p>
 				</div>
 				<div class="stats-link">
 					<a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
@@ -99,7 +99,7 @@
 				</div>
 			</div>
 			<!-- end panel -->
-			
+
 			<!-- begin tabs -->
 			<ul class="nav nav-tabs nav-tabs-inverse nav-justified nav-justified-mobile" data-sortable-id="index-2">
 				<li class="nav-item"><a href="#latest-post" data-toggle="tab" class="nav-link active"><i class="fa fa-camera fa-lg m-r-5"></i> <span class="d-none d-md-inline">Latest Post</span></a></li>
@@ -287,7 +287,7 @@
 				</div>
 			</div>
 			<!-- end tabs -->
-			
+
 			<!-- begin panel -->
 			<div class="panel panel-inverse" data-sortable-id="index-4">
 				<div class="panel-heading">
@@ -319,7 +319,7 @@
 				</div>
 			</div>
 			<!-- end panel -->
-								
+
 			<!-- begin panel -->
 			<div class="panel panel-inverse" data-sortable-id="index-5">
 				<div class="panel-heading">
@@ -403,7 +403,7 @@
 				<div class="table-responsive">
 					<table class="table table-valign-middle table-panel mb-0">
 						<thead>
-							<tr>	
+							<tr>
 								<th>Source</th>
 								<th>Total</th>
 								<th>Trend</th>
@@ -445,7 +445,7 @@
 				</div>
 			</div>
 			<!-- end panel -->
-			
+
 			<!-- begin panel -->
 			<div class="panel panel-inverse" data-sortable-id="index-7">
 				<div class="panel-heading">
@@ -462,7 +462,7 @@
 				</div>
 			</div>
 			<!-- end panel -->
-			
+
 			<!-- begin panel -->
 			<div class="panel panel-inverse" data-sortable-id="index-8">
 				<div class="panel-heading">
@@ -522,7 +522,7 @@
 				</div>
 			</div>
 			<!-- end panel -->
-			
+
 			<!-- begin panel -->
 			<div class="panel panel-inverse bg-dark" data-sortable-id="index-9">
 				<div class="panel-heading">
@@ -539,7 +539,7 @@
 				</div>
 			</div>
 			<!-- end panel -->
-			
+
 			<!-- begin panel -->
 			<div class="panel panel-inverse" data-sortable-id="index-10">
 				<div class="panel-heading">

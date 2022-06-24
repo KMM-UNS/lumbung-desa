@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Alfa6661\AutoNumber\AutoNumberTrait;
 use App\DataTables\Admin\PenjualanDataTable;
+use App\Models\GudangLumbung;
 
 class Penjualan extends Model
 {
@@ -18,7 +19,8 @@ class Penjualan extends Model
     protected $table = 'penjualans';
     protected $fillable =
     [
-        'id','no_penjualan','tgl_penjualan','nama','email','no_hp','alamat','produk','kondisi','keterangan','harga','stok','jumlah','total'
+     'id','no_penjualan','tgl_penjualan','nama','email','no_hp','alamat','produk_id',
+     'kondisi','keterangan','harga','stok','jumlah','total'
     ];
     public $timestamps = false;
 
@@ -26,6 +28,7 @@ class Penjualan extends Model
     // {
     //     return $this->belongsTo(KondisiHasilPanen::class,'kondisi');
     // }
+
 
     public function getAutoNumberOptions()
     {
@@ -46,5 +49,18 @@ class Penjualan extends Model
     // ['harga']
     // ['jumlah']
     //  ['total]']
+    public function produk()
+    {
+        return $this->belongsTo(GudangLumbung::class,'produk_id'); //'produk' itu nama kolom yang mengambil data tanaman
+    }
 
+    public function kondisi()
+    {
+        return $this->belongsTo(GudangLumbung::class,'kondisi');
+    }
+
+    public function keterangan()
+    {
+        return $this->belongsTo(GudangLumbung::class,'keterangan');
+    }
 }

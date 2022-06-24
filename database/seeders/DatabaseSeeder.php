@@ -2,21 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Models\DaftarProduk;
 use Illuminate\Database\Seeder;
 use Database\Seeders\MusimSeeder;
 use Database\Seeders\SatuanSeeder;
 use Database\Factories\UserFactory;
 use Database\Seeders\SettingSeeder;
 use Database\Seeders\IndoRegionSeeder;
-use Database\Seeders\PendidikanSeeder;
-use Database\Seeders\StatusKawinSeeder;
-use Database\Seeders\KeperluanSkckSeeder;
-use Database\Seeders\StatusKeluargaSeeder;
-use Database\Seeders\ObjekPengawalanSeeder;
 use Database\Seeders\JenisLahanSeeder;
 use Database\Seeders\JenisTanamanSeeder;
 use Database\Seeders\KondisiHasilPanenSeeder;
 use Database\Seeders\KategoriKasSeeder;
+use Database\Seeders\KeteranganGudang;
+use Database\Seeders\DaftarProdukSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,11 +26,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            IndoRegionSeeder::class,
-            AgamaSeeder::class,
-            PekerjaanSeeder::class,
-            PendidikanSeeder::class,
-            StatusKawinSeeder::class,
+            // IndoRegionSeeder::class,
             SettingSeeder::class,
             JenisLahanSeeder::class,
             KondisiHasilPanenSeeder::class,
@@ -41,6 +35,8 @@ class DatabaseSeeder extends Seeder
             MusimSeeder::class,
             SatuanSeeder::class,
             KategoriKasSeeder::class,
+            KeteranganGudangSeeder::class,
+            DaftarProdukSeeder::class,
         ]);
     }
 }

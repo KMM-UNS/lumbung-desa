@@ -19,7 +19,9 @@ class DataLahanController extends Controller
     {
         $namapetani=DataPetani::pluck('nama','id');
         $jenislahan=DataJenisLahan::pluck('nama', 'id');
-        return view('pages.admin.data-petani.datalahan.add-edit',['namapetani' => $namapetani, 'jenislahan' => $jenislahan]);
+        return view('pages.admin.data-petani.datalahan.add-edit',[
+            'namapetani' => $namapetani,
+            'jenislahan' => $jenislahan]);
     }
 
     public function store(Request $request)
@@ -47,7 +49,8 @@ class DataLahanController extends Controller
         $data = DataLahan::findOrFail($id);
         $namapetani=DataPetani::pluck('nama','id');
         $jenislahan=DataJenisLahan::pluck('nama','id');
-        return view('pages.admin.data-petani.datalahan.add-edit', ['data' => $data, 'namapetani' => $namapetani, 'jenislahan' => $jenislahan]);
+        return view('pages.admin.data-petani.datalahan.add-edit', [
+            'data' => $data, 'namapetani' => $namapetani, 'jenislahan' => $jenislahan]);
     }
 
     public function update(Request $request, $id)

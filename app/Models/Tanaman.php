@@ -2,32 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Musim;
+use App\Models\DataPupuk;
+use App\Models\Pembelian;
 use Illuminate\Support\Str;
 use App\Models\JenisTanaman;
+use App\Models\PembelianModal;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tanaman extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     public const ACTIVE = "aktif";
 
     protected $table = 'tanamen';
-    protected $fillable = ['jenis_tanaman_id','nama','masa_tanam','keterangan'];
+    protected $fillable = ['jenis_tanaman_id','nama','musim_tanam_id','waktu_tanam','jenis_pupuk_id','keterangan'];
     public $timestamps = false;
-
-    // public function setNamaAttribute($value)
-    // {
-    //     return $this->attributes['nama'] = Str::ucfirst($value);
-    // }
-
-    // public function scopeActive($query)
-    // {
-    //     return $query->where('status', static::ACTIVE);
-    // }
 
     public function jenistanaman()
     {
@@ -36,6 +28,21 @@ class Tanaman extends Model
 
     public function pupuk()
     {
-        return $this->belongsTo(DataPupuk::class,'pupuk');
+        return $this->belongsTo(DataPupuk::class,'jenis_pupuk_id');
+    }
+
+    public function musimtanam()
+    {
+        return $this->belongsTo(Musim::class,'musim_tanam_id');
+    }
+
+    public function pembeliantanaman()
+    {
+        return $this->hasMany(Pembelian::class);
+    }
+
+    public function perkiraanpembeliantanaman()
+    {
+        return $this->hasMany(PembelianModal::class);
     }
 }

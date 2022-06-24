@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatusKawinTable extends Migration
+class CreateKeteranganGudangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateStatusKawinTable extends Migration
      */
     public function up()
     {
-        Schema::create('status_kawin', function (Blueprint $table) {
+        Schema::create('keterangan_gudang', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->enum('status', ['aktif', 'non-aktif'])->default('aktif');
+            $table->timestamps();
+            // $table->softDeletes();
         });
     }
 
@@ -27,6 +28,6 @@ class CreateStatusKawinTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status_kawin');
+        Schema::dropIfExists('keterangan_gudang');
     }
 }

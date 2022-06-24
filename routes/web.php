@@ -17,6 +17,8 @@ Route::get('/token', function () {
     return csrf_token();
 });
 
+// Route::view('/', 'pages.user.landingpage')->name('landingpage');
+
 Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
     Route::view('/', 'home')->name('home');
 
@@ -28,7 +30,16 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
 
 
 
-});
+        Route::resource('ketersediaan-produk', 'KetersediaanProdukController');
+        Route::resource('riwayat-penjualan', 'RiwayatPenjualanController');
+    });
+// });
 
+// Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+//     Route::group(['namespace' => 'User', 'middleware' => 'auth:web'], function () {
+//         Route::view('/', 'home')->name('home');
+//             Route::resource('ketersediaan-produk', 'KetersediaanProdukController');
 
+//     });
+// });
 require __DIR__ . '/demo.php';

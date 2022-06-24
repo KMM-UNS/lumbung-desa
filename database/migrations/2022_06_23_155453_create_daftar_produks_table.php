@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePendidikanTable extends Migration
+class CreateDaftarProduksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreatePendidikanTable extends Migration
      */
     public function up()
     {
-        Schema::create('pendidikan', function (Blueprint $table) {
+        Schema::create('daftar_produks', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->enum('status', ['aktif', 'non-aktif'])->default('aktif');
+            $table->string('kondisi');
+            $table->string('keterangan');
+            $table->string('harga_beli');
+            $table->string('harga_jual');
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +31,6 @@ class CreatePendidikanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pendidikan');
+        Schema::dropIfExists('daftar_produks');
     }
 }

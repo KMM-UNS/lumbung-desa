@@ -40,11 +40,11 @@
     <div class="panel-body">
       <div class="form-group">
         <div class="row">
-          <div class="col-md-1 my-auto">
+          {{-- <div class="col-md-1 my-auto">
             <label for="name"><strong>Nomor Pembelian</strong></label>
-          </div>
+          </div> --}}
           <div class="col-md-11">
-            <input type="text" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
+            <input type="hidden" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
           </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
               <label for="name"><strong>Nama Petani Penjual</strong></label>
             </div>
             <div class="col-md-5">
-              <input type="text" id="petani_id" name="petani_id" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->petani_id ?? old('petani_id') }}}">
+                <x-form.Dropdown name="petani_id" :options="$petani" selected="{{{ old('petani_id') ?? ($data['petani_id'] ?? null) }}}" required />
             </div>
         </div>
       </div>
@@ -85,12 +85,12 @@
           <div class="col-md-1 my-auto">
             <label for="name"><strong>Jumlah Pembelian</strong></label>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-5">
             <input type="number" id="jumlah" onkeyup="sum();" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
           </div>
-          <div class="col-md-1">
+          {{-- <div class="col-md-1">
             <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
-          </div>
+          </div> --}}
           <div class="col-md-1 my-auto">
             <label for="name"><strong>Kondisi</strong></label>
           </div>

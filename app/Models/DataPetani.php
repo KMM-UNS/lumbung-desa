@@ -19,13 +19,33 @@ class DataPetani extends Model
     protected $table = 'data_petanis';
     protected $fillable =
     [
-    'no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat','foto'
+    'no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat'
     ];
     public $timestamps = false;
 
     public function lahan()
     {
         return $this->hasMany(DataLahan::class);
+    }
+
+    public function pembelian()
+    {
+        return $this->hasMany(Pembelian::class);
+    }
+
+    public function perkiraanpembelian()
+    {
+        return $this->hasMany(Pembelian::class);
+    }
+
+    public function petani()
+    {
+        return $this->hasMany(Pembelian::class);
+    }
+
+    public function petaniperkiraan()
+    {
+        return $this->hasMany(PerkiraanPembelian::class);
     }
 
     // public function creatable()

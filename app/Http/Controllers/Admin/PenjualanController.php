@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DataTables\Admin\PenjualanDataTable;
+use App\Models\Tanaman;
+use App\Models\DataPetani;
 use App\Http\Controllers\Controller;
 use App\Models\KondisiHasilPanen;
 use App\Models\Penjualan;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
-
-
+use Illuminate\Support\Facades\DB;
+use App\Models\GudangLumbung;
+use App\Models\KeteranganGudang;
 
 class PenjualanController extends Controller
 {
@@ -19,6 +22,16 @@ class PenjualanController extends Controller
     }
     public function create()
     {
+        $produk = GudangLumbung::pluck('nama_tanaman_id','id');
+        $kondisi=GudangLumbung::pluck('kondisi_id','id');
+        $keterangan=GudangLumbung::pluck('keterangan_id','id');
+        $petani=DataPetani::pluck('nama','id');
+        return view('pages.admin.penjualan.add-edit', [
+            'produk'=>$produk,
+            'kondisi'=>$kondisi,
+            'keterangan'=>$keterangan,
+            'petani' => $petani
+        ]);
         // $no_penjualan = Penjualan::create([
         //     'tgl_penjualan' => '',
         // 'nama' => '',
@@ -49,12 +62,6 @@ class PenjualanController extends Controller
 
         return view('pages.admin.penjualan.add-edit');
     }
-    public function show($id)
-    {
-        $data = Penjualan::findOrFail($id);
-        return view('pages.admin.penjualan.show', ['data' => $data]);
-    }
-
 
     public function store(Request $request)
     {
@@ -66,21 +73,76 @@ class PenjualanController extends Controller
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
         }
 
-        try {
-            Penjualan::create($request->all());
-        } catch (\Throwable $th) {
-            dd($th);
-            return back()->withInput()->withToastError('Something went wrong');
-        }
+        DB::transaction(function () use ($request) {
+            try {
 
-        return redirect(route('admin.penjualan.index'))->withToastSuccess('Data tersimpan');
-    }
+                $penjualan=Penjualan::create($request->all());
+                $penjualan->save();
+                // get data gudang yang diinputkan
+                $gudangLumbung = GudangLumbung::where('nama_tanaman_id',
+                $penjualan->produk)->where('kondisi_id', $penjualan->kondisi)->
+                where('keterangan_id', $penjualan->keterangan)->first();
+                // dd($gudangLumbung);
+                // if($request->jumlah >= $gudangLumbung->stok){
+                    //     return back()->withInput()->withToastError('Jumlah stok melebihi batas');
+                    // }
 
-    public function edit($id)
-    {
-        $data = Penjualan::findOrFail($id);
+                    // percabangan untuk cek apakah data gudang sudah ada atau belum
+                    if(isset($gudangLumbung)){
+
+                        // jika sudah maka update stok
+                        $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
+                        // dd($pembelian);
+                        $gudangLumbung->save();
+                    }
+                    else {
+                        //jika belum maka create data baru
+
+                        $gudang = GudangLumbung::create([
+                            'nama_tanaman_id' => $penjualan->produk,
+                            'stok'=>$penjualan->jumlah,
+                            'kondisi_id' => $penjualan->kondisi,
+                            'keterangan_id' => $penjualan->keterangan,
+                        ]);
+                        $gudang->save();
+
+                    }
+                } catch (\Throwable $th) {
+                    dd($th);
+                    DB::rollback();
+                    return back()->withInput()->withToastError('Something went wrong');
+                }
+            });
+
+            //     }
+
+            // } catch (\Throwable $th) {
+                //     dd($th);
+                //     return back()->withInput()->withToastError('Something went wrong');
+                // }
+
+                return redirect(route('admin.penjualan.index'))->withToastSuccess('Data tersimpan');
+            }
+
+            public function show($id)
+            {
+                $data = Penjualan::findOrFail($id);
+                return view('pages.admin.penjualan.show', ['data' => $data]);
+            }
+
+            public function edit($id)
+            {
+                $data = Penjualan::findOrFail($id);
+                $produk=GudangLumbung::pluck('nama_tanaman_id','id');
+                $kondisi=GudangLumbung::pluck('kondisi_id','id');
+        $keterangan=GudangLumbung::pluck('keterangan_id','id');
         // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
-        return view('pages.admin.penjualan.add-edit', ['data' => $data]);
+        return view('pages.admin.penjualan.add-edit', [
+            'data' => $data,
+            'produk'=>$produk,
+            'kondisi'=>$kondisi,
+            'keterangan'=>$keterangan
+        ]);
     }
 
     public function update(Request $request, $id)

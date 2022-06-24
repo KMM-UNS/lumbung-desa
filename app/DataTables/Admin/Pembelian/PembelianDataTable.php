@@ -26,8 +26,10 @@ class PembelianDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.master-data.pembelian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.master-data.pembelian.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.pembelian.invoice', $row->id) . '" class="btn btn-warning buttons-invoice"><i class="fas fa-download fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -42,7 +44,12 @@ class PembelianDataTable extends DataTable
      */
     public function query(Pembelian $model)
     {
-        return $model->newQuery();
+        return $model->select('pembelian.*')->with([
+            'musim',
+            'tanaman',
+            'kondisi',
+            'petani'
+        ]);
     }
 
     /**
@@ -80,14 +87,11 @@ class PembelianDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('musim_id'),
-            Column::make('tanaman_id'),
-            Column::make('no_pembelian'),
             Column::make('tanggal_pembelian'),
-            Column::make('jumlah'),
-            Column::make('kondisi_id'),
-            Column::make('harga'),
+            Column::make('no_pembelian'),
+            Column::make('petani_id')->data('petani.nama')->title('Nama Petani Penjual'),
+            Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
+            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
         ];
     }
 

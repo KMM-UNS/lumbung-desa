@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\DataPetani;
 
 use App\DataTables\Admin\DataPetani\DataPetaniDataTable;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\DataPetaniForm;
 use App\Models\DataPetani;
 
 use Illuminate\Http\Request;
@@ -35,6 +35,7 @@ class DataPetaniController extends Controller
         return view('pages.admin.data-petani.petani.add-edit');
     }
 
+    // public function store(DataPetani $request)
     public function store(Request $request)
     {
 
@@ -42,7 +43,7 @@ class DataPetaniController extends Controller
             // 'unique' => ':data sudah ada',
             // 'filename' => 'image|file|max:1024',
             'no_kk' => 'unique:data_petanis,no_kk',
-            'nik' => 'unique:connection.data_petanis,nik',
+            'nik' => 'unique:data_petanis,nik',
         ]);
         //return $request->file('filename')->store('public/post-images');
         // try {
@@ -85,7 +86,8 @@ class DataPetaniController extends Controller
         return view('pages.admin.data-petani.petani.add-edit', ['data' => $data]);
     }
 
-    public function update(Request $request, $id)
+    public function update(DataPetaniForm $request, $id)
+    // public function update(Request $request, $id)
     {
         try {
             $request->validate([

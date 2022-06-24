@@ -70,8 +70,8 @@ enctype="multipart/form-data" data-parsley-validate="true">
               </div>
         <label for="name">Alamat</label>
         <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
-       <label for="name">Foto</label>
-        <input type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}">
+       {{-- <label for="name">Foto</label>
+        <input type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}"> --}}
 
        {{-- <label for="image">Foto</label>
         <input type="file" id='foto' name="foto" class="form-control" @error('foto') is-invalid @enderror>

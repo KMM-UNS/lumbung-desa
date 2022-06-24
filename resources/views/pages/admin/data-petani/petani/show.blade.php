@@ -70,12 +70,12 @@ enctype="multipart/form-data" data-parsley-validate="true">
         <label for="name">Alamat</label>
         <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
 
-        <label for="name">Foto</label>
+        {{-- <label for="name">Foto</label> --}}
         {{-- <img src="{{ asset->(auth()->user()->foto)}}" > --}}
  {{-- <img src="{{asset('storage/' . $data)}}" > --}}
  {{-- alt="{{$data->category}}"
  class="img-fluid mt-3" --}}
-        <input disabled type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}">
+        {{-- <input disabled type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}"> --}}
 
        {{-- <label for="filename">Foto</label> --}}
         {{-- <input type="file" id='filename' name="filename" class="form-control" autofocus data-parsley-required="true" --}}

@@ -40,7 +40,11 @@ class PenjualanDataTable extends DataTable
      */
     public function query(Penjualan $model)
     {
-        return $model->newQuery();
+        return $model->select('penjualans.*')->with([
+            'produk',
+            'kondisi',
+            'keterangan'
+        ]);
     }
 
     /**
@@ -80,18 +84,18 @@ class PenjualanDataTable extends DataTable
                   ->addClass('text-center'),
             Column::make('id'),
             Column::make('no_penjualan'),
-            Column::make('tgl_penjualan'),
+           // Column::make('tgl_penjualan'),
             Column::make('nama'),
-            Column::make('email'),
-            Column::make('no_hp'),
-            Column::make('alamat'),
-            Column::make('produk'),
-            Column::make('kondisi'),
-            Column::make('keterangan'),
-            Column::make('harga'),
+           // Column::make('email'),
+            //Column::make('no_hp'),
+          //  Column::make('alamat'),
+            Column::make('produk_id')->data('produk.nama_tanaman_id'), //produk itu nama fungsi di model, nama_tanaman_id itu data yang diambil
+            Column::make('kondisi')->data('kondisi.kondisi_id'),
+            Column::make('keterangan')->data('keterangan.keterangan_id'),
+           // Column::make('harga'),
             Column::make('jumlah'),
             //Column::make('kondisi')->data('kondisihasilpanen.kondisi'),
-            Column::make('total'),
+           // Column::make('total'),
         ];
     }
 

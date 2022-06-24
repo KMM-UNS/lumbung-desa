@@ -42,7 +42,8 @@ class GudangLumbungDataTable extends DataTable
      */
     public function query(GudangLumbung $model)
     {
-        return $model->select('gudang_lumbung.*')->with(['tanaman','satuan','kondisi']);
+        return $model->select('gudang_lumbung.*')->with(['tanaman','kondisi','keterangangudang']);
+
     }
 
     /**
@@ -61,9 +62,9 @@ class GudangLumbungDataTable extends DataTable
                     ->buttons(
                         Button::make('create'),
                         Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
+                        // Button::make('print'),
+                        // Button::make('reset'),
+                        // Button::make('reload')
                     );
     }
 
@@ -80,11 +81,11 @@ class GudangLumbungDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            // Column::make('jenis_tanaman_id')->data('jenistanaman.nama')->title('Jenis Tanaman')->width(120),
             Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Nama'),
-            Column::make('stok'),
-            Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
+            Column::make('stok')->title('Stok (/kg)'),
+            // Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
             Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
+            Column::make('keterangan_id')->data('keterangangudang.nama')->title('Keterangan'),
         ];
     }
 

@@ -25,15 +25,15 @@ return [
             'url' => '/admin/user',
             'caret' => false,
         ],
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Admin',
+        //     'url' => '/admin/admin',
+        //     'caret' => false,
+        // ],
         [
-            'icon' => 'fa fa-users',
-            'title' => 'Admin',
-            'url' => '/admin/admin',
-            'caret' => false,
-        ],
-        [
-            'icon' => 'fa fa-users',
-            'title' => 'Data Petani',
+            'icon' => 'fa fa-cogs',
+            'title' => 'Pendataan',
             'url' => 'javascript:;',
             'caret' => true,
             'sub_menu' => [
@@ -43,21 +43,12 @@ return [
                 ], [
                     'url' => '/admin/data-petani/tanaman',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
+                ],[
+                    'url' => '/admin/data-petani/daftarproduk',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Daftar Produk'
                 ], [
                     'url' => '/admin/data-petani/datalahan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Lahan'
-                ]
-            ]
-        ],
-        [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Pembelian',
-            'url' => 'javascript:;',
-            'caret' => true,
-            'sub_menu' => [
-                [
-                    'url' => '/admin/pembelian/pembelian',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pembelian'
                 ]
             ]
         ],
@@ -69,8 +60,48 @@ return [
         ],
         [
             'icon' => 'fa fa-cogs',
+            'title' => 'Pembelian',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/pembelian/pembelian',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pembelian'
+                ],[
+                    'url' => '/admin/pembelian/perkiraan-pembelian',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perkiraan Pembelian'
+                ],
+                // [
+                //     'url' => '/admin/pembelian/perbandingan-pembelian',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perbandingan Pembelian'
+                // ]
+            ]
+        ],
+        [
+            'icon' => 'fa fa-users',
             'title' => 'Penjualan',
             'url' => '/admin/penjualan',
+            'caret' => false,
+        ],
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Riwayat Transaksi',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/riwayat/pembelian',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Pembelian'
+                ],[
+                    'url' => '/admin/riwayat/penjualan',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Penjualan'
+                ]
+            ]
+        ],
+        [
+            'icon' => 'fa fa-users',
+            'title' => 'Kas',
+            'url' => '/admin/kas',
             'caret' => false,
         ],
         [
@@ -94,24 +125,35 @@ return [
                 ], [
                     'url' => '/admin/master-data/kondisi-hasil-panen',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kondisi Hasil Panen'
+                ],
+                // [
+                //     'url' => '/admin/master-data/satuan',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Satuan'
+                // ],
+                [
+                    'url' => '/admin/master-data/kategori-kas',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kategori Kas'
+                ], [
+                    'url' => '/admin/master-data/keterangan-gudang',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Keterangan Gudang'
                 ]
             ]
         ],
-            [
-                'icon' => 'fa fa-cogs',
-                'title' => 'Riwayat',
-                'url' => 'javascript:;',
-                'caret' => true,
-                'sub_menu' => [
-                    [
-                        'url' => '/admin/riwayat/riwayatpembelian',
-                        'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Pembelian'
-                    ],[
-                        'url' => '/admin/riwayat/riwayatpenjualan',
-                        'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Penjualan'
-                    ]
-                ]
-            ]
+            // [
+            //     'icon' => 'fa fa-cogs',
+            //     'title' => 'Riwayat',
+            //     'url' => 'javascript:;',
+            //     'caret' => true,
+            //     'sub_menu' => [
+            //         [
+            //             'url' => '/admin/riwayat/riwayatpembelian',
+            //             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Pembelian'
+            //         ],[
+            //             'url' => '/admin/riwayat/riwayatpenjualan',
+            //             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Penjualan'
+            //         ]
+            //     ]
+            // ]
 
         ]
     ,
@@ -122,7 +164,20 @@ return [
             'title' => 'Dashboard',
             'url' => '/',
             'caret' => false
-        ], [
+        ],
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Ketersediaan Produk',
+            'url' => '/ketersediaan-produk',
+            'caret' => false
+        ],
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Riwayat Penjualan',
+            'url' => '/riwayat-penjualan',
+            'caret' => false
+        ],
+        [
             'icon' => 'fa fa-cogs',
             'title' => 'Data Diri Petani',
             'url' => 'menampilkandatapetani',
@@ -132,7 +187,8 @@ return [
             'title' => 'Ganti Password',
             'url' => '#',
             'caret' => false
-        ], [
+        ],
+        [
             'icon' => 'fa fa-sign-out-alt',
             'title' => 'Logout',
             'url' => '#',

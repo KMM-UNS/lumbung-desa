@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DataPetani\TanamanController;
+use App\Http\Controllers\Admin\DataPetani\DaftarProdukController;
 use App\Http\Controllers\Admin\Pembelian\PembelianController;
 use App\Http\Controllers\Admin\PenjualanController;
+use App\Http\Controllers\admin\pembelian\PembelianModalController;
+use App\Models\PembelianModal;
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     require base_path('vendor/laravel/fortify/routes/routes.php');
@@ -19,14 +23,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('/admin', 'AdminController');
         Route::resource('/user', 'UserController');
-      //  Route::resource('datapetani', 'DataPetaniController');
         Route::resource('penjualan', 'PenjualanController');
 
         Route::group(['prefix' => '/data-petani', 'as' => 'data-petani.', 'namespace' => 'DataPetani'], function () {
             Route::resource('petani', 'DataPetaniController');
-        //    Route::get('/storage', 'DataPetaniController@index');
-        //    Route::post('/images','DataPetaniController@upload');
              Route::resource('tanaman', 'TanamanController');
+             Route::resource('daftarproduk', 'DaftarProdukController');
              Route::resource('datalahan', 'DataLahanController');
         });
 
@@ -35,14 +37,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('invoice/{id}', [PembelianController::class, 'invoice'])->name('invoice');
 
             Route::resource('perkiraan-pembelian', 'PerkiraanPembelianController');
+            Route::resource('pembelian-modal', 'PembelianModalController');
+            // Route::resource('pembelian-modal/{id}', [PembelianModalController::class, 'create']);
+            // Route::resource('perkiraan-pembelian/{id}', 'PembelianModalController');
+            // Route::get('perkiraan-pembelian/update/{id}', [PembelianModalController::class, 'update']);
         });
 
-
-        //Route::resource('datapetani', 'DataPetaniController');
 
         Route::resource('penjualan', 'PenjualanController');
         Route::get('invoice/{id}', [PenjualanController::class, 'invoice'])->name('invoice');
         Route::resource('gudang-lumbung', 'GudangLumbungController');
+
+        Route::group(['prefix' => '/riwayat', 'as' => 'riwayat.', 'namespace' => 'Riwayat'], function () {
+            Route::resource('pembelian', 'RiwayatPembelianController');
+            Route::resource('penjualan', 'RiwayatPenjualanController');
+        });
 
         Route::resource('kas', 'KasController');
 
@@ -54,10 +63,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('jenistanaman', 'JenisTanamanController');
             Route::resource('musim', 'MusimController');
             Route::resource('kondisi-hasil-panen', 'KondisiHasilPanenController');
-
             Route::resource('satuan', 'SatuanController');
             Route::resource('kategori-kas', 'KategoriKasController');
-            // vvvvhfukgut
+            Route::resource('keterangan-gudang', 'KeteranganGudangController');
         });
     });
 });

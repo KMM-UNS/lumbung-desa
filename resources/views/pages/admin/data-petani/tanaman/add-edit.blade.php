@@ -10,12 +10,12 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Pendataan</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Master Data<small> @yield('title')</small></h1>
+<h1 class="page-header">Pendataan<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 
@@ -41,7 +41,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                    <label for="name">Jenis Tanaman Id</label>
+                    <label for="name">Jenis Tanaman</label>
                 </div>
                 <div class="col-md-5">
                     <x-form.Dropdown name="jenis_tanaman_id" :options="$jenistanaman" selected="{{{ old('jenis_tanaman_id') ?? ($data['jenis_tanaman_id'] ?? null) }}}" required />
@@ -82,7 +82,7 @@
                     <label for="name">Keterangan</label>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" id="keterangan" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('keterangan') }}}">
+                    <input type="text" id="keterangan" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keterangan ?? old('waktu_tanam') }}}">
                 </div>
             </div>
         </div>

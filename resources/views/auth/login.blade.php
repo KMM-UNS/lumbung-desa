@@ -1,6 +1,6 @@
 @extends('layouts.empty', ['paceTop' => true, 'bodyExtraClass' => 'bg-white'])
 
-@section('title', 'SPMB')
+@section('title', 'Login')
 
 @section('content')
 <!-- begin login -->
@@ -9,7 +9,7 @@
 	<div class="news-feed">
 		<div class="news-image" style="background-image: url(/assets/img/login-bg/front.png)"></div>
 		<div class="news-caption">
-			<h4 class="caption-title"><b>S</b>ILD</h4>
+			<h4 class="caption-title"><b>SILD</b></h4>
 			<p>
 				Sistem Informasi Lumbung Desa
 			</p>

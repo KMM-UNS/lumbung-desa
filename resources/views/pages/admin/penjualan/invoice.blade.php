@@ -152,7 +152,7 @@
                        <tbody>
                            <tr>
                                <td class="col-md-9">{{ $no_penjualan }}</td>
-                               <td class="col-md-3"><i class="fa fa-inr"></i>{{ $mytime->toDateTimeString();  }}</td>
+                               <td class="col-md-3"><i class="fa fa-inr"></i></td>
                            </tr>
                            {{-- <tr>
                                <td class="text-right">
