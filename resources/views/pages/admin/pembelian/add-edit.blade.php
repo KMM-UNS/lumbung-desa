@@ -73,7 +73,7 @@
             <x-form.Dropdown name="musim_id" :options="$musim" selected="{{{ old('musim_id') ?? ($data['musim_id'] ?? null) }}}" required />
           </div>
           <div class="col-md-1 my-auto">
-            <label for="name"><strong>Tanaman</strong></label>
+            <label for="name"><strong>Produk</strong></label>
           </div>
           <div class="col-md-5">
             <x-form.Dropdown name="tanaman_id" :options="$tanaman" selected="{{{ old('tanaman_id') ?? ($data['tanaman_id'] ?? null) }}}" required />

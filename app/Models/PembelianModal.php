@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Tanaman;
+use App\Models\DataPetani;
+use App\Models\DataJenisLahan;
+use App\Models\KondisiHasilPanen;
+use App\Models\PerkiraanPembelian;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PembelianModal extends Model
 {
@@ -22,10 +27,10 @@ class PembelianModal extends Model
         'total'
     ];
 
-    public function musim_panen()
-    {
-        return $this->belongsTo(PerkiraanPembelian::class,'musim_panen_id');
-    }
+    // public function musim_panen()
+    // {
+    //     return $this->belongsTo(PerkiraanPembelian::class,'musim_panen_id');
+    // }
 
     public function tanaman()
     {
@@ -45,5 +50,10 @@ class PembelianModal extends Model
     public function petani()
     {
         return $this->belongsTo(DataPetani::class,'petani_id');
+    }
+
+    public function musim()
+    {
+        return $this->belongsTo(PerkiraanPembelian::class,'musim_panen_id');
     }
 }

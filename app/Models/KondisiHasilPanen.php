@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Pembelian;
-use App\Models\GudangLumbung;
-use App\Models\PembelianModal;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class KondisiHasilPanen extends Model
 {
@@ -15,7 +13,7 @@ class KondisiHasilPanen extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'kondisi_hasil_panen';
-    protected $fillable = ['nama'];
+    protected $fillable = ['kondisi'];
     public $timestamps = false;
 
     public function kondisitanamangudang()

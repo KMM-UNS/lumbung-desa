@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\DataLahan;
-use App\Traits\FillableInputTrait;
+// use App\Traits\FillableInputTrait;
 
 class DataPetani extends Model
 {
@@ -19,9 +19,10 @@ class DataPetani extends Model
     protected $table = 'data_petanis';
     protected $fillable =
     [
-        'id','no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat'
+    'no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat','foto'
     ];
     public $timestamps = false;
+
     public function lahan()
     {
         return $this->hasMany(DataLahan::class);
@@ -46,4 +47,9 @@ class DataPetani extends Model
     {
         return $this->hasMany(PerkiraanPembelian::class);
     }
+
+    // public function creatable()
+    // {
+    //     return $this->morphTo();
+    // }
 }

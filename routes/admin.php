@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DataPetani\TanamanController;
 use App\Http\Controllers\Admin\Pembelian\PembelianController;
 use App\Http\Controllers\admin\pembelian\PembelianModalController;
 use App\Models\PembelianModal;
+use App\Http\Controllers\Admin\PenjualanController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     require base_path('vendor/laravel/fortify/routes/routes.php');
@@ -25,8 +26,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => '/data-petani', 'as' => 'data-petani.', 'namespace' => 'DataPetani'], function () {
             Route::resource('petani', 'DataPetaniController');
-           // Route::get('/image', 'DataPetaniController@index');
-           // Route::post('/images','DataPetaniController@upload');
+        //    Route::get('/storage', 'DataPetaniController@index');
+        //    Route::post('/images','DataPetaniController@upload');
              Route::resource('tanaman', 'TanamanController');
              Route::resource('datalahan', 'DataLahanController');
         });
@@ -34,7 +35,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => '/pembelian', 'as' => 'pembelian.', 'namespace' => 'Pembelian'], function () {
             Route::resource('pembelian', 'PembelianController');
             Route::get('invoice/{id}', [PembelianController::class, 'invoice'])->name('invoice');
+            Route::resource('pilih-pembelian', 'PilihPembelianController');
+
             Route::resource('perkiraan-pembelian', 'PerkiraanPembelianController');
+            Route::get('pembelian-modal/simpan/{id}', 'PembelianModalController@simpan')->name('pembelian-modal.simpan');
             Route::resource('pembelian-modal', 'PembelianModalController');
             // Route::resource('pembelian-modal/{id}', [PembelianModalController::class, 'create']);
             // Route::resource('perkiraan-pembelian/{id}', 'PembelianModalController');
@@ -42,6 +46,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         });
 
         Route::resource('penjualan', 'PenjualanController');
+        Route::get('invoice/{id}', [PenjualanController::class, 'invoice'])->name('invoice');
+        Route::resource('pilih-gudang', 'PilihGudangController');
         Route::resource('gudang-lumbung', 'GudangLumbungController');
 
         Route::group(['prefix' => '/riwayat', 'as' => 'riwayat.', 'namespace' => 'Riwayat'], function () {

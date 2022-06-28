@@ -86,7 +86,7 @@ class DataPetaniDataTable extends DataTable
             Column::make('tanggal_lahir'),
             Column::make('jenis_kelamin'),
             Column::make('alamat'),
-            // Column::make('foto'),
+            Column::make('foto'),
 
         ];
     }
@@ -101,5 +101,3 @@ class DataPetaniDataTable extends DataTable
         return 'Admin\DataPetani_' . date('YmdHis');
     }
 }
-
-

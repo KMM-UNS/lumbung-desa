@@ -25,12 +25,12 @@ return [
             'url' => '/admin/user',
             'caret' => false,
         ],
-        // [
-        //     'icon' => 'fa fa-users',
-        //     'title' => 'Admin',
-        //     'url' => '/admin/admin',
-        //     'caret' => false,
-        // ],
+        [
+            'icon' => 'fa fa-users',
+            'title' => 'Admin',
+            'url' => '/admin/admin',
+            'caret' => false,
+        ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Pendataan',
@@ -52,7 +52,7 @@ return [
         [
             'icon' => 'fa fa-warehouse',
             'title' => 'Gudang Lumbung',
-            'url' => '/admin/gudang-lumbung',
+            'url' => '/admin/pilih-gudang',
             'caret' => false,
         ],
         [
@@ -62,16 +62,16 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/pembelian/pembelian',
+                    'url' => '/admin/pembelian/pilih-pembelian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pembelian'
                 ],[
                     'url' => '/admin/pembelian/perkiraan-pembelian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perkiraan Pembelian'
                 ],
-                // [
-                //     'url' => '/admin/pembelian/perbandingan-pembelian',
-                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perbandingan Pembelian'
-                // ]
+                [
+                    'url' => '/admin/pembelian/perbandingan-pembelian',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perbandingan Pembelian'
+                ]
             ]
         ],
         [

@@ -53,7 +53,7 @@ class KondisiHasilPanenDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('kondisihasilpanen-table')
+                    ->setTableId('kondisi_hasil_panen-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -80,7 +80,8 @@ class KondisiHasilPanenDataTable extends DataTable
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('nama'),
+            Column::make('id'),
+            Column::make('kondisi'),
         ];
     }
 

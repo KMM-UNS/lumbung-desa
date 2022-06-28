@@ -139,14 +139,17 @@
                    <table class="table table-bordered">
                        <thead>
                            <tr>
-                               <th>Detail Pembelian</th>
-                               <th>Harga</th>
+                               <th>Nomor Pembelian</th>
+                               <th>Tanggal Pembelian</th>
+                               <th>Jam</th>
+                               <th>Nama Pembeli</th>
+                               <th>Kasir</th>
                            </tr>
                        </thead>
                        <tbody>
                            <tr>
-                               <td class="col-md-9">{{ $produk }}</td>
-                               <td class="col-md-3"><i class="fa fa-inr"></i>{{ $harga }}</td>
+                               <td class="col-md-9">{{ $no_penjualan }}</td>
+                               <td class="col-md-3"><i class="fa fa-inr"></i>{{ $mytime->toDateTimeString();  }}</td>
                            </tr>
                            {{-- <tr>
                                <td class="text-right">

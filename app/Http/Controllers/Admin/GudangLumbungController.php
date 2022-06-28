@@ -117,7 +117,7 @@ class GudangLumbungController extends Controller
      * @param  \App\Models\GudangLumbung  $gudangLumbung
      * @return \Illuminate\Http\Response
      */
-    public function update(GudangLumbungForm $request, $id)
+    public function update(Request $request, $id)
     {
         try {
             $data = GudangLumbung::findOrFail($id);

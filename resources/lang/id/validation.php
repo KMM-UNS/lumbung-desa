@@ -99,6 +99,7 @@ return [
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
     'required' => ':attribute harus diisi.',
+    // 'unique'=> 'The :data sudah ada',
     'required_if' => ':attribute harus diisi ketika :other adalah :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
     'required_with' => ':attribute harus diisi ketika :values diisi.',
@@ -122,6 +123,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+
 
     /*
     |--------------------------------------------------------------------------

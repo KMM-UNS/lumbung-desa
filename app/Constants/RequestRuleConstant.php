@@ -37,7 +37,7 @@ class RequestRuleConstant
     public static function pembelianTable()
     {
         return [
-            'no_pembelian' => 'nullable|integer',
+            'no_pembelian' => 'nullable',
             'jumlah' => 'nullable|integer',
             'harga' => 'nullable|integer',
             'total' => 'nullable|integer'

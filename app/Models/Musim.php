@@ -2,12 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Tanaman;
-use App\Models\Pembelian;
-use App\Models\PerkiraanPembelian;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Musim extends Model
 {
@@ -19,19 +16,4 @@ class Musim extends Model
     protected $table = 'musim';
     protected $fillable = ['nama'];
     public $timestamps = false;
-
-    public function tanammusim()
-    {
-        return $this->hasMany(Tanaman::class);
-    }
-
-    public function pembelianmusim()
-    {
-        return $this->hasMany(Pembelian::class);
-    }
-
-    public function perkiraanpembelianmusim()
-    {
-        return $this->hasMany(PerkiraanPembelian::class);
-    }
 }

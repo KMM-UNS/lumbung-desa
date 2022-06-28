@@ -21,6 +21,7 @@ class KasDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->setRowId(function ($row) {
                 return $row->id;
             })
@@ -75,17 +76,18 @@ class KasDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             Column::make('tanggal'),
             Column::make('kategori_id')->data('kategorikas.nama')->title('Kategori'),
             Column::make('keterangan'),
             Column::make('pembayaran'),
             Column::make('jumlah'),
             Column::make('saldo'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(120)
+                  ->addClass('text-center'),
         ];
     }
 

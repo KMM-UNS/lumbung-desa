@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\JenisTanaman;
 use Illuminate\Database\Seeder;
 
 class JenisTanamanSeeder extends Seeder
@@ -14,17 +13,6 @@ class JenisTanamanSeeder extends Seeder
      */
     public function run()
     {
-        $jenistanamans = [
-            'Padi',
-            'Jagung',
-            'Kentang',
-            'Kacang',
-        ];
-
-        foreach ($jenistanamans as $jenistanaman) :
-            JenisTanaman::firstOrCreate([
-                'nama' => $jenistanaman
-            ]);
-        endforeach;
+        //
     }
 }

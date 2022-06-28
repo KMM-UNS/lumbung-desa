@@ -1,6 +1,6 @@
-@extends('layouts.default')
+@extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Morris Chart')
+@section('title', 'Dashboard')
 
 @push('css')
 <link href="/assets/plugins/morris.js/morris.css" rel="stylesheet" />

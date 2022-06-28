@@ -39,7 +39,7 @@ class KondisiHasilPanenController extends Controller
     {
         {
             try {
-                $request->validate(['nama'=>'required|min:3']);
+                $request->validate(['kondisi'=>'required|min:3']);
             } catch (\Throwable $th) {
                 return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
             }
@@ -73,8 +73,7 @@ class KondisiHasilPanenController extends Controller
     public function edit($id)
     {
         $data = KondisiHasilPanen::findOrFail($id);
-        return view('pages.admin.master.kondisi-hasil-panen.add-edit', ['data' => $data]);
-    }
+        return view('pages.admin.master.kondisi-hasil-panen.add-edit', ['data' => $data]);    }
 
     /**
      * Update the specified resource in storage.
@@ -83,11 +82,11 @@ class KondisiHasilPanenController extends Controller
      * @param  \App\Models\KondisiHasilPanen  $kondisiHasilPanen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, KondisiHasilPanen $id)
     {
         try {
             $request->validate([
-                'nama' => 'required',
+                'kondisi' => 'required|min:3',
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
@@ -97,7 +96,6 @@ class KondisiHasilPanenController extends Controller
             $data = KondisiHasilPanen::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
-            // dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 

@@ -54,7 +54,7 @@
               <label for="name"><strong>Nama Petani Penjual</strong></label>
             </div>
             <div class="col-md-5">
-              <td>: {{ $data->petani_id }}</td>
+              <td>: {{ $data->petani->nama }}</td>
             </div>
         </div>
         <div class="form-group">

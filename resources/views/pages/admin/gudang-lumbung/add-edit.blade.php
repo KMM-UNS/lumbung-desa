@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Data Gudang Lumbung' : 'Create Data Gudang Lumbung' )
+@section('title', isset($data) ? 'Edit Data Produk' : 'Tambah Data Produk' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -41,7 +41,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                    <label for="name"><strong>Tanaman</strong></label>
+                    <label for="name"><strong>Produk</strong></label>
                 </div>
                 <div class="col-md-11">
                     <x-form.Dropdown name="nama_tanaman_id" :options="$tanaman" selected="{{{ old('nama_tanaman_id') ?? ($data['nama_tanaman_id'] ?? null) }}}" required />

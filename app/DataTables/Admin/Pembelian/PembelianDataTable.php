@@ -21,6 +21,7 @@ class PembelianDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->setRowId(function ($row) {
                 return $row->id;
             })
@@ -67,10 +68,10 @@ class PembelianDataTable extends DataTable
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
+                        // Button::make('export'),
+                        // Button::make('print'),
+                        // Button::make('reset'),
+                        // Button::make('reload')
                     );
     }
 
@@ -82,16 +83,17 @@ class PembelianDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
+            Column::make('tanggal_pembelian')->width(120),
+            Column::make('no_pembelian')->width(120),
+            Column::make('petani_id')->data('petani.nama')->title('Nama Petani Penjual')->width(120),
+            Column::make('tanaman_id')->data('tanaman.nama')->title('Produk')->width(120),
+            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi')->width(120),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('tanggal_pembelian'),
-            Column::make('no_pembelian'),
-            Column::make('petani_id')->data('petani.nama')->title('Nama Petani Penjual'),
-            Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
-            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
         ];
     }
 

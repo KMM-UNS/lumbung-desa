@@ -10,6 +10,7 @@ use App\Models\DataPetani;
 use Illuminate\Http\Request;
 
 
+
 class DataPetaniController extends Controller
 {
     public function index(DataPetaniDataTable $dataTable)
@@ -36,28 +37,31 @@ class DataPetaniController extends Controller
 
     public function store(Request $request)
     {
-        // $validateData= $request->validate([
-        //     'filename' => 'image|file|max:1024'
 
-        // ]);
-        // return $request->file('filename')->store('public/post-images');
+        $validateData= $request->validate([
+            // 'unique' => ':data sudah ada',
+            // 'filename' => 'image|file|max:1024',
+            'no_kk' => 'unique:data_petanis,no_kk',
+            'nik' => 'unique:data_petanis,nik',
+        ]);
+        //return $request->file('filename')->store('public/post-images');
         // try {
         //     $request->validate([
-        //        'filename',
-        //        'filename.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000'
+        //      //   'filename',
+        //        // 'filename.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000'
         //     ]);
-        //    if ($request->hasfile('filename')) {
-        //        $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('filename')->getClientOriginalName());
-        //        $request->file('filename')->move(public_path('images'), $filename);
-        //          DataPetani::create(
-        //                [
-        //                    'foto' =>$filename
-        //                ]
-        //             );
-        //        echo'Success';
-        //     }else{
-        //        echo'Gagal';
-        //    }
+        //    // if ($request->hasfile('filename')) {
+        //      //   $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('filename')->getClientOriginalName());
+        //        // $request->file('filename')->move(public_path('images'), $filename);
+        //          //DataPetani::create(
+        //            //     [
+        //              //       'foto' =>$filename
+        //                // ]
+        //             //);
+        //       //  echo'Success';
+        //     //}else{
+        //       //  echo'Gagal';
+        //    // }
 
 
         // } catch (\Throwable $th) {
@@ -109,6 +113,11 @@ class DataPetaniController extends Controller
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
+    }
+    public function show($id)
+    {
+        $data = DataPetani::findOrFail($id);
+        return view('pages.admin.data-petani.petani.show', ['data' => $data]);
     }
 
 }
