@@ -52,7 +52,7 @@ return [
         [
             'icon' => 'fa fa-warehouse',
             'title' => 'Gudang Lumbung',
-            'url' => '/admin/pilih-gudang',
+            'url' => '/admin/gudang-lumbung/pilih-gudang',
             'caret' => false,
         ],
         [

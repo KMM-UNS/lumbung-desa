@@ -24,4 +24,14 @@ class DataPupuk extends Model
     {
         return $this->hasMany(Tanaman::class);
     }
+
+    public function gudang()
+    {
+        return $this->hasMany(GudangPupuk::class);
+    }
+
+    public function pembelian()
+    {
+        return $this->hasMany(PembelianPupuk::class);
+    }
 }

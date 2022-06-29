@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Data Produk' : 'Tambah Data Produk' )
+@section('title', isset($data) ? 'Edit Gudang Pupuk' : 'Tambah Gudang Pupuk' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -18,9 +18,8 @@
 <h1 class="page-header">Gudang Lumbung<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
-
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.gudang-lumbung.gudang-produk.update', $data->id) : route('admin.gudang-lumbung.gudang-produk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.gudang-lumbung.gudang-pupuk.update', $data->id) : route('admin.gudang-lumbung.gudang-pupuk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -41,26 +40,20 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                    <label for="name"><strong>Produk</strong></label>
+                    <label for="name"><strong>Nama Pupuk</strong></label>
                 </div>
                 <div class="col-md-11">
-                    <x-form.Dropdown name="nama_tanaman_id" :options="$tanaman" selected="{{{ old('nama_tanaman_id') ?? ($data['nama_tanaman_id'] ?? null) }}}" required />
+                    <x-form.Dropdown name="nama_pupuk" :options="$pupuk" selected="{{{ old('nama_pupuk') ?? ($data['nama_pupuk'] ?? null) }}}" required />
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                    <label for="name"><strong>Kondisi</strong></label>
+                    <label for="name"><strong>Stok</strong></label>
                 </div>
                 <div class="col-md-11">
-                    <x-form.Dropdown name="kondisi_id" :options="$kondisi" selected="{{{ old('kondisi_id') ?? ($data['kondisi_id'] ?? null) }}}" required />
-                    {{-- <select name="kondisi" id="name" class="form-select">
-                        <option selected disabled>Pilih Kondisi</option>
-                        <option value="Belum Diproses"> Belum Diproses</option>
-                        <option value="Dikeringkan">Dikeringkan</option>
-                        <option value="Digiling">Digiling</option>
-                    </select> --}}
+                    <input type="number" id="stok" name="stok" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->stok ?? old('stok') }}}">
                 </div>
             </div>
         </div>
@@ -70,26 +63,10 @@
                     <label for="name"><strong>Keterangan</strong></label>
                 </div>
                 <div class="col-md-11">
-                    <x-form.Dropdown name="keterangan_id" :options="$keterangangudang" selected="{{{ old('keterangan_id') ?? ($data['keterangan_id'] ?? null) }}}" required />
+                    <input type="text" id="keterangan" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keterangan ?? old('keterangan') }}}">
                 </div>
             </div>
         </div>
-      <div class="form-group">
-          <div class="row">
-              <div class="col-md-1 my-auto">
-                  <label for="name"><strong>Stok</strong> (/kg)</label>
-              </div>
-              <div class="col-md-11">
-                  <input type="text" id="stok" name="stok" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->stok ?? old('stok') }}}">
-              </div>
-              {{-- <div class="col-md-1 my-auto">
-                  <label for="name"><strong>Satuan</strong></label>
-              </div>
-              <div class="col-md-2">
-                  <x-form.Dropdown name="satuan_id" :options="$satuan" selected="{{{ old('satuan_id') ?? ($data['satuan_id'] ?? null) }}}" required />
-              </div> --}}
-          </div>
-      </div>
     </div>
     <!-- end panel-body -->
     <!-- begin panel-footer -->

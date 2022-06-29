@@ -73,7 +73,8 @@ class PembelianController extends Controller
             }
         });
 
-        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');    }
+        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');
+    }
 
     public function show($id)
     {
@@ -120,7 +121,8 @@ class PembelianController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');    }
+        return redirect(route('admin.pembelian.pembelian.index'))->withToastSuccess('Data tersimpan');
+    }
 
     public function destroy($id)
     {

@@ -43,7 +43,7 @@
           <h4>PEMBELIAN PUPUK</h4>
         </div>
         <div class="stats-link">
-          <a href="javascript:;">Lihat Pembelian <i class="fa fa-arrow-alt-circle-right"></i></a>
+          <a href="{{ route('admin.pembelian.pembelian-pupuk.index') }}">Lihat Pembelian <i class="fa fa-arrow-alt-circle-right"></i></a>
         </div>
       </div>
     </div>

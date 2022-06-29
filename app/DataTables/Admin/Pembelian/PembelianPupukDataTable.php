@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables\Admin\GudangLumbung;
+namespace App\DataTables\Admin\Pembelian;
 
-use App\Models\GudangLumbung;
+use App\Models\PembelianPupuk;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class GudangLumbungDataTable extends DataTable
+class PembelianPupukDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -27,8 +27,8 @@ class GudangLumbungDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.gudang-lumbung.gudang-produk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.gudang-lumbung.gudang-produk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-pupuk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-pupuk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -38,12 +38,14 @@ class GudangLumbungDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin\GudangLumbung\GudangLumbungDataTable $model
+     * @param \App\App\Models\Admin/Pembelian/PembelianPupukDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(GudangLumbung $model)
+    public function query(PembelianPupuk $model)
     {
-        return $model->select('gudang_lumbung.*')->with(['tanaman','kondisi','keterangangudang']);
+        return $model->select('pembelian_pupuk.*')->with([
+            'pupuk'
+        ]);
     }
 
     /**
@@ -54,7 +56,7 @@ class GudangLumbungDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('gudanglumbung-table')
+                    ->setTableId('pembelianpupuk-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -77,15 +79,16 @@ class GudangLumbungDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
-            Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Produk'),
-            Column::make('stok')->title('Stok (/kg)'),
-            // Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
-            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
-            Column::make('keterangan_id')->data('keterangangudang.nama')->title('Keterangan'),
+            Column::make('no_pembelian'),
+            Column::make('tanggal_pembelian'),
+            Column::make('pupuk_id')->data('pupuk.nama')->title('Pupuk'),
+            Column::make('jumlah'),
+            Column::make('harga'),
+            Column::make('total'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(120)
+                  ->width(60)
                   ->addClass('text-center'),
         ];
     }
@@ -97,6 +100,6 @@ class GudangLumbungDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\GudangLumbung\GudangLumbung_' . date('YmdHis');
+        return 'Admin/Pembelian/PembelianPupuk_' . date('YmdHis');
     }
 }
