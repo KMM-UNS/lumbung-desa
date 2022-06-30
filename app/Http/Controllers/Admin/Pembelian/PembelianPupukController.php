@@ -44,11 +44,10 @@ class PembelianPupukController extends Controller
                 }
                 else {
                     // jika belum maka create data baru
-
                     $gudang2 = GudangPupuk::create([
                         'nama_pupuk' => $pembelian_pupuk->pupuk_id,
                         'stok'=>$pembelian_pupuk->jumlah,
-                        'keterangan_' =>$pembelian_pupuk->keterangan,
+                        'keterangan' => '-',
                     ]);
                     $gudang2->save();
                 }

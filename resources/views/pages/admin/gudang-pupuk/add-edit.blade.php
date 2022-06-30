@@ -42,8 +42,11 @@
                 <div class="col-md-1 my-auto">
                     <label for="name"><strong>Nama Pupuk</strong></label>
                 </div>
-                <div class="col-md-11">
+                <div class="col-md-10">
                     <x-form.Dropdown name="nama_pupuk" :options="$pupuk" selected="{{{ old('nama_pupuk') ?? ($data['nama_pupuk'] ?? null) }}}" required />
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-pupuk">+ pupuk</button>
                 </div>
             </div>
         </div>
@@ -81,6 +84,47 @@
 <a href="javascript:history.back(-1);" class="btn btn-success">
   <i class="fa fa-arrow-circle-left"></i> Kembali
 </a>
+
+{{-- Begin Modal Form Produk --}}
+<div class="modal fade modal-pupuk" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- begin panel -->
+            <form action="{{ route('admin.master-data.datapupuk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+                @csrf
+                <div class="panel panel-inverse">
+                  <!-- begin panel-heading -->
+                  <div class="panel-heading">
+                    <h4 class="panel-title">Form Tambah Data Pupuk</h4>
+                  </div>
+                  <!-- end panel-heading -->
+                  <!-- begin panel-body -->
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="name">Nama</label>
+                      <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+                      <label for="name">Jenis Pupuk</label>
+                      <input type="text" id="jenis_pupuk" name="jenis_pupuk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_pupuk ?? old('jenis_pupuk') }}}">
+                      <label for="name">Berat (per Kg)</label>
+                      <input type="text" id="berat" name="berat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->berat ?? old('berat') }}}">
+                      <label for="name">Harga (per Kg)</label>
+                      <input type="text" id="harga" name="harga" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
+                      </div>
+                  </div>
+                  <!-- end panel-body -->
+                  <!-- begin panel-footer -->
+                  <div class="panel-footer">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                  <!-- end panel-footer -->
+                </div>
+                <!-- end panel -->
+            </form>
+        </div>
+    </div>
+  </div>
+{{-- end modal form produk --}}
 
 @endsection
 

@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Admin\GudangLumbung;
 
+use App\Models\Musim;
 use App\Models\Satuan;
 use App\Models\Tanaman;
+use App\Models\DataPupuk;
 use App\Models\JenisTanaman;
 use Illuminate\Http\Request;
 use App\Models\GudangLumbung;
-use App\Http\Controllers\Controller;
-use App\DataTables\Admin\GudangLumbung\GudangLumbungDataTable;
-use App\Http\Requests\GudangLumbungForm;
 use App\Models\KeteranganGudang;
 use App\Models\KondisiHasilPanen;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\GudangLumbungForm;
+use App\DataTables\Admin\GudangLumbung\GudangLumbungDataTable;
 
 class GudangLumbungController extends Controller
 {
@@ -26,11 +28,18 @@ class GudangLumbungController extends Controller
         $satuan=Satuan::pluck('satuan','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $keterangangudang=KeteranganGudang::pluck('nama','id');
+         // relasi modal (pop up tambah produk)
+         $jenistanaman=JenisTanaman::pluck('nama','id');
+         $musimtanam=Musim::pluck('nama','id');
+         $pupuk=DataPupuk::pluck('nama','id');
         return view('pages.admin.gudang-lumbung.add-edit',[
             'tanaman'=>$tanaman,
             'satuan'=>$satuan,
             'kondisi'=>$kondisi,
-            'keterangangudang'=>$keterangangudang
+            'keterangangudang'=>$keterangangudang,
+            'jenistanaman'=>$jenistanaman,
+            'musimtanam'=>$musimtanam,
+            'pupuk'=>$pupuk
         ]);
     }
 

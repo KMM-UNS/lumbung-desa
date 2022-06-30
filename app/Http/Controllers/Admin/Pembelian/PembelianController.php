@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PembelianForm;
 use App\Datatables\Admin\Pembelian\PembelianDataTable;
+use App\Models\DataPupuk;
+use App\Models\JenisTanaman;
 
 class PembelianController extends Controller
 {
@@ -28,13 +30,19 @@ class PembelianController extends Controller
         $musim=Musim::pluck('nama','id');
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
-        // $satuan=Satuan::pluck('satuan','id');
         $petani=DataPetani::pluck('nama','id');
+        // relasi modal (pop up tambah produk)
+        $jenistanaman=JenisTanaman::pluck('nama','id');
+        $musimtanam=Musim::pluck('nama','id');
+        $pupuk=DataPupuk::pluck('nama','id');
         return view('pages.admin.pembelian.add-edit', [
             'musim'=>$musim,
             'tanaman'=>$tanaman,
             'kondisi'=>$kondisi,
-            'petani'=>$petani
+            'petani'=>$petani,
+            'jenistanaman'=>$jenistanaman,
+            'musimtanam'=>$musimtanam,
+            'pupuk'=>$pupuk
         ]);
     }
 

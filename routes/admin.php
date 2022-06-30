@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             // Route::get('/storage', 'DataPetaniController@index');
             // Route::post('/images','DataPetaniController@upload');
             Route::resource('tanaman', 'TanamanController');
+            Route::post('tanaman', 'TanamanController@simpan')->name('tanaman.simpan');
             Route::resource('datalahan', 'DataLahanController');
         });
 
