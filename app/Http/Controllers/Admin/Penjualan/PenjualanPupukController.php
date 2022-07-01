@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Penjualan;
 
-use App\DataTables\Admin\PenjualanDataTable;
+use App\DataTables\Admin\Penjualan\PenjualanPupukDataTable;
 use App\Models\Tanaman;
 use App\Models\DataPetani;
 use App\Http\Controllers\Controller;
 use App\Models\KondisiHasilPanen;
-use App\Models\Penjualan;
+use App\Models\PenjualanPupuk;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
 use App\Models\GudangLumbung;
 use App\Models\KeteranganGudang;
 
-class PenjualanController extends Controller
+class PenjualanPupukController extends Controller
 {
-    public function index(PenjualanDataTable $dataTable)
+    public function index(PenjualanPupukDataTable $dataTable)
     {
-       return $dataTable->render('pages.admin.penjualan.index');
+       return $dataTable->render('pages.admin.datapenjualan.penjualanpupuk.index');
     }
     public function create()
     {
@@ -26,7 +26,7 @@ class PenjualanController extends Controller
         $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
         $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
         $petani=DataPetani::pluck('nama','id');
-        return view('pages.admin.penjualan.add-edit', [
+        return view('pages.admin.penjualan.penjualanpupuk.add-edit', [
             'produk'=>$produk,
             'kondisi'=>$kondisi,
             'keterangan'=>$keterangan,
@@ -60,7 +60,7 @@ class PenjualanController extends Controller
 
         // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
 
-        return view('pages.admin.penjualan.add-edit');
+        return view('pages.admin.datapenjualan.penjualanpupuk.add-edit');
     }
 
     public function store(Request $request)
@@ -76,7 +76,7 @@ class PenjualanController extends Controller
         DB::transaction(function () use ($request) {
             try {
 
-                $penjualan=Penjualan::create($request->all());
+                $penjualan=PenjualanPupuk::create($request->all());
                 $penjualan->save();
                 dd($penjualan);
                 // get data gudang yang diinputkan
@@ -122,23 +122,23 @@ class PenjualanController extends Controller
                 //     return back()->withInput()->withToastError('Something went wrong');
                 // }
 
-                return redirect(route('admin.penjualan.index'))->withToastSuccess('Data tersimpan');
+                return redirect(route('admin.penjualan.penjualanpupuk.index'))->withToastSuccess('Data tersimpan');
             }
 
             public function show($id)
             {
-                $data = Penjualan::findOrFail($id);
-                return view('pages.admin.penjualan.show', ['data' => $data]);
+                $data = PenjualanPupuk::findOrFail($id);
+                return view('pages.admin.datapenjualan.penjualanpupuk.show', ['data' => $data]);
             }
 
             public function edit($id)
             {
-                $data = Penjualan::findOrFail($id);
+                $data = PenjualanPupuk::findOrFail($id);
                 $produk=GudangLumbung::pluck('nama_tanaman_id','id');
                 $kondisi=GudangLumbung::pluck('kondisi_id','id');
         $keterangan=GudangLumbung::pluck('keterangan_id','id');
         // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
-        return view('pages.admin.penjualan.add-edit', [
+        return view('pages.admin.datapenjualan.penjualanpupuk.add-edit', [
             'data' => $data,
             'produk'=>$produk,
             'kondisi'=>$kondisi,
@@ -157,20 +157,20 @@ class PenjualanController extends Controller
         }
 
         try {
-            $data = Penjualan::findOrFail($id);
+            $data = PenjualanPupuk::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
 
-        return redirect(route('admin.penjualan.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.penjualan.penjualanpupuk.index'))->withToastSuccess('Data tersimpan');
     }
 
     public function destroy($id)
     {
         try {
-            Penjualan::find($id)->delete();
+            PenjualanPupuk::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
@@ -179,10 +179,10 @@ class PenjualanController extends Controller
 
     public function invoice($id)
     {
-        $data = Penjualan::findOrFail($id);
+        $data = PenjualanPupuk::findOrFail($id);
 
 
-        $pdf = PDF::loadview('pages.admin.penjualan.invoice',
+        $pdf = PDF::loadview('pages.admin.datapenjualan.penjualanpupuk.invoice',
 
         [
 

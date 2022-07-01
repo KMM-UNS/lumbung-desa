@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables\Admin\Anak;
+namespace App\DataTables\Admin\Penjualan;
 
-use App\Models\Penjualan;
+use App\Models\PenjualanPupuk;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class RiwayatPenjualanDataTable extends DataTable
+class PenjualanPupukDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -21,16 +21,13 @@ class RiwayatPenjualanDataTable extends DataTable
     {
         return datatables()
         ->eloquent($query)
-        ->setRowId(function ($row) {
-            return $row->id;
-        })
         ->addColumn('action', function ($row) {
             $btn = '<div class="btn-group">';
-            //$btn = $btn . '<a href="' . route('admin.anak-data.dataanak.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-           // $btn = $btn . '<a href="' . route('admin.anak-data.dataanak.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.riwayat-transaksi.penjualan.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanpupuk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanpupuk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanpupuk.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.penjualan.invoice', $row->id) . '" class="btn btn-warning buttons-invoice"><i class="fas fa-download fa-fw"></i></a>';
             $btn = $btn . '</div>';
-
             return $btn;
         });
     }
@@ -38,12 +35,16 @@ class RiwayatPenjualanDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin/Master/DataAnak $model
+     * @param \App\App\Models\Admin\PenjualanDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Penjualan $model)
+    public function query(PenjualanPupuk $model)
     {
-        return $model->newQuery();
+        return $model->select('penjualan_pupuks.*')->with([
+            'produk.tanaman',
+            'kondisi.kondisi',
+            'keterangan.keterangangudang'
+        ]);
     }
 
     /**
@@ -77,21 +78,21 @@ class RiwayatPenjualanDataTable extends DataTable
     {
         return [
 
-            //Column::make('id'),
+            Column::make('id'),
             Column::make('no_penjualan'),
-            Column::make('tgl_penjualan'),
+           // Column::make('tgl_penjualan'),
             Column::make('nama'),
-            // Column::make('email'),
-            // Column::make('no_hp'),
-            // Column::make('alamat'),
-            Column::make('produk')->data('tanaman.nama'), //tanaman itu nama fungsi di model, nama itu data yang diambil
-            Column::make('kondisi')->data('kondisi.nama'),
-            Column::make('keterangan')->data('keterangan.nama'),
-            // Column::make('harga'),
-            // Column::make('jumlah'),
-             //Column::make('kondisi')->data('kondisihasilpanen.kondisi'),
-            // Column::make('total'),
-            Column::computed('action')
+           // Column::make('email'),
+            //Column::make('no_hp'),
+          //  Column::make('alamat'),
+            Column::make('produk_id')->data('produk.tanaman.nama'), //produk itu nama fungsi di model, nama_tanaman_id itu data yang diambil
+            Column::make('kondisi')->data('kondisi.kondisi.nama'),
+            Column::make('keterangan')->data('keterangan.keterangangudang.nama'),
+           // Column::make('harga'),
+            Column::make('jumlah'),
+            //Column::make('kondisi')->data('kondisihasilpanen.kondisi'),
+           // Column::make('total'),
+           Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
@@ -106,6 +107,7 @@ class RiwayatPenjualanDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin/RiwayatPenjualan_' . date('YmdHis');
+        return 'Admin\Penjualan\PenjualanPupuk_' . date('YmdHis');
     }
+
 }

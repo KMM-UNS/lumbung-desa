@@ -76,13 +76,27 @@ return [
                 //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perbandingan Pembelian'
                 // ]
             ]
-        ],
-        [
-            'icon' => 'fa fa-users',
+        ], [
+            'icon' => 'fa fa-cogs',
             'title' => 'Penjualan',
-            'url' => '/admin/penjualan',
-            'caret' => false,
-        ],
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/penjualan/penjualanproduk',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penjualan Produk'
+                ],[
+                    'url' => '/admin/penjualan/penjualanpupuk',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penjualan Pupuk'
+                ]
+            ]
+                ],
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Penjualan',
+        //     'url' => '/admin/penjualan',
+        //     'caret' => false,
+        // ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Riwayat Transaksi',

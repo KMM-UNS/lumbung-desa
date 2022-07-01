@@ -73,12 +73,7 @@ class DataPetaniDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                //->width(60)
-                ->addClass('text-center'),
-           // Column::make('id'),
+
             Column::make('no_kk'),
             Column::make('nik'),
             Column::make('nama'),
@@ -87,7 +82,12 @@ class DataPetaniDataTable extends DataTable
             Column::make('jenis_kelamin'),
             //Column::make('alamat'),
             //Column::make('foto'),
-
+            Column::computed('action')
+            ->exportable(false)
+            ->printable(false)
+            //->width(60)
+            ->addClass('text-center'),
+       // Column::make('id'),
         ];
     }
 

@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\DataPetani\TanamanController;
 use App\Http\Controllers\Admin\DataPetani\DaftarProdukController;
 use App\Http\Controllers\Admin\Pembelian\PembelianController;
 use App\Http\Controllers\Admin\PenjualanController;
+use App\Http\Controllers\Admin\Penjualan\PenjualanProdukController;
+use App\Http\Controllers\Admin\Penjualan\PenjualanPupukController;
 use App\Http\Controllers\admin\pembelian\PembelianModalController;
 use App\Models\PembelianModal;
 
@@ -43,9 +45,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             // Route::get('perkiraan-pembelian/update/{id}', [PembelianModalController::class, 'update']);
         });
 
+        Route::group(['prefix' => '/penjualan', 'as' => 'penjualan.', 'namespace' => 'Penjualan'], function () {
+            Route::resource('penjualanproduk', 'PenjualanProdukController');
+            Route::resource('penjualanpupuk', 'PenjualanPupukController');
+            Route::get('invoice/{id}', [PenjualanProdukController::class, 'invoice'])->name('invoice');
+            Route::get('invoice/{id}', [PenjualanPupukController::class, 'invoice'])->name('invoice');
+        });
 
-        Route::resource('penjualan', 'PenjualanController');
-        Route::get('invoice/{id}', [PenjualanController::class, 'invoice'])->name('invoice');
+
+        // Route::resource('penjualan', 'PenjualanController');
+       // Route::get('invoice/{id}', [PenjualanController::class, 'invoice'])->name('invoice');
         Route::resource('gudang-lumbung', 'GudangLumbungController');
 
         Route::group(['prefix' => '/riwayat', 'as' => 'riwayat.', 'namespace' => 'Riwayat'], function () {

@@ -38,37 +38,18 @@ class DataPetaniController extends Controller
     // public function store(DataPetani $request)
     public function store(Request $request)
     {
-
-        $validateData= $request->validate([
+        try {
+ $request->validate([
             // 'unique' => ':data sudah ada',
             // 'filename' => 'image|file|max:1024',
             'no_kk' => 'unique:data_petanis,no_kk',
             'nik' => 'unique:data_petanis,nik',
         ]);
-        //return $request->file('filename')->store('public/post-images');
-        // try {
-        //     $request->validate([
-        //      //   'filename',
-        //        // 'filename.*' => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000'
-        //     ]);
-        //    // if ($request->hasfile('filename')) {
-        //      //   $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$request->file('filename')->getClientOriginalName());
-        //        // $request->file('filename')->move(public_path('images'), $filename);
-        //          //DataPetani::create(
-        //            //     [
-        //              //       'foto' =>$filename
-        //                // ]
-        //             //);
-        //       //  echo'Success';
-        //     //}else{
-        //       //  echo'Gagal';
-        //    // }
 
+        } catch (\Throwable $th) {
 
-        // } catch (\Throwable $th) {
-
-        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        // }
+            return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
+        }
 
         try {
             DataPetani::create($request->all());
@@ -86,16 +67,28 @@ class DataPetaniController extends Controller
         return view('pages.admin.data-petani.petani.add-edit', ['data' => $data]);
     }
 
-    public function update(DataPetaniForm $request, $id)
+    public function update(Request $request, $id)
     // public function update(Request $request, $id)
     {
+        // try {
+        //     $request->validate([
+        //         // 'nama' => 'required'
+        //     ]);
+        // } catch (\Throwable $th) {
+        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
+        // }
         try {
             $request->validate([
-                'nama' => 'required'
-            ]);
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        }
+                       // 'unique' => ':data sudah ada',
+                       // 'filename' => 'image|file|max:1024',
+                       'no_kk' => 'unique:data_petanis,no_kk',
+                       'nik' => 'unique:data_petanis,nik',
+                   ]);
+
+                   } catch (\Throwable $th) {
+
+                       return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
+                   }
 
         try {
             $data = DataPetani::findOrFail($id);

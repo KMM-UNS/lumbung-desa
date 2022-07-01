@@ -18,7 +18,7 @@
 <h1 class="page-header">Dashboard Admin </h1>
 <!-- end page-header -->
 <!-- begin row -->
-<div class="row">
+{{-- <div class="row">
   <!-- begin col-6 -->
   <div class="col-xl-6">
     <!-- begin panel -->
@@ -96,7 +96,7 @@
   </div>
   <!-- end col-6 -->
 </div>
-<!-- end row -->
+<!-- end row --> --}}
 @endsection
 
 
