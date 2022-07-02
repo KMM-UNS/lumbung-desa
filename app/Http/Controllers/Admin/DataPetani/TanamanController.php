@@ -21,7 +21,11 @@ class TanamanController extends Controller
         $jenistanaman=JenisTanaman::pluck('nama','id');
         $pupuk=DataPupuk::pluck('nama','id');
         $musimtanam=Musim::pluck('nama','id');
-        return view('pages.admin.data-petani.tanaman.add-edit',['jenistanaman'=>$jenistanaman, 'pupuk'=>$pupuk, 'musimtanam'=>$musimtanam]);
+        return view('pages.admin.data-petani.tanaman.add-edit',[
+            'jenistanaman'=>$jenistanaman,
+            'pupuk'=>$pupuk,
+            'musimtanam'=>$musimtanam
+        ]);
     }
 
     public function store(Request $request)
@@ -66,7 +70,12 @@ class TanamanController extends Controller
         $jenistanaman=JenisTanaman::pluck('nama','id');
         $pupuk=DataPupuk::pluck('nama','id');
         $musimtanam=Musim::pluck('nama','id');
-        return view('pages.admin.data-petani.tanaman.add-edit', ['data' => $data, 'jenistanaman'=>$jenistanaman, 'pupuk'=>$pupuk, 'musimtanam'=>$musimtanam]);
+        return view('pages.admin.data-petani.tanaman.add-edit', [
+            'data' => $data,
+            'jenistanaman'=>$jenistanaman,
+            'pupuk'=>$pupuk,
+            'musimtanam'=>$musimtanam
+        ]);
     }
 
     public function update(Request $request, Tanaman $id)

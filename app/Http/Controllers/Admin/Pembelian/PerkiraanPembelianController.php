@@ -50,7 +50,9 @@ class PerkiraanPembelianController extends Controller
     public function edit($id)
     {
         $data = PerkiraanPembelian::findOrFail($id);
-        return view('pages.admin.perkiraan-pembelian.add-edit', ['data'=>$data]);
+        return view('pages.admin.perkiraan-pembelian.add-edit', [
+            'data'=>$data
+        ]);
     }
 
     public function update(Request $request, $id)

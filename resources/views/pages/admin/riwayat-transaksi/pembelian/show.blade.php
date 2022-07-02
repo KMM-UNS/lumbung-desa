@@ -1,6 +1,6 @@
-@extends('layouts.default')
+@extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Riwayat Pembelian')
+@section('title', 'Detail Riwayat Pembelian')
 
 @push('css')
 <link href="/assets/plugins/morris.js/morris.css" rel="stylesheet" />
@@ -11,13 +11,15 @@
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
   <li class="breadcrumb-item"><a href="javascript:;">Riwayat Pembelian</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">@yield('title')</a></li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Riwayat Pembelian </h1>
+<h1 class="page-header">@yield('title')</h1>
 <!-- end page-header -->
+
 <!-- begin row -->
-<div class="row">
+{{-- <div class="row">
   <!-- begin col-6 -->
   <div class="col-xl-12">
     <!-- begin panel -->
@@ -41,18 +43,29 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>NIK</th>
-                            <th>Nama Petani</th>
-                            <th>Action</th>
+                            <th>Nomor Pembelian</th>
+                            <th>Tanggal Pembelian</th>
+                            <th>Musim</th>
+                            <th>Nama Produk</th>
+                            <th>Jumlah</th>
+                            <th>Kondisi</th>
+                            <th>Harga</th>
+                            <th>Total</th>
                             <th width="1%"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $datas)
                         <tr>
-                            <td></td>
-                            <td>aa</td>
-                            <td>aa</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $datas->no_pembelian }}</td>
+                            <td>{{ $datas->tanggal_pembelian }}</td>
+                            <td>{{ $datas->musim->nama }}</td>
+                            <td>{{ $datas->tanaman->nama }}</td>
+                            <td>{{ $datas->jumlah }}</td>
+                            <td>{{ $datas->kondisi->nama }}</td>
+                            <td>{{ $datas->harga }}</td>
+                            <td>{{ $datas->total }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -67,11 +80,39 @@
   <!-- end col-6 -->
 </div>
 <!-- end row -->
+@endsection --}}
+
+
+<div class="panel panel-inverse">
+    <!-- begin panel-heading -->
+    <div class="panel-heading">
+      <h4 class="panel-title">Tabel Data - @yield('title')</h4>
+      <div class="panel-heading-btn">
+        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+      </div>
+    </div>
+    <!-- end panel-heading -->
+    <!-- begin panel-body -->
+
+    <div class="panel-body">
+      {{ $dataTable->table() }}
+    </div>
+    <!-- end panel-body -->
+</div>
+<!-- end panel -->
 @endsection
 
-
 @push('scripts')
-<script src="/assets/plugins/raphael/raphael.min.js"></script>
-<script src="/assets/plugins/morris.js/morris.min.js"></script>
-<script src="/assets/js/demo/chart-morris.demo.js"></script>
+<!-- datatables -->
+<script src="{{ asset('assets/js/custom/datatable-assets.js') }}"></script>
+{{ $dataTable->scripts() }}
+<!-- end datatables -->
+
+<script src="{{ asset('assets/js/custom/delete-with-confirmation.js') }}"></script>
+<script>
+$(document).on('delete-with-confirmation.success', function() {
+    $('.buttons-reload').trigger('click')
+})
+</script>
 @endpush

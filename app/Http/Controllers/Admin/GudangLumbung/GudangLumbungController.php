@@ -77,12 +77,17 @@ class GudangLumbungController extends Controller
         // $satuan=Satuan::pluck('satuan','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $keterangangudang=KeteranganGudang::pluck('nama','id');
+        // Relasi modal tanaman
+        $musimtanam=Musim::pluck('nama','id');
+        $pupuk=DataPupuk::pluck('nama','id');
         return view('pages.admin.gudang-lumbung.add-edit', [
             'data' => $data,
             'jenistanaman'=>$jenistanaman,
             'tanaman'=>$tanaman,
             'kondisi'=>$kondisi,
-            'keterangangudang'=>$keterangangudang
+            'keterangangudang'=>$keterangangudang,
+            'musimtanam'=>$musimtanam,
+            'pupuk'=>$pupuk
         ]);
     }
 
