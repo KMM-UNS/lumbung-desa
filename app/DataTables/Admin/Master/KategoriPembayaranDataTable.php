@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables\Admin\Pembelian;
+namespace App\DataTables\Admin\Master;
 
-use App\Models\PembelianPupuk;
+use App\Models\KategoriPembayaran;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class PembelianPupukDataTable extends DataTable
+class KategoriPembayaranDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -27,26 +27,22 @@ class PembelianPupukDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-pupuk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-pupuk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-pupuk.invoice', $row->id) . '" class="btn btn-warning buttons-invoice"><i class="fas fa-download fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.master-data.kategori-pembayaran.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.master-data.kategori-pembayaran.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
-            });
-    }
+            });    }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin/Pembelian/PembelianPupukDataTable $model
+     * @param \App\App\Models\Admin/Master/KategoriPembayaranDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(PembelianPupuk $model)
+    public function query(KategoriPembayaran $model)
     {
-        return $model->select('pembelian_pupuk.*')->with([
-            'pupuk'
-        ]);
+        return $model->newQuery();
     }
 
     /**
@@ -57,7 +53,7 @@ class PembelianPupukDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('pembelianpupuk-table')
+                    ->setTableId('kategoripembayaran-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -80,12 +76,7 @@ class PembelianPupukDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
-            Column::make('no_pembelian'),
-            Column::make('tanggal_pembelian'),
-            Column::make('pupuk_id')->data('pupuk.nama')->title('Pupuk'),
-            Column::make('jumlah'),
-            Column::make('harga'),
-            Column::make('total'),
+            Column::make('nama'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
@@ -101,6 +92,6 @@ class PembelianPupukDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin/Pembelian/PembelianPupuk_' . date('YmdHis');
+        return 'Admin/Master/KategoriPembayaran_' . date('YmdHis');
     }
 }

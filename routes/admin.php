@@ -1,11 +1,12 @@
 <?php
 
+use App\Models\PembelianModal;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PenjualanController;
 use App\Http\Controllers\Admin\DataPetani\TanamanController;
 use App\Http\Controllers\Admin\Pembelian\PembelianController;
 use App\Http\Controllers\admin\pembelian\PembelianModalController;
-use App\Models\PembelianModal;
-use App\Http\Controllers\Admin\PenjualanController;
+use App\Http\Controllers\Admin\Pembelian\PembelianPupukController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     require base_path('vendor/laravel/fortify/routes/routes.php');
@@ -40,6 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('invoice/{id}', [PembelianController::class, 'invoice'])->name('invoice');
             // pembelian pupuk
             Route::resource('pembelian-pupuk', 'PembelianPupukController');
+            Route::get('invoice-pupuk/{id}', [PembelianPupukController::class, 'invoice'])->name('pembelian-pupuk.invoice');
             // perkiraan pembelian (modal)
             Route::resource('perkiraan-pembelian', 'PerkiraanPembelianController');
             Route::resource('pembelian-modal', 'PembelianModalController');
@@ -72,9 +74,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('jenistanaman', 'JenisTanamanController');
             Route::resource('musim', 'MusimController');
             Route::resource('kondisi-hasil-panen', 'KondisiHasilPanenController');
-            Route::resource('satuan', 'SatuanController');
-            Route::resource('kategori-kas', 'KategoriKasController');
             Route::resource('keterangan-gudang', 'KeteranganGudangController');
+            // Route::resource('satuan', 'SatuanController');
+            Route::resource('kategori-kas', 'KategoriKasController');
+            Route::resource('kategori-pembayaran', 'KategoriPembayaranController');
         });
     });
 });

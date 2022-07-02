@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Pembelian;
 
+use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\DataPupuk;
 use App\Models\GudangPupuk;
 use Illuminate\Http\Request;
@@ -95,5 +96,28 @@ class PembelianPupukController extends Controller
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
+    }
+
+    public function invoice($id)
+    {
+        $data = PembelianPupuk::findOrFail($id);
+        $pdf = PDF::loadview('pages.admin.pembelian-pupuk.invoice', [
+            'pupuk_id'=>$data->pupuk->nama,
+            'no_pembelian'=>$data->no_pembelian,
+            'tanggal_pembelian'=>$data->tanggal_pembelian,
+            'jumlah'=>$data->jumlah,
+            'harga'=>$data->harga,
+            'total'=>$data->total
+        ]);
+        return $pdf->download('invoice-pembelian-pupuk.pdf');
+        // return view('pages.admin.pembelian-pupuk.invoice', [
+        //     'data' => $data,
+        //     'pupuk_id'=>$data->pupuk->nama,
+        //     'no_pembelian'=>$data->no_pembelian,
+        //     'tanggal_pembelian'=>$data->tanggal_pembelian,
+        //     'jumlah'=>$data->jumlah,
+        //     'harga'=>$data->harga,
+        //     'total'=>$data->total
+        // ]);
     }
 }

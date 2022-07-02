@@ -40,7 +40,7 @@
                     <label for="name"><strong>Jumlah Petani Penjual</strong></label>
                 </div>
                 <div class="col-md-10">
-                    <td>: 12 </td>
+                    <td>: {{ $jumlahpetani }} </td>
                 </div>
             </div>
             <div class="row">
@@ -56,7 +56,7 @@
                     <label for="name"><strong>Total Berat Produk</strong> (/kg)</label>
                 </div>
                 <div class="col-md-10">
-                    <td>: 12 </td>
+                    <td>: {{ $totalberatproduk }} kg (masih belum bisa hitung per musim) </td>
                 </div>
             </div>
             <div class="row">
@@ -64,7 +64,7 @@
                     <label for="name"><strong>Modal</strong></label>
                 </div>
                 <div class="col-md-10">
-                    <td>: 12.000.000 </td>
+                    <td>: Rp {{ $perkiraanmodal }} (masih belum bisa hitung per musim) </td>
                 </div>
             </div>
         </div>

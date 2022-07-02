@@ -43,7 +43,7 @@ class KasDataTable extends DataTable
      */
     public function query(Kas $model)
     {
-        return $model->select('kas.*')->with(['kategorikas']);
+        return $model->select('kas.*')->with(['kategorikas', 'kategoripembayaran']);
     }
 
     /**
@@ -79,8 +79,8 @@ class KasDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             Column::make('tanggal'),
             Column::make('kategori_id')->data('kategorikas.nama')->title('Kategori'),
+            Column::make('pembayaran')->data('kategoripembayaran.nama'),
             Column::make('keterangan'),
-            Column::make('pembayaran'),
             Column::make('jumlah'),
             Column::make('saldo'),
             Column::computed('action')
