@@ -37,20 +37,31 @@ class PerkiraanPembelianController extends Controller
 
     public function show(PembelianModalDataTable $dataTable, $id)
     {
-        // $totalpetani = DataPetani::sum('nama',$id);
-        // $data = PembelianModal::where('musim_panen_id', $id);
         $musim = PembelianModal::select('musim_panen_id')->where('musim_panen_id', $id)->first();
+        $data = PerkiraanPembelian::findOrFail($id);
+        // hitung jumlah petani
+        $jumlahpetani = PembelianModal::where('musim_panen_id', $data->id)->get()->count();
+        // hitung total berat produk
+        $totalberatproduk = PembelianModal::sum('jumlah',$data->id); // jumlahnya masih belum bisa get per id
+        // dd($totalberatproduk);
+        // Hitung Perkiraan Modal
+        $perkiraanmodal = PembelianModal::sum('total', $data->id);
+        // Hitung Total Jumlah Produk
         return $dataTable->render('pages.admin.perkiraan-pembelian.show', [
             'id' => $id,
             'musim' => $musim,
-            // 'totalpetani'=>$totalpetani
+            'jumlahpetani' => $jumlahpetani,
+            'totalberatproduk'=>$totalberatproduk,
+            'perkiraanmodal'=>$perkiraanmodal,
         ]);
     }
 
     public function edit($id)
     {
         $data = PerkiraanPembelian::findOrFail($id);
-        return view('pages.admin.perkiraan-pembelian.add-edit', ['data'=>$data]);
+        return view('pages.admin.perkiraan-pembelian.add-edit', [
+            'data'=>$data
+        ]);
     }
 
     public function update(Request $request, $id)

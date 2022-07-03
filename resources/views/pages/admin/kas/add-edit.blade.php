@@ -70,7 +70,7 @@
                   <label for="name"><strong>Pembayaran</strong></label>
               </div>
               <div class="col-md-5">
-                <input type="text" id="pembayaran" name="pembayaran" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->pembayaran ?? old('pembayaran') }}}">
+                <x-form.Dropdown name="pembayaran" :options="$kategoripembayaran" selected="{{{ old('pembayaran') ?? ($data['pembayaran'] ?? null) }}}" required />
             </div>
           </div>
       </div>

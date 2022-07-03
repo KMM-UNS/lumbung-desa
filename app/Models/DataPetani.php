@@ -28,19 +28,19 @@ class DataPetani extends Model
         return $this->hasMany(DataLahan::class);
     }
 
-    public function pembelian()
-    {
-        return $this->hasMany(Pembelian::class);
-    }
+    // public function pembelian()
+    // {
+    //     return $this->hasMany(Pembelian::class);
+    // }
 
-    public function perkiraanpembelian()
-    {
-        return $this->hasMany(Pembelian::class);
-    }
+    // public function perkiraanpembelian()
+    // {
+    //     return $this->hasMany(Pembelian::class);
+    // }
 
     public function petani()
     {
-        return $this->hasMany(Pembelian::class);
+        return $this->hasMany(Pembelian::class,'petani_id');
     }
 
     public function petaniperkiraan()

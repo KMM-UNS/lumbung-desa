@@ -29,4 +29,9 @@ class Kas extends Model
     {
         return $this->belongsTo(KategoriKas::class,'kategori_id');
     }
+
+    public function kategoripembayaran()
+    {
+        return $this->belongsTo(KategoriPembayaran::class,'pembayaran');
+    }
 }

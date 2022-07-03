@@ -16,8 +16,9 @@
 <!-- begin page-header -->
 <h1 class="page-header">@yield('title')</h1>
 <!-- end page-header -->
+
 <!-- begin row -->
-<div class="row">
+{{-- <div class="row">
   <!-- begin col-6 -->
   <div class="col-xl-12">
     <!-- begin panel -->
@@ -44,19 +45,20 @@
                             <th>NIK</th>
                             <th>Nama Petani</th>
                             <th class="text-center">Action</th>
-                            {{-- <th width="1%"></th> --}}
+                            <!-- <th width="1%"></th> -->
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($data as $datas)
                         <tr>
-                            {{-- nomornya belum --}}
+                            <!-- nomornya belum -->
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $datas->nik }}</td>
                             <td>{{ $datas->nama }}</td>
                             <td class="text-center with-btn" nowrap="">
-                                {{-- Masih Eror Route --}}
-                                <a href="#" class="btn btn-info buttons-primary width-60 m-r-2">Detail</a>
+                                <!-- Masih Eror Route -->
+                                <!-- <a href="#" class="btn btn-info buttons-primary width-60 m-r-2">Detail</a> -->
+                                <a href="{{ route('admin.riwayat.pembelian.show', $data->id) }}" class="btn btn-info buttons-primary width-60 m-r-2">Detail</a>
                             </td>
                         </tr>
                         @endforeach
@@ -70,13 +72,39 @@
     <!-- end panel -->
   </div>
   <!-- end col-6 -->
-</div>
+</div> --}}
 <!-- end row -->
-@endsection
 
+<div class="panel panel-inverse">
+    <!-- begin panel-heading -->
+    <div class="panel-heading">
+      <h4 class="panel-title">Tabel Data - @yield('title')</h4>
+      <div class="panel-heading-btn">
+        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+      </div>
+    </div>
+    <!-- end panel-heading -->
+    <!-- begin panel-body -->
 
-@push('scripts')
-<script src="/assets/plugins/raphael/raphael.min.js"></script>
-<script src="/assets/plugins/morris.js/morris.min.js"></script>
-<script src="/assets/js/demo/chart-morris.demo.js"></script>
-@endpush
+    <div class="panel-body">
+      {{ $dataTable->table() }}
+    </div>
+    <!-- end panel-body -->
+  </div>
+  <!-- end panel -->
+  @endsection
+
+  @push('scripts')
+  <!-- datatables -->
+  <script src="{{ asset('assets/js/custom/datatable-assets.js') }}"></script>
+  {{ $dataTable->scripts() }}
+  <!-- end datatables -->
+
+  <script src="{{ asset('assets/js/custom/delete-with-confirmation.js') }}"></script>
+  <script>
+    $(document).on('delete-with-confirmation.success', function() {
+      $('.buttons-reload').trigger('click')
+    })
+  </script>
+  @endpush

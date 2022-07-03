@@ -67,10 +67,10 @@ return [
                     'url' => '/admin/pembelian/perkiraan-pembelian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perkiraan Pembelian'
                 ],
-                [
-                    'url' => '/admin/pembelian/perbandingan-pembelian',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perbandingan Pembelian'
-                ]
+                // [
+                //     'url' => '/admin/pembelian/perbandingan-pembelian',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perbandingan Pembelian'
+                // ]
             ]
         ], [
             'icon' => 'fa fa-cogs',
@@ -123,18 +123,26 @@ return [
                 [
                     'url' => '/admin/master-data/datapupuk',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pupuk'
-                ],[
+                ],
+                [
                     'url' => '/admin/master-data/datajenislahan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Jenis Lahan'
-                ],[
+                ],
+                [
                     'url' => '/admin/master-data/jenistanaman',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Tanaman'
-                ],[
+                ],
+                [
                     'url' => '/admin/master-data/musim',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Musim'
-                ], [
+                ],
+                [
                     'url' => '/admin/master-data/kondisi-hasil-panen',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kondisi Hasil Panen'
+                ],
+                [
+                    'url' => '/admin/master-data/keterangan-gudang',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Keterangan Gudang'
                 ],
                 // [
                 //     'url' => '/admin/master-data/satuan',
@@ -143,10 +151,11 @@ return [
                 [
                     'url' => '/admin/master-data/kategori-kas',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kategori Kas'
-                ], [
-                    'url' => '/admin/master-data/keterangan-gudang',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Keterangan Gudang'
-                ]
+                ],
+                [
+                    'url' => '/admin/master-data/kategori-pembayaran',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kategori Pembayaran'
+                ],
             ]
         ]
     ],

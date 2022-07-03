@@ -148,15 +148,25 @@ class PembelianController extends Controller
         $data = Pembelian::findOrFail($id);
         $pdf = PDF::loadview('pages.admin.pembelian.invoice', [
             'tanaman_id'=>$data->tanaman->nama,
-            'petani_id'=>$data->petani_id,
+            'petani_id'=>$data->petani->nama,
             'no_pembelian'=>$data->no_pembelian,
             'tanggal_pembelian'=>$data->tanggal_pembelian,
             'jumlah'=>$data->jumlah,
-            'kondisi_id'=>$data->kondisi_id,
+            'kondisi_id'=>$data->kondisi->nama,
             'harga'=>$data->harga,
             'total'=>$data->total
         ]);
-        return $pdf->download('invoice.pdf');
-        // return view('pages.admin.pembelian.invoice', ['data' => $data]);
+        // return $pdf->download('invoice.pdf');
+        return view('pages.admin.pembelian.invoice', [
+            'data' => $data,
+            'tanaman_id'=>$data->tanaman->nama,
+            'petani_id'=>$data->petani->nama,
+            'no_pembelian'=>$data->no_pembelian,
+            'tanggal_pembelian'=>$data->tanggal_pembelian,
+            'jumlah'=>$data->jumlah,
+            'kondisi_id'=>$data->kondisi->nama,
+            'harga'=>$data->harga,
+            'total'=>$data->total
+        ]);
     }
 }

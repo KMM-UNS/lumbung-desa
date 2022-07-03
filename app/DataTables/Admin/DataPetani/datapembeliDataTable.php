@@ -2,14 +2,14 @@
 
 namespace App\DataTables\Admin\DataPetani;
 
-use App\App\Models\Admin\DataPetani\datapembeliDataTable;
+use App\Models\DataPetani;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class datapembeliDataTable extends DataTable
+class DataPetaniDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,17 +20,25 @@ class datapembeliDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query)
-            ->addColumn('action', 'admin\datapetani\datapembelidatatable.action');
+        ->eloquent($query)
+        ->addColumn('action', function ($row) {
+            $btn = '<div class="btn-group">';
+            $btn = $btn . '<a href="' . route('admin.data-petani.petani.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.data-petani.petani.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.data-petani.petani.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+
+            $btn = $btn . '</div>';
+            return $btn;
+        });
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin\DataPetani\datapembeliDataTable $model
+     * @param \Agama $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(datapembeliDataTable $model)
+    public function query(DataPetani $model)
     {
         return $model->newQuery();
     }
@@ -43,18 +51,18 @@ class datapembeliDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('admin\datapetani\datapembelidatatable-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+            ->setTableId('data_petanis-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
+            ->orderBy(1)
+            ->buttons(
+                Button::make('create'),
+                Button::make('export'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            );
     }
 
     /**
@@ -65,15 +73,21 @@ class datapembeliDataTable extends DataTable
     protected function getColumns()
     {
         return [
+
+            Column::make('no_kk'),
+            Column::make('nik'),
+            Column::make('nama'),
+            //Column::make('tempat_lahir'),
+            Column::make('tanggal_lahir'),
+            Column::make('jenis_kelamin'),
+            //Column::make('alamat'),
+            //Column::make('foto'),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            ->exportable(false)
+            ->printable(false)
+            //->width(60)
+            ->addClass('text-center'),
+       // Column::make('id'),
         ];
     }
 
@@ -84,6 +98,6 @@ class datapembeliDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\DataPetani\datapembeli_' . date('YmdHis');
+        return 'Admin\DataPetani_' . date('YmdHis');
     }
 }

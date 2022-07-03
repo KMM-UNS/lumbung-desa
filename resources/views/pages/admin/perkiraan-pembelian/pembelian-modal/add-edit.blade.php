@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-md-12">
                     {{-- <input type="text" id="musim_panen_id" name="musim_panen_id" class="form-control" autofocus data-parsley-required="true" value="{{{ isset($data) ? route('admin.pembelian.pembelian-modal.update', $data->musim_panen_id) : route('admin.pembelian.pembelian-modal.store', $id) }}}"> --}}
-                    <input type="text" id="musim_panen_id" name="musim_panen_id" class="form-control" autofocus data-parsley-required="true" value="{{ $id }}">
+                    <input type="hidden" id="musim_panen_id" name="musim_panen_id" class="form-control" autofocus data-parsley-required="true" value="{{ $id }}">
                 </div>
             </div>
         </div>

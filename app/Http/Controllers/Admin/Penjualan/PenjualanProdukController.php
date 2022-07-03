@@ -90,15 +90,14 @@ class PenjualanProdukController extends Controller
                     if(isset($gudangLumbung)){
 
                         // jika sudah maka update stok
-                        $gudangLumbung->stok < $penjualan->jumlah;
+                        $gudangLumbung->stok <= $penjualan->jumlah;
+                        // dd($penjualan->jumlah);
                         return back()->withInput()->withToastError('Jumlah melebihi stok yang tersedia');
                         // $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
-                        // // dd($pembelian);
+
                         // $gudangLumbung->save();
                     }
                     else {
-                        //jika belum maka create data baru
-
                         // $gudang = GudangLumbung::create([
                         //     'nama_tanaman_id' => $penjualan->produk_id,
                         //     'stok'=>$penjualan->jumlah,

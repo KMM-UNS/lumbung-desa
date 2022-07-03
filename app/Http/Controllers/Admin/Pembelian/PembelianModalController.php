@@ -39,11 +39,11 @@ class PembelianModalController extends Controller
         return redirect(route('admin.pembelian.perkiraan-pembelian.index'))->withToastSuccess('Data tersimpan');
     }
 
-    public function show(PembelianModalDataTable $dataTable, $id)
-    {
-        $modal['modal'] = PembelianModal::where('musim_panen_id', $id)->get();
-        return $dataTable->render('pages.admin.perkiraan-pembelian.pembelian-modal.index', $modal, compact('id'));
-    }
+    // public function show(PembelianModalDataTable $dataTable, $id)
+    // {
+    //     $modal['modal'] = PembelianModal::where('musim_panen_id', $id)->get();
+    //     return $dataTable->render('pages.admin.perkiraan-pembelian.pembelian-modal.index', $modal, compact('id'));
+    // }
 
     public function edit($id)
     {

@@ -122,7 +122,7 @@
                     <div class="receipt-header receipt-header-mid">
                         <div class="col-xs-8 col-sm-8 col-md-8 text-left">
                             <div class="receipt-right">
-                               <h5>{{ $petani_id }} </h5>
+                               {{-- <h5>{{ $petani_id }} </h5> --}}
                                {{-- <p><b>Mobile :</b> +1 12345-4569</p>
                                <p><b>Email :</b> customer@gmail.com</p>
                                <p><b>Address :</b> New York, USA</p> --}}
@@ -130,7 +130,7 @@
                         </div>
                         <div class="col-xs-4 col-sm-4 col-md-4">
                             <div class="receipt-left">
-                               <h3>INVOICE # {{ $no_pembelian }}</h3>
+                               <h3>INVOICE PEMBELIAN PUPUK # {{ $no_pembelian }}</h3>
                             </div>
                         </div>
                     </div>
@@ -141,12 +141,14 @@
                         <thead>
                             <tr>
                                <th>Detail Pembelian</th>
+                               <th>Jumlah</th>
                                <th>Harga</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                               <td class="col-md-9">{{ $tanaman_id }}</td>
+                               <td class="col-md-9">{{ $pupuk_id }}</td>
+                               <td class="col-md-9">{{ $jumlah }}</td>
                                <td class="col-md-3"><i class="fa fa-inr"></i>{{ $harga }}</td>
                             </tr>
                             <tr>
