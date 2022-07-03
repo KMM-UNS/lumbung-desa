@@ -78,34 +78,40 @@ class PenjualanProdukController extends Controller
 
                 $penjualan=PenjualanProduk::create($request->all());
                 $penjualan->save();
-                dd($penjualan);
+                // dd($penjualan);
                 // get data gudang yang diinputkan
                 $gudangLumbung = GudangLumbung::where('nama_tanaman_id',
-                $penjualan->produk)->where('kondisi_id', $penjualan->kondisi)->
+                $penjualan->produk_id)->where('kondisi_id', $penjualan->kondisi)-> //produk_id itu nama kolom  di database di penjualan
                 where('keterangan_id', $penjualan->keterangan)->first();
                 //  dd($gudangLumbung);
-                // if($request->jumlah >= $gudangLumbung->stok){
-                    //     return back()->withInput()->withToastError('Jumlah stok melebihi batas');
-                    // }
+
 
                     // percabangan untuk cek apakah data gudang sudah ada atau belum
                     if(isset($gudangLumbung)){
 
                         // jika sudah maka update stok
-                        $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
-                        // dd($pembelian);
-                        $gudangLumbung->save();
+                        $gudangLumbung->stok < $penjualan->jumlah;
+                        return back()->withInput()->withToastError('Jumlah melebihi stok yang tersedia');
+                        // $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
+                        // // dd($pembelian);
+                        // $gudangLumbung->save();
                     }
                     else {
                         //jika belum maka create data baru
 
-                        $gudang = GudangLumbung::create([
-                            'nama_tanaman_id' => $penjualan->produk,
-                            'stok'=>$penjualan->jumlah,
-                            'kondisi_id' => $penjualan->kondisi,
-                            'keterangan_id' => $penjualan->keterangan,
-                        ]);
-                        $gudang->save();
+                        // $gudang = GudangLumbung::create([
+                        //     'nama_tanaman_id' => $penjualan->produk_id,
+                        //     'stok'=>$penjualan->jumlah,
+                        //     'kondisi_id' => $penjualan->kondisi,
+                        //     'keterangan_id' => $penjualan->keterangan,
+                        // ]);
+                        // $gudang->save();
+
+                        //$request->jumlah >= $gudangLumbung->stok;
+                        $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
+                        // dd($pembelian);
+                        $gudangLumbung->save();
+                        // return back()->withInput()->withToastError('Jumlah stok melebihi batas');
 
                     }
                 } catch (\Throwable $th) {

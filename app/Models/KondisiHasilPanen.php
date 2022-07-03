@@ -2,12 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Pembelian;
-use App\Models\GudangLumbung;
-use App\Models\PembelianModal;
-use App\Models\DaftarProduk;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class KondisiHasilPanen extends Model
 {

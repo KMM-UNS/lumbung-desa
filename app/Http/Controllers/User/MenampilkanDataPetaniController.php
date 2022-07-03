@@ -131,6 +131,4 @@ class MenampilkanDataPetaniController extends Controller
        $datapetani = DataPetani::findOrFail($id);
         return view('pages.user.menampilkandatapetani.show', ['data' => $datapetani]);
     }
-
-
 }

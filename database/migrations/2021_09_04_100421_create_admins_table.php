@@ -22,6 +22,7 @@ class CreateAdminsTable extends Migration
             $table->rememberToken();
             $table->bigInteger('department_id')->nullable();
             $table->timestamps();
+            // $table->softDeletes();
         });
     }
 

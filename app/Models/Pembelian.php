@@ -50,11 +50,6 @@ class Pembelian extends Model
         return $this->belongsTo(KondisiHasilPanen::class,'kondisi_id');
     }
 
-    // public function satuan()
-    // {
-    //     return $this->belongsTo(Satuan::class,'satuan_id');
-    // }
-
     public function petani()
     {
         return $this->belongsTo(DataPetani::class,'petani_id');

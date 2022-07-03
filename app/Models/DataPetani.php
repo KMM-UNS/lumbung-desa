@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\DataLahan;
-use App\Traits\FillableInputTrait;
+// use App\Traits\FillableInputTrait;
 
 class DataPetani extends Model
 {

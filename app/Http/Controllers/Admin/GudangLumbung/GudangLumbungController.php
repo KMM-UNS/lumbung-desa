@@ -1,55 +1,48 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\GudangLumbung;
 
+use App\Models\Musim;
 use App\Models\Satuan;
 use App\Models\Tanaman;
+use App\Models\DataPupuk;
 use App\Models\JenisTanaman;
 use Illuminate\Http\Request;
 use App\Models\GudangLumbung;
-use App\Http\Controllers\Controller;
-use App\DataTables\Admin\GudangLumbung\GudangLumbungDataTable;
-use App\Http\Requests\GudangLumbungForm;
 use App\Models\KeteranganGudang;
 use App\Models\KondisiHasilPanen;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\GudangLumbungForm;
+use App\DataTables\Admin\GudangLumbung\GudangLumbungDataTable;
 
 class GudangLumbungController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(GudangLumbungDataTable $dataTable)
     {
         return $dataTable->render('pages.admin.gudang-lumbung.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $tanaman=Tanaman::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $keterangangudang=KeteranganGudang::pluck('nama','id');
+         // relasi modal (pop up tambah produk)
+         $jenistanaman=JenisTanaman::pluck('nama','id');
+         $musimtanam=Musim::pluck('nama','id');
+         $pupuk=DataPupuk::pluck('nama','id');
         return view('pages.admin.gudang-lumbung.add-edit',[
             'tanaman'=>$tanaman,
             'satuan'=>$satuan,
             'kondisi'=>$kondisi,
-            'keterangangudang'=>$keterangangudang
+            'keterangangudang'=>$keterangangudang,
+            'jenistanaman'=>$jenistanaman,
+            'musimtanam'=>$musimtanam,
+            'pupuk'=>$pupuk
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         try {
@@ -73,26 +66,9 @@ class GudangLumbungController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.gudang-lumbung.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.gudang-lumbung.gudang-produk.index'))->withToastSuccess('Data tersimpan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\GudangLumbung  $gudangLumbung
-     * @return \Illuminate\Http\Response
-     */
-    public function show(GudangLumbung $gudangLumbung)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\GudangLumbung  $gudangLumbung
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $data = GudangLumbung::findOrFail($id);
@@ -101,23 +77,21 @@ class GudangLumbungController extends Controller
         // $satuan=Satuan::pluck('satuan','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $keterangangudang=KeteranganGudang::pluck('nama','id');
+        // Relasi modal tanaman
+        $musimtanam=Musim::pluck('nama','id');
+        $pupuk=DataPupuk::pluck('nama','id');
         return view('pages.admin.gudang-lumbung.add-edit', [
             'data' => $data,
             'jenistanaman'=>$jenistanaman,
             'tanaman'=>$tanaman,
             'kondisi'=>$kondisi,
-            'keterangangudang'=>$keterangangudang
+            'keterangangudang'=>$keterangangudang,
+            'musimtanam'=>$musimtanam,
+            'pupuk'=>$pupuk
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\GudangLumbung  $gudangLumbung
-     * @return \Illuminate\Http\Response
-     */
-    public function update(GudangLumbungForm $request, $id)
+    public function update(Request $request, $id)
     {
         try {
             $data = GudangLumbung::findOrFail($id);
@@ -127,15 +101,9 @@ class GudangLumbungController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.gudang-lumbung.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.gudang-lumbung.gudang-produk.index'))->withToastSuccess('Data tersimpan');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\GudangLumbung  $gudangLumbung
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         try {

@@ -19,6 +19,7 @@ class PembelianModalDataTable extends DataTable
     {
         return datatables()
         ->eloquent($query)
+        ->addIndexColumn()
         ->setRowId(function ($row) {
             return $row->id;
         })
@@ -38,7 +39,10 @@ class PembelianModalDataTable extends DataTable
      */
     public function query(PembelianModal $model)
     {
-        return $model->select('pembelian_modal.*')->with(['tanaman','petani','lahan','kondisi']);
+        $id = request()->segment(4);
+        // dd($id);
+        return $model->select('pembelian_modal.*')->with(['tanaman','petani','lahan','kondisi','musim'])->where('musim_panen_id', $id);
+        // return $model->newQuery();
     }
 
     /**
@@ -52,15 +56,15 @@ class PembelianModalDataTable extends DataTable
         ->setTableId('pembelianmodal-table')
         ->columns($this->getColumns())
         ->minifiedAjax()
-        ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-        ->orderBy(1)
-        ->buttons(
-            Button::make('create'),
-            Button::make('export'),
-            Button::make('print'),
-            Button::make('reset'),
-            Button::make('reload')
-        );
+        // ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
+        ->orderBy(1);
+        // ->buttons(
+        //     Button::make('create'),
+        //     Button::make('export'),
+        //     Button::make('print'),
+        //     Button::make('reset'),
+        //     Button::make('reload')
+        // );
     }
 
     /**
@@ -71,20 +75,26 @@ class PembelianModalDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('musim_panen_id'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
+            // Column::make('musim_panen_id'),
+            Column::make('musim_panen_id')->data('musim.musim_panen'),
             Column::make('petani_id')->data('petani.nama')->title('Petani'),
-            Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
-            Column::make('lahan_id')->data('lahan.nama'),
+            // Column::make('petani_id'),
+            Column::make('tanaman_id')->data('tanaman.nama')->title('Produk'),
+            // Column::make('tanaman_id'),
+            Column::make('lahan_id')->data('lahan.nama')->title('Lahan'),
+            // Column::make('lahan_id'),
             Column::make('luas_lahan'),
             Column::make('jumlah'),
             Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
+            // Column::make('kondisi_id'),
             Column::make('harga'),
-            Column::make('total')
+            Column::make('total'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                //   ->width(60)
+                  ->addClass('text-center'),
         ];
     }
 

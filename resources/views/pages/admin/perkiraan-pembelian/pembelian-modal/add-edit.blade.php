@@ -37,13 +37,14 @@
     <!-- end panel-heading -->
     <!-- begin panel-body -->
     <div class="panel-body">
-        {{-- <div class="form-group">
+        <div class="form-group">
             <div class="row">
                 <div class="col-md-12">
-                <input type="hidden" id="musim_panen_id" name="musim_panen_id" class="form-control" autofocus data-parsley-required="true" value="">
+                    {{-- <input type="text" id="musim_panen_id" name="musim_panen_id" class="form-control" autofocus data-parsley-required="true" value="{{{ isset($data) ? route('admin.pembelian.pembelian-modal.update', $data->musim_panen_id) : route('admin.pembelian.pembelian-modal.store', $id) }}}"> --}}
+                    <input type="text" id="musim_panen_id" name="musim_panen_id" class="form-control" autofocus data-parsley-required="true" value="{{ $id }}">
                 </div>
             </div>
-        </div> --}}
+        </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
@@ -53,7 +54,7 @@
                     <x-form.Dropdown name="petani_id" :options="$petani" selected="{{{ old('petani_id') ?? ($data['petani_id'] ?? null) }}}" required />
                 </div>
                 <div class="col-md-1 my-auto">
-                    <label for="name"><strong>Tanaman</strong></label>
+                    <label for="name"><strong>Produk</strong></label>
                 </div>
                 <div class="col-md-5">
                     <x-form.Dropdown name="tanaman_id" :options="$tanaman" selected="{{{ old('tanaman_id') ?? ($data['tanaman_id'] ?? null) }}}" required />

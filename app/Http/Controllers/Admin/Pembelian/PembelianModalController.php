@@ -8,29 +8,19 @@ use Illuminate\Http\Request;
 use App\Models\DataJenisLahan;
 use App\Models\PembelianModal;
 use App\Models\KondisiHasilPanen;
-use App\Models\PerkiraanPembelian;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Pembelian\PembelianModalDataTable;
 
 class PembelianModalController extends Controller
 {
-    public function index()
+    public function simpan($id)
     {
-
-    }
-
-    public function create()
-    {
-        // ERORR!! Gabisa di create data
-        // $data = PerkiraanPembelian::findOrFail($id);
-        // $musim_panen=PembelianModal::where('musim_panen_id',$id);
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $petani=DataPetani::pluck('nama','id');
         $lahan=DataJenisLahan::pluck('nama','id');
         return view('pages.admin.perkiraan-pembelian.pembelian-modal.add-edit', [
-            // 'data'=>$data,
-            // 'musim_panen'=>$musim_panen,
+            'id'=>$id,
             'tanaman'=>$tanaman,
             'kondisi'=>$kondisi,
             'petani'=>$petani,
@@ -46,19 +36,7 @@ class PembelianModalController extends Controller
             dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
-        // PembelianModal::create([
-        //     'musim_panen_id' => $request->musim_panen_id,
-        //     'tanaman_id' => $request->tanaman_id,
-        //     'petani_id' => $request->petani_id,
-        //     'lahan_id' => $request->lahan_id,
-        //     'luas_lahan' => $request->luas_lahan,
-        //     'jumlah' => $request->jumlah,
-        //     'kondisi_id' => $request->kondisi_id,
-        //     'harga' => $request->harga,
-        //     'total' => $request->total
-        // ])->compact($id);
-
-        return redirect(route('pages.admin.perkiraan-pembelian.pembelian-modal.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.pembelian.perkiraan-pembelian.index'))->withToastSuccess('Data tersimpan');
     }
 
     public function show(PembelianModalDataTable $dataTable, $id)
@@ -67,14 +45,36 @@ class PembelianModalController extends Controller
         return $dataTable->render('pages.admin.perkiraan-pembelian.pembelian-modal.index', $modal, compact('id'));
     }
 
-    public function edit(PembelianModal $pembelianModal)
+    public function edit($id)
     {
-        //
+        $data = PembelianModal::findOrFail($id);
+        // $musim = PembelianModal::select('musim_panen_id')->where('musim_panen_id', $id)->first();
+        $tanaman=Tanaman::pluck('nama','id');
+        $kondisi=KondisiHasilPanen::pluck('nama','id');
+        $petani=DataPetani::pluck('nama','id');
+        $lahan=DataJenisLahan::pluck('nama','id');
+        return view('pages.admin.perkiraan-pembelian.pembelian-modal.add-edit', [
+            'id'=>$id,
+            // 'musim'=>$musim,
+            'data'=>$data,
+            'tanaman'=>$tanaman,
+            'kondisi'=>$kondisi,
+            'petani'=>$petani,
+            'lahan'=>$lahan
+        ]);
     }
 
-    public function update(Request $request, PembelianModal $pembelianModal)
+    public function update(Request $request, $id)
     {
-        //
+        try {
+            $data = PembelianModal::findOrFail($id);
+            $data->update($request->all());
+        } catch (\Throwable $th) {
+            dd($th);
+            return back()->withInput()->withToastError('Something went wrong');
+        }
+
+        return redirect(route('admin.pembelian.perkiraan-pembelian.index'))->withToastSuccess('Data tersimpan');
     }
 
     public function destroy($id)

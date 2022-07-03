@@ -81,7 +81,7 @@ class KondisiHasilPanenDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             Column::make('id'),
-            Column::make('kondisi'),
+            Column::make('nama'),
         ];
     }
 

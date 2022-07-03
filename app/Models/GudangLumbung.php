@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Satuan;
 use App\Models\Tanaman;
 use App\Models\Penjualan;
+use App\Models\PenjualanProduk;
 use App\Models\JenisTanaman;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -45,4 +46,10 @@ class GudangLumbung extends Model
     {
         return $this->hasMany(Penjualan::class);
     }
+
+    public function penjualanproduk()
+    {
+        return $this->hasMany(PenjualanProduk::class);
+    }
+
 }

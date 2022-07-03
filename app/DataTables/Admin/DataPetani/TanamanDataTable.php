@@ -21,6 +21,7 @@ class TanamanDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->setRowId(function ($row) {
                 return $row->id;
             })
@@ -60,10 +61,10 @@ class TanamanDataTable extends DataTable
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
+                        // Button::make('export'),
+                        // Button::make('print'),
+                        // Button::make('reset'),
+                        // Button::make('reload')
                     );
     }
 
@@ -75,17 +76,18 @@ class TanamanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
             Column::make('jenis_tanaman_id')->data('jenistanaman.nama')->title('Jenis Tanaman'), //jenistanaman nama fungsi relasi
             Column::make('nama'),
             Column::make('musim_tanam_id')->data('musimtanam.nama')->title('Musim Tanam'),
             Column::make('waktu_tanam'),
             Column::make('jenis_pupuk_id')->data('pupuk.nama')->title('Jenis Pupuk'),
             Column::make('keterangan'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                //   ->width(60)
+                  ->addClass('text-center'),
         ];
     }
 

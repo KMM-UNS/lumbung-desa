@@ -49,7 +49,7 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th><strong> Musim Panen </strong></th>
+                    {{-- <th><strong> Musim Panen </strong></th> --}}
                     <th><strong> Nama Petani </strong></th>
                     <th><strong> Tanaman </strong></th>
                     <th><strong> Lahan </strong></th>
@@ -66,13 +66,13 @@
                 @foreach($modal as $modals)
                 <tr>
                     <td></td>
-                    <td>{{ $modals->musim_panen_id }}</td>
-                    <td>{{ $modals->petani_id }}</td>
-                    <td>{{ $modals->tanaman_id}}</td>
-                    <td>{{ $modals->lahan_id}}</td>
+                    {{-- <td>{{ $modals->musim_panen_id }}</td> --}}
+                    <td>{{ $modals->petani->nama }}</td>
+                    <td>{{ $modals->tanaman->nama }}</td>
+                    <td>{{ $modals->lahan->nama }}</td>
                     <td>{{ $modals->luas_lahan }}</td>
                     <td>{{ $modals->jumlah }}</td>
-                    <td>{{ $modals->kondisi_id }}</td>
+                    <td>{{ $modals->kondisi->nama }}</td>
                     <td>{{ $modals->harga }}</td>
                     <td>{{ $modals->total}}</td>
                     <td class="with-btn" nowrap="">

@@ -21,6 +21,7 @@ class PerkiraanPembelianDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->setRowId(function ($row) {
                 return $row->id;
             })
@@ -28,7 +29,7 @@ class PerkiraanPembelianDataTable extends DataTable
                 $btn = '<div class="btn-group">';
                 $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-modal.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
                 return $btn;
             });
     }
@@ -59,10 +60,10 @@ class PerkiraanPembelianDataTable extends DataTable
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
+                        // Button::make('export'),
+                        // Button::make('print'),
+                        // Button::make('reset'),
+                        // Button::make('reload')
                     );
     }
 
@@ -74,17 +75,15 @@ class PerkiraanPembelianDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             Column::make('musim_panen'),
             Column::make('tahun'),
             // Column::make('modal')
-            // Column::make('tanaman_id')->data('tanaman.nama')->title('Tanaman'),
-            // Column::make('petani_id')->title('Petani'),
-            // Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(240)
+                  ->addClass('text-center'),
         ];
     }
 

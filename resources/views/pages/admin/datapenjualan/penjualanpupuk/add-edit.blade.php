@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.datapenjualan.penjualanpupuk.update', $data->id) : route('admin.datapenjualan.penjualanpupuk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.penjualan.penjualanpupuk.update', $data->id) : route('admin.penjualan.penjualanpupuk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -44,7 +44,7 @@
         <input type="hidden" id="no_penjualan" name="no_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_penjualan ?? old('no_penjualan') }}}">
         <label for="name">Tanggal Penjualan</label>
         <input type="date" id="tgl_penjualan" name="tgl_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
-        <label for="name">Nama Petani Pembeli</label>
+        <label for="name">Nama Pembeli</label>
         <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
         <label for="name">Email</label>
         <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
@@ -56,10 +56,10 @@
         <x-form.Dropdown name="kondisi" :options="$kondisihasilpanen" selected="{{{ old('kondisihasilpanen') ?? ($data['kondisihasilpanen'] ?? null) }}}" required />
        --}}  <label for="name">Produk</label>
        <x-form.Dropdown name="produk_id" :options="$produk" selected="{{{ old('produk_id') ?? ($data['produk_id'] ?? null) }}}" required />
-       <label for="name">Kondisi</label>
+       {{-- <label for="name">Kondisi</label>
        <x-form.Dropdown name="kondisi" :options="$kondisi" selected="{{{ old('kondisi') ?? ($data['kondisi'] ?? null) }}}" required />
        <label for="name">Keterangan</label>
-       <x-form.Dropdown name="keterangan" :options="$keterangan" selected="{{{ old('keterangan') ?? ($data['keterangan'] ?? null) }}}" required />
+       <x-form.Dropdown name="keterangan" :options="$keterangan" selected="{{{ old('keterangan') ?? ($data['keterangan'] ?? null) }}}" required /> --}}
        <label for="name">Jumlah</label>
         <input type="number" id="jumlah" name="jumlah" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
         <label for="name">Harga</label>

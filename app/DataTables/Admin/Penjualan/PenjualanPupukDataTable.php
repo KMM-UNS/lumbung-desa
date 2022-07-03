@@ -41,9 +41,9 @@ class PenjualanPupukDataTable extends DataTable
     public function query(PenjualanPupuk $model)
     {
         return $model->select('penjualan_pupuks.*')->with([
-            'produk.tanaman',
-            'kondisi.kondisi',
-            'keterangan.keterangangudang'
+            'produk.pupuk',
+            // 'kondisi.kondisi',
+            // 'keterangan.keterangangudang'
         ]);
     }
 
@@ -85,9 +85,9 @@ class PenjualanPupukDataTable extends DataTable
            // Column::make('email'),
             //Column::make('no_hp'),
           //  Column::make('alamat'),
-            Column::make('produk_id')->data('produk.tanaman.nama'), //produk itu nama fungsi di model, nama_tanaman_id itu data yang diambil
-            Column::make('kondisi')->data('kondisi.kondisi.nama'),
-            Column::make('keterangan')->data('keterangan.keterangangudang.nama'),
+            Column::make('produk_id')->data('produk.pupuk.nama'), //produk itu nama fungsi di model, nama_tanaman_id itu data yang diambil
+          //  Column::make('kondisi')->data('kondisi.kondisi.nama'),
+            //Column::make('keterangan')->data('keterangan.keterangangudang.nama'),
            // Column::make('harga'),
             Column::make('jumlah'),
             //Column::make('kondisi')->data('kondisihasilpanen.kondisi'),

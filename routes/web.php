@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
         Route::resource('menampilkandatapetani', 'MenampilkanDataPetaniController');
         Route::resource('ketersediaan-produk', 'KetersediaanProdukController');
         Route::resource('riwayat-penjualan', 'RiwayatPenjualanController');
+        Route::resource('menampilkandatapetani', 'MenampilkanDataPetaniController');
     });
 });
 

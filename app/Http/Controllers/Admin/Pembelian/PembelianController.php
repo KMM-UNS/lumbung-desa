@@ -5,16 +5,18 @@ namespace App\Http\Controllers\Admin\Pembelian;
 use App\Models\Musim;
 use App\Models\Satuan;
 use App\Models\Tanaman;
+use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\Pembelian;
 use App\Models\DataPetani;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\PDF;
+use App\Models\GudangLumbung;
 use App\Models\KondisiHasilPanen;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PembelianForm;
 use App\Datatables\Admin\Pembelian\PembelianDataTable;
-use App\Models\GudangLumbung;
+use App\Models\DataPupuk;
+use App\Models\JenisTanaman;
 
 class PembelianController extends Controller
 {
@@ -28,13 +30,19 @@ class PembelianController extends Controller
         $musim=Musim::pluck('nama','id');
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
-        // $satuan=Satuan::pluck('satuan','id');
         $petani=DataPetani::pluck('nama','id');
+        // relasi modal (pop up tambah produk)
+        $jenistanaman=JenisTanaman::pluck('nama','id');
+        $musimtanam=Musim::pluck('nama','id');
+        $pupuk=DataPupuk::pluck('nama','id');
         return view('pages.admin.pembelian.add-edit', [
             'musim'=>$musim,
             'tanaman'=>$tanaman,
             'kondisi'=>$kondisi,
-            'petani'=>$petani
+            'petani'=>$petani,
+            'jenistanaman'=>$jenistanaman,
+            'musimtanam'=>$musimtanam,
+            'pupuk'=>$pupuk
         ]);
     }
 
@@ -115,14 +123,6 @@ class PembelianController extends Controller
 
     public function update(PembelianForm $request, $id)
     {
-        // try {
-        //     $request->validate([
-        //         'tanaman_id' => 'required',
-        //     ]);
-        // } catch (\Throwable $th) {
-        //     return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        // }
-
         try {
             $data = Pembelian::findOrFail($id);
             $data->update($request->all());

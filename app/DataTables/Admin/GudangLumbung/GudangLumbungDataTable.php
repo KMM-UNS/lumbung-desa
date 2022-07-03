@@ -21,13 +21,14 @@ class GudangLumbungDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn()
             ->setRowId(function ($row) {
                 return $row->id;
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.gudang-lumbung.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.gudang-lumbung.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.gudang-lumbung.gudang-produk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.gudang-lumbung.gudang-produk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
@@ -61,7 +62,7 @@ class GudangLumbungDataTable extends DataTable
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create'),
-                        Button::make('export'),
+                        // Button::make('export'),
                         // Button::make('print'),
                         // Button::make('reset'),
                         // Button::make('reload')
@@ -76,16 +77,17 @@ class GudangLumbungDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Nama'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
+            Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Produk'),
             Column::make('stok')->title('Stok (/kg)'),
             // Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
             Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
             Column::make('keterangan_id')->data('keterangangudang.nama')->title('Keterangan'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(120)
+                  ->addClass('text-center'),
         ];
     }
 

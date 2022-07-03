@@ -98,7 +98,6 @@
         </style>
     </head>
 <body>
-
 <div class="col-md-12">
     <div class="row">
            <div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">

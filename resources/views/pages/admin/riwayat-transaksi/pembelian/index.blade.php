@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
 @section('title', 'Riwayat Pembelian')
 
@@ -39,11 +39,11 @@
             <div class="table-responsive">
                 <table class="table table-striped m-b-0">
                     <thead>
-                        <tr class="text-center">
+                        <tr class="">
                             <th>No</th>
                             <th>NIK</th>
                             <th>Nama Petani</th>
-                            <th>Action</th>
+                            <th class="text-center">Action</th>
                             {{-- <th width="1%"></th> --}}
                         </tr>
                     </thead>
@@ -51,10 +51,10 @@
                         @foreach ($data as $datas)
                         <tr>
                             {{-- nomornya belum --}}
-                            <td></td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $datas->nik }}</td>
                             <td>{{ $datas->nama }}</td>
-                            <td class="with-btn" nowrap="">
+                            <td class="text-center with-btn" nowrap="">
                                 {{-- Masih Eror Route --}}
                                 <a href="#" class="btn btn-info buttons-primary width-60 m-r-2">Detail</a>
                             </td>

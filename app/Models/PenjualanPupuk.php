@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Alfa6661\AutoNumber\AutoNumberTrait;
 use App\DataTables\Admin\Penjualan\PenjualanPupukDataTable;
-use App\Models\GudangLumbung;
+use App\Models\GudangPupuk;
 
 class PenjualanPupuk extends Model
 {
@@ -19,8 +19,7 @@ class PenjualanPupuk extends Model
     protected $table = 'penjualan_pupuks';
     protected $fillable =
     [
-     'id','no_penjualan','tgl_penjualan','nama','email','no_hp','alamat','produk_id',
-     'kondisi','keterangan','harga','stok','jumlah','total'
+     'id','no_penjualan','tgl_penjualan','nama','email','no_hp','alamat','produk_id','harga','jumlah','total'
     ];
     public $timestamps = false;
 
@@ -51,16 +50,16 @@ class PenjualanPupuk extends Model
     //  ['total]']
     public function produk()
     {
-        return $this->belongsTo(GudangLumbung::class,'produk_id'); //'produk' itu nama kolom yang mengambil data tanaman
+        return $this->belongsTo(GudangPupuk::class,'produk_id'); //'produk_id' itu nama kolom yang mengambil data pupuk
     }
 
-    public function kondisi()
-    {
-        return $this->belongsTo(GudangLumbung::class,'kondisi');
-    }
+    // public function kondisi()
+    // {
+    //     return $this->belongsTo(GudangLumbung::class,'kondisi');
+    // }
 
-    public function keterangan()
-    {
-        return $this->belongsTo(GudangLumbung::class,'keterangan');
-    }
+    // public function keterangan()
+    // {
+    //     return $this->belongsTo(GudangLumbung::class,'keterangan');
+    // }
 }

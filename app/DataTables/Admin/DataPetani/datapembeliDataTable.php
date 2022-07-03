@@ -1,15 +1,15 @@
 <?php
 
-namespace App\DataTables;
+namespace App\DataTables\Admin\DataPetani;
 
-use App\App\Models\AdminMasterDataLahanDataTable;
+use App\App\Models\Admin\DataPetani\datapembeliDataTable;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class AdminMasterDataLahanDataTable extends DataTable
+class datapembeliDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -21,16 +21,16 @@ class AdminMasterDataLahanDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'adminmasterdatalahandatatable.action');
+            ->addColumn('action', 'admin\datapetani\datapembelidatatable.action');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\AdminMasterDataLahanDataTable $model
+     * @param \App\App\Models\Admin\DataPetani\datapembeliDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(AdminMasterDataLahanDataTable $model)
+    public function query(datapembeliDataTable $model)
     {
         return $model->newQuery();
     }
@@ -43,7 +43,7 @@ class AdminMasterDataLahanDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('adminmasterdatalahandatatable-table')
+                    ->setTableId('admin\datapetani\datapembelidatatable-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -84,6 +84,6 @@ class AdminMasterDataLahanDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'AdminMasterDataLahan_' . date('YmdHis');
+        return 'Admin\DataPetani\datapembeli_' . date('YmdHis');
     }
 }

@@ -18,7 +18,7 @@ class Tanaman extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'tanamen';
-    protected $fillable = ['jenis_tanaman_id','nama','musim_tanam_id','waktu_tanam','jenis_pupuk_id','keterangan'];
+    protected $fillable = ['jenis_tanaman_id','nama','musim_tanam_id','waktu_tanam','jenis_pupuk_id','keterangan_id'];
     public $timestamps = false;
 
     public function jenistanaman()

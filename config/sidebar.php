@@ -25,12 +25,6 @@ return [
             'url' => '/admin/user',
             'caret' => false,
         ],
-        // [
-        //     'icon' => 'fa fa-users',
-        //     'title' => 'Admin',
-        //     'url' => '/admin/admin',
-        //     'caret' => false,
-        // ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Pendataan',
@@ -43,10 +37,12 @@ return [
                 ], [
                     'url' => '/admin/data-petani/tanaman',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
-                ],[
-                    'url' => '/admin/data-petani/daftarproduk',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Daftar Produk'
-                ], [
+                ],
+                // [
+                //     'url' => '/admin/data-petani/daftarproduk',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Daftar Produk'
+                // ],
+                [
                     'url' => '/admin/data-petani/datalahan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Lahan'
                 ]
@@ -55,7 +51,7 @@ return [
         [
             'icon' => 'fa fa-warehouse',
             'title' => 'Gudang Lumbung',
-            'url' => '/admin/gudang-lumbung',
+            'url' => '/admin/gudang-lumbung/pilih-gudang',
             'caret' => false,
         ],
         [
@@ -65,16 +61,16 @@ return [
             'caret' => true,
             'sub_menu' => [
                 [
-                    'url' => '/admin/pembelian/pembelian',
+                    'url' => '/admin/pembelian/pilih-pembelian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pembelian'
                 ],[
                     'url' => '/admin/pembelian/perkiraan-pembelian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perkiraan Pembelian'
                 ],
-                // [
-                //     'url' => '/admin/pembelian/perbandingan-pembelian',
-                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perbandingan Pembelian'
-                // ]
+                [
+                    'url' => '/admin/pembelian/perbandingan-pembelian',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Perbandingan Pembelian'
+                ]
             ]
         ], [
             'icon' => 'fa fa-cogs',
@@ -152,31 +148,19 @@ return [
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Keterangan Gudang'
                 ]
             ]
-        ],
-            // [
-            //     'icon' => 'fa fa-cogs',
-            //     'title' => 'Riwayat',
-            //     'url' => 'javascript:;',
-            //     'caret' => true,
-            //     'sub_menu' => [
-            //         [
-            //             'url' => '/admin/riwayat/riwayatpembelian',
-            //             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Pembelian'
-            //         ],[
-            //             'url' => '/admin/riwayat/riwayatpenjualan',
-            //             'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Penjualan'
-            //         ]
-            //     ]
-            // ]
-
         ]
-    ,
+    ],
 
     'menu_user' => [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
             'url' => '/',
+            'caret' => false
+        ], [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Ketersediaan Produk',
+            'url' => '/ketersediaan-produk',
             'caret' => false
         ],
         [
@@ -192,11 +176,6 @@ return [
             'caret' => false
         ],
         [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Data Diri Petani',
-            'url' => 'menampilkandatapetani',
-            'caret' => false
-        ],[
             'icon' => 'fa fa-cogs',
             'title' => 'Ganti Password',
             'url' => '#',

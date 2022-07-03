@@ -22,8 +22,8 @@ class CreatePenjualanPupuksTable extends Migration
             $table->string('no_hp');
             $table->string('alamat');
             $table->string('produk_id');
-            $table->string('kondisi');
-            $table->string('keterangan');
+            // $table->string('kondisi');
+            // $table->string('keterangan');
             $table->string('harga');
             $table->string('jumlah');
            // $table->string('kondisi');

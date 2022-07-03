@@ -73,10 +73,13 @@
             <x-form.Dropdown name="musim_id" :options="$musim" selected="{{{ old('musim_id') ?? ($data['musim_id'] ?? null) }}}" required />
           </div>
           <div class="col-md-1 my-auto">
-            <label for="name"><strong>Tanaman</strong></label>
+            <label for="name"><strong>Produk</strong></label>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-4">
             <x-form.Dropdown name="tanaman_id" :options="$tanaman" selected="{{{ old('tanaman_id') ?? ($data['tanaman_id'] ?? null) }}}" required />
+          </div>
+          <div class="col-md-1 text-center">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-produk">+ produk</button>
           </div>
         </div>
       </div>
@@ -130,6 +133,85 @@
   <i class="fa fa-arrow-circle-left"></i> Kembali
 </a>
 
+{{-- Begin Modal Form Produk --}}
+<div class="modal fade modal-produk" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- begin panel -->
+    <form action="{{ route('admin.data-petani.tanaman.simpan') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+    @csrf
+
+    <div class="panel panel-inverse">
+      <!-- begin panel-heading -->
+      <div class="panel-heading">
+        <h4 class="panel-title">Form Tambah Produk</h4>
+      </div>
+      <!-- end panel-heading -->
+      <!-- begin panel-body -->
+      <div class="panel-body">
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-md-1 my-auto">
+                      <label for="name">Jenis Tanaman</label>
+                  </div>
+                  <div class="col-md-5">
+                      <x-form.Dropdown name="jenis_tanaman_id" :options="$jenistanaman" selected="{{{ old('jenis_tanaman_id') ?? ($data['jenis_tanaman_id'] ?? null) }}}" required />
+                  </div>
+                  <div class="col-md-1 my-auto">
+                      <label for="name">Nama</label>
+                  </div>
+                  <div class="col-md-5 my-auto">
+                      <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+                  </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-md-1 my-auto">
+                      <label for="name">Musim Tanam</label>
+                  </div>
+                  <div class="col-md-5">
+                      <x-form.Dropdown name="musim_tanam_id" :options="$musimtanam" selected="{{{ old('musim_tanam_id') ?? ($data['musim_tanam_id'] ?? null) }}}" required />
+                  </div>
+                  <div class="col-md-1 my-auto">
+                      <label for="name">Waktu Tanam</label>
+                  </div>
+                  <div class="col-md-5">
+                      <input type="text" id="waktu_tanam" name="waktu_tanam" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->waktu_tanam ?? old('waktu_tanam') }}}">
+                  </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-md-1 my-auto">
+                      <label for="name">Pupuk</label>
+                  </div>
+                  <div class="col-md-5">
+                      <x-form.Dropdown name="jenis_pupuk_id" :options="$pupuk" selected="{{{ old('jenis_pupuk_id') ?? ($data['jenis_pupuk_id'] ?? null) }}}" required />
+                  </div>
+                  <div class="col-md-1 my-auto">
+                      <label for="name">Keterangan</label>
+                  </div>
+                  <div class="col-md-5">
+                      <input type="text" id="keterangan" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keterangan ?? old('waktu_tanam') }}}">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- end panel-body -->
+      <!-- begin panel-footer -->
+      <div class="panel-footer">
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+      <!-- end panel-footer -->
+    </div>
+    <!-- end panel -->
+  </form>
+        </div>
+    </div>
+  </div>
+{{-- end modal form produk --}}
 @endsection
 
 @push('scripts')
