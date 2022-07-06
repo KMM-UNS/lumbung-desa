@@ -98,11 +98,7 @@
                                                     <td>:</td>
                                                     <td>{{$datapetanis->alamat}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="textt">Foto</td>
-                                                    <td>:</td>
-                                                    <td>{{$datapetanis->foto}}</td>
-                                                </tr>
+
                                                 @endforeach
                                                 {{-- <tr>
                                                     <td class="textt">Jenis Kelamin</td>

@@ -33,18 +33,21 @@ return [
             'sub_menu' => [
                 [
                     'url' => '/admin/data-petani/petani',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Petani'
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Petani'
                 ], [
                     'url' => '/admin/data-petani/tanaman',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
-                ],
+                ]
                 // [
                 //     'url' => '/admin/data-petani/daftarproduk',
                 //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Daftar Produk'
                 // ],
-                [
+                ,[
                     'url' => '/admin/data-petani/datalahan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Lahan'
+                ],[
+                    'url' => '/admin/data-petani/datapembeli',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pembeli'
                 ]
             ]
         ],
@@ -103,8 +106,11 @@ return [
                     'url' => '/admin/riwayat/pembelian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Pembelian'
                 ],[
-                    'url' => '/admin/riwayat/penjualan',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Penjualan'
+                    'url' => '/admin/riwayat/riwayatpenjualanproduk',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Penjualan Produk'
+                ],[
+                    'url' => '/admin/riwayat/riwayatpenjualanpupuk',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Penjualan Pupuk'
                 ]
             ]
         ],
@@ -168,8 +174,8 @@ return [
             'caret' => false
         ], [
             'icon' => 'fa fa-cogs',
-            'title' => 'Ketersediaan Produk',
-            'url' => '/ketersediaan-produk',
+            'title' => 'Data Diri Petani',
+            'url' => '/menampilkandatapetani',
             'caret' => false
         ],
         [

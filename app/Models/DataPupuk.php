@@ -34,4 +34,9 @@ class DataPupuk extends Model
     {
         return $this->hasMany(PembelianPupuk::class);
     }
+
+    public function penjualan()
+    {
+        return $this->hasMany(PenjualanPupuk::class);
+    }
 }

@@ -88,15 +88,9 @@ class menampilkandatapetaniDataTable extends DataTable
                 ->width(60)
                 ->addClass('text-center'),
             // Column::make('id'),
-            Column::make('no_kk'),
-            Column::make('nik'),
-            Column::make('nama'),
-            Column::make('tempat_lahir'),
-            Column::make('tanggal_lahir'),
-            Column::make('jenis_kelamin'),
-            Column::make('alamat'),
-            Column::make('foto'),
-
+            Column::make('petani_id'),
+            Column::make('jenis_lahan'),
+            Column::make('luas_tanah'),
         ];
     }
 

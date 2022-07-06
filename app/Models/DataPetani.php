@@ -40,7 +40,7 @@ class DataPetani extends Model
 
     public function petani()
     {
-        return $this->hasMany(Pembelian::class,'petani_id');
+        return $this->hasMany(Pembelian::class,'petani_id'); //'petani_id' itu nama kolom yang mengambil data petani
     }
 
     public function petaniperkiraan()

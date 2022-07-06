@@ -21,9 +21,10 @@ class DataLahanDataTable extends DataTable
     {
         return datatables()
         ->eloquent($query)
-        ->setRowId(function ($row) {
-            return $row->id;
-        })
+        ->addIndexColumn()
+            ->setRowId(function ($row) {
+                return $row->id;
+            })
         ->addColumn('action', function ($row) {
             $btn = '<div class="btn-group">';
             $btn = $btn . '<a href="' . route('admin.data-petani.datalahan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
@@ -60,10 +61,10 @@ class DataLahanDataTable extends DataTable
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
+                        // Button::make('export'),
+                        // Button::make('print'),
+                        // Button::make('reset'),
+                        // Button::make('reload')
                     );
     }
 
@@ -75,8 +76,8 @@ class DataLahanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-
-            Column::make('id'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
+            // Column::make('id'),
             Column::make('petani_id')->data('namapetani.nama'), //namapetani itu nama fungsi di model, nama itu data yang diambil
             Column::make('jenis_lahan')->data('jenislahan.nama'),
             Column::make('luas_tanah'),

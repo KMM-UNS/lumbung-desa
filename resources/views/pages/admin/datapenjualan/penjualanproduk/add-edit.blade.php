@@ -45,13 +45,13 @@
         <label for="name">Tanggal Penjualan</label>
         <input type="date" id="tgl_penjualan" name="tgl_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
         <label for="name">Nama Pembeli</label>
-        <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <x-form.Dropdown name="nama" :options="$pembeli" selected="{{{ old('nama') ?? ($data['nama'] ?? null) }}}" required />
         <label for="name">Email</label>
-        <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('email') }}}">
         <label for="name">Nomor Handphone</label>
-        <input type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('no_hp') }}}">
         <label for="name">Alamat</label>
-        <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('alamat') }}}">
         {{-- <label for="name">Kondisi</label>
         <x-form.Dropdown name="kondisi" :options="$kondisihasilpanen" selected="{{{ old('kondisihasilpanen') ?? ($data['kondisihasilpanen'] ?? null) }}}" required />
        --}}  <label for="name">Produk</label>

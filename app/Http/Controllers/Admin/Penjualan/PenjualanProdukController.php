@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Penjualan;
 use App\DataTables\Admin\Penjualan\PenjualanProdukDataTable;
 use App\Models\Tanaman;
 use App\Models\DataPetani;
+use App\Models\DataPembeli;
 use App\Http\Controllers\Controller;
 use App\Models\KondisiHasilPanen;
 use App\Models\PenjualanProduk;
@@ -22,15 +23,19 @@ class PenjualanProdukController extends Controller
     }
     public function create()
     {
-        $produk = GudangLumbung::with('tanaman:id,nama')->get()->pluck('tanaman.nama','tanaman.id');//tanaman nama relasi, id sama nama itu yg diambil di dalam tabel tanaman, terus nama tanaman itu nama relasi, dan nama itu yg menyimpan yang diambil
+        $produk = GudangLumbung::with('tanaman:id,nama')->get()->pluck('tanaman.nama','tanaman.id');
+        //tanaman nama relasi, id & nama itu yg diambil di tabel tanaman, nama itu yg menyimpan id yang diambil
         $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
         $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
         $petani=DataPetani::pluck('nama','id');
+        $pembeli=DataPembeli::pluck('nama','id');
         return view('pages.admin.datapenjualan.penjualanproduk.add-edit', [
             'produk'=>$produk,
             'kondisi'=>$kondisi,
             'keterangan'=>$keterangan,
-            'petani' => $petani
+            'petani' => $petani,
+
+
         ]);
         // $no_penjualan = Penjualan::create([
         //     'tgl_penjualan' => '',
@@ -88,29 +93,18 @@ class PenjualanProdukController extends Controller
 
                     // percabangan untuk cek apakah data gudang sudah ada atau belum
                     if(isset($gudangLumbung)){
-
-                        // jika sudah maka update stok
-                        $gudangLumbung->stok <= $penjualan->jumlah;
-                        // dd($penjualan->jumlah);
-                        return back()->withInput()->withToastError('Jumlah melebihi stok yang tersedia');
-                        // $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
-
-                        // $gudangLumbung->save();
-                    }
-                    else {
-                        // $gudang = GudangLumbung::create([
-                        //     'nama_tanaman_id' => $penjualan->produk_id,
-                        //     'stok'=>$penjualan->jumlah,
-                        //     'kondisi_id' => $penjualan->kondisi,
-                        //     'keterangan_id' => $penjualan->keterangan,
-                        // ]);
-                        // $gudang->save();
-
-                        //$request->jumlah >= $gudangLumbung->stok;
+                        $gudangLumbung->stok >= $penjualan->jumlah;
                         $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
                         // dd($pembelian);
                         $gudangLumbung->save();
-                        // return back()->withInput()->withToastError('Jumlah stok melebihi batas');
+//if positif, else negatif
+                    }
+                    else {
+
+                        // jika sudah maka update stok
+                        $gudangLumbung->stok < $penjualan->jumlah;
+                        // dd($penjualan->jumlah);
+                        return back()->withInput()->withToastError('Jumlah melebihi stok yang tersedia');
 
                     }
                 } catch (\Throwable $th) {
@@ -139,16 +133,19 @@ class PenjualanProdukController extends Controller
             public function edit($id)
             {
                 $data = PenjualanProduk::findOrFail($id);
-                $produk=GudangLumbung::pluck('nama_tanaman_id','id');
+                $pembeli=DataPembeli::pluck('nama','id');
+                // $produk=GudangLumbung::pluck('nama_tanaman_id','id');
+                $produk = GudangLumbung::with('tanaman:id,nama')->get()->pluck('tanaman.nama','tanaman.id');
                 $kondisi=GudangLumbung::pluck('kondisi_id','id');
-        $keterangan=GudangLumbung::pluck('keterangan_id','id');
-        // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
-        return view('pages.admin.datapenjualan.penjualanproduk.add-edit', [
-            'data' => $data,
-            'produk'=>$produk,
-            'kondisi'=>$kondisi,
-            'keterangan'=>$keterangan
-        ]);
+                $keterangan=GudangLumbung::pluck('keterangan_id','id');
+                // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
+                return view('pages.admin.datapenjualan.penjualanproduk.add-edit', [
+                'data' => $data,
+                'produk'=>$produk,
+                'kondisi'=>$kondisi,
+                'keterangan'=>$keterangan,
+                'pembeli'=>$pembeli
+            ]);
     }
 
     public function update(Request $request, $id)

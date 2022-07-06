@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Admin\Penjualan;
+namespace App\DataTables\Admin\RiwayatPenjualan;
 
 use App\Models\PenjualanProduk;
 use Yajra\DataTables\Html\Button;
@@ -9,7 +9,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class PenjualanProdukDataTable extends DataTable
+class DetailRiwayatPenjualanProdukDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,34 +20,23 @@ class PenjualanProdukDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-        ->eloquent($query)
-        ->addIndexColumn()
-            ->setRowId(function ($row) {
-                return $row->id;
-            })
-        ->addColumn('action', function ($row) {
-            $btn = '<div class="btn-group">';
-            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanproduk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanproduk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanproduk.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.penjualan.invoiceproduk', $row->id) . '" class="btn btn-warning buttons-invoice"><i class="fas fa-download fa-fw"></i></a>';
-            $btn = $btn . '</div>';
-            return $btn;
-        });
-    }
+            ->eloquent($query)
+            ->addIndexColumn();
+        }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin\PenjualanDataTable $model
+     * @param \App\App\Models\Admin/RiwayatPembelian/DetailRiwayatPembelianDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(PenjualanProduk $model)
     {
+        $id = request()->segment(3);
         return $model->select('penjualan_produks.*')->with([
             'produk.tanaman',
             'kondisi.kondisi',
-            'keterangan.keterangangudang'
+            'keterangan.keterangangudang',
         ]);
     }
 
@@ -59,18 +48,18 @@ class PenjualanProdukDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('penjualan_produks-table')
+                    ->setTableId('detailriwayatpenjualan-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        // Button::make('export'),
-                        // Button::make('print'),
-                        // Button::make('reset'),
-                        // Button::make('reload')
-                    );
+                    // ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
+                    ->orderBy(1);
+                    // ->buttons(
+                    //     Button::make('create'),
+                    //     Button::make('export'),
+                    //     Button::make('print'),
+                    //     Button::make('reset'),
+                    //     Button::make('reload')
+                    // );
     }
 
     /**
@@ -111,7 +100,6 @@ class PenjualanProdukDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Penjualan\PenjualanProduk_' . date('YmdHis');
+        return 'Admin/RiwayatPenjualan/DetailRiwayatPenjualanProduk_' . date('YmdHis');
     }
-
 }

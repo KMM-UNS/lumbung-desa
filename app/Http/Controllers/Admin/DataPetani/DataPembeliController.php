@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin\DataPetani;
 
-use App\DataTables\Admin\DataPetani\DataPetaniDataTable;
+use App\DataTables\Admin\DataPetani\DataPembeliDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\DataPembeli;
 use App\Http\Requests\DataPetaniForm;
 
 use Illuminate\Http\Request;

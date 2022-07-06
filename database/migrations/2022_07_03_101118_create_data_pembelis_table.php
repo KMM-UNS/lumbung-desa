@@ -15,6 +15,15 @@ class CreateDataPembelisTable extends Migration
     {
         Schema::create('data_pembelis', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('instansi');
+            $table->string('email');
+            $table->string('no_hp');
+            $table->string('alamat');
+            //$table->string('foto');
+            //$table->bigInteger('creatable_id')->nullable();
+            //$table->text('creatable_type')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

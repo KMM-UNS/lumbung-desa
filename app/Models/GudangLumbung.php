@@ -6,6 +6,7 @@ use App\Models\Satuan;
 use App\Models\Tanaman;
 use App\Models\Penjualan;
 use App\Models\PenjualanProduk;
+use App\Models\PenjualanPupuk;
 use App\Models\JenisTanaman;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -50,6 +51,11 @@ class GudangLumbung extends Model
     public function penjualanproduk()
     {
         return $this->hasMany(PenjualanProduk::class);
+    }
+
+    public function penjualanpupuk()
+    {
+        return $this->hasMany(PenjualanPupuk::class);
     }
 
 }

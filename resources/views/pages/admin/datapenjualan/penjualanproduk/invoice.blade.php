@@ -144,14 +144,15 @@
                            <tr>
                                <th>Nomor Pembelian</th>
                                <th>Tanggal Pembelian</th>
-                               <th>Jam</th>
                                <th>Nama Pembeli</th>
-                               <th>Kasir</th>
+                               {{-- <th>Kasir</th> --}}
                            </tr>
                        </thead>
                        <tbody>
                            <tr>
                                <td class="col-md-9">{{ $no_penjualan }}</td>
+                               <td class="col-md-9">{{ $tgl_penjualan }}</td>
+                               <td class="col-md-9">{{ $nama }}</td>
                                <td class="col-md-3"><i class="fa fa-inr"></i></td>
                            </tr>
                            {{-- <tr>

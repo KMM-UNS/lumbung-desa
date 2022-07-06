@@ -46,13 +46,13 @@
         <label for="name">Nama Petani Pembeli</label>
         <input disabled class="form-control" value="{{{ $data->nama ?? old('nama') }}}">
         <label for="name">Email</label>
-        <input disabled type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input disabled type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
         <label for="name">Nomor Handphone</label>
-        <input disabled type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input disabled type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}">
         <label for="name">Alamat</label>
-        <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
         <label for="name">Produk</label>
-        <input disabled type="text" id="produk_id" name="produk_id" class="form-control" value="{{{ $data->produk ?? old('produk') }}}">
+        <input disabled type="text" id="produk_id" name="produk_id" class="form-control" value="{{{ $data->produk_id ?? old('produk_id') }}}">
         <label for="name">Kondisi</label>
         <input disabled class="form-control" value="{{{ $data->kondisi ?? old('kondisi') }}}">
         <label for="name">Keterangan</label>

@@ -6,6 +6,7 @@ use App\DataTables\Admin\Penjualan\PenjualanPupukDataTable;
 use App\Models\Tanaman;
 use App\Models\DataPupuk;
 use App\Models\DataPetani;
+use App\Models\DataPembeli;
 use App\Http\Controllers\Controller;
 use App\Models\KondisiHasilPanen;
 use App\Models\PenjualanPupuk;
@@ -27,11 +28,13 @@ class PenjualanPupukController extends Controller
         //$kondisi=GudangPupuk::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
         //$keterangan=GudangPupuk::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
         $petani=DataPetani::pluck('nama','id');
+        $pembeli=DataPembeli::pluck('nama','id');
         return view('pages.admin.datapenjualan.penjualanpupuk.add-edit', [
             'produk'=>$produk,
             // 'kondisi'=>$kondisi,
             // 'keterangan'=>$keterangan,
-            'petani' => $petani
+            'petani' => $petani,
+            'pembeli'=> $pembeli
         ]);
         // $no_penjualan = Penjualan::create([
         //     'tgl_penjualan' => '',
@@ -91,8 +94,10 @@ class PenjualanPupukController extends Controller
 // if($request->jumlah >= $gudangLumbung->stok){
                     //     return back()->withInput()->withToastError('Jumlah stok melebihi batas');
                     // }
-                    $gudangLumbung->stok <= $penjualan->jumlah;
-                    return back()->withInput()->withToastError('Jumlah stok melebihi batas');
+                   // jika sudah maka update stok
+                   $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
+                   // dd($pembelian);
+                   $gudangLumbung->save();
                         // // jika sudah maka update stok
                         // $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
                         // // dd($pembelian);
@@ -107,11 +112,10 @@ class PenjualanPupukController extends Controller
 
                         // ]);
                         // $gudang->save();
+                        $gudangLumbung->stok < $penjualan->jumlah;
+                        return back()->withInput()->withToastError('Jumlah stok melebihi batas');
 
-                         // jika sudah maka update stok
-                         $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
-                         // dd($pembelian);
-                         $gudangLumbung->save();
+
 
                     }
                 } catch (\Throwable $th) {
@@ -140,6 +144,8 @@ class PenjualanPupukController extends Controller
             public function edit($id)
             {
                 $data = PenjualanPupuk::findOrFail($id);
+                $pembeli=DataPembeli::pluck('nama','id');
+                // $produk=GudangPupuk::pluck('nama_pupuk','id');
                 $produk=GudangPupuk::pluck('nama_pupuk','id');
         //         $kondisi=GudangPupuk::pluck('kondisi_id','id');
         // $keterangan=GudangPupuk::pluck('keterangan_id','id');
@@ -147,6 +153,7 @@ class PenjualanPupukController extends Controller
         return view('pages.admin.datapenjualan.penjualanpupuk.add-edit', [
             'data' => $data,
             'produk'=>$produk,
+            'pembeli'=> $pembeli
             // 'kondisi'=>$kondisi,
             // 'keterangan'=>$keterangan
         ]);

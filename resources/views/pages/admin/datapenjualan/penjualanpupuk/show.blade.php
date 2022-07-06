@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.datapenjualan.penjualanpupuk.update', $data->id) : route('admin.datapenjualan.penjualanpupuk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.penjualan.penjualanpupuk.update', $data->id) : route('admin.penjualan.penjualanpupuk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -43,24 +43,24 @@
         <input disabled class="form-control" value="{{{ $data->no_penjualan ?? old('no_penjualan') }}}">
         <label for="name">Tanggal Penjualan</label>
         <input disabled class="form-control" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
-        <label for="name">Nama Petani Pembeli</label>
+        <label for="name">Nama Pembeli</label>
         <input disabled class="form-control" value="{{{ $data->nama ?? old('nama') }}}">
         <label for="name">Email</label>
-        <input disabled type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input disabled type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
         <label for="name">Nomor Handphone</label>
-        <input disabled type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input disabled type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}">
         <label for="name">Alamat</label>
-        <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
+        <label for="name">Produk</label>
+        <input disabled type="text" id="produk_id" name="produk_id" class="form-control" value="{{{ $data->produk_id ?? old('produk_id') }}}">
         <label for="name">Jumlah Penjualan</label>
         <input disabled class="form-control" value="{{{ $data->jumlah ?? old('jumlah') }}}">
         <label for="name">Harga</label>
         <input disabled class="form-control" value="{{{ $data->harga ?? old('harga') }}}">
-        <label for="name">Kondisi</label>
-        <input disabled class="form-control" value="{{{ $data->kondisi ?? old('kondisi') }}}">
-        <label for="name">Produk</label>
-        <input type="text" id="produk" name="produk" class="form-control" value="{{{ $data->produk ?? old('produk') }}}">
-        <label for="name">Total</label>
-        <input type="text" id="total" name="total" class="form-control" value="{{{ $data->total ?? old('total') }}}">
+        {{-- <label for="name">Kondisi</label> --}}
+        {{-- <input disabled class="form-control" value="{{{ $data->kondisi ?? old('kondisi') }}}"> --}}
+       <label for="name">Total</label>
+        <input disabled type="text" id="total" name="total" class="form-control" value="{{{ $data->total ?? old('total') }}}">
       </div>
     </div>
     <!-- end panel-body -->

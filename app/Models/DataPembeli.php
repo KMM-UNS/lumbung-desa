@@ -19,9 +19,12 @@ class DataPembeli extends Model
     protected $table = 'data_pembelis';
     protected $fillable =
     [
-    'nama','jenis_kelamin','email','no_hp','alamat'
+    'nama','instansi','email','no_hp','alamat'
     ];
     public $timestamps = false;
 
-
+    public function pembeli()
+    {
+        return $this->hasMany(Penjualan::class,'nama'); //'petani_id' itu nama kolom yang mengambil data petani
+    }
 }

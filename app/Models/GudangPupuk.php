@@ -21,4 +21,9 @@ class GudangPupuk extends Model
     {
         return $this->belongsTo(DataPupuk::class,'nama_pupuk');
     }
+
+    public function penjualanpupuk()
+    {
+        return $this->hasMany(PenjualanPupuk::class);
+    }
 }

@@ -21,6 +21,7 @@ class DataPupukDataTable extends DataTable
     {
         return datatables()
         ->eloquent($query)
+        ->addIndexColumn()
         ->setRowId(function ($row) {
             return $row->id;
         })
@@ -75,8 +76,8 @@ class DataPupukDataTable extends DataTable
     protected function getColumns()
     {
         return [
-
-            Column::make('id'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
+            // Column::make('id'),
             Column::make('nama'),
             Column::make('jenis_pupuk'),
             Column::make('berat'),

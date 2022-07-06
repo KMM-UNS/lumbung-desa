@@ -34,8 +34,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             // Route::post('/images','DataPetaniController@upload');
             Route::resource('tanaman', 'TanamanController');
             Route::post('tanaman', 'TanamanController@store')->name('tanaman.store');
-            Route::post('tanaman', 'TanamanController@simpan')->name('tanaman.simpan');
+            Route::post('tanaman/simpan', 'TanamanController@simpan')->name('tanaman.simpan');
             Route::resource('datalahan', 'DataLahanController');
+            Route::resource('datapembeli', 'DataPembeliController');
         });
 
         Route::group(['prefix' => '/pembelian', 'as' => 'pembelian.', 'namespace' => 'Pembelian'], function () {
@@ -58,8 +59,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => '/penjualan', 'as' => 'penjualan.', 'namespace' => 'Penjualan'], function () {
             Route::resource('penjualanproduk', 'PenjualanProdukController');
             Route::resource('penjualanpupuk', 'PenjualanPupukController');
-            Route::get('invoice/{id}', [PenjualanProdukController::class, 'invoice'])->name('invoice');
-            Route::get('invoice/{id}', [PenjualanPupukController::class, 'invoice'])->name('invoice');
+            Route::get('invoiceproduk/{id}', [PenjualanProdukController::class, 'invoice'])->name('invoiceproduk');
+            Route::get('invoicepupuk/{id}', [PenjualanPupukController::class, 'invoice'])->name('invoicepupuk');
         });
 
 
@@ -77,7 +78,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::group(['prefix' => '/riwayat', 'as' => 'riwayat.', 'namespace' => 'Riwayat'], function () {
             Route::resource('pembelian', 'RiwayatPembelianController');
-            Route::resource('penjualan', 'RiwayatPenjualanController');
+            Route::resource('riwayatpenjualanproduk', 'RiwayatPenjualanProdukController');
+            Route::resource('riwayatpenjualanpupuk', 'RiwayatPenjualanPupukController');
         });
 
         Route::resource('kas', 'KasController');

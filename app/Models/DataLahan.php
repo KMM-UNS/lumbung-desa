@@ -22,7 +22,7 @@ class DataLahan extends Model
 
     public function namapetani()
     {
-        return $this->belongsTo(DataPetani::class,'petani_id');
+        return $this->belongsTo(DataPetani::class,'petani_id'); //'petani_id' itu nama kolom yang mengambil data petani
     }
 
     public function jenislahan()

@@ -21,6 +21,10 @@ class DataPetaniDataTable extends DataTable
     {
         return datatables()
         ->eloquent($query)
+        ->addIndexColumn()
+            ->setRowId(function ($row) {
+                return $row->id;
+            })
         ->addColumn('action', function ($row) {
             $btn = '<div class="btn-group">';
             $btn = $btn . '<a href="' . route('admin.data-petani.petani.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
@@ -58,10 +62,10 @@ class DataPetaniDataTable extends DataTable
             ->orderBy(1)
             ->buttons(
                 Button::make('create'),
-                Button::make('export'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
+                // Button::make('export'),
+                // Button::make('print'),
+                // Button::make('reset'),
+                // Button::make('reload')
             );
     }
 
@@ -73,7 +77,7 @@ class DataPetaniDataTable extends DataTable
     protected function getColumns()
     {
         return [
-
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             Column::make('no_kk'),
             Column::make('nik'),
             Column::make('nama'),

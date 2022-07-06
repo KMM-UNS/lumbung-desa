@@ -60,10 +60,10 @@ class JenisTanamanDataTable extends DataTable
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
+                        // Button::make('export'),
+                        // Button::make('print'),
+                        // Button::make('reset'),
+                        // Button::make('reload')
                     );
     }
 
@@ -75,14 +75,15 @@ class JenisTanamanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
-            Column::make('id'),
+
+            // Column::make('id'),
             Column::make('nama'),
-            Column::make('status')
+            Column::make('status'),
+            Column::computed('action')
+            ->exportable(false)
+            ->printable(false)
+            ->width(60)
+            ->addClass('text-center'),
         ];
     }
 

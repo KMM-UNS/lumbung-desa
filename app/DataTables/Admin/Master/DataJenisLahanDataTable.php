@@ -21,9 +21,11 @@ class DataJenisLahanDataTable extends DataTable
     {
         return datatables()
         ->eloquent($query)
-        ->setRowId(function ($row) {
-            return $row->id;
-        })
+
+        ->addIndexColumn()
+            ->setRowId(function ($row) {
+                return $row->id;
+            })
         ->addColumn('action', function ($row) {
             $btn = '<div class="btn-group">';
             $btn = $btn . '<a href="' . route('admin.master-data.datajenislahan.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
@@ -60,10 +62,10 @@ class DataJenisLahanDataTable extends DataTable
                     ->orderBy(1)
                     ->buttons(
                         Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
+                        // Button::make('export'),
+                        // Button::make('print'),
+                        // Button::make('reset'),
+                        // Button::make('reload')
                     );
     }
 
@@ -75,8 +77,8 @@ class DataJenisLahanDataTable extends DataTable
     protected function getColumns()
     {
         return [
-
-            Column::make('id'),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
+            // Column::make('id'),
             Column::make('nama'),
             Column::computed('action')
             ->exportable(false)
