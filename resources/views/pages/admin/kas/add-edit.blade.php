@@ -69,10 +69,13 @@
               <div class="col-md-1 my-auto">
                   <label for="name"><strong>Pembayaran</strong></label>
               </div>
-              <div class="col-md-5">
+              <div class="col-md-4">
                 <x-form.Dropdown name="pembayaran" :options="$kategoripembayaran" selected="{{{ old('pembayaran') ?? ($data['pembayaran'] ?? null) }}}" required />
+              </div>
+              <div class="col-md-1">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-pembayaran">+ pembayaran</button>
+              </div>
             </div>
-          </div>
       </div>
       <div class="form-group">
         <div class="row">
@@ -105,6 +108,41 @@
   <i class="fa fa-arrow-circle-left"></i> Kembali
 </a>
 
+{{-- Begin Modal Form Produk --}}
+<div class="modal fade modal-pembayaran" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- begin panel -->
+    <form action="{{ route('admin.master-data.kategori-pembayaran.simpan') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+    @csrf
+
+    <div class="panel panel-inverse">
+      <!-- begin panel-heading -->
+      <div class="panel-heading">
+        <h4 class="panel-title">Form Tambah Pembayaran</h4>
+      </div>
+      <!-- end panel-heading -->
+      <!-- begin panel-body -->
+      <div class="panel-body">
+        <div class="form-group">
+            <label for="name">Nama</label>
+            <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+          </div>
+      </div>
+      <!-- end panel-body -->
+      <!-- begin panel-footer -->
+      <div class="panel-footer">
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+      <!-- end panel-footer -->
+    </div>
+    <!-- end panel -->
+  </form>
+        </div>
+    </div>
+  </div>
+{{-- end modal form produk --}}
 @endsection
 
 @push('scripts')

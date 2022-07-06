@@ -93,6 +93,34 @@
       </div>
     </div>
     <!-- end panel-heading -->
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="name"><strong>Nama Petani</strong></label>
+                </div>
+                <div class="col-md-10">
+                    <td>: {{ $data->petani->nama }} </td>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="name"><strong>Total Produk </strong></label>
+                </div>
+                <div class="col-md-10">
+                    <td>: 12 item </td>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="name"><strong>Total Berat Produk </strong></label>
+                </div>
+                <div class="col-md-10">
+                    <td>: {{ $totalberatproduk }} kg</td>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- begin panel-body -->
 
     <div class="panel-body">

@@ -78,11 +78,11 @@
 <div class="panel panel-inverse">
     <!-- begin panel-heading -->
     <div class="panel-heading">
-      <h4 class="panel-title">Tabel Data - @yield('title')</h4>
-      <div class="panel-heading-btn">
-        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-      </div>
+        <h4 class="panel-title">Tabel Data - @yield('title')</h4>
+        <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+        </div>
     </div>
     <!-- end panel-heading -->
     <!-- begin panel-body -->
@@ -91,20 +91,13 @@
       {{ $dataTable->table() }}
     </div>
     <!-- end panel-body -->
-  </div>
-  <!-- end panel -->
-  @endsection
+</div>
+<!-- end panel -->
+@endsection
 
-  @push('scripts')
-  <!-- datatables -->
-  <script src="{{ asset('assets/js/custom/datatable-assets.js') }}"></script>
-  {{ $dataTable->scripts() }}
-  <!-- end datatables -->
-
-  <script src="{{ asset('assets/js/custom/delete-with-confirmation.js') }}"></script>
-  <script>
-    $(document).on('delete-with-confirmation.success', function() {
-      $('.buttons-reload').trigger('click')
-    })
-  </script>
-  @endpush
+@push('scripts')
+<!-- datatables -->
+    <script src="{{ asset('assets/js/custom/datatable-assets.js') }}"></script>
+    {{ $dataTable->scripts() }}
+    <!-- end datatables -->
+@endpush

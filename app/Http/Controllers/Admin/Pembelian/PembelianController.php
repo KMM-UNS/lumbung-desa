@@ -110,13 +110,20 @@ class PembelianController extends Controller
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
         $petani=DataPetani::pluck('nama','id');
+        // relasi modal (pop up tambah produk)
+        $jenistanaman=JenisTanaman::pluck('nama','id');
+        $musimtanam=Musim::pluck('nama','id');
+        $pupuk=DataPupuk::pluck('nama','id');
         return view('pages.admin.pembelian.add-edit', [
             'data' => $data,
             'musim'=>$musim,
             'tanaman'=>$tanaman,
             'kondisi'=>$kondisi,
             'satuan'=>$satuan,
-            'petani'=>$petani
+            'petani'=>$petani,
+            'jenistanaman'=>$jenistanaman,
+            'musimtanam'=>$musimtanam,
+            'pupuk'=>$pupuk
         ]);
     }
 
@@ -156,6 +163,23 @@ class PembelianController extends Controller
         ]);
         // return $pdf->download('invoice.pdf');
         return view('pages.admin.pembelian.invoice', [
+            'id'=>$id,
+            'data' => $data,
+            'tanaman_id'=>$data->tanaman->nama,
+            'petani_id'=>$data->petani->nama,
+            'no_pembelian'=>$data->no_pembelian,
+            'tanggal_pembelian'=>$data->tanggal_pembelian,
+            'jumlah'=>$data->jumlah,
+            'kondisi_id'=>$data->kondisi->nama,
+            'harga'=>$data->harga,
+            'total'=>$data->total
+        ]);
+    }
+
+    public function detailinvoice($id)
+    {
+        $data = Pembelian::findOrFail($id);
+        return view('pages.admin.pembelian.detail-invoice', [
             'data' => $data,
             'tanaman_id'=>$data->tanaman->nama,
             'petani_id'=>$data->petani->nama,

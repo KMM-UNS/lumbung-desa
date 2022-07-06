@@ -98,13 +98,13 @@
                   <label for="name"><strong>Harga</strong></label>
               </div>
               <div class="col-md-5">
-                  <td>: {{ $data->harga }}</td>
+                  <td>: @currency($data->harga)</td>
               </div>
               <div class="col-md-1 my-auto">
                   <label for="name"><strong>Total</strong></label>
               </div>
               <div class="col-md-5">
-                  <td>: {{ $data->total }}</td>
+                  <td>: @currency($data->total) </td>
               </div>
           </div>
         </div>

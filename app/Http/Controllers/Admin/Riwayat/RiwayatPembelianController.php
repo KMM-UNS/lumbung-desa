@@ -15,24 +15,26 @@ class RiwayatPembelianController extends Controller
     public function index(RiwayatPembelianDataTable $dataTable)
     {
         $data = DataPetani::has('petani')->get();
+        // $petani=DataPetani::pluck('nama','id');
         return $dataTable->render('pages.admin.riwayat-transaksi.pembelian.index', [
         // return view('pages.admin.riwayat-transaksi.pembelian.index', [
-            'data'=>$data
+            'data'=>$data,
+            // 'petani'=>$petani
         ]);
     }
 
     public function show(DetailRiwayatPembelianDataTable $dataTable, $id)
     {
-        // $data = DataPetani::findOrFail($id);
-        // $pembelian = Pembelian::get();
-        // $data['data'] = Pembelian::where('petani_id', $id)->get();
-        $data=Pembelian::select('petani_id')->where('petani_id', $id);
-        // dd($id);
+        $data=Pembelian::select('petani_id')->where('petani_id', $id)->first();
+        $datapetani=DataPetani::findOrFail($id);
+        // hitung total berat produk
+        $totalberatproduk = Pembelian::where('petani_id', $datapetani->id)->get()->sum('jumlah',$datapetani->id);
+        // dd($data);
         return $dataTable->render('pages.admin.riwayat-transaksi.pembelian.show', [
         // return view('pages.admin.riwayat-transaksi.pembelian.show', [
             'id'=>$id,
             'data'=>$data,
-            // 'pembelian'=>$pembelian
+            'totalberatproduk'=>$totalberatproduk,
         ]);
     }
 }

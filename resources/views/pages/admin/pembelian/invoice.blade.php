@@ -151,11 +151,11 @@
                                <td class="col-md-9">{{ $tanaman_id }}</td>
                                <td class="col-md-9">{{ $kondisi_id }}</td>
                                <td class="col-md-9">{{ $jumlah }}</td>
-                               <td class="col-md-3"><i class="fa fa-inr"></i>{{ $harga }}</td>
+                               <td class="col-md-3"><i class="fa fa-inr"></i>@currency($harga)</td>
                             </tr>
                             <tr>
                                <td class="text-right"><h2><strong>Total: </strong></h2></td>
-                               <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i> {{ $total }} </strong></h2></td>
+                               <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i> @currency($total) </strong></h2></td>
                             </tr>
                         </tbody>
                     </table>

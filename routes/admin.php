@@ -29,8 +29,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('petani', 'DataPetaniController');
             // Route::get('/storage', 'DataPetaniController@index');
             // Route::post('/images','DataPetaniController@upload');
+            Route::post('tanaman/simpan', 'TanamanController@simpan')->name('tanaman.simpan');
             Route::resource('tanaman', 'TanamanController');
-            Route::post('tanaman', 'TanamanController@simpan')->name('tanaman.simpan');
+            // Route::post('tanaman', 'TanamanController@store')->name('tanaman.store');
             Route::resource('datalahan', 'DataLahanController');
         });
 
@@ -39,6 +40,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             // pembelian produk
             Route::resource('pembelian', 'PembelianController');
             Route::get('invoice/{id}', [PembelianController::class, 'invoice'])->name('invoice');
+            Route::get('detail-invoice/{id}', [PembelianController::class, 'detail-invoice'])->name('detail-invoice');
             // pembelian pupuk
             Route::resource('pembelian-pupuk', 'PembelianPupukController');
             Route::get('invoice-pupuk/{id}', [PembelianPupukController::class, 'invoice'])->name('pembelian-pupuk.invoice');
@@ -70,6 +72,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             // Route::get('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload');
             // Route::post('file-upload', [ SliderController::class, 'Slider' ])->name('file.upload.post');
             Route::resource('datapupuk', 'DataPupukController');
+            Route::post('datapupuk/simpan', 'DataPupukController@simpan')->name('datapupuk.simpan');
             Route::resource('datajenislahan', 'DataJenisLahanController');
             Route::resource('jenistanaman', 'JenisTanamanController');
             Route::resource('musim', 'MusimController');
@@ -78,6 +81,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             // Route::resource('satuan', 'SatuanController');
             Route::resource('kategori-kas', 'KategoriKasController');
             Route::resource('kategori-pembayaran', 'KategoriPembayaranController');
+            Route::post('kategori-pembayaran/simpan', 'KategoriPembayaranController@simpan')->name('kategori-pembayaran.simpan');
         });
     });
 });

@@ -19,18 +19,18 @@ return [
             'url' => '/admin/dashboard',
             'caret' => false
         ],
-        [
-            'icon' => 'fa fa-users',
-            'title' => 'Pengguna',
-            'url' => '/admin/user',
-            'caret' => false,
-        ],
-        [
-            'icon' => 'fa fa-users',
-            'title' => 'Admin',
-            'url' => '/admin/admin',
-            'caret' => false,
-        ],
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Pengguna',
+        //     'url' => '/admin/user',
+        //     'caret' => false,
+        // ],
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Admin',
+        //     'url' => '/admin/admin',
+        //     'caret' => false,
+        // ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Pendataan',
@@ -89,10 +89,11 @@ return [
                 [
                     'url' => '/admin/riwayat/pembelian',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Pembelian'
-                ],[
-                    'url' => '/admin/riwayat/penjualan',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Penjualan'
-                ]
+                ],
+                // [
+                //     'url' => '/admin/riwayat/penjualan',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Riwayat Penjualan'
+                // ]
             ]
         ],
         [

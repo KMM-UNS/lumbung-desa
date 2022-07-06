@@ -68,7 +68,7 @@
             <x-form.Dropdown name="pupuk_id" :options="$pupuk" selected="{{{ old('pupuk_id') ?? ($data['pupuk_id'] ?? null) }}}" required />
           </div>
           <div class="col-md-1">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-pupuk">+ produk</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-pupuk">+ pupuk</button>
           </div>
         </div>
     </div>
@@ -123,7 +123,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <!-- begin panel -->
-            <form action="{{ route('admin.master-data.datapupuk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+            <form action="{{ route('admin.master-data.datapupuk.simpan') }}" id="form" name="form" method="POST" data-parsley-validate="true">
                 @csrf
                 <div class="panel panel-inverse">
                   <!-- begin panel-heading -->

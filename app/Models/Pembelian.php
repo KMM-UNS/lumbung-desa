@@ -16,7 +16,7 @@ use Alfa6661\AutoNumber\AutoNumberTrait;
 class Pembelian extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    // use SoftDeletes;
     use AutoNumberTrait;
 
     public const ACTIVE = "aktif";

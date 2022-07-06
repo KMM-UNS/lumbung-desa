@@ -48,7 +48,7 @@
                     <label for="name"><strong>Total Produk</strong> (item)</label>
                 </div>
                 <div class="col-md-10">
-                    <td>: 12 </td>
+                    <td>: {{ $totaljumlahproduk }} </td>
                 </div>
             </div>
             <div class="row">
@@ -56,7 +56,7 @@
                     <label for="name"><strong>Total Berat Produk</strong> (/kg)</label>
                 </div>
                 <div class="col-md-10">
-                    <td>: {{ $totalberatproduk }} kg (masih belum bisa hitung per musim) </td>
+                    <td>: {{ $totalberatproduk }} kg </td>
                 </div>
             </div>
             <div class="row">
@@ -64,8 +64,11 @@
                     <label for="name"><strong>Modal</strong></label>
                 </div>
                 <div class="col-md-10">
-                    <td>: Rp {{ $perkiraanmodal }} (masih belum bisa hitung per musim) </td>
+                    <td>: @currency($perkiraanmodal) </td>
                 </div>
+            </div>
+            <div class="col">
+                <a href="" class="btn btn-info buttons-primary width-80 m-r-2 fas fa-print fa-fw"></i>  Cetak</a>
             </div>
         </div>
     </div>

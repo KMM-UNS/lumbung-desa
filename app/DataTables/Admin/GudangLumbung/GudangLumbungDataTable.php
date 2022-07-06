@@ -59,6 +59,10 @@ class GudangLumbungDataTable extends DataTable
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
                     ->orderBy(1)
+                    ->parameters([
+                        'responsive' => true,
+                        'autowidth' => false
+                    ])
                     ->buttons(
                         Button::make('create'),
                         // Button::make('export'),
@@ -76,7 +80,7 @@ class GudangLumbungDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
             Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Produk'),
             Column::make('stok')->title('Stok (/kg)'),
             // Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
@@ -85,7 +89,7 @@ class GudangLumbungDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(120)
+                //   ->width(60)
                   ->addClass('text-center'),
         ];
     }

@@ -13,7 +13,7 @@ class KondisiHasilPanen extends Model
     public const ACTIVE = "aktif";
 
     protected $table = 'kondisi_hasil_panen';
-    protected $fillable = ['kondisi'];
+    protected $fillable = ['nama'];
     public $timestamps = false;
 
     public function kondisitanamangudang()

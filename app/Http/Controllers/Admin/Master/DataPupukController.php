@@ -37,6 +37,25 @@ class DataPupukController extends Controller
         return redirect(route('admin.master-data.datapupuk.index'))->withToastSuccess('Data tersimpan');
     }
 
+    public function simpan(Request $request)
+    {
+        try {
+            $request->validate([
+                'nama' => 'required|min:3'
+            ]);
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
+        }
+
+        try {
+            DataPupuk::create($request->all());
+        } catch (\Throwable $th) {
+            return back()->withInput()->withToastError('Something went wrong');
+        }
+
+        return redirect()->back()->with('Data tersimpan');
+    }
+
     public function edit($id)
     {
         $data = DataPupuk::findOrFail($id);

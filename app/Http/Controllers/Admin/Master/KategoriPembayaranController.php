@@ -27,7 +27,20 @@ class KategoriPembayaranController extends Controller
             dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
-        return redirect(route('admin.master-data.kategori-pembayaran.index'))->withToastSuccess('Data tersimpan');    }
+        return redirect(route('admin.master-data.kategori-pembayaran.index'))->withToastSuccess('Data tersimpan');
+    }
+
+    public function simpan(Request $request)
+    {
+        try {
+            KategoriPembayaran::create($request->all());
+        } catch (\Throwable $th) {
+            dd($th);
+            return back()->withInput()->withToastError('Something went wrong');
+        }
+
+        return redirect()->back()->with('Data tersimpan');
+    }
 
     public function edit($id)
     {

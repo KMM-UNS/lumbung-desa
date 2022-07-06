@@ -32,8 +32,8 @@ class DetailRiwayatPembelianDataTable extends DataTable
      */
     public function query(Pembelian $model)
     {
-        $id = request()->segment(3);
-        return $model->select('pembelian.*')->with(['musim','tanaman','kondisi','petani']);
+        $id = request()->segment(4);
+        return $model->select('pembelian.*')->with(['musim','tanaman','kondisi','petani'])->where('petani_id', $id);
     }
 
     /**
