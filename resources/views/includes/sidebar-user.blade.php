@@ -15,18 +15,9 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
                         <img src="/assets/img/user/user-13.jpg" alt="" />
                     </div>
                     <div class="info">
-                        <b class="caret pull-right"></b>
-                        Sean Ngu
-                        <small>Front end developer</small>
+                        {{ Auth::user()->name }}
                     </div>
                 </a>
-            </li>
-            <li>
-                <ul class="nav nav-profile">
-                    <li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
-                    <li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
-                    <li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
-                </ul>
             </li>
         </ul>
         <!-- end sidebar user -->

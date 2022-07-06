@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Datatables\Admin\UserDataTable;
+use App\DataTables\Admin\UserDataTable;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserForm;
+use App\Models\Role;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -16,81 +19,101 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('pages.admin.user.add-edit');
+        $roles = Role::pluck('display_name', 'id');
+        return view('pages.admin.user.add-edit', ['roles' => $roles]);
     }
 
-    public function store(Request $request)
+    public function store(UserForm $request)
     {
-        try {
-            $request->validate([
-                'name' => 'required|min:3',
-                'email' => 'required|min:7|max:15',
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-            ]);
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        }
+        return DB::transaction(function () use ($request) {
+            $msg = "Data Tersimpan";
+            try {
+                $data = User::createFromRequest($request);
+                if (!empty($request->user_password)) {
+                    $data->password = Hash::make($request->user_password);
+                }
+                $data->save();
 
-        try {
-            User::create([
-                'fullname' => $request->fullname,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'isAdmin' => $request->isAdmin
-            ]);
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError('Error saving data');
-        }
+                $data->attachRoles($request->user_roles);
 
-        return redirect(route('admin.user.index'))->withToastSuccess('Data tersimpan');
+                $profile = $data->profile()->firstOrNew();
+                $profile->updateFromRequest($request);
+                $profile->save();
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                $msg = "Error saving data";
+
+                if ($request->wantsJson()) {
+                    $request->flash();
+                    toast($msg, 'error');
+                    return response()->json([
+                        'error' => $msg
+                    ], 500);
+                }
+                return back()->withInput()->withToastError($msg);
+            }
+
+            if ($request->wantsJson()) {
+                toast($msg, 'success');
+                return response()->json([
+                    'message' => $msg
+                ]);
+            }
+
+            return redirect(route('admin.users.index'))->withToastSuccess($msg);
+        });
     }
 
     public function edit($id)
     {
-        $data = User::findOrFail($id);
-        return view('pages.admin.user.add-edit', ['data' => $data]);
+        $data = User::with(['profile', 'roles'])->findOrFail($id);
+        $roles = Role::pluck('display_name', 'id');
+        return view('pages.admin.user.add-edit', ['data' => $data, 'roles' => $roles]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UserForm $request, User $user)
     {
-        try {
-            $request->validate([
-                'fullname' => 'required|min:3',
-                'email' => 'required|min:7|max:15',
-            ]);
+        return DB::transaction(function () use ($request, $user) {
+            $msg = 'Data berhasil diubah';
 
-            if (!empty($request->password)) :
-                $request->validate([
-                    'password' => ['required', 'string', 'min:8', 'confirmed'],
+            try {
+                $data = $user->updateFromRequest($request);
+                if (!empty($request->user_password)) {
+                    $data->password = Hash::make($request->user_password);
+                }
+                $data->roles()->sync($request->user_roles);
+                $profile = $data->profile()->firstOrNew();
+                $profile->updateFromRequest($request)->save();
+                $data->save();
+            } catch (\Throwable $th) {
+                $msg = 'Error saving data';
+                if ($request->wantsJson()) {
+                    $request->flash();
+                    toast($msg, 'error');
+                    return response()->json([
+                        'error' => $msg
+                    ], 500);
+                }
+                return back()->withInput()->withToastError($msg);
+            }
+
+            if ($request->wantsJson()) {
+                toast($msg, 'success');
+                return response()->json([
+                    'message' => $msg
                 ]);
-            endif;
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
-        }
+            }
 
-        try {
-            $data = User::findOrFail($id);
-            $data->fullname = $request->fullname;
-            $data->email = $request->email;
-            $data->isAdmin = $request->isAdmin;
-            $data->fullname = $request->fullname;
-
-            if (!empty($request->password)) :
-                $data->password = Hash::make($request->password);
-            endif;
-
-            $data->save();
-        } catch (\Throwable $th) {
-            return back()->withInput()->withToastError('Error saving data');
-        }
-
-        return redirect(route('user.index'))->withToastSuccess('Data tersimpan');
+            return redirect(route('admin.users.index'))->withToastSuccess($msg);
+        });
     }
 
     public function destroy($id)
     {
         try {
-            User::find($id)->delete();
+            $user = User::findOrFail($id);
+            $user->profile()->delete();
+            $user->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }

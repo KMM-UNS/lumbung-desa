@@ -9,9 +9,9 @@
     <div class="news-feed">
         <div class="news-image" style="background-image: url(/assets/img/login-bg/front.png)"></div>
         <div class="news-caption">
-            <h4 class="caption-title"><b>S</b>PMB</h4>
+            <h4 class="caption-title"><b>e</b>Layanan</h4>
             <p>
-                Sistem Pendaftaran Mahasiswa Baru
+                Sistem Informasi Layanan
             </p>
         </div>
     </div>
@@ -30,7 +30,7 @@
                 {{ session('status') }}
             </div>
             @endif
-            <form action="{{ request()->routeIs('admin*') ? route('admin.register') : route('register') }}" method="POST" class="margin-bottom-0">
+            <form action="{{ route('register') }}" method="POST" class="margin-bottom-0">
                 @csrf
 
                 <div class="form-group m-b-15">

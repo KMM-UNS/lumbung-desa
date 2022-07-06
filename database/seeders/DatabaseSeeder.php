@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
             SatuanSeeder::class,
             KategoriKasSeeder::class,
             KeteranganGudangSeeder::class,
+            // SettingSeeder::class,
+            LaravelEntrustSeeder::class,
         ]);
     }
 }

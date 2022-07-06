@@ -78,6 +78,10 @@ return [
             'icon' => 'fa fa-users',
             'title' => 'Penjualan',
             'url' => '/admin/penjualan',
+        [
+            'icon' => 'fa fa-users',
+            'title' => 'Pengguna',
+            'url' => '/admin/users',
             'caret' => false,
         ],
         [

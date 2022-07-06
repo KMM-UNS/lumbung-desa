@@ -2,14 +2,19 @@
 
 namespace App\Models;
 
+use App\Traits\FillableInputTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Shanmuga\LaravelEntrust\Traits\LaravelEntrustUserTrait;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, LaravelEntrustUserTrait, FillableInputTrait;
+
+    protected $fillableMapPrefix = 'user';
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'password'
     ];
 
     /**
@@ -41,24 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function permohonanSkck()
+    public function profile()
     {
-        return $this->morphMany(PermohonanSKCK::class, 'createable');
-    }
-
-    public function pemohon()
-    {
-        return $this->morphMany(Pemohon::class, 'createable');
-    }
-
-    public function kehilanganBarang()
-    {
-        return $this->morphMany(KehilanganBarang::class, 'createable');
-    }
-
-    public function spkt()
-    {
-        return $this->morphMany(SPKT::class, 'createable');
+        return $this->hasOne(UserProfile::class);
     }
 }

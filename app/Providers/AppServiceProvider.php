@@ -28,6 +28,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(255);
         // global settings via config
+        // config([
+        //     'settings' => Setting::all([
+        //         'name', 'value'
+        //     ])
+        //         ->keyBy('name')
+        //         ->transform(function ($setting) {
+        //             return $setting->value;
+        //         })
+        //         ->toArray()
+        // ]);
         Blade::directive('currency', function ( $expression ) { return "Rp. <?php echo number_format($expression,0,',','.'); ?>"; }); // derctive mata uang
     }
 }

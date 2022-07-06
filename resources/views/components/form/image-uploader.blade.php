@@ -5,7 +5,7 @@
             <h5><b>{{ $title }}</b></h5>
         </div>
     </div>
-    <input type="file" name="{{ $name }}" hidden>
+    <input type="file" name="{{ $name }}" accept="image/*" hidden>
 </div>
 
 

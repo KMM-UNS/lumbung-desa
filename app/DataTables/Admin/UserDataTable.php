@@ -26,11 +26,15 @@ class UserDataTable extends DataTable
             })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.user.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.user.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.users.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                $btn = $btn . '<a href="' . route('admin.users.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
+            })
+            ->editColumn('roles', function ($row) {
+                $display = $row->roles->pluck('display_name')->toArray();
+                return implode(', ', $display);
             })
             ->editColumn('created_at', function ($row) {
                 return $row->created_at->locale('id');
@@ -45,7 +49,7 @@ class UserDataTable extends DataTable
      */
     public function query(User $model)
     {
-        return $model->newQuery();
+        return $model->with('roles:id,display_name')->newQuery();
     }
 
     /**
@@ -84,8 +88,9 @@ class UserDataTable extends DataTable
                 ->width(60)
                 ->addClass('text-center'),
             Column::make('name')->title('Nama Lengkap'),
+            Column::make('roles')->title('Hak Akses'),
             Column::make('email'),
-            Column::make('created_at'),
+            Column::make('created_at')->title('Ditambahkan pada'),
         ];
     }
 
