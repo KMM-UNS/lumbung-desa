@@ -6,40 +6,40 @@ use Illuminate\Http\Request;
 
 trait FillableInputTrait
 {
-  protected $fillableMapPrefix;
-  protected $fillableMap;
+  protected $mapPrefix;
+  protected $fillableMaped;
 
-  public function __construct()
+  public function __construct(array $attributes = [])
   {
-    parent::__construct();
-    $this->fillableMapPrefix = $this->fillableMapPrefix ?? $this->getTable();
-    $this->fillableMap = $this->fillableMap ?? $this->getDefaultFillableMap();
+    parent::__construct($attributes);
+    $this->mapPrefix = $this->fillableMapPrefix ?? $this->getTable();
+    $this->fillableMaped = $this->fillableMap ?? $this->getDefaultFillableMap();
   }
 
   public function getDefaultFillableMap()
   {
     $arr = [];
     foreach ($this->getFillable() as $key => $value) {
-      $arr[$value] = $this->fillableMapPrefix . '_' . $value;
+      $arr[$value] = $this->mapPrefix . '_' . $value;
     }
     return $arr;
   }
 
   public function setFillableMap(array $mapAttr)
   {
-    $this->fillableMap = $mapAttr;
+    $this->fillableMaped = $mapAttr;
   }
 
   public function setFillableMapPrefix(String $prefix)
   {
-    $this->fillableMapPrefix = $prefix;
+    $this->mapPrefix = $prefix;
     $arr = $this->getDefaultFillableMap();
     $this->setFillableMap($arr);
   }
 
   public function getFillableMap()
   {
-    return $this->fillableMap;
+    return $this->fillableMaped;
   }
 
   public static function createFromRequest(Request $request)

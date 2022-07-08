@@ -155,7 +155,8 @@ $headerTopMenu = !empty($headerTopMenu) ? $headerTopMenu : '';
                 @endauth
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="{{ route('edit-profile') }}" class="dropdown-item">Edit Profile</a>
+                {{-- <a href="{{ route('edit-profile') }}" class="dropdown-item">Edit Profile</a> --}}
+                <a href="" class="dropdown-item">Edit Profile</a>
                 <div class="dropdown-divider"></div>
                 <form action="{{ route('logout') }}" method="post" redirect="/">
                     @csrf

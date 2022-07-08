@@ -71,7 +71,7 @@ return [
     |
     */
     'defaults' => [
-        'guard'          => ['web', 'admin'],
+        'guard'          => 'web',
     ],
 
     /*

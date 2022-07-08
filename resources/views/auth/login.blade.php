@@ -30,7 +30,8 @@
 				{{ session('status') }}
 			</div>
 			@endif
-			<form action="{{ request()->routeIs('admin*') ? route('admin.login') : route('login') }}" method="POST" class="margin-bottom-0">
+			{{-- <form action="{{ request()->routeIs('admin*') ? route('admin.login') : route('login') }}" method="POST" class="margin-bottom-0"> --}}
+			<form action="{{ route('login') }}" method="POST" class="margin-bottom-0">
 				@csrf
 				<div class="form-group m-b-15">
 					<input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email" autofocus />

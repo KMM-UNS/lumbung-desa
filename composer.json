@@ -20,6 +20,7 @@
         "phpoffice/phpword": "^0.18.2",
         "realrashid/sweet-alert": "^4.0",
         "riskihajar/terbilang": "^1.2",
+        "shanmuga/laravel-entrust": "^2.2",
         "yajra/laravel-datatables": "^1.5",
         "yajra/laravel-datatables-buttons": "^4.0",
         "yajra/laravel-datatables-oracle": "~9.0"

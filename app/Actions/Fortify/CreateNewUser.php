@@ -2,9 +2,7 @@
 
 namespace App\Actions\Fortify;
 
-use App\Models\Role;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -34,22 +32,10 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return DB::transaction(function () use ($input) {
-            try {
-                $user = User::create([
-                    'name' => $input['name'],
-                    'email' => $input['email'],
-                    'password' => Hash::make($input['password']),
-                ]);
-
-                $role = Role::where('name', 'regular_user')->first();
-                $user->attachRole($role);
-                return $user;
-            } catch (\Throwable $th) {
-                //throw $th;
-                DB::rollBack();
-                dd($th);
-            }
-        });
+        return User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
+        ]);
     }
 }

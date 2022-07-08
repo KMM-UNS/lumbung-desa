@@ -12,16 +12,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     require base_path('vendor/laravel/fortify/routes/routes.php');
     Route::resource('/setting', 'SettingController');
 
-
-    Route::group(['namespace' => 'Admin', 'middleware' => 'auth:admin'], function () {
+    Route::group(['namespace' => 'Admin', 'middleware' => ['role:admin|admin_gudang']], function () {
         Route::get('/', function () {
             return redirect(route('admin.dashboard'));
         });
 
-        Route::view('/dashboard', 'pages.admin.dashboard')->name('dashboard');
+        Route::view('', 'pages.admin.dashboard')->name('dashboard');
 
         Route::resource('/admin', 'AdminController');
-        Route::resource('/user', 'UserController');
+        Route::resource('/users', 'UserController');
         // Route::resource('datapetani', 'DataPetaniController');
         // Route::resource('penjualan', 'PenjualanController');
 

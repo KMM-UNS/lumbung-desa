@@ -81,7 +81,22 @@ $sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 			return $subMenu;
 			}
 
-			foreach (config('sidebar.menu') as $key => $menu) {
+            if (
+                auth()
+                ->user()
+                ->hasRole('admin')
+            ) {
+                $menu_role = config('sidebar.menu');
+            } elseif (
+                auth()
+                ->user()
+                ->hasRole('admin_gudang')
+            ) {
+                $menu_role = config('sidebar.menu_admin_gudang');
+            }
+
+			foreach ($menu_role as $key => $menu) {
+            // foreach (config('sidebar.menu') as $key => $menu) {
 			$GLOBALS['parent_active'] = '';
 
 			$hasSub = (!empty($menu['sub_menu'])) ? 'has-sub' : '';

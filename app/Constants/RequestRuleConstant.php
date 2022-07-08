@@ -68,6 +68,8 @@ class RequestRuleConstant
             'shipper_name' => 'required|min:3',
             'shipper_phone' => 'nullable',
             'shipper_address' => 'nullable',
+        ];
+    }
     public static function adminTable()
     {
         return [

@@ -22,18 +22,6 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (request()->is('admin*')) {
-            config()->set('fortify.guard', 'admin');
-            config()->set('fortify.home', RouteServiceProvider::ADMIN_HOME);
-            config()->set('fortify.redirects.login', RouteServiceProvider::ADMIN_HOME);
-            config()->set('fortify.redirects.logout', RouteServiceProvider::ADMIN_HOME);
-            config()->set('fortify.features', [
-                Features::updateProfileInformation(),
-                Features::twoFactorAuthentication([
-                    'confirmPassword' => true,
-                ]),
-            ]);
-        }
     }
 
     /**

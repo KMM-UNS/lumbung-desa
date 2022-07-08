@@ -16,15 +16,15 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/admin/dashboard',
+            'url' => '/admin',
             'caret' => false
         ],
-        // [
-        //     'icon' => 'fa fa-users',
-        //     'title' => 'Pengguna',
-        //     'url' => '/admin/user',
-        //     'caret' => false,
-        // ],
+        [
+            'icon' => 'fa fa-users',
+            'title' => 'Pengguna',
+            'url' => '/admin/users',
+            'caret' => false,
+        ],
         // [
         //     'icon' => 'fa fa-users',
         //     'title' => 'Admin',
@@ -78,11 +78,6 @@ return [
             'icon' => 'fa fa-users',
             'title' => 'Penjualan',
             'url' => '/admin/penjualan',
-        [
-            'icon' => 'fa fa-users',
-            'title' => 'Pengguna',
-            'url' => '/admin/users',
-            'caret' => false,
         ],
         [
             'icon' => 'fa fa-cogs',
@@ -156,19 +151,19 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/',
+            'url' => '/user',
             'caret' => false
         ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Ketersediaan Produk',
-            'url' => '/ketersediaan-produk',
+            'url' => '/user/ketersediaan-produk',
             'caret' => false
         ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Riwayat Penjualan',
-            'url' => '/riwayat-penjualan',
+            'url' => '/user/riwayat-penjualan',
             'caret' => false
         ],
         [
@@ -182,6 +177,21 @@ return [
             'title' => 'Logout',
             'url' => '#',
             'caret' => false
+        ]
+    ],
+
+    'menu_admin_gudang' => [
+        [
+            'icon' => 'fa fa-th-large',
+            'title' => 'Dashboard',
+            'url' => '/admin',
+            'caret' => false
+        ],
+        [
+            'icon' => 'fa fa-warehouse',
+            'title' => 'Gudang Lumbung',
+            'url' => '/admin/gudang-lumbung/pilih-gudang',
+            'caret' => false,
         ]
     ],
 

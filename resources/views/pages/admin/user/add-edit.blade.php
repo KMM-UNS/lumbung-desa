@@ -130,6 +130,6 @@
 
 @push('scripts')
 <script src="{{ asset('/assets/plugins/parsleyjs/dist/parsley.js') }}"></script>
-<script src="{{ asset('/assets/js/custom/ajax-form-handler.js') }}"></script>
+{{-- <script src="{{ asset('/assets/js/custom/ajax-form-handler.js') }}"></script> --}}
 <script src="{{ asset('/assets/js/custom/datetime-picker.js') }}"></script>
 @endpush
