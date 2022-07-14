@@ -28,8 +28,8 @@ class DataPembeliDataTable extends DataTable
         ->addColumn('action', function ($row) {
             $btn = '<div class="btn-group">';
             $btn = $btn . '<a href="' . route('admin.data-petani.datapembeli.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.data-petani.datapembeli.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
             $btn = $btn . '<a href="' . route('admin.data-petani.datapembeli.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.data-petani.datapembeli.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
 
             $btn = $btn . '</div>';
             return $btn;
@@ -80,9 +80,9 @@ class DataPembeliDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             Column::make('nama'),
             Column::make('instansi'),
-            Column::make('email'),
-            Column::make('no_hp'),
-            Column::make('alamat'),
+            // Column::make('email'),
+            // Column::make('no_hp'),
+            // Column::make('alamat'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

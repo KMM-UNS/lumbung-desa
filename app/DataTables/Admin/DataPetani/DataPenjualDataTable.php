@@ -80,9 +80,9 @@ class DataPenjualDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             Column::make('nama'),
             Column::make('instansi'),
-            Column::make('email'),
-            Column::make('no_hp'),
-            Column::make('alamat'),
+            // Column::make('email'),
+            // Column::make('no_hp'),
+            // Column::make('alamat'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

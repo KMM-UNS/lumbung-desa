@@ -28,9 +28,9 @@ class PenjualanPupukDataTable extends DataTable
         ->addColumn('action', function ($row) {
             $btn = '<div class="btn-group">';
             $btn = $btn . '<a href="' . route('admin.penjualan.penjualanpupuk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanpupuk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
             $btn = $btn . '<a href="' . route('admin.penjualan.penjualanpupuk.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
             $btn = $btn . '<a href="' . route('admin.penjualan.invoicepupuk', $row->id) . '" class="btn btn-warning buttons-invoice"><i class="fas fa-download fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanpupuk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
             $btn = $btn . '</div>';
             return $btn;
         });
