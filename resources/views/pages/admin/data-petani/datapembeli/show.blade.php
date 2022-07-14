@@ -20,8 +20,8 @@
 
 
 <!-- begin panel //enctype="multipart/form-data"  -->
-<form action="{{  isset($data) ? route('admin.data-petani.pembeli.update', $data->id) :
-route('admin.data-petani.pembeli.store')  }}"  id="form" name="form" method="POST"
+<form action="{{  isset($data) ? route('admin.data-petani.datapembeli.update', $data->id) :
+route('admin.data-petani.datapembeli.store')  }}"  id="form" name="form" method="POST"
 enctype="multipart/form-data" data-parsley-validate="true">
   @csrf
 
@@ -62,9 +62,9 @@ enctype="multipart/form-data" data-parsley-validate="true">
     <label for="name">Instansi</label>
     <input disabled type="text" id="instansi" name="instansi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->instansi ?? old('instansi') }}}">
      <label for="name">Email</label>
-        <input disabled type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempat_lahir') }}}">
+        <input disabled type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
         <label for="name">Nomor Handphone</label>
-        <input disabled type="number" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}}">
+        <input disabled type="number" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}">
 
         <label for="name">Alamat</label>
         <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">

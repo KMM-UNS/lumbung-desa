@@ -3,6 +3,7 @@
 namespace App\DataTables\Admin\RiwayatPembelian;
 
 use App\Models\Pembelian;
+use App\Models\DataPembeli;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;

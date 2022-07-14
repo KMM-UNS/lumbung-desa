@@ -110,7 +110,7 @@ class DataPembeliController extends Controller
     public function show($id)
     {
         $data = DataPembeli::findOrFail($id);
-        return view('pages.admin.data-petani.pembeli.show', ['data' => $data]);
+        return view('pages.admin.data-petani.datapembeli.show', ['data' => $data]);
     }
 
 }

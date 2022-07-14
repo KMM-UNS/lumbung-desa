@@ -44,7 +44,7 @@
         <label for="name">Tanggal Penjualan</label>
         <input disabled class="form-control" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
         <label for="name">Nama Pembeli</label>
-        <input disabled class="form-control" value="{{{ $data->nama ?? old('nama') }}}">
+        <input disabled class="form-control" value="{{{ $data->nama_pembeli ?? old('nama_pembeli') }}}">
         <label for="name">Email</label>
         <input disabled type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
         <label for="name">Nomor Handphone</label>
@@ -52,7 +52,7 @@
         <label for="name">Alamat</label>
         <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
         <label for="name">Produk</label>
-        <input disabled type="text" id="produk_id" name="produk_id" class="form-control" value="{{{ $data->produk_id ?? old('produk_id') }}}">
+        <input disabled type="text" id="produk_id" name="produk_id" class="form-control" value="{{{ $data->produk->pupuk->nama ?? old('produk_id') }}}">
         <label for="name">Jumlah Penjualan</label>
         <input disabled class="form-control" value="{{{ $data->jumlah ?? old('jumlah') }}}">
         <label for="name">Harga</label>

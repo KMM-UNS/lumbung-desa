@@ -3,6 +3,7 @@
 namespace App\DataTables\Admin\RiwayatPenjualan;
 
 use App\Models\PenjualanProduk;
+use App\Models\DataPembeli;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -32,12 +33,13 @@ class DetailRiwayatPenjualanProdukDataTable extends DataTable
      */
     public function query(PenjualanProduk $model)
     {
-        $id = request()->segment(3);
+        $id = request()->segment(4);
         return $model->select('penjualan_produks.*')->with([
             'produk.tanaman',
             'kondisi.kondisi',
             'keterangan.keterangangudang',
-        ]);
+            'pembeli'
+        ])->where('nama', $id);
     }
 
     /**

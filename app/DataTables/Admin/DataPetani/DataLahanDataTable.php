@@ -78,7 +78,7 @@ class DataLahanDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             // Column::make('id'),
-            Column::make('petani_id')->data('namapetani.nama'), //namapetani itu nama fungsi di model, nama itu data yang diambil
+            Column::make('petani_id')->data('namapetani.nama')->title('Nama Petani'), //namapetani itu nama fungsi di model, nama itu data yang diambil
             Column::make('jenis_lahan')->data('jenislahan.nama'),
             Column::make('luas_tanah'),
             Column::computed('action')

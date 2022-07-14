@@ -138,7 +138,16 @@ class PenjualanPupukController extends Controller
             public function show($id)
             {
                 $data = PenjualanPupuk::findOrFail($id);
-                return view('pages.admin.datapenjualan.penjualanpupuk.show', ['data' => $data]);
+                $pembeli=DataPembeli::pluck('nama','id');
+                // $produk=GudangPupuk::pluck('nama_pupuk','id');
+                $produk = GudangPupuk::with('pupuk:id,nama')->get()->pluck('pupuk.nama','pupuk.id');//tanaman nama relasi, id sama nama itu yg diambil di dalam tabel tanaman, terus nama tanaman itu nama relasi, dan nama itu yg menyimpan yang diambil
+
+                return view('pages.admin.datapenjualan.penjualanpupuk.show', [
+                    'produk'=>$produk,
+            'pembeli'=> $pembeli,
+                    'data' => $data
+
+            ]);
             }
 
             public function edit($id)
@@ -146,7 +155,8 @@ class PenjualanPupukController extends Controller
                 $data = PenjualanPupuk::findOrFail($id);
                 $pembeli=DataPembeli::pluck('nama','id');
                 // $produk=GudangPupuk::pluck('nama_pupuk','id');
-                $produk=GudangPupuk::pluck('nama_pupuk','id');
+                $produk = GudangPupuk::with('pupuk:id,nama')->get()->pluck('pupuk.nama','pupuk.id');//tanaman nama relasi, id sama nama itu yg diambil di dalam tabel tanaman, terus nama tanaman itu nama relasi, dan nama itu yg menyimpan yang diambil
+
         //         $kondisi=GudangPupuk::pluck('kondisi_id','id');
         // $keterangan=GudangPupuk::pluck('keterangan_id','id');
         // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');

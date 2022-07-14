@@ -85,7 +85,7 @@ class PenjualanPupukDataTable extends DataTable
             // Column::make('id'),
             Column::make('no_penjualan'),
            // Column::make('tgl_penjualan'),
-            Column::make('nama'),
+            Column::make('nama_pembeli'),
            // Column::make('email'),
             //Column::make('no_hp'),
           //  Column::make('alamat'),

@@ -14,19 +14,20 @@ class RiwayatPenjualanProdukController extends Controller
 {
     public function index(RiwayatPenjualanProdukDataTable $dataTable)
     {
-        $data = DataPembeli::has('pembeli')->get();
+        // $data = DataPembeli::has('pembeli')->get();
         return $dataTable->render('pages.admin.riwayat-transaksi.riwayatpenjualanproduk.index', [
         // return view('pages.admin.riwayat-transaksi.pembelian.index', [
-            'data'=>$data
+            // 'data'=>$data
         ]);
     }
 
-    public function show(RiwayatPenjualanProdukDataTable $dataTable, $id)
+    public function show(DetailRiwayatPenjualanProdukDataTable $dataTable, $id)
     {
         // $data = DataPetani::findOrFail($id);
         // $pembelian = Pembelian::get();
         // $data['data'] = Pembelian::where('petani_id', $id)->get();
         $data=PenjualanProduk::select('nama')->where('nama', $id);
+        // $datapembeli=DataPembeli::findOrFail($id);
         // dd($id);
         return $dataTable->render('pages.admin.riwayat-transaksi.riwayatpenjualanproduk.show', [
         // return view('pages.admin.riwayat-transaksi.pembelian.show', [

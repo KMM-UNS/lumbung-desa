@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DataPetani\TanamanController;
 use App\Http\Controllers\Admin\DataPetani\DaftarProdukController;
 use App\Http\Controllers\Admin\Pembelian\PembelianController;
 use App\Http\Controllers\Admin\Penjualan\PenjualanProdukController;
+use App\Http\Controllers\Admin\Penjualan\PenjualanPpkController;
 use App\Http\Controllers\Admin\Penjualan\PenjualanPupukController;
 use App\Http\Controllers\admin\pembelian\PembelianModalController;
 use App\Http\Controllers\Admin\Pembelian\PembelianPupukController;
@@ -59,8 +60,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::group(['prefix' => '/penjualan', 'as' => 'penjualan.', 'namespace' => 'Penjualan'], function () {
             Route::resource('penjualanproduk', 'PenjualanProdukController');
             Route::resource('penjualanpupuk', 'PenjualanPupukController');
+            Route::resource('penjualanppk', 'PenjualanPpkController');
             Route::get('invoiceproduk/{id}', [PenjualanProdukController::class, 'invoice'])->name('invoiceproduk');
             Route::get('invoicepupuk/{id}', [PenjualanPupukController::class, 'invoice'])->name('invoicepupuk');
+            Route::get('invoiceppk/{id}', [PenjualanPpkController::class, 'invoice'])->name('invoiceppk');
         });
 
 

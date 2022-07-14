@@ -25,6 +25,6 @@ class DataPembeli extends Model
 
     public function pembeli()
     {
-        return $this->hasMany(Penjualan::class,'nama'); //'petani_id' itu nama kolom yang mengambil data petani
+        return $this->hasMany(PenjualanProduk::class); //'petani_id' itu nama kolom yang mengambil data petani
     }
 }

@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
 
     Route::group(['namespace' => 'User'], function () {
         Route::resource('menampilkandatapetani', 'MenampilkanDataPetaniController');
+        Route::resource('menampilkandatalahan', 'MenampilkanDataLahanController');
         Route::resource('ketersediaan-produk', 'KetersediaanProdukController');
         Route::resource('riwayat-penjualan', 'RiwayatPenjualanController');
         Route::resource('menampilkandatapetani', 'MenampilkanDataPetaniController');

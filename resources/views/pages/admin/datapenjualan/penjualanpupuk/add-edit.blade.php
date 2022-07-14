@@ -45,7 +45,7 @@
         <label for="name">Tanggal Penjualan</label>
         <input type="date" id="tgl_penjualan" name="tgl_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
         <label for="name">Nama Pembeli</label>
-        <x-form.Dropdown name="nama" :options="$pembeli" selected="{{{ old('nama') ?? ($data['nama'] ?? null) }}}" required />
+        <x-form.Dropdown name="nama_pembeli" :options="$pembeli" selected="{{{ old('nama_pembeli') ?? ($data['nama_pembeli'] ?? null) }}}" required />
         <label for="name">Email</label>
         <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email?? old('email') }}}">
         <label for="name">Nomor Handphone</label>
@@ -54,7 +54,7 @@
         <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
         {{-- <label for="name">Kondisi</label>
         <x-form.Dropdown name="kondisi" :options="$kondisihasilpanen" selected="{{{ old('kondisihasilpanen') ?? ($data['kondisihasilpanen'] ?? null) }}}" required />
-       --}}  <label for="name">Produk</label>
+       --}} <label for="name">Produk</label>
        <x-form.Dropdown name="produk_id" :options="$produk" selected="{{{ old('produk_id') ?? ($data['produk_id'] ?? null) }}}" required />
        {{-- <label for="name">Kondisi</label>
        <x-form.Dropdown name="kondisi" :options="$kondisi" selected="{{{ old('kondisi') ?? ($data['kondisi'] ?? null) }}}" required />

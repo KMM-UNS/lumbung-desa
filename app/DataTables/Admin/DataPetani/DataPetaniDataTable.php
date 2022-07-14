@@ -78,8 +78,8 @@ class DataPetaniDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
-            Column::make('no_kk'),
-            Column::make('nik'),
+            // Column::make('no_kk'),
+            // Column::make('nik'),
             Column::make('nama'),
             //Column::make('tempat_lahir'),
             Column::make('tanggal_lahir'),

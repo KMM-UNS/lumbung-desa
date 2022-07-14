@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\DataPupuk;
-use App\Models\PenjualanPupk;
+use App\Models\PenjualanPupuk;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +18,11 @@ class GudangPupuk extends Model
     public $timestamps = false;
 
     public function pupuk()
+    {
+        return $this->belongsTo(DataPupuk::class,'nama_pupuk');
+    }
+
+    public function ppk()
     {
         return $this->belongsTo(DataPupuk::class,'nama_pupuk');
     }

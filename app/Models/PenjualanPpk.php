@@ -6,22 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Alfa6661\AutoNumber\AutoNumberTrait;
-use App\DataTables\Admin\Penjualan\PenjualanProdukDataTable;
-use App\Models\GudangLumbung;
+use App\DataTables\Admin\Penjualan\PenjualanPpkDataTable;
+use App\Models\GudangPupuk;
 use App\Models\DataPembeli;
 
-class PenjualanProduk extends Model
+class PenjualanPpk extends Model
 {
     use HasFactory;
     use SoftDeletes;
     use AutoNumberTrait;
     public const ACTIVE = "aktif";
 
-    protected $table = 'penjualan_produks';
+    protected $table = 'penjualan_ppks';
     protected $fillable =
     [
-     'id','no_penjualan','tgl_penjualan','nama_petani','email','no_hp','alamat','produk_id',
-     'kondisi_pr','keterangan_pr','harga','stok','jumlah','total'
+     'id','no_penjualan','tgl_penjualan','namapembelippk','email','no_hp','alamat','produk_id',
+     'harga','jumlah','total'
     ];
     public $timestamps = false;
 
@@ -50,24 +50,14 @@ class PenjualanProduk extends Model
     // ['harga']
     // ['jumlah']
     //  ['total]']
-    public function produk()
+    public function produkppk()
     {
-        return $this->belongsTo(GudangLumbung::class,'produk_id'); //'produk_id' itu nama kolom yang mengambil data tanaman
+        return $this->belongsTo(GudangPupuk::class,'produk_id'); //'produk_id' itu nama kolom yang mengambil data tanaman
     }
 
-    public function kondisi()
+    public function pembelippk()
     {
-        return $this->belongsTo(GudangLumbung::class,'kondisi_pr');
-    }
-
-    public function keterangan()
-    {
-        return $this->belongsTo(GudangLumbung::class,'keterangan_pr');
-    }
-
-    public function pembeli()
-    {
-        return $this->belongsTo(DataPembeli::class,'nama_petani');
+        return $this->belongsTo(DataPembeli::class,'namapembelippk');
     }
 }
 

@@ -10,7 +10,7 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Riwayat Penjualan</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Riwayat Penjualan Produk</a></li>
   <li class="breadcrumb-item"><a href="javascript:;">@yield('title')</a></li>
 </ol>
 <!-- end breadcrumb -->
@@ -92,8 +92,36 @@
         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
       </div>
     </div>
-    <!-- end panel-heading -->
-    <!-- begin panel-body -->
+    {{-- <!-- end panel-heading -->
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="name"><strong>Nama Petani</strong></label>
+                </div>
+                <div class="col-md-10">
+                    <td>: {{ $data->pembeli->nama }} </td>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="name"><strong>Total Produk </strong></label>
+                </div>
+                <div class="col-md-10">
+                    <td>: 12 item </td>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="name"><strong>Total Berat Produk </strong></label>
+                </div>
+                <div class="col-md-10">
+                    <td>: {{ $totalberatproduk }} kg</td>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- begin panel-body --> --}}
 
     <div class="panel-body">
       {{ $dataTable->table() }}

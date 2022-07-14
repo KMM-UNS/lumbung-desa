@@ -2,38 +2,39 @@
 
 namespace App\Http\Controllers\Admin\Penjualan;
 
-use App\DataTables\Admin\Penjualan\PenjualanProdukDataTable;
+use App\DataTables\Admin\Penjualan\PenjualanPpkDataTable;
 use App\Models\Tanaman;
 use App\Models\DataPetani;
 use App\Models\DataPembeli;
 use App\Http\Controllers\Controller;
 use App\Models\KondisiHasilPanen;
-use App\Models\PenjualanProduk;
+use App\Models\PenjualanPpk;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
 use App\Models\GudangLumbung;
+use App\Models\GudangPupuk;
 use App\Models\KeteranganGudang;
 
-class PenjualanProdukController extends Controller
+class PenjualanPpkController extends Controller
 {
-    public function index(PenjualanProdukDataTable $dataTable)
+    public function index(PenjualanPpkDataTable $dataTable)
     {
-       return $dataTable->render('pages.admin.datapenjualan.penjualanproduk.index');
+       return $dataTable->render('pages.admin.datapenjualan.penjualanppk.index');
     }
     public function create()
     {
-        $produk = GudangLumbung::with('tanaman:id,nama')->get()->pluck('tanaman.nama','tanaman.id');
+        $produkppk = GudangPupuk::with('ppk:id,nama')->get()->pluck('ppk.nama','ppk.id');
         //tanaman nama relasi, id & nama itu yg diambil di tabel tanaman, nama itu yg menyimpan id yang diambil
-        $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
-        $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
-        $petani=DataPetani::pluck('nama','id');
+        // $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
+        // $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
+        // $petani=DataPetani::pluck('nama','id');
         $pembeli=DataPembeli::pluck('nama','id');
-        return view('pages.admin.datapenjualan.penjualanproduk.add-edit', [
-            'produk'=>$produk,
-            'kondisi'=>$kondisi,
-            'keterangan'=>$keterangan,
-            'petani' => $petani,
+        return view('pages.admin.datapenjualan.penjualanppk.add-edit', [
+            'produkppk'=>$produkppk,
+            // 'kondisi'=>$kondisi,
+            // 'keterangan'=>$keterangan,
+            // 'petani' => $petani,
             'pembeli'=>$pembeli
 
 
@@ -66,14 +67,14 @@ class PenjualanProdukController extends Controller
 
         // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
 
-        return view('pages.admin.datapenjualan.penjualanproduk.add-edit');
+        return view('pages.admin.datapenjualan.penjualanppk.add-edit');
     }
 
     public function store(Request $request)
     {
         try {
             $request->validate([
-                'nama' => 'required'
+                // 'nama' => 'required'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
@@ -82,13 +83,12 @@ class PenjualanProdukController extends Controller
         DB::transaction(function () use ($request) {
             try {
 
-                $penjualan=PenjualanProduk::create($request->all());
+                $penjualan=PenjualanPpk::create($request->all());
                 $penjualan->save();
                 // dd($penjualan);
                 // get data gudang yang diinputkan
-                $gudangLumbung = GudangLumbung::where('nama_tanaman_id',
-                $penjualan->produk_id)->where('kondisi_id', $penjualan->kondisi)-> //produk_id itu nama kolom  di database di penjualan
-                where('keterangan_id', $penjualan->keterangan)->first();
+                $gudangLumbung = GudangPupuk::where('nama_pupuk',
+                $penjualan->produk_id)->first();
                 //  dd($gudangLumbung);
 
 
@@ -122,43 +122,43 @@ class PenjualanProdukController extends Controller
                 //     return back()->withInput()->withToastError('Something went wrong');
                 // }
 
-                return redirect(route('admin.penjualan.penjualanproduk.index'))->withToastSuccess('Data tersimpan');
+                return redirect(route('admin.penjualan.penjualanppk.index'))->withToastSuccess('Data tersimpan');
             }
 
             public function show($id)
             {
-                $data = PenjualanProduk::findOrFail($id);
-                $produk = GudangLumbung::with('tanaman:id,nama')->get()->pluck('tanaman.nama','tanaman.id');
+                $data = PenjualanPpk::findOrFail($id);
+                $produkppk = GudangPupuk::with('ppk:id,nama')->get()->pluck('ppk.nama','ppk.id');
         //tanaman nama relasi, id & nama itu yg diambil di tabel tanaman, nama itu yg menyimpan id yang diambil
-        $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
-        $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
-        $petani=DataPetani::pluck('nama','id');
+        // $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
+        // $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
+        // $petani=DataPetani::pluck('nama','id');
         $pembeli=DataPembeli::pluck('nama','id');
-                return view('pages.admin.datapenjualan.penjualanproduk.show', [
+                return view('pages.admin.datapenjualan.penjualanppk.show', [
                     'data' => $data,
-                    'produk'=>$produk,
-            'kondisi'=>$kondisi,
-            'keterangan'=>$keterangan,
-            'petani' => $petani,
+                    'produkppk'=>$produkppk,
+            // 'kondisi'=>$kondisi,
+            // 'keterangan'=>$keterangan,
+            // 'petani' => $petani,
             'pembeli'=>$pembeli
                 ]);
             }
 
             public function edit($id)
             {
-                $data = PenjualanProduk::findOrFail($id);
+                $data = PenjualanPpk::findOrFail($id);
                 $pembeli=DataPembeli::pluck('nama','id');
                 // $produk=GudangLumbung::pluck('nama_tanaman_id','id');
-                $produk = GudangLumbung::with('tanaman:id,nama')->get()->pluck('tanaman.nama','tanaman.id');
-                $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
-        $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
+                $produkppk = GudangPupuk::with('ppk:id,nama')->get()->pluck('ppk.nama','ppk.id');
+        //         $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
+        // $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
 
                 // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
-                return view('pages.admin.datapenjualan.penjualanproduk.add-edit', [
+                return view('pages.admin.datapenjualan.penjualanppk.add-edit', [
                 'data' => $data,
-                'produk'=>$produk,
-                'kondisi'=>$kondisi,
-                'keterangan'=>$keterangan,
+                'produkppk'=>$produkppk,
+                // 'kondisi'=>$kondisi,
+                // 'keterangan'=>$keterangan,
                 'pembeli'=>$pembeli
             ]);
     }
@@ -174,20 +174,20 @@ class PenjualanProdukController extends Controller
         }
 
         try {
-            $data = PenjualanProduk::findOrFail($id);
+            $data = PenjualanPpk::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
 
-        return redirect(route('admin.penjualan.penjualanproduk.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.penjualan.penjualanppk.index'))->withToastSuccess('Data tersimpan');
     }
 
     public function destroy($id)
     {
         try {
-            PenjualanProduk::find($id)->delete();
+            PenjualanPpk::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
@@ -196,10 +196,10 @@ class PenjualanProdukController extends Controller
 
     public function invoice($id)
     {
-        $data = PenjualanProduk::findOrFail($id);
+        $data = PenjualanPpk::findOrFail($id);
 
 
-        $pdf = PDF::loadview('pages.admin.datapenjualan.penjualanproduk.invoice',
+        $pdf = PDF::loadview('pages.admin.datapenjualan.penjualanppk.invoice',
 
         [
 

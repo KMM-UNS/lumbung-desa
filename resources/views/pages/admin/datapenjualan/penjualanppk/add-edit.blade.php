@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.penjualan.penjualanproduk.update', $data->id) : route('admin.penjualan.penjualanproduk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.penjualan.penjualanppk.update', $data->id) : route('admin.penjualan.penjualanppk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -48,7 +48,7 @@
         <label for="name">Tanggal Penjualan</label>
         <input type="date" id="tgl_penjualan" name="tgl_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
         <label for="name">Nama Pembeli</label>
-        <x-form.Dropdown name="nama_petani" :options="$pembeli" selected="{{{ old('nama_petani') ?? ($data['nama_petani'] ?? null) }}}" required />
+        <x-form.Dropdown name="namapembelippk" :options="$pembeli" selected="{{{ old('namapembelippk') ?? ($data['namapembelippk'] ?? null) }}}" required />
         <label for="name">Email</label>
         <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
         <label for="name">Nomor Handphone</label>
@@ -59,11 +59,11 @@
         <x-form.Dropdown name="kondisi" :options="$kondisihasilpanen" selected="{{{ old('kondisihasilpanen') ?? ($data['kondisihasilpanen'] ?? null) }}}" required />
        --}}
        <label for="name">Produk</label>
-       <x-form.Dropdown name="produk_id" :options="$produk" selected="{{{ old('produk_id') ?? ($data['produk_id'] ?? null) }}}" required />
-       <label for="name">Kondisi</label>
-       <x-form.Dropdown name="kondisi_pr" :options="$kondisi" selected="{{{ old('kondisi_pr') ?? ($data['kondisi_pr'] ?? null) }}}" required />
-       <label for="name">Keterangan</label>
-       <x-form.Dropdown name="keterangan_pr" :options="$keterangan" selected="{{{ old('keterangan_pr') ?? ($data['keterangan_pr'] ?? null) }}}" required />
+       <x-form.Dropdown name="produk_id" :options="$produkppk" selected="{{{ old('produk_id') ?? ($data['produk_id'] ?? null) }}}" required />
+       {{-- <label for="name">Kondisi</label> --}}
+       {{-- <x-form.Dropdown name="kondisi_pr" :options="$kondisi" selected="{{{ old('kondisi_pr') ?? ($data['kondisi_pr'] ?? null) }}}" required /> --}}
+       {{-- <label for="name">Keterangan</label> --}}
+       {{-- <x-form.Dropdown name="keterangan_pr" :options="$keterangan" selected="{{{ old('keterangan_pr') ?? ($data['keterangan_pr'] ?? null) }}}" required /> --}}
        <label for="name">Jumlah (/Kg)</label>
         <input type="number" id="jumlah" name="jumlah" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
         <label for="name">Harga</label>

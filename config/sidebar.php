@@ -84,8 +84,13 @@ return [
                 [
                     'url' => '/admin/penjualan/penjualanproduk',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penjualan Produk'
-                ],[
-                    'url' => '/admin/penjualan/penjualanpupuk',
+                ]
+                // ,[
+                //     'url' => '/admin/penjualan/penjualanpupuk',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penjualan Pupuk'
+                // ]
+                ,[
+                    'url' => '/admin/penjualan/penjualanppk',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penjualan Pupuk'
                 ]
             ]
@@ -176,6 +181,11 @@ return [
             'icon' => 'fa fa-cogs',
             'title' => 'Data Diri Petani',
             'url' => '/menampilkandatapetani',
+            'caret' => false
+        ],[
+            'icon' => 'fa fa-cogs',
+            'title' => 'Data Lahan Petani',
+            'url' => '/menampilkandatalahan',
             'caret' => false
         ],
         [

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Alfa6661\AutoNumber\AutoNumberTrait;
 use App\DataTables\Admin\Penjualan\PenjualanPupukDataTable;
 use App\Models\GudangPupuk;
+use App\Models\DataPembeli;
 
 class PenjualanPupuk extends Model
 {
@@ -19,7 +20,7 @@ class PenjualanPupuk extends Model
     protected $table = 'penjualan_pupuks';
     protected $fillable =
     [
-     'id','no_penjualan','tgl_penjualan','nama','email','no_hp','alamat','produk_id','harga','jumlah','total'
+     'id','no_penjualan','tgl_penjualan','nama_pembeli','email','no_hp','alamat','produk_id','harga','jumlah','total'
     ];
     public $timestamps = false;
 
@@ -53,6 +54,10 @@ class PenjualanPupuk extends Model
         return $this->belongsTo(GudangPupuk::class,'produk_id'); //'produk_id' itu nama kolom yang mengambil data pupuk
     }
 
+    public function pembeli()
+    {
+        return $this->belongsTo(DataPembeli::class,'nama_pembeli');
+    }
     // public function kondisi()
     // {
     //     return $this->belongsTo(GudangLumbung::class,'kondisi');
