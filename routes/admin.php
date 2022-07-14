@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::post('tanaman/simpan', 'TanamanController@simpan')->name('tanaman.simpan');
             Route::resource('datalahan', 'DataLahanController');
             Route::resource('datapembeli', 'DataPembeliController');
+            Route::resource('datapenjual', 'DataPenjualController');
         });
 
         Route::group(['prefix' => '/pembelian', 'as' => 'pembelian.', 'namespace' => 'Pembelian'], function () {
