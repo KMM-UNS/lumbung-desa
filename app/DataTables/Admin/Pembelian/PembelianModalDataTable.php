@@ -77,19 +77,19 @@ class PembelianModalDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
             // Column::make('musim_panen_id'),
-            Column::make('musim_panen_id')->data('musim.musim_panen'),
-            Column::make('petani_id')->data('petani.nama')->title('Petani'),
+            // Column::make('musim_panen_id')->data('musim.musim_panen'),
+            Column::make('petani.nama', 'petani.nama')->title('Petani'),
             // Column::make('petani_id'),
-            Column::make('tanaman_id')->data('tanaman.nama')->title('Produk'),
+            Column::make('tanaman.nama', 'tanaman.nama')->title('Produk'),
             // Column::make('tanaman_id'),
-            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
-            Column::make('lahan_id')->data('lahan.nama')->title('Lahan'),
+            Column::make('kondisi.nama', 'kondisi.nama')->title('Kondisi'),
+            // Column::make('lahan_id')->data('lahan.nama')->title('Lahan'),
             // Column::make('lahan_id'),
-            Column::make('luas_lahan'),
-            Column::make('jumlah'),
+            Column::make('luas_lahan', 'pembelian_modal.luas_lahan'),
+            Column::make('jumlah', 'pembelian_modal.jumlah'),
             // Column::make('kondisi_id'),
-            Column::make('harga'),
-            Column::make('total'),
+            Column::make('harga', 'pembelian_modal.harga'),
+            Column::make('total', 'pembelian_modal.total'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

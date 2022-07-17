@@ -36,7 +36,7 @@ class PembelianModalController extends Controller
             dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
-        return redirect(route('admin.pembelian.perkiraan-pembelian.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.pembelian.perkiraan-pembelian.show'))->withToastSuccess('Data tersimpan');
     }
 
     // public function show(PembelianModalDataTable $dataTable, $id)

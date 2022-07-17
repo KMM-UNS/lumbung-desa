@@ -76,8 +76,8 @@ class PerkiraanPembelianDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
-            Column::make('musim_panen'),
-            Column::make('tahun'),
+            Column::make('musim_panen', 'perkiraan_pembelian.musim_panen'),
+            Column::make('tahun', 'perkiraan_pembelian.tahun'),
             // Column::make('modal')
             Column::computed('action')
                   ->exportable(false)

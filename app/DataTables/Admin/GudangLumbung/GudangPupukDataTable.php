@@ -62,7 +62,7 @@ class GudangPupukDataTable extends DataTable
                     ->buttons(
                         Button::make('create'),
                         // Button::make('export'),
-                        // Button::make('print'),
+                        Button::make('print'),
                         // Button::make('reset'),
                         // Button::make('reload')
                     );
@@ -77,9 +77,9 @@ class GudangPupukDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
-            Column::make('nama_pupuk')->data('pupuk.nama'),
-            Column::make('stok'),
-            Column::make('keterangan'),
+            Column::make('pupuk.nama')->data('pupuk.nama'),
+            Column::make('stok', 'gudang_pupuk.stok'),
+            Column::make('keterangan', 'gudang_pupuk.keterangan'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

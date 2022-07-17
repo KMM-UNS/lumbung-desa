@@ -37,7 +37,7 @@ class PerkiraanPembelianController extends Controller
 
     public function show(PembelianModalDataTable $dataTable, $id)
     {
-        $musim = PembelianModal::select('musim_panen_id')->where('musim_panen_id', $id)->first();
+        $musim = PembelianModal::select('musim_panen_id')->where('musim_panen_id', $id);
         $data = PerkiraanPembelian::findOrFail($id);
         // hitung jumlah petani
         // $petani = PembelianModal::select('petani_id')->where('petani_id', $id)->first();

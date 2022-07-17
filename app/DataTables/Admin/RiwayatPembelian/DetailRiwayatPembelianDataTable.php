@@ -67,14 +67,14 @@ class DetailRiwayatPembelianDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
-            Column::make('no_pembelian'),
-            Column::make('tanggal_pembelian'),
-            Column::make('musim_id')->data('musim.nama')->title('Musim'),
-            Column::make('tanaman_id')->data('tanaman.nama')->title('Produk'),
-            Column::make('jumlah')->title('Jumlah (kg)'),
-            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
-            Column::make('harga'),
-            Column::make('total'),
+            Column::make('no_pembelian', 'pembelian.no_pembelian'),
+            Column::make('tanggal_pembelian', 'pembelian.tanggal_pembelian'),
+            Column::make('musim.musim_panen', 'musim.musim_panen')->title('Musim'),
+            Column::make('tanaman.nama', 'tanaman.nama')->title('Produk'),
+            Column::make('kondisi.nama', 'kondisi.nama')->title('Kondisi'),
+            Column::make('jumlah', 'pembelian.jumlah')->title('Jumlah (kg)'),
+            Column::make('harga', 'pembelian.harga'),
+            Column::make('total', 'pembelian.total'),
         ];
     }
 

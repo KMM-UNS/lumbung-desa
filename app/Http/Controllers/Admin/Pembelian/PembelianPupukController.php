@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Pembelian;
 
-use Barryvdh\DomPDF\Facade\PDF;
 use App\Models\DataPupuk;
 use App\Models\GudangPupuk;
+use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use App\Models\PembelianPupuk;
+use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Pembelian\PembelianPupukDataTable;
@@ -20,16 +21,43 @@ class PembelianPupukController extends Controller
 
     public function create()
     {
+        // $cartItems = \Cart::getContent();
         $pupuk = DataPupuk::pluck('nama','id');
         return view('pages.admin.pembelian-pupuk.add-edit', [
-            'pupuk'=>$pupuk
+            'pupuk'=>$pupuk,
+            // 'cartItems'=>$cartItems
         ]);
     }
+
+    // public function addToCart(Request $request)
+    // {
+        // \Cart::add([
+            // 'no_pembelian' => $request->no_pembelian,
+            // 'tanggal_pembelian' => $request->tanggal_pembelian,
+            // 'pupuk_id' => $request->pupuk_id,
+            // 'jumlah' => $request->jumlah,
+            // 'harga' => $request->harga,
+            // 'total' => $request->total
+        // ]);
+        // session()->flash('success', 'Produk Berhasil Ditambahkan !');
+
+    //     return redirect()->with('Data tersimpan');
+    // }
 
     public function store(Request $request)
     {
         DB::transaction(function () use ($request) {
             try {
+                // \Cart::add([
+                    // 'no_pembelian' => $request->no_pembelian,
+                    // 'tanggal_pembelian' => $request->tanggal_pembelian,
+                    // 'id' => $request->id,
+                    // 'name' => $request->pupuk_id,
+                    // 'quantity' => $request->jumlah,
+                    // 'price' => $request->harga,
+                    // 'total' => $request->total
+                // ]);
+                // session()->flash('success', 'Produk Berhasil Ditambahkan !');
                 // menyimpan semua data pembelian yang diinputkan
                 $pembelian_pupuk=PembelianPupuk::create($request->all());
                 $pembelian_pupuk->save();

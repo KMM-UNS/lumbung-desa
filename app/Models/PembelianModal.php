@@ -19,7 +19,7 @@ class PembelianModal extends Model
         'musim_panen_id',
         'tanaman_id',
         'petani_id',
-        'lahan_id',
+        // 'lahan_id',
         'luas_lahan',
         'jumlah',
         'kondisi_id',

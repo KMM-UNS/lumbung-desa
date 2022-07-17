@@ -37,7 +37,7 @@ class Pembelian extends Model
 
     public function musim()
     {
-        return $this->belongsTo(Musim::class,'musim_id');
+        return $this->belongsTo(PerkiraanPembelian::class,'musim_id');
     }
 
     public function tanaman()

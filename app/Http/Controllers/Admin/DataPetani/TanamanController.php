@@ -78,7 +78,7 @@ class TanamanController extends Controller
         ]);
     }
 
-    public function update(Request $request, Tanaman $id)
+    public function update(Request $request, $id)
     {
         try {
             $data = Tanaman::findOrFail($id);
@@ -87,7 +87,7 @@ class TanamanController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.data-petani.jenistanaman.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.data-petani.tanaman.index'))->withToastSuccess('Data tersimpan');
     }
 
     public function destroy(Tanaman $id)

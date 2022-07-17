@@ -18,7 +18,7 @@ class CreatePembelianModalTable extends Migration
             $table->bigInteger('musim_panen_id')->unsigned();
             $table->integer('tanaman_id');
             $table->string('petani_id');
-            $table->string('lahan_id');
+            // $table->string('lahan_id');
             $table->string('luas_lahan');
             $table->integer('jumlah');
             $table->integer('satuan_id');

@@ -84,11 +84,11 @@ class PembelianDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
-            Column::make('tanggal_pembelian')->width(120),
-            Column::make('no_pembelian')->width(120),
-            Column::make('petani_id')->data('petani.nama')->title('Nama Petani Penjual')->width(120),
-            Column::make('tanaman_id')->data('tanaman.nama')->title('Produk')->width(120),
-            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi')->width(120),
+            Column::make('tanggal_pembelian', 'pembelian.tanggal_pembelian')->width(120),
+            Column::make('no_pembelian', 'pembelian.no_pembelian')->width(120),
+            Column::make('petani.nama', 'petani.nama')->title('Nama Petani Penjual')->width(120),
+            Column::make('tanaman.nama', 'tanaman.nama')->title('Produk')->width(120),
+            Column::make('kondisi.nama', 'kondisi.nama')->title('Kondisi')->width(120),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

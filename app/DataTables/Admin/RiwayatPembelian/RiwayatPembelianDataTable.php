@@ -73,8 +73,8 @@ class RiwayatPembelianDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
-            Column::make('nik')->title('NIK'),
-            Column::make('nama'),
+            Column::make('nik', 'data_petanis.nik')->title('NIK'),
+            Column::make('nama', 'data_petanis.nama'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

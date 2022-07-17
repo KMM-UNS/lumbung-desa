@@ -17,6 +17,7 @@ use App\Http\Requests\PembelianForm;
 use App\Datatables\Admin\Pembelian\PembelianDataTable;
 use App\Models\DataPupuk;
 use App\Models\JenisTanaman;
+use App\Models\PerkiraanPembelian;
 
 class PembelianController extends Controller
 {
@@ -27,7 +28,7 @@ class PembelianController extends Controller
 
     public function create()
     {
-        $musim=Musim::pluck('nama','id');
+        $musim=PerkiraanPembelian::pluck('musim_panen','id');
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $petani=DataPetani::pluck('nama','id');
@@ -87,7 +88,7 @@ class PembelianController extends Controller
     public function show($id)
     {
         $data = Pembelian::findOrFail($id);
-        $musim=Musim::pluck('nama','id');
+        $musim=PerkiraanPembelian::pluck('musim_panen','id');
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');
@@ -105,7 +106,7 @@ class PembelianController extends Controller
     public function edit($id)
     {
         $data = Pembelian::findOrFail($id);
-        $musim=Musim::pluck('nama','id');
+        $musim=PerkiraanPembelian::pluck('musim_panen','id');
         $tanaman=Tanaman::pluck('nama','id');
         $kondisi=KondisiHasilPanen::pluck('nama','id');
         $satuan=Satuan::pluck('satuan','id');

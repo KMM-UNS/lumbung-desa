@@ -16,7 +16,7 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/admin',
+            'url' => '/dashboard',
             'caret' => false
         ],
         [
@@ -56,7 +56,7 @@ return [
             'caret' => false,
         ],
         [
-            'icon' => 'fa fa-cogs',
+            'icon' => 'fa fa-shopping-cart',
             'title' => 'Pembelian',
             'url' => 'javascript:;',
             'caret' => true,
@@ -80,7 +80,7 @@ return [
             'url' => '/admin/penjualan',
         ],
         [
-            'icon' => 'fa fa-cogs',
+            'icon' => 'fa fa-book',
             'title' => 'Riwayat Transaksi',
             'url' => 'javascript:;',
             'caret' => true,
@@ -119,10 +119,10 @@ return [
                     'url' => '/admin/master-data/jenistanaman',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Jenis Tanaman'
                 ],
-                [
-                    'url' => '/admin/master-data/musim',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Musim'
-                ],
+                // [
+                //     'url' => '/admin/master-data/musim',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Musim'
+                // ],
                 [
                     'url' => '/admin/master-data/kondisi-hasil-panen',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Kondisi Hasil Panen'
@@ -151,13 +151,19 @@ return [
         [
             'icon' => 'fa fa-th-large',
             'title' => 'Dashboard',
-            'url' => '/user',
+            'url' => '/dashboard',
             'caret' => false
         ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Ketersediaan Produk',
             'url' => '/user/ketersediaan-produk',
+            'caret' => false
+        ],
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Ketersediaan Pupuk',
+            'url' => '/user/ketersediaan-pupuk',
             'caret' => false
         ],
         [

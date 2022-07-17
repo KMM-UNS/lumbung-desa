@@ -66,7 +66,7 @@ class GudangLumbungDataTable extends DataTable
                     ->buttons(
                         Button::make('create'),
                         // Button::make('export'),
-                        // Button::make('print'),
+                        Button::make('print'),
                         // Button::make('reset'),
                         // Button::make('reload')
                     );
@@ -81,11 +81,11 @@ class GudangLumbungDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
-            Column::make('nama_tanaman_id')->data('tanaman.nama')->title('Produk'),
-            Column::make('stok')->title('Stok (/kg)'),
+            Column::make('tanaman.nama', 'tanaman.nama')->title('Produk'),
+            Column::make('kondisi.nama', 'kondisi.nama')->title('Kondisi'),
+            Column::make('stok', 'gudang_lumbung.stok')->title('Stok (/kg)'),
             // Column::make('satuan_id')->data('satuan.satuan')->title('Satuan'),
-            Column::make('kondisi_id')->data('kondisi.nama')->title('Kondisi'),
-            Column::make('keterangan_id')->data('keterangangudang.nama')->title('Keterangan'),
+            Column::make('keterangangudang.nama', 'keterangangudang.nama')->data('keterangangudang.nama')->title('Keterangan'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
