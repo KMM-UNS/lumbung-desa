@@ -25,7 +25,7 @@
 <!-- begin panel -->
 <div class="panel panel-inverse" data-sortable-id="table-basic-7">
     <div class="panel-heading ui-sortable-handle">
-      <h4 class="panel-title">Perkiraan Modal Pembelian <span class="label label-success m-l-5 t-minus-1">{{ $musim->musim->musim_panen }}</span></h4>
+      <h4 class="panel-title">Perkiraan Modal Pembelian <span class="label label-success m-l-5 t-minus-1"></span></h4>
       <div class="panel-heading-btn">
           <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
           <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>

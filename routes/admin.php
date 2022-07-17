@@ -42,6 +42,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::get('detail-invoice/{id}', [PembelianController::class, 'detail-invoice'])->name('detail-invoice');
             // pembelian pupuk
             Route::resource('pembelian-pupuk', 'PembelianPupukController');
+            Route::post('pembelian-pupuk/cart', 'PembelianPupukController@addToCart')->name('pembelian-pupuk.add');
             Route::get('invoice-pupuk/{id}', [PembelianPupukController::class, 'invoice'])->name('pembelian-pupuk.invoice');
             // perkiraan pembelian (modal)
             Route::resource('perkiraan-pembelian', 'PerkiraanPembelianController');

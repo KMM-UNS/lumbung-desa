@@ -63,7 +63,7 @@
               <label for="name"><strong>Musim</strong></label>
             </div>
             <div class="col-md-5">
-              <td>: {{ $data->musim->nama }}</td>
+              <td>: {{ $data->musim->musim_panen }}</td>
             </div>
             <div class="col-md-1 my-auto">
               <label for="name"><strong>Tanaman</strong></label>

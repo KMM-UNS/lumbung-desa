@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "235d231525b38437bda6d00c82daf723",
+    "content-hash": "bedf635d0829691ab4e96bd5656d4d57",
     "packages": [
         {
             "name": "alfa6661/laravel-autonumber",
@@ -61,6 +61,69 @@
                 "source": "https://github.com/alfa6661/laravel-autonumber/tree/master"
             },
             "time": "2021-03-21T15:31:33+00:00"
+        },
+        {
+            "name": "arielmejiadev/larapex-charts",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ArielMejiaDev/larapex-charts.git",
+                "reference": "9e1f7e08cb5a5fa662ff8c83464d8e78379b4031"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ArielMejiaDev/larapex-charts/zipball/9e1f7e08cb5a5fa662ff8c83464d8e78379b4031",
+                "reference": "9e1f7e08cb5a5fa662ff8c83464d8e78379b4031",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ArielMejiaDev\\LarapexCharts\\LarapexChartsServiceProvider"
+                    ],
+                    "aliases": {
+                        "LarapexChart": "ArielMejiaDev\\LarapexCharts\\Facades\\LarapexChart"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ArielMejiaDev\\LarapexCharts\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ArielMejiaDev",
+                    "email": "arielmejiadev@gmail.com"
+                }
+            ],
+            "description": "Package to provide easy api to build apex charts on Laravel",
+            "homepage": "https://larapex-charts.netlify.app/",
+            "keywords": [
+                "apexcharts",
+                "arielmejiadev",
+                "charts",
+                "larapex"
+            ],
+            "support": {
+                "issues": "https://github.com/ArielMejiaDev/larapex-charts/issues",
+                "source": "https://github.com/ArielMejiaDev/larapex-charts/tree/4.1.0"
+            },
+            "time": "2022-07-12T14:15:25+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -377,6 +440,69 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "darryldecode/cart",
+            "version": "4.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/darryldecode/laravelshoppingcart.git",
+                "reference": "bc5ff0e1c7d20d621fa63b3218532f2ae7cbf841"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/darryldecode/laravelshoppingcart/zipball/bc5ff0e1c7d20d621fa63b3218532f2ae7cbf841",
+                "reference": "bc5ff0e1c7d20d621fa63b3218532f2ae7cbf841",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/translation": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/validation": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0|^8.0|^9.0",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.4.2",
+                "phpunit/phpunit": "^9.0",
+                "symfony/var-dumper": "5.1.5.*@dev"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Darryldecode\\Cart\\CartServiceProvider"
+                    ],
+                    "aliases": {
+                        "Cart": "Darryldecode\\Cart\\Facades\\CartFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Darryldecode\\": "src/Darryldecode"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Darryl Fernandez",
+                    "email": "engrdarrylfernandez@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Shopping cart",
+            "keywords": [
+                "cart",
+                "laravel",
+                "shopping cart"
+            ],
+            "support": {
+                "issues": "https://github.com/darryldecode/laravelshoppingcart/issues",
+                "source": "https://github.com/darryldecode/laravelshoppingcart/tree/4.2.2"
+            },
+            "time": "2022-02-11T14:04:34+00:00"
         },
         {
             "name": "dasprid/enum",

@@ -46,6 +46,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         // Route::view('/', 'home')->name('home');
         // Route::view('/user', 'pages.user.landingpage')->name('landingpage');
         Route::resource('ketersediaan-produk', 'KetersediaanProdukController');
+        Route::resource('ketersediaan-pupuk', 'KetersediaanPupukController');
         Route::resource('riwayat-penjualan', 'RiwayatPenjualanController');
         // Route::resource('menampilkandatapetani', 'MenampilkanDataPetaniController');
     });
