@@ -162,19 +162,19 @@ class PembelianController extends Controller
             'harga'=>$data->harga,
             'total'=>$data->total
         ]);
-        // return $pdf->download('invoice.pdf');
-        return view('pages.admin.pembelian.invoice', [
-            'id'=>$id,
-            'data' => $data,
-            'tanaman_id'=>$data->tanaman->nama,
-            'petani_id'=>$data->petani->nama,
-            'no_pembelian'=>$data->no_pembelian,
-            'tanggal_pembelian'=>$data->tanggal_pembelian,
-            'jumlah'=>$data->jumlah,
-            'kondisi_id'=>$data->kondisi->nama,
-            'harga'=>$data->harga,
-            'total'=>$data->total
-        ]);
+        return $pdf->download('invoice.pdf');
+        // return view('pages.admin.pembelian.invoice', [
+        //     'id'=>$id,
+        //     'data' => $data,
+        //     'tanaman_id'=>$data->tanaman->nama,
+        //     'petani_id'=>$data->petani->nama,
+        //     'no_pembelian'=>$data->no_pembelian,
+        //     'tanggal_pembelian'=>$data->tanggal_pembelian,
+        //     'jumlah'=>$data->jumlah,
+        //     'kondisi_id'=>$data->kondisi->nama,
+        //     'harga'=>$data->harga,
+        //     'total'=>$data->total
+        // ]);
     }
 
     public function detailinvoice($id)
