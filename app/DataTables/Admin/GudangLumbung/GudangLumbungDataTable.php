@@ -67,8 +67,8 @@ class GudangLumbungDataTable extends DataTable
                         Button::make('create'),
                         // Button::make('export'),
                         Button::make('print'),
-                        // Button::make('reset'),
-                        // Button::make('reload')
+                        Button::make('reset'),
+                        Button::make('reload')
                     );
     }
 

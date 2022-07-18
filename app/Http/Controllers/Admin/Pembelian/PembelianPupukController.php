@@ -21,41 +21,41 @@ class PembelianPupukController extends Controller
 
     public function create()
     {
-        // $cartItems = \Cart::getContent();
+        $cartItems = \Cart::getContent();
         $pupuk = DataPupuk::pluck('nama','id');
         return view('pages.admin.pembelian-pupuk.add-edit', [
             'pupuk'=>$pupuk,
-            // 'cartItems'=>$cartItems
+            'cartItems'=>$cartItems
         ]);
     }
 
-    // public function addToCart(Request $request)
-    // {
-        // \Cart::add([
-            // 'no_pembelian' => $request->no_pembelian,
-            // 'tanggal_pembelian' => $request->tanggal_pembelian,
-            // 'pupuk_id' => $request->pupuk_id,
-            // 'jumlah' => $request->jumlah,
-            // 'harga' => $request->harga,
-            // 'total' => $request->total
-        // ]);
+    public function addToCart(Request $request)
+    {
+        \Cart::add([
+            'no_pembelian' => $request->no_pembelian,
+            'tanggal_pembelian' => $request->tanggal_pembelian,
+            'pupuk_id' => $request->pupuk_id,
+            'jumlah' => $request->jumlah,
+            'harga' => $request->harga,
+            'total' => $request->total
+        ]);
         // session()->flash('success', 'Produk Berhasil Ditambahkan !');
 
     //     return redirect()->with('Data tersimpan');
-    // }
+    }
 
     public function store(Request $request)
     {
         DB::transaction(function () use ($request) {
             try {
                 // \Cart::add([
-                    // 'no_pembelian' => $request->no_pembelian,
-                    // 'tanggal_pembelian' => $request->tanggal_pembelian,
-                    // 'id' => $request->id,
-                    // 'name' => $request->pupuk_id,
-                    // 'quantity' => $request->jumlah,
-                    // 'price' => $request->harga,
-                    // 'total' => $request->total
+                //     'no_pembelian' => $request->no_pembelian,
+                //     'tanggal_pembelian' => $request->tanggal_pembelian,
+                //     'id' => $request->id,
+                //     'name' => $request->pupuk_id,
+                //     'quantity' => $request->jumlah,
+                //     'price' => $request->harga,
+                //     'total' => $request->total
                 // ]);
                 // session()->flash('success', 'Produk Berhasil Ditambahkan !');
                 // menyimpan semua data pembelian yang diinputkan

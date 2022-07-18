@@ -69,9 +69,9 @@ class PembelianDataTable extends DataTable
                     ->buttons(
                         Button::make('create'),
                         // Button::make('export'),
-                        // Button::make('print'),
-                        // Button::make('reset'),
-                        // Button::make('reload')
+                        Button::make('print'),
+                        Button::make('reset'),
+                        Button::make('reload')
                     );
     }
 
@@ -89,6 +89,7 @@ class PembelianDataTable extends DataTable
             Column::make('petani.nama', 'petani.nama')->title('Nama Petani Penjual')->width(120),
             Column::make('tanaman.nama', 'tanaman.nama')->title('Produk')->width(120),
             Column::make('kondisi.nama', 'kondisi.nama')->title('Kondisi')->width(120),
+            Column::make('jumlah', 'pembelian.jumlah')->title('Jumlah')->width(120),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

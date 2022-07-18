@@ -55,7 +55,9 @@
             <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
             <div class="stats-content">
                 <div class="stats-title">TOTAL PEMBELIAN PRODUK</div>
-                <div class="stats-number">180,200</div>
+                <div class="stats-number">
+                    {{ $total_pembelian_produk }}
+                </div>
                 {{-- <div class="stats-progress progress">
                     <div class="progress-bar" style="width: 40.5%;"></div>
                 </div>
@@ -70,7 +72,7 @@
             <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
             <div class="stats-content">
                 <div class="stats-title">TOTAL PEMBELIAN PUPUK</div>
-                <div class="stats-number">3,988</div>
+                <div class="stats-number">{{ $total_pembelian_pupuk }}</div>
                 {{-- <div class="stats-progress progress">
                     <div class="progress-bar" style="width: 54.9%;"></div>
                 </div>
@@ -108,7 +110,7 @@
     </div>
     <!-- end col-6 -->
     <!-- begin grafik perbandingan harga -->
-    <div class="col-md-6">
+    {{-- <div class="col-md-6">
         <div class="panel panel-inverse">
             <div class="panel-heading">
                 <h4 class="panel-title">GRAFIK HARGA PEMBELIAN PRODUK PER MUSIM</h4>
@@ -119,10 +121,10 @@
                     </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- end grafik perbandingan harga -->
     <!-- begin grafik jumlah petani penjual tiap musim -->
-    <div class="col-md-6">
+    {{-- <div class="col-md-6">
         <div class="panel panel-inverse">
             <div class="panel-heading">
                 <h4 class="panel-title">GRAFIK JUMLAH PETANI PENJUAL TIAP MUSIM</h4>
@@ -135,7 +137,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- end grafik jumlah petani penjual tiap musim -->
 <!-- end row -->
 </div>

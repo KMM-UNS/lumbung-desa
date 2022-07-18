@@ -27,7 +27,7 @@
   @endif
 {{-- <form action="{{ route('admin.pembelian.pembelian-pupuk.add') }}" method="POST" enctype="multipart/form-data"> --}}
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md">
             <div class="panel panel-inverse">
                 <!-- begin panel-heading -->
                 <div class="panel-heading">
@@ -40,14 +40,14 @@
                 <!-- end panel-heading -->
                 <!-- begin panel-body -->
                 <div class="panel-body">
-                    {{-- <div class="form-group">
-                        <div class="row"> --}}
+                    <div class="form-group">
+                        <div class="row">
                         {{-- <div class="col-md-1 my-auto">
                             <label for="name"><strong>Nomor Pembelian</strong></label>
                         </div> --}}
-                        {{-- <div class="col-md-11"> --}}
+                        <div class="col-md-11">
                             {{-- <input type="text" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}"> --}}
-                            {{-- <input type="hidden" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
+                            <input type="hidden" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
                         </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                 <input type="date" id="tanggal_pembelian" name="tanggal_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_pembelian ?? old('tanggal_pembelian') }}}">
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-1 my-auto">
@@ -70,7 +70,7 @@
                                 <x-form.Dropdown name="pupuk_id" :options="$pupuk" selected="{{{ old('pupuk_id') ?? ($data['pupuk_id'] ?? null) }}}" required />
                             </div>
                             <div class="col-md-1">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-pupuk">+</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-pupuk">+ pupuk</button>
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="panel-body">
+                <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-1">
@@ -106,18 +106,18 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <!-- end panel-body -->
                 <!-- begin panel-footer -->
-                {{-- <div class="panel-footer">
+                <div class="panel-footer">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <button type="reset" class="btn btn-default">Reset</button>
-                </div> --}}
+                </div>
                 <!-- end panel-footer -->
                 <!-- begin panel-footer -->
-                <div class="panel-footer">
+                {{-- <div class="panel-footer">
                     <button type="submit" class="btn btn-warning">Tambah</button>
-                    <button type="reset" class="btn btn-default">Reset</button>
+                    <button type="reset" class="btn btn-default">Reset</button> --}}
                 </div>
                 <!-- end panel-footer -->
             </div>
@@ -128,27 +128,27 @@
     @if(isset($data))
     {{ method_field('PUT') }}
     @endif --}}
-    <div class="col-md-7">
-        <div class="panel panel-inverse">
+    {{-- <div class="col-md-7">
+        <div class="panel panel-inverse"> --}}
             <!-- begin panel-heading -->
-            <div class="panel-heading">
+            {{-- <div class="panel-heading">
                 <h4 class="panel-title">Input Product</h4>
                 <div class="panel-heading-btn">
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
                     <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
                 </div>
-            </div>
+            </div> --}}
             <!-- end panel-heading -->
             <!-- begin panel-body -->
-            <div class="panel-body">
+            {{-- <div class="panel-body">
                 <div class="form-group">
-                    <div class="row">
+                    <div class="row"> --}}
                     {{-- <div class="col-md-1 my-auto">
                         <label for="name"><strong>Nomor Pembelian</strong></label>
                     </div> --}}
-                    <div class="col-md-7">
+                    {{-- <div class="col-md-7"> --}}
                         {{-- <input type="text" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}"> --}}
-                        <input type="hidden" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
+                        {{-- <input type="hidden" id="no_pembelian" name="no_pembelian" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_pembelian ?? old('no_pembelian') }}}">
                     </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr> --}}
                                         {{-- @foreach ($cartItems as $item)
                                         <td></td>
                                         <td>{{ $item->pupuk_id }}</td>
@@ -184,7 +184,7 @@
                                         <td>{{ $item->harga }}</td>
                                         <td class="text-center"><a href=""><i class="fas fa-trash"></i></a></td>
                                         @endforeach --}}
-                                    </tr>
+                                    {{-- </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -200,17 +200,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- end panel-body -->
             <!-- begin panel-footer -->
-            <div class="panel-footer">
+            {{-- <div class="panel-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <button type="reset" class="btn btn-default">Reset</button>
-            </div>
+            </div> --}}
             <!-- end panel-footer -->
-        </div>
+        {{-- </div>
     </div>
-</div>
+</div> --}}
 <!-- end panel -->
 </form>
 <a href="javascript:history.back(-1);" class="btn btn-success">

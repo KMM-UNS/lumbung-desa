@@ -34,13 +34,13 @@ class PerbandinganHargaChart
 
         foreach($dataPembelian as $dataPembelians)
         {
-            $x = $dataPembelians[$pembelian->harga];
-            $y = $dataPembelians[$pembelian->tanaman_id];
-            $z = $dataPembelians[$pembelian->musim_id];
+            // $x = $dataPembelians[$pembelian->harga];
+            // $y = $dataPembelians[$pembelian->tanaman_id];
+            // $z = $dataPembelians[$pembelian->musim_id];
             // dd($x);
-            array_push($dataPembelian, $x);
-            array_push($dataPembelian, $y);
-            array_push($dataPembelian, $z);
+            // array_push($dataPembelian, $x);
+            // array_push($dataPembelian, $y);
+            // array_push($dataPembelian, $z);
         }
         // [0 => '6', 1 => 6 ]
         return $this->chart->areaChart()
