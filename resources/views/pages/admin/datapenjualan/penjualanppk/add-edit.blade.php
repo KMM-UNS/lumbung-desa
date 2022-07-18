@@ -49,12 +49,12 @@
         <input type="date" id="tgl_penjualan" name="tgl_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
         <label for="name">Nama Pembeli</label>
         <x-form.Dropdown name="namapembelippk" :options="$pembeli" selected="{{{ old('namapembelippk') ?? ($data['namapembelippk'] ?? null) }}}" required />
-        <label for="name">Email</label>
-        <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
-        <label for="name">Nomor Handphone</label>
-        <input type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}">
-        <label for="name">Alamat</label>
-        <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
+        {{-- <label for="name">Email</label> --}}
+        {{-- <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}"> --}}
+        {{-- <label for="name">Nomor Handphone</label> --}}
+        {{-- <input type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}"> --}}
+        {{-- <label for="name">Alamat</label> --}}
+        {{-- <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}"> --}}
         {{-- <label for="name">Kondisi</label>
         <x-form.Dropdown name="kondisi" :options="$kondisihasilpanen" selected="{{{ old('kondisihasilpanen') ?? ($data['kondisihasilpanen'] ?? null) }}}" required />
        --}}
@@ -66,7 +66,7 @@
        {{-- <x-form.Dropdown name="keterangan_pr" :options="$keterangan" selected="{{{ old('keterangan_pr') ?? ($data['keterangan_pr'] ?? null) }}}" required /> --}}
        <label for="name">Jumlah (/Kg)</label>
         <input type="number" id="jumlah" name="jumlah" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
-        <label for="name">Harga</label>
+        <label for="name">Harga (/Kg)</label>
         <input type="number" id="harga" name="harga" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
        <label for="name">Total</label>
         <input readonly type="number" id="total" onkeyup="sum();" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">

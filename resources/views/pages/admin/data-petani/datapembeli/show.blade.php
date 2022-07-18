@@ -63,7 +63,7 @@ enctype="multipart/form-data" data-parsley-validate="true">
     <input disabled type="text" id="instansi" name="instansi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->instansi ?? old('instansi') }}}">
      <label for="name">Email</label>
         <input disabled type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
-        <label for="name">Nomor Handphone</label>
+        <label for="name">Nomor Telepon</label>
         <input disabled type="number" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}">
 
         <label for="name">Alamat</label>

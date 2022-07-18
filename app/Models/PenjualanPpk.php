@@ -20,7 +20,7 @@ class PenjualanPpk extends Model
     protected $table = 'penjualan_ppks';
     protected $fillable =
     [
-     'id','no_penjualan','tgl_penjualan','namapembelippk','email','no_hp','alamat','produk_id',
+     'id','no_penjualan','tgl_penjualan','namapembelippk','produk_id',
      'harga','jumlah','total'
     ];
     public $timestamps = false;

@@ -73,7 +73,7 @@ class PenjualanProdukController extends Controller
     {
         try {
             $request->validate([
-                'nama' => 'required'
+                // 'nama' => 'required'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);
@@ -87,8 +87,8 @@ class PenjualanProdukController extends Controller
                 // dd($penjualan);
                 // get data gudang yang diinputkan
                 $gudangLumbung = GudangLumbung::where('nama_tanaman_id',
-                $penjualan->produk_id)->where('kondisi_id', $penjualan->kondisi)-> //produk_id itu nama kolom  di database di penjualan
-                where('keterangan_id', $penjualan->keterangan)->first();
+                $penjualan->produk_id)->where('kondisi_id', $penjualan->kondisi_pr)-> //produk_id itu nama kolom  di database di penjualan
+                where('keterangan_id', $penjualan->keterangan_pr)->first();
                 //  dd($gudangLumbung);
 
 
@@ -109,7 +109,7 @@ class PenjualanProdukController extends Controller
 
                     }
                 } catch (\Throwable $th) {
-                    // dd($th);
+                    dd($th);
                     DB::rollback();
                     return back()->withInput()->withToastError('Something went wrong');
                 }

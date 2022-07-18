@@ -78,7 +78,7 @@ class DataPembeliDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
-            Column::make('nama'),
+            Column::make('nama')->title('Nama Pembeli'),
             Column::make('instansi'),
             // Column::make('email'),
             // Column::make('no_hp'),

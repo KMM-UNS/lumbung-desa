@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Riwayat Pemnjualan')
+@section('title', 'Riwayat Penjualan Produk')
 
 @push('css')
 <link href="/assets/plugins/morris.js/morris.css" rel="stylesheet" />
@@ -10,7 +10,7 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Riwayat Penjualan</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Riwayat Penjualan Produk</a></li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->

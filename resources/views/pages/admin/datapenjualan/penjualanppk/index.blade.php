@@ -19,7 +19,7 @@
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Master Data<small> @yield('title')</small></h1>
+<h1 class="page-header">Penjualan<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 

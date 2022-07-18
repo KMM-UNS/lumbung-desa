@@ -20,7 +20,7 @@ class PenjualanProduk extends Model
     protected $table = 'penjualan_produks';
     protected $fillable =
     [
-     'id','no_penjualan','tgl_penjualan','nama_petani','email','no_hp','alamat','produk_id',
+     'id','no_penjualan','tgl_penjualan','nama_petani','produk_id',
      'kondisi_pr','keterangan_pr','harga','stok','jumlah','total'
     ];
     public $timestamps = false;

@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Detail Riwayat Penjualan')
+@section('title', 'Detail Riwayat Penjualan Produk')
 
 @push('css')
 <link href="/assets/plugins/morris.js/morris.css" rel="stylesheet" />

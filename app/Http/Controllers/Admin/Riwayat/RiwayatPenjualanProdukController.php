@@ -26,7 +26,7 @@ class RiwayatPenjualanProdukController extends Controller
         // $data = DataPetani::findOrFail($id);
         // $pembelian = Pembelian::get();
         // $data['data'] = Pembelian::where('petani_id', $id)->get();
-        $data=PenjualanProduk::select('nama')->where('nama', $id);
+        $data=PenjualanProduk::select('nama_petani')->where('nama_petani', $id);
         // $datapembeli=DataPembeli::findOrFail($id);
         // dd($id);
         return $dataTable->render('pages.admin.riwayat-transaksi.riwayatpenjualanproduk.show', [

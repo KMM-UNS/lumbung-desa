@@ -74,7 +74,7 @@ class RiwayatPenjualanProdukDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             // Column::make('nik')->title('NIK'),
-            Column::make('nama'),
+            Column::make('nama')->title('Nama Pembeli'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

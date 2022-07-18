@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Penjualan Produk' : 'Create Penjualan Produk' )
+@section('title', isset($data) ? 'Tambah Penjualan Produk' : 'Tambah Penjualan Produk' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -10,12 +10,12 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Penjualan</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Master Data<small> @yield('title')</small></h1>
+<h1 class="page-header">Penjualan<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 
@@ -49,12 +49,12 @@
         <input type="date" id="tgl_penjualan" name="tgl_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
         <label for="name">Nama Pembeli</label>
         <x-form.Dropdown name="nama_petani" :options="$pembeli" selected="{{{ old('nama_petani') ?? ($data['nama_petani'] ?? null) }}}" required />
-        <label for="name">Email</label>
-        <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
-        <label for="name">Nomor Handphone</label>
-        <input type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}">
-        <label for="name">Alamat</label>
-        <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
+        {{-- <label for="name">Email</label> --}}
+        {{-- <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}"> --}}
+        {{-- <label for="name">Nomor Handphone</label> --}}
+        {{-- <input type="text" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}"> --}}
+        {{-- <label for="name">Alamat</label> --}}
+        {{-- <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}"> --}}
         {{-- <label for="name">Kondisi</label>
         <x-form.Dropdown name="kondisi" :options="$kondisihasilpanen" selected="{{{ old('kondisihasilpanen') ?? ($data['kondisihasilpanen'] ?? null) }}}" required />
        --}}
@@ -66,7 +66,7 @@
        <x-form.Dropdown name="keterangan_pr" :options="$keterangan" selected="{{{ old('keterangan_pr') ?? ($data['keterangan_pr'] ?? null) }}}" required />
        <label for="name">Jumlah (/Kg)</label>
         <input type="number" id="jumlah" name="jumlah" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
-        <label for="name">Harga</label>
+        <label for="name">Harga (/Kg) </label>
         <input type="number" id="harga" name="harga" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
        <label for="name">Total</label>
         <input readonly type="number" id="total" onkeyup="sum();" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
@@ -106,7 +106,7 @@
         <input type="text" id="produk" name="produk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->produk ?? old('produk') }}}">
         <label for="name">Harga</label>
         <input type="number" id="harga" name="harga" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->harga ?? old('harga') }}}">
-        <label for="name">Jumlah</label>
+        <label for="name">Jumlah (/Kg)</label>
         <input type="number" id="jumlah" name="jumlah" onkeyup="sum();" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
         {{-- <label for="name">Kondisi</label>
         <x-form.Dropdown name="kondisi" :options="$kondisihasilpanen" selected="{{{ old('kondisihasilpanen') ?? ($data['kondisihasilpanen'] ?? null) }}}" required />

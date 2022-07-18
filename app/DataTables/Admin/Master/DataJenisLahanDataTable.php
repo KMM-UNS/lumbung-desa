@@ -79,7 +79,7 @@ class DataJenisLahanDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             // Column::make('id'),
-            Column::make('nama'),
+            Column::make('nama')->title('Jenis Lahan'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

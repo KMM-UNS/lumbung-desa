@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Data Pembeli' : 'Create Data Pembeli' )
+@section('title', isset($data) ? 'Tambah Data Pembeli' : 'Tambah Data Pembeli' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -10,12 +10,12 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Pendataan</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Master Data<small> @yield('title')</small></h1>
+<h1 class="page-header">Pendataan<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 
@@ -54,7 +54,7 @@ enctype="multipart/form-data" data-parsley-validate="true">
     <input type="text" id="instansi" name="instansi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->instansi ?? old('instansi') }}}">
       <label for="name">Email</label>
         <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
-        <label for="name">Nomor Handphone</label>
+        <label for="name">Nomor Telepon</label>
         <input type="number" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}">
         <label for="name">Alamat</label>
         <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">

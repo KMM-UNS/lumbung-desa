@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Detail Data Petani' : 'Create Data Petani' )
+@section('title', isset($data) ? 'Detail Data Petani' : 'Detail Data Petani' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -10,12 +10,12 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Pendataan</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Master Data<small> @yield('title')</small></h1>
+<h1 class="page-header">Pendataan<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 
