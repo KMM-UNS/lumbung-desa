@@ -62,9 +62,9 @@ class DataLahanDataTable extends DataTable
                     ->buttons(
                         Button::make('create'),
                         // Button::make('export'),
-                        // Button::make('print'),
-                        // Button::make('reset'),
-                        // Button::make('reload')
+                        Button::make('print'),
+                        Button::make('reset'),
+                        Button::make('reload')
                     );
     }
 

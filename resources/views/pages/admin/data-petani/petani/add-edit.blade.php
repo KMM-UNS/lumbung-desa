@@ -19,12 +19,12 @@
 <!-- end page-header -->
 
 
-<!-- begin panel //enctype="multipart/form-data"  -->
-<form action="{{  isset($data) ? route('admin.data-petani.petani.update', $data->id) :
-route('admin.data-petani.petani.store')  }}"  id="form" name="form" method="POST"
-enctype="multipart/form-data" data-parsley-validate="true">
+<!-- begin panel -->
+<form action="{{ isset($data) ?
+route('admin.data-petani.petani.update', $data->id) :
+route('admin.data-petani.petani.store') }}" id="form"
+name="form" method="POST" data-parsley-validate="true">
   @csrf
-
   @if(isset($data))
   {{ method_field('PUT') }}
   @endif
@@ -43,17 +43,7 @@ enctype="multipart/form-data" data-parsley-validate="true">
     <div class="panel-body">
       <div class="form-group">
         <label for="name">Nomor KK</label>
-        <input type="number" id="no_kk" name="no_kk" maxlength="16" class="form-control"
-        {{-- {{ $errors->has('no_kk') ? ' is-invalid' : '' }}">
-        @if($errors->has('no_kk'))
-            <span class="invalid-feedback">{{ $errors->first('no_kk') }}</span>
-        @endif --}}
-        autofocus data-parsley-required="true" value="{{{ $data->no_kk ?? old('no_kk') }}}">
-
-        {{-- @error('no_kk')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @enderror --}}
-
+        <input type="number" maxlength="16" id="no_kk" name="no_kk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_kk ?? old('no_kk') }}}">
         <label for="name">NIK</label>
         <input type="number" id="nik" name="nik" maxlength="16" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nik ?? old('nik') }}}">
         <label for="name">Nama</label>
@@ -70,17 +60,7 @@ enctype="multipart/form-data" data-parsley-validate="true">
               </div>
         <label for="name">Alamat</label>
         <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
-       {{-- <label for="name">Foto</label>
-        <input type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}"> --}}
-
-       {{-- <label for="image">Foto</label>
-        <input type="file" id='foto' name="foto" class="form-control" @error('foto') is-invalid @enderror>
-        @error('image')
-        <div class="invalid-feedback">
-            {{$message}} </div>
-            @enderror --}}
-    </div>
-
+       </div>
     </div>
     <!-- end panel-body -->
     <!-- begin panel-footer -->

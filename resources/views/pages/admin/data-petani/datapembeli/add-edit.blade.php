@@ -43,7 +43,7 @@ enctype="multipart/form-data" data-parsley-validate="true">
     <div class="panel-body">
       <div class="form-group">
         <label for="name">Nama</label>
-        <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+        <input type="text"  id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
         {{-- <label for="name">Jenis Kelamin</label>
     </div>
     <div class="col-md-3">

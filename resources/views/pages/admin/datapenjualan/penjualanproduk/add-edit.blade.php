@@ -76,9 +76,9 @@
     <!-- end panel-body -->
     <!-- begin panel-footer -->
     <div class="panel-footer">
-    <button class="btn btn-success add-more" type="button">
+    {{-- <button class="btn btn-success add-more" type="button">
         <i class="glyphicon glyphicon-plus"></i> Add
-      </button>
+      </button> --}}
     </div>
     <div class="panel-footer">
       <button type="submit" class="btn btn-primary">Simpan</button>

@@ -12,9 +12,9 @@
                         color: #9f181c;
                     }
                     .receipt-main {
-                        background: #ffffff none repeat scroll 0 0;
-                        border-bottom: 12px solid #333333;
-                        border-top: 12px solid #9f181c;
+                        background: #f7fff7 none repeat scroll 0 0;
+                        border-bottom: 12px solid #ecffee;
+                        border-top: 12px solid #c6ffb8;
                         margin-top: 50px;
                         margin-bottom: 50px;
                         padding: 40px 30px !important;
@@ -23,6 +23,7 @@
                         color: #333333;
                         font-family: open sans;
                     }
+                    /* bawahnya lumbung desa */
                     .receipt-main p {
                         color: #333333;
                         font-family: open sans;
@@ -33,8 +34,9 @@
                         font-weight: 400 !important;
                         margin: 0 !important;
                     }
+                    /* garis atas */
                     .receipt-main::after {
-                        background: #414143 none repeat scroll 0 0;
+                        background: #b4ffd8 none repeat scroll 0 0;
                         content: "";
                         height: 5px;
                         left: 0;
@@ -42,11 +44,13 @@
                         right: 0;
                         top: -13px;
                     }
+                    /*kotak judul kolom */
                     .receipt-main thead {
-                        background: #414143 none repeat scroll 0 0;
+                        background: #b6b6bd none repeat scroll 0 0;
                     }
+                    /* tulisan judul kolom */
                     .receipt-main thead th {
-                        color:#fff;
+                        color:rgb(9, 9, 9);
                     }
                     .receipt-right h5 {
                         font-size: 16px;
@@ -104,6 +108,8 @@
            <div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
                <div class="row">
                    <div class="receipt-header">
+
+                    <center><h2>INVOICE</h2></center>
                        <div class="col-xs-6 col-sm-6 col-md-6">
                            <div class="receipt-left">
                                <img class="img-responsive" alt="iamgurdeeposahan" src="https://bootdey.com/img/Content/avatar/avatar6.png" style="width: 71px; border-radius: 43px;">
@@ -111,7 +117,7 @@
                        </div>
                        <div class="col-xs-6 col-sm-6 col-md-6 text-right">
                            <div class="receipt-right">
-                               <h5>Lumbung Desa.</h5>
+                               <h5>Lumbung Desa</h5>
                                <p>+62 838 4498 245 <i class="fa fa-phone"></i></p>
                                <p>lumbungdesa@gmail.com <i class="fa fa-envelope-o"></i></p>
                                <p>Karanganyar <i class="fa fa-location-arrow"></i></p>
@@ -124,7 +130,10 @@
                    <div class="receipt-header receipt-header-mid">
                        <div class="col-xs-8 col-sm-8 col-md-8 text-left">
                            <div class="receipt-right">
-                               <h5>{{ $nama }} </h5>
+                               <h5>Nama Pembeli - {{ $nama }} <br>
+                                Nomor Penjualan - {{ $no_penjualan }} <br>
+                                Tanggal         - {{ $tgl_penjualan }} </h5>
+
                                {{-- <p><b>Mobile :</b> +1 12345-4569</p>
                                <p><b>Email :</b> customer@gmail.com</p>
                                <p><b>Address :</b> New York, USA</p> --}}
@@ -132,7 +141,7 @@
                        </div>
                        <div class="col-xs-4 col-sm-4 col-md-4">
                            <div class="receipt-left">
-                               <h3>INVOICE # {{ $no_penjualan }}</h3>
+                               {{-- <h3>Nomor Penjualan - {{ $no_penjualan }}</h3> --}}
                            </div>
                        </div>
                    </div>
@@ -142,17 +151,27 @@
                    <table class="table table-bordered">
                        <thead>
                            <tr>
-                               <th>Nomor Pembelian</th>
+                               {{-- <th>Nomor Pembelian</th>
                                <th>Tanggal Pembelian</th>
-                               <th>Nama Pembeli</th>
+                               <th>Nama Pembeli</th> --}}
+                               <th>Produk</th>
+                               <th>Kondisi</th>
+                               <th>Keterangan</th>
+                               <th>Jumlah (/Kg)</th>
+                               <th>Harga (/Kg)</th>
                                {{-- <th>Kasir</th> --}}
                            </tr>
                        </thead>
                        <tbody>
                            <tr>
-                               <td class="col-md-9">{{ $no_penjualan }}</td>
+                               {{-- <td class="col-md-9">{{ $no_penjualan }}</td>
                                <td class="col-md-9">{{ $tgl_penjualan }}</td>
-                               <td class="col-md-9">{{ $nama }}</td>
+                               <td class="col-md-9">{{ $namapembelippk }}</td> --}}
+                               <td class="col-md-9">{{ $produk }}</td>
+                               <td class="col-md-9">{{ $kondisi }}</td>
+                               <td class="col-md-9">{{ $keterangan }}</td>
+                               <td class="col-md-9">{{ $jumlah }}</td>
+                               <td class="col-md-9">{{ $harga }}</td>
                                <td class="col-md-3"><i class="fa fa-inr"></i></td>
                            </tr>
                            {{-- <tr>
@@ -197,8 +216,8 @@
                    <div class="receipt-header receipt-header-mid receipt-footer">
                        <div class="col-xs-8 col-sm-8 col-md-8 text-left">
                            <div class="receipt-right">
-                               <p><b>Date :</b> {{ $tgl_penjualan }}</p>
-                               <h5 style="color: rgb(140, 140, 140);">Thanks for shopping.!</h5>
+                               {{-- <p><b>Tanggal Penjualan :</b> {{ $tgl_penjualan }}</p> --}}
+                               <h5 style="color: rgb(140, 140, 140);">Thanks for shopping!</h5>
                            </div>
                        </div>
                        <div class="col-xs-4 col-sm-4 col-md-4">

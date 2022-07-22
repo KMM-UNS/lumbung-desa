@@ -51,6 +51,9 @@ return [
                 ],[
                     'url' => '/admin/data-petani/datapenjual',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Penjual'
+                ],[
+                    'url' => '/admin/data-petani/grafik',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Grafik'
                 ]
             ]
         ],

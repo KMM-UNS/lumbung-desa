@@ -70,9 +70,9 @@ class PenjualanProdukDataTable extends DataTable
                     ->buttons(
                         Button::make('create'),
                         // Button::make('export'),
-                        // Button::make('print'),
-                        // Button::make('reset'),
-                        // Button::make('reload')
+                        Button::make('print'),
+                        Button::make('reset'),
+                        Button::make('reload')
                     );
     }
 
@@ -87,7 +87,7 @@ class PenjualanProdukDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             // Column::make('id'),
             Column::make('no_penjualan')->title('Nomor Penjualan'),
-           // Column::make('tgl_penjualan'),
+           Column::make('tgl_penjualan'),
             Column::make('nama')->data('pembeli.nama')->title('Nama Pembeli'),
            // Column::make('email'),
             //Column::make('no_hp'),
@@ -98,7 +98,7 @@ class PenjualanProdukDataTable extends DataTable
            // Column::make('harga'),
             Column::make('jumlah')->title('Jumlah (/Kg)'),
             //Column::make('kondisi')->data('kondisihasilpanen.kondisi'),
-           // Column::make('total'),
+           Column::make('total'),
            Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

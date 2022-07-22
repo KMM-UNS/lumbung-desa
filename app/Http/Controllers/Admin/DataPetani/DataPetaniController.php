@@ -36,14 +36,18 @@ class DataPetaniController extends Controller
     }
 
     // public function store(DataPetani $request)
+
     public function store(Request $request)
     {
         try {
  $request->validate([
             // 'unique' => ':data sudah ada',
             // 'filename' => 'image|file|max:1024',
-            'no_kk' => 'unique:data_petanis,no_kk',
-            'nik' => 'unique:data_petanis,nik',
+            // 'no_kk' => 'unique:data_petanis,no_kk',
+            // 'nik' => 'unique:data_petanis,nik',
+            'nama' => 'required|min:3',
+            'no_kk' => 'required|max:16',
+            'nik' => 'required|max:16',
         ]);
 
         } catch (\Throwable $th) {
@@ -54,7 +58,7 @@ class DataPetaniController extends Controller
         try {
             DataPetani::create($request->all());
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
@@ -81,8 +85,11 @@ class DataPetaniController extends Controller
             $request->validate([
                        // 'unique' => ':data sudah ada',
                        // 'filename' => 'image|file|max:1024',
-                       'no_kk' => 'unique:data_petanis,no_kk',
-                       'nik' => 'unique:data_petanis,nik',
+                    //    'no_kk' => 'unique:data_petanis,no_kk',
+                    //    'nik' => 'unique:data_petanis,nik',
+                       'nama' => 'required|min:3',
+                       'no_kk' => 'required|max:16',
+            'nik' => 'required|max:16',
                    ]);
 
                    } catch (\Throwable $th) {

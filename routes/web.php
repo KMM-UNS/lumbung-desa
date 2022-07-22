@@ -18,6 +18,8 @@ Route::get('/token', function () {
 });
 
 // Route::view('/', 'pages.user.landingpage')->name('landingpage');
+Route::view('/', 'pages.user.landingpage')->name('landingpage');
+
 
 Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
     Route::view('/', 'home')->name('home');

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\GudangLumbung;
 use App\Models\KeteranganGudang;
 
+
 class PenjualanProdukController extends Controller
 {
     public function index(PenjualanProdukDataTable $dataTable)
@@ -205,18 +206,51 @@ class PenjualanProdukController extends Controller
 
         'no_penjualan'=>$data->no_penjualan,
         'tgl_penjualan'=>$data->tgl_penjualan,
-        'nama'=>$data->nama,
+        'nama'=>$data->pembeli->nama,
         'email'=>$data->email,
         'no_hp'=>$data->no_hp,
         'alamat'=>$data->alamat,
         'jumlah'=>$data->jumlah,
         'harga'=>$data->harga,
        // 'kondisi'=>$data->kondisi,
-        'produk'=>$data->produk,
+        'produk'=>$data->produk->tanaman->nama,
+'kondisi'=>$data->kondisi->kondisi->nama,
+'keterangan'=>$data->keterangan->keterangangudang->nama,
         'total'=>$data->total
         ]);
         return $pdf->download('invoice.pdf');
         // return view('pages.admin.penjualan.invoice', ['data' => $data]);
     }
 
+    // public function grafik()
+    // {
+    //     $data = PenjualanProduk::findOrFail($id);
+    //     $total_harga=PenjualanProduk::select(DB::raw("CAST(SUM(total) as int) as total_harga"))
+    //     ->GroupBy(DB::raw("MONTH(tgl_penjualan)"))
+    //     ->pluck('total_harga');
+
+    //     $bulan=PenjualanProduk::select(DB::raw("MONTHNAME(tgl_penjualan) as int) as bulan"))
+    //     ->GroupBy(DB::raw("MONTHNAME(tgl_penjualan)"))
+    //     ->pluck('bulan');
+
+    //     return view('pages.admin.dashboard',compact('total_harga', 'bulan'));
+    //     return view('pages.admin.dashboard',[
+    //         'total_harga'=>$data->total_harga,
+    //         'bulan'=>$data->bulan
+    //     ]);
+    //}
+public function grafik()
+{
+     // $data = PenjualanProduk::findOrFail($id);
+     $total_harga=PenjualanProduk::select(DB::raw("SUM(total) as total_harga"))
+     ->GroupBy(DB::raw("Month(tgl_penjualan)"))
+     ->pluck('total_harga')->toArray();
+// dd($total_harga);
+     $bulan=PenjualanProduk::select(DB::raw("MONTHNAME(tgl_penjualan) as bulan"))
+     ->GroupBy(DB::raw("MONTHNAME(tgl_penjualan)"))
+     ->pluck('bulan')->toArray();
+// dd($bulan);
+     return view('pages.admin.data-petani.grafik.index',compact('total_harga', 'bulan'));
+    // return view('pages.admin.dashboard',compact('total_harga', 'bulan'));
+}
 }

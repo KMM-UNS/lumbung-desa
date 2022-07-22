@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', function () {
             return redirect(route('admin.dashboard'));
         });
-
+        // Route::get('/dashboard}', [PenjualanProdukController::class, 'dashboard'])->name('dashboardproduk');
         Route::view('/dashboard', 'pages.admin.dashboard')->name('dashboard');
 
         Route::resource('/admin', 'AdminController');
@@ -39,6 +39,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('datalahan', 'DataLahanController');
             Route::resource('datapembeli', 'DataPembeliController');
             Route::resource('datapenjual', 'DataPenjualController');
+            // Route::get('grafik', 'GrafikController@index');
+
+            // Route::get('grafik', 'GrafikController');
+            Route::get('grafik', [PenjualanProdukController::class, 'grafik']);
+            // Route::get('/grafik}', [GrafikController::class, 'grafik'])->name('grafik');
         });
 
         Route::group(['prefix' => '/pembelian', 'as' => 'pembelian.', 'namespace' => 'Pembelian'], function () {

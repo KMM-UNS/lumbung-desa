@@ -205,18 +205,19 @@ class PenjualanPpkController extends Controller
 
         'no_penjualan'=>$data->no_penjualan,
         'tgl_penjualan'=>$data->tgl_penjualan,
-        'nama'=>$data->nama,
+        'namapembelippk'=>$data->pembelippk->nama,
         'email'=>$data->email,
         'no_hp'=>$data->no_hp,
         'alamat'=>$data->alamat,
         'jumlah'=>$data->jumlah,
         'harga'=>$data->harga,
        // 'kondisi'=>$data->kondisi,
-        'produk'=>$data->produk,
+        'produk'=>$data->produkppk->ppk->nama,
         'total'=>$data->total
         ]);
         return $pdf->download('invoice.pdf');
         // return view('pages.admin.penjualan.invoice', ['data' => $data]);
     }
+
 
 }
