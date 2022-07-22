@@ -128,12 +128,12 @@ return [
                 ]
             ]
         ],
-        [
-            'icon' => 'fa fa-users',
-            'title' => 'Kas',
-            'url' => '/admin/kas',
-            'caret' => false,
-        ],
+        // [
+        //     'icon' => 'fa fa-users',
+        //     'title' => 'Kas',
+        //     'url' => '/admin/kas',
+        //     'caret' => false,
+        // ],
         [
             'icon' => 'fa fa-cogs',
             'title' => 'Master',

@@ -59,6 +59,18 @@ class DataPembeliController extends Controller
         return redirect(route('admin.data-petani.datapembeli.index'))->withToastSuccess('Data tersimpan');
     }
 
+    public function simpan(Request $request)
+    {
+        try {
+            DataPembeli::create($request->all());
+        } catch (\Throwable $th) {
+            dd($th);
+            return back()->withInput()->withToastError('Something went wrong');
+        }
+
+        return redirect()->back()->with('Data tersimpan');
+    }
+
     public function edit($id)
     {
         $data = DataPembeli::findOrFail($id);

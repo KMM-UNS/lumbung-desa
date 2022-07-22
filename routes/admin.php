@@ -38,6 +38,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::post('tanaman/simpan', 'TanamanController@simpan')->name('tanaman.simpan');
             Route::resource('datalahan', 'DataLahanController');
             Route::resource('datapembeli', 'DataPembeliController');
+            Route::post('datapembeli', 'DataPembeliController@store')->name('datapembeli.store');
+            Route::post('datapembeli/simpan', 'DataPembeliController@simpan')->name('datapembeli.simpan');
             Route::resource('datapenjual', 'DataPenjualController');
             // Route::get('grafik', 'GrafikController@index');
 
