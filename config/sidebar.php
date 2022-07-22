@@ -53,7 +53,10 @@ return [
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Penjual'
                 ],[
                     'url' => '/admin/data-petani/grafik',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Grafik'
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Grafik Penjualan Produk'
+                ],[
+                    'url' => '/admin/data-petani/grafikppk',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Grafik Penjualan Pupuk'
                 ]
             ]
         ],

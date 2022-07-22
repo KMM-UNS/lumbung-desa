@@ -219,5 +219,18 @@ class PenjualanPpkController extends Controller
         // return view('pages.admin.penjualan.invoice', ['data' => $data]);
     }
 
-
+    public function grafikppk()
+    {
+         // $data = PenjualanProduk::findOrFail($id);
+         $total_harga=PenjualanPpk::select(DB::raw("SUM(total) as total_harga"))
+         ->GroupBy(DB::raw("Month(tgl_penjualan)"))
+         ->pluck('total_harga')->toArray();
+    // dd($total_harga);
+         $bulan=PenjualanPpk::select(DB::raw("MONTHNAME(tgl_penjualan) as bulan"))
+         ->GroupBy(DB::raw("MONTHNAME(tgl_penjualan)"))
+         ->pluck('bulan')->toArray();
+    // dd($bulan);
+         return view('pages.admin.data-petani.grafikppk.index',compact('total_harga', 'bulan'));
+        // return view('pages.admin.dashboard',compact('total_harga', 'bulan'));
+    }
 }

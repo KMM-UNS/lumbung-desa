@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
             // Route::get('grafik', 'GrafikController');
             Route::get('grafik', [PenjualanProdukController::class, 'grafik']);
+            Route::get('grafikppk', [PenjualanPpkController::class, 'grafikppk']); //grafikppk nama fungsi
             // Route::get('/grafik}', [GrafikController::class, 'grafik'])->name('grafik');
         });
 

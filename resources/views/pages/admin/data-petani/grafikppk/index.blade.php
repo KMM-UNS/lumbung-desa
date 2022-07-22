@@ -15,13 +15,13 @@
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Grafik Penjualan Produk</h1>
+<h1 class="page-header">Grafik Penjualan Pupuk</h1>
 <div class="container">
     <div class="row justify-content-center">
         {{-- start --}}
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"> Grafik Penjualan Produk Bulanan </div>
+                <div class="card-header"> Grafik Penjualan Pupuk Bulanan </div>
                 <div class="card-body">
                     <div id="grafik"></div>
                 </div>
@@ -35,7 +35,7 @@ var pendapatan = <?php echo json_encode($total_harga) ?>;
 var bulan = <?php echo json_encode($bulan) ?>;
 Highcharts.chart('grafik', {
     title : {
-        text: 'Grafik Pendapatan Penjualan Produk Bulanan'
+        text: 'Grafik Pendapatan Penjualan Pupuk Bulanan'
     },
     xAxis : {
         // categories : bulan
