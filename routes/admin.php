@@ -30,8 +30,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             // Route::post('/images','DataPetaniController@upload');
             Route::post('tanaman/simpan', 'TanamanController@simpan')->name('tanaman.simpan');
             Route::resource('tanaman', 'TanamanController');
-            // Route::post('tanaman', 'TanamanController@store')->name('tanaman.store');
             Route::resource('datalahan', 'DataLahanController');
+            Route::resource('datapenjual', 'DataPenjualController');
         });
 
         Route::group(['prefix' => '/pembelian', 'as' => 'pembelian.', 'namespace' => 'Pembelian'], function () {
@@ -44,10 +44,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('pembelian-pupuk', 'PembelianPupukController');
             Route::post('pembelian-pupuk/cart', 'PembelianPupukController@addToCart')->name('pembelian-pupuk.add');
             Route::get('invoice-pupuk/{id}', [PembelianPupukController::class, 'invoice'])->name('pembelian-pupuk.invoice');
+            Route::get('invoice-pupuk/inv', [PembelianPupukController::class, 'newinvoice'])->name('pembelian-pupuk.inv');
             // perkiraan pembelian (modal)
             Route::resource('perkiraan-pembelian', 'PerkiraanPembelianController');
             Route::resource('pembelian-modal', 'PembelianModalController');
             Route::get('pembelian-modal/simpan/{id}', 'PembelianModalController@simpan')->name('pembelian-modal.simpan');
+            Route::get('cetak-perkiraan-pembelian', [PembelianModalController::class, 'cetak'])->name('pembelian-modal.cetak');
             // Route::resource('pembelian-modal/{id}', [PembelianModalController::class, 'create']);
             // Route::resource('perkiraan-pembelian/{id}', 'PembelianModalController');
             // Route::get('perkiraan-pembelian/update/{id}', [PembelianModalController::class, 'update']);

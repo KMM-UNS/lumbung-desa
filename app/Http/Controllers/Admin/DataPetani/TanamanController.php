@@ -90,7 +90,7 @@ class TanamanController extends Controller
         return redirect(route('admin.data-petani.tanaman.index'))->withToastSuccess('Data tersimpan');
     }
 
-    public function destroy(Tanaman $id)
+    public function destroy($id)
     {
         try {
             Tanaman::find($id)->delete();

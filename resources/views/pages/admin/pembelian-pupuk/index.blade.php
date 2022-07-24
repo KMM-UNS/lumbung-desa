@@ -3,11 +3,11 @@
 @section('title', 'Pupuk')
 
 @push('css')
-<!-- datatables -->
-<link href="{{ asset('/assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet" />
-<link href="{{ asset('/assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
-<link href="{{ asset('/assets/plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet" />
-<!-- end datatables -->
+    <!-- datatables -->
+    <link href="{{ asset('/assets/plugins/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/assets/plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/assets/plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet" />
+    <!-- end datatables -->
 @endpush
 
 @section('content')
@@ -44,15 +44,15 @@
 @endsection
 
 @push('scripts')
-<!-- datatables -->
-<script src="{{ asset('assets/js/custom/datatable-assets.js') }}"></script>
-{{ $dataTable->scripts() }}
-<!-- end datatables -->
+    <!-- datatables -->
+    <script src="{{ asset('assets/js/custom/datatable-assets.js') }}"></script>
+    {{ $dataTable->scripts() }}
+    <!-- end datatables -->
 
-<script src="{{ asset('assets/js/custom/delete-with-confirmation.js') }}"></script>
-<script>
-  $(document).on('delete-with-confirmation.success', function() {
-    $('.buttons-reload').trigger('click')
-  })
-</script>
+    <script src="{{ asset('assets/js/custom/delete-with-confirmation.js') }}"></script>
+    <script>
+        $(document).on('delete-with-confirmation.success', function() {
+            $('.buttons-reload').trigger('click')
+        })
+    </script>
 @endpush

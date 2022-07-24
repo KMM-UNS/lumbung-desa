@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\DataTables\User\RiwayatPenjualanDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\DataPetani;
 use App\Models\Pembelian;
@@ -14,11 +15,13 @@ class RiwayatPenjualanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(RiwayatPenjualanDataTable $dataTable)
     {
         $datapetani = DataPetani::get();
-        $riwayatpenjualan = Pembelian::where('petani_id', $datapetani)->get();
-        return view('pages.user.riwayat-penjualan.index', ['riwayatpenjualan'=>$riwayatpenjualan]);
+        $riwayatpenjualan = Pembelian::where('user_id', auth()->user()->id);
+        // $riwayatpenjualan = Pembelian::get();
+        // return view('pages.user.riwayat-penjualan.index', ['riwayatpenjualan'=>$riwayatpenjualan]);
+        return $dataTable->render('pages.user.riwayat-penjualan.index', ['riwayatpenjualan'=>$riwayatpenjualan]);
     }
 
     /**

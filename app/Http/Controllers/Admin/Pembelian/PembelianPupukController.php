@@ -11,6 +11,8 @@ use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Pembelian\PembelianPupukDataTable;
+use App\Models\DataPenjual;
+use App\Models\Pembelian;
 
 class PembelianPupukController extends Controller
 {
@@ -21,28 +23,52 @@ class PembelianPupukController extends Controller
 
     public function create()
     {
-        $cartItems = \Cart::getContent();
+        // $cartItems = \Cart::getContent();
         $pupuk = DataPupuk::pluck('nama','id');
+        $penjual = DataPenjual::pluck('instansi','id');
+        // $cart = PembelianPupuk::where('status', '0')->get();
         return view('pages.admin.pembelian-pupuk.add-edit', [
             'pupuk'=>$pupuk,
-            'cartItems'=>$cartItems
+            'penjual'=>$penjual,
+            // 'cartItems'=>$cartItems
+            // 'cart'=>$cart
         ]);
     }
 
-    public function addToCart(Request $request)
-    {
-        \Cart::add([
-            'no_pembelian' => $request->no_pembelian,
-            'tanggal_pembelian' => $request->tanggal_pembelian,
-            'pupuk_id' => $request->pupuk_id,
-            'jumlah' => $request->jumlah,
-            'harga' => $request->harga,
-            'total' => $request->total
-        ]);
-        // session()->flash('success', 'Produk Berhasil Ditambahkan !');
+    // public function addToCart(Request $request)
+    // {
+    //     \Cart::add([
+    //         'no_pembelian' => $request->no_pembelian,
+    //         'tanggal_pembelian' => $request->tanggal_pembelian,
+    //         'pupuk_id' => $request->pupuk_id,
+    //         'jumlah' => $request->jumlah,
+    //         'harga' => $request->harga,
+    //         'total' => $request->total
+    //     ]);
+    //     session()->flash('success', 'Produk Berhasil Ditambahkan !');
 
     //     return redirect()->with('Data tersimpan');
-    }
+
+    //     melakukan pengecekan pada table order
+    //     $product_check = PembelianPupuk::where('id', $request->pupuk_id)->where('status','0')->first();
+    //     // kondisi pengecekan
+    //     if($product_check == null) {
+    //         $order = new PembelianPupuk();
+    //         $order->pupuk_id = $request->pupuk_id;
+    //         $order->jumlah = $request->jumlah;
+    //         $order->harga = $request->harga;
+    //     } else {
+    //         $order = PembelianPupuk::where('pupuk_id', $request->pupuk_id)->where('status','0')->first();
+    //         $order->pupuk_id = $request->pupuk_id;
+    //         $order->jumlah += $request->jumlah;
+    //     }
+    //     $order->total += $request->harga * $request->jumlah;
+    //     $order->tanggal_pembelian = $request->tanggal_pembelian;
+    //     $order->penjual_id = $request->penjual_id;
+    //     $order->save();
+    //     // dd($order);
+    //     return redirect()->route('admin.pembelian.pembelian-pupuk.create');
+    // }
 
     public function store(Request $request)
     {
@@ -58,9 +84,30 @@ class PembelianPupukController extends Controller
                 //     'total' => $request->total
                 // ]);
                 // session()->flash('success', 'Produk Berhasil Ditambahkan !');
+
+                // // melakukan pengecekan pada table order
+                // $product_check = PembelianPupuk::where('id', $request->pupuk_id)->first();
+                // //kondisi pengecekan
+                // if($product_check == null) {
+                //     $order = new PembelianPupuk();
+                //     $order->pupuk_id = $request->pupuk_id;
+                //     $order->jumlah = $request->jumlah;
+                //     $order->harga = $request->harga;
+                // } else {
+                //     $order = PembelianPupuk::where('pupuk_id', $request->pupuk_id)->first();
+                //     $order->pupuk_id = $request->pupuk_id;
+                //     $order->jumlah += $request->jumlah;
+                // }
+                // $order->total = $request->harga * $request->jumlah;
+                // $order->tanggal_pembelian = $request->tanggal_pembelian;
+                // $order->penjual_id = $request->penjual_id;
+                // // $order->save();
+                // // dd($order);
+                // // return redirect()->route('admin.pembelian.pembelian-pupuk.create');
+
                 // menyimpan semua data pembelian yang diinputkan
-                $pembelian_pupuk=PembelianPupuk::create($request->all());
-                $pembelian_pupuk->save();
+                $pembelian_pupuk=PembelianPupuk::create($request->all()); // get data pembelian dgn status 0
+                $pembelian_pupuk->save(); // ubah ststus 0 jadi 1
                 // get data gudang yang diinputkan
                 $gudangPupuk = GudangPupuk::where('nama_pupuk', $pembelian_pupuk->pupuk_id)->first();
                 // dd($gudangPupuk);
@@ -81,11 +128,12 @@ class PembelianPupukController extends Controller
                     $gudang2->save();
                 }
             } catch (\Throwable $th) {
-                dd($th);
+                // dd($th);
                 DB::rollback();
                 return back()->withInput()->withToastError('Something went wrong');
             }
         });
+        // return redirect()->route('admin.pembelian.pembelian-pupuk.create');
 
         return redirect(route('admin.pembelian.pembelian-pupuk.index'))->withToastSuccess('Data tersimpan');
     }
@@ -99,9 +147,13 @@ class PembelianPupukController extends Controller
     {
         $data = PembelianPupuk::findOrFail($id);
         $pupuk = DataPupuk::pluck('nama','id');
+        $penjual = DataPenjual::pluck('instansi', 'id');
+        $cart = PembelianPupuk::where('status', '0')->get();
         return view('pages.admin.pembelian-pupuk.add-edit', [
             'data'=>$data,
-            'pupuk'=>$pupuk
+            'pupuk'=>$pupuk,
+            'penjual'=>$penjual,
+            'cart'=>$cart
         ]);
     }
 
@@ -147,5 +199,28 @@ class PembelianPupukController extends Controller
         //     'harga'=>$data->harga,
         //     'total'=>$data->total
         // ]);
+    }
+
+    public function newinvoice()
+    {
+        $data = PembelianPupuk::where('status', '0')->get();
+        $pdf = PDF::loadview('pages.admin.pembelian-pupuk.inv', [
+            'pupuk_id'=>$data->pupuk->nama,
+            'no_pembelian'=>$data->no_pembelian,
+            'tanggal_pembelian'=>$data->tanggal_pembelian,
+            'jumlah'=>$data->jumlah,
+            'harga'=>$data->harga,
+            'total'=>$data->total
+        ]);
+        // return $pdf->download('invoice-pembelian-pupuk.pdf');
+        return view('pages.admin.pembelian-pupuk.inv', [
+            'data' => $data,
+            'pupuk_id'=>$data->pupuk->nama,
+            'no_pembelian'=>$data->no_pembelian,
+            'tanggal_pembelian'=>$data->tanggal_pembelian,
+            'jumlah'=>$data->jumlah,
+            'harga'=>$data->harga,
+            'total'=>$data->total
+        ]);
     }
 }

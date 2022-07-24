@@ -112,7 +112,7 @@
                 </div> --}}
             </div>
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
             <div class="row">
                 {{-- <div class="col-md-1"></div> --}}
                 <div class="col-md-12">
@@ -120,7 +120,7 @@
                 </div>
                 {{-- <div class="col-md-1"></div> --}}
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="panel-body">
         <div class="form-group">

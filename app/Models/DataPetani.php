@@ -19,7 +19,7 @@ class DataPetani extends Model
     protected $table = 'data_petanis';
     protected $fillable =
     [
-    'no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat','foto'
+    'user_id','no_kk','nik','nama','tempat_lahir','tanggal_lahir','jenis_kelamin','alamat','foto'
     ];
     public $timestamps = false;
 

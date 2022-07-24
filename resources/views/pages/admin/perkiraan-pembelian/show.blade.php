@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Detail Perkiraan Modal Pembelian')
+@section('title', 'Perkiraan Modal Pembelian')
 
 @push('css')
 <!-- datatables -->
@@ -14,18 +14,19 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Perkiraan Modal</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Musim Panen</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Perkiraan Modal<small> @yield('title')</small></h1>
+<h1 class="page-header">Pembelian<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 <!-- begin panel -->
 <div class="panel panel-inverse" data-sortable-id="table-basic-7">
     <div class="panel-heading ui-sortable-handle">
-      <h4 class="panel-title">Perkiraan Modal Pembelian <span class="label label-success m-l-5 t-minus-1"></span></h4>
+      {{-- <h4 class="panel-title">Perkiraan Modal Pembelian <span class="label label-success m-l-5 t-minus-1">{{ $data->id }}</span></h4> --}}
+      <h4 class="panel-title">Perkiraan Modal Pembelian</h4>
       <div class="panel-heading-btn">
           <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
           <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
@@ -37,20 +38,20 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2 my-auto">
-                    <label for="name"><strong>Jumlah Petani Penjual</strong></label>
+                    <label for="name"><strong>Jumlah Penjual</strong></label>
                 </div>
                 <div class="col-md-10">
                     <td>: {{ $jumlahpetani }} </td>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-2 my-auto">
                     <label for="name"><strong>Total Produk</strong> (item)</label>
                 </div>
                 <div class="col-md-10">
                     <td>: {{ $totaljumlahproduk }} </td>
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-md-2 my-auto">
                     <label for="name"><strong>Total Berat Produk</strong> (/kg)</label>
@@ -67,9 +68,9 @@
                     <td>: @currency($perkiraanmodal) </td>
                 </div>
             </div>
-            <div class="col">
-                <a href="" class="btn btn-info buttons-primary width-80 m-r-2 fas fa-print fa-fw"></i>  Cetak</a>
-            </div>
+            {{-- <div class="col">
+                <a href="{{ route('admin.pembelian.pembelian-modal.cetak') }}" class="button-primary fas fa-print fa-fw">Cetak</a>
+            </div> --}}
         </div>
     </div>
 </div>

@@ -42,17 +42,16 @@ class PerkiraanPembelianController extends Controller
         // hitung jumlah petani
         // $petani = PembelianModal::select('petani_id')->where('petani_id', $id)->first();
         $jumlahpetani = PembelianModal::where('musim_panen_id', $data->id)->get()->count();
-        // Hitung Total Jumlah Produk
-        // $tanaman = PembelianModal::select('tanaman_id')->where('tanaman_id', $id)->first();
-        // $kondisi = PembelianModal::select('kondisi_id')->where('kondisi_id', $id)->first();
+        // Hitung Total Produk
         $totaljumlahproduk = PembelianModal::where('musim_panen_id', $data->id)->where('tanaman_id', $data->id)->where('kondisi_id', $data->id)->count();
         // hitung total berat produk
         $totalberatproduk = PembelianModal::where('musim_panen_id', $data->id)->get()->sum('jumlah',$data->id);
-        // dd($totalberatproduk);
+        // dd($data->id);
         // Hitung Perkiraan Modal
         $perkiraanmodal = PembelianModal::where('musim_panen_id', $data->id)->get()->sum('total', $data->id);
         return $dataTable->render('pages.admin.perkiraan-pembelian.show', [
             'id' => $id,
+            'data' => $data,
             'musim' => $musim,
             'jumlahpetani' => $jumlahpetani,
             'totaljumlahproduk'=>$totaljumlahproduk,

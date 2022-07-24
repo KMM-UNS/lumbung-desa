@@ -25,13 +25,20 @@ class PerkiraanPembelianDataTable extends DataTable
             ->setRowId(function ($row) {
                 return $row->id;
             })
+            ->addColumn('detail', function ($row) {
+                $btn = '<div class="btn-group">';
+                $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.show', $row->id) . '" class="btn btn-info buttons-show">Tambah Perkiraan</a>';
+                $btn = $btn . '</div>';
+                return $btn;
+            })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
                 $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
-                $btn = $btn . '<a href="' . route('admin.pembelian.perkiraan-pembelian.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+                $btn = $btn . '</div>';
                 return $btn;
-            });
+            })
+            ->rawColumns(['detail', 'action']);
     }
 
     /**
@@ -54,6 +61,10 @@ class PerkiraanPembelianDataTable extends DataTable
     {
         return $this->builder()
                     ->setTableId('perkiraan-pembelian-table')
+                    ->parameters([
+                        'responsive' => true,
+                        'autoWidth' => false
+                    ])
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -75,14 +86,19 @@ class PerkiraanPembelianDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
+            Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
             Column::make('musim_panen', 'perkiraan_pembelian.musim_panen'),
             Column::make('tahun', 'perkiraan_pembelian.tahun'),
             // Column::make('modal')
+            Column::computed('detail')
+                  ->exportable(false)
+                  ->printable(false)
+                //   ->width(240)
+                  ->addClass('text-center'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(240)
+                //   ->width(240)
                   ->addClass('text-center'),
         ];
     }

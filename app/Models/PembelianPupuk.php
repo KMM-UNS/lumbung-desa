@@ -17,6 +17,7 @@ class PembelianPupuk extends Model
     protected $fillable = [
         'no_pembelian',
         'tanggal_pembelian',
+        'penjual_id',
         'pupuk_id',
         'jumlah',
         'harga',
@@ -26,6 +27,16 @@ class PembelianPupuk extends Model
     public function pupuk()
     {
         return $this->belongsTo(DataPupuk::class,'pupuk_id');
+    }
+
+    public function pembelianpupuk()
+    {
+        return $this->hasMany(DataPupuk::class,'pupuk_id');
+    }
+
+    public function penjual()
+    {
+        return $this->belongsTo(DataPenjual::class, 'penjual_id');
     }
 
     public function getAutoNumberOptions()

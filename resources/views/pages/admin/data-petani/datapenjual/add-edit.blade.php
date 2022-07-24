@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Data Petani' : 'Create Data Petani' )
+@section('title', isset($data) ? 'Tambah Data Penjual' : 'Tambah Data Penjual' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -10,18 +10,18 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Pendataan</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Master Data<small> @yield('title')</small></h1>
+<h1 class="page-header">Pendataan<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 
 <!-- begin panel //enctype="multipart/form-data"  -->
-<form action="{{  isset($data) ? route('admin.data-petani.petani.update', $data->id) :
-route('admin.data-petani.petani.store')  }}"  id="form" name="form" method="POST"
+<form action="{{  isset($data) ? route('admin.data-petani.datapenjual.update', $data->id) :
+route('admin.data-petani.datapenjual.store')  }}"  id="form" name="form" method="POST"
 enctype="multipart/form-data" data-parsley-validate="true">
   @csrf
 
@@ -42,37 +42,24 @@ enctype="multipart/form-data" data-parsley-validate="true">
     <!-- begin panel-body -->
     <div class="panel-body">
       <div class="form-group">
-        <label for="name">No.kk</label>
-        <input type="number" id="no_kk" name="no_kk" maxlength="16" class="form-control"
-        {{-- {{ $errors->has('no_kk') ? ' is-invalid' : '' }}">
-        @if($errors->has('no_kk'))
-            <span class="invalid-feedback">{{ $errors->first('no_kk') }}</span>
-        @endif --}}
-        autofocus data-parsley-required="true" value="{{{ $data->no_kk ?? old('no_kk') }}}">
-
-        {{-- @error('no_kk')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @enderror --}}
-
-        <input type="hidden" id="user_id" name="user_id" maxlength="16" class="form-control" autofocus data-parsley-required="true" value="{{{ auth()->user()->id ?? old('user_id') }}}">
-        <label for="name">NIK</label>
-        <input type="number" id="nik" name="nik" maxlength="16" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nik ?? old('nik') }}}">
         <label for="name">Nama</label>
         <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
-        <label for="name">Tempat Lahir</label>
-        <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tempat_lahir ?? old('tempat_lahir') }}}">
-        <label for="name">Tanggal Lahir</label>
-        <input type="date" id="tanggal_lahir" name="tanggal_lahir" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}}">
-        <label for="name">Jenis Kelamin</label>
-              </div>
-              <div class="col-md-3">
-                  <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/>
-                  {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}"> --}}
-              </div>
+        {{-- <label for="name">Jenis Kelamin</label>
+    </div>
+    <div class="col-md-3">
+        <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/>
+        {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}">
+    </div> --}}
+        <label for="name">Instansi</label>
+        <input type="text" id="instansi" name="instansi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->instansi ?? old('instansi') }}}">
+        <label for="name">Email</label>
+        <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
+        <label for="name">Nomor Telepon</label>
+        <input type="number" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}">
         <label for="name">Alamat</label>
         <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
-       <label for="name">Foto</label>
-        <input type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}">
+       {{-- <label for="name">Foto</label>
+        <input type="text" id="foto" name="foto" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->foto ?? old('foto') }}}"> --}}
 
        {{-- <label for="image">Foto</label>
         <input type="file" id='foto' name="foto" class="form-control" @error('foto') is-invalid @enderror>

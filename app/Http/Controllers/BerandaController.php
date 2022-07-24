@@ -19,21 +19,27 @@ class BerandaController extends Controller
      */
     public function index(PerbandinganHargaChart $perbandinganHargaChart)
     {
+        $data = Pembelian::all();
         $total_produk = GudangLumbung::count();
         $total_pupuk = GudangPupuk::count();
         $total_pembelian_produk = Pembelian::count();
         $total_pembelian_pupuk = PembelianPupuk::count();
+        $total_pengeluaran_pembelian_produk = Pembelian::sum('total');
+        $total_pengeluaran_pembelian_pupuk = PembelianPupuk::sum('total');
         if(auth()->user()->hasRole('user_petani')){
             return view('home');
         }
         else {
-            // dd($jummlah);
+            // dd($total_pengeluaran_pembelian);
             return view('pages.admin.dashboard', [
+                'data' => $data,
                 'total_produk' => $total_produk,
                 'total_pupuk' => $total_pupuk,
                 'total_pembelian_produk' => $total_pembelian_produk,
                 'total_pembelian_pupuk' => $total_pembelian_pupuk,
-                'perbandinganHargaChart' => $perbandinganHargaChart->build()
+                'total_pengeluaran_pembelian_produk' => $total_pengeluaran_pembelian_produk,
+                'total_pengeluaran_pembelian_pupuk' => $total_pengeluaran_pembelian_pupuk,
+                // 'perbandinganHargaChart' => $perbandinganHargaChart->build()
             ]);
         }
     }

@@ -42,10 +42,14 @@ return [
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Petani'
                 ], [
                     'url' => '/admin/data-petani/tanaman',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Tanaman'
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Produk'
                 ], [
                     'url' => '/admin/data-petani/datalahan',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Lahan'
+                ],
+                [
+                    'url' => '/admin/data-petani/datapenjual',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Suplier'
                 ]
             ]
         ],

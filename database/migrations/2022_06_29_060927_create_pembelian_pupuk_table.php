@@ -17,6 +17,7 @@ class CreatePembelianPupukTable extends Migration
             $table->id();
             $table->string('no_pembelian');
             $table->string('tanggal_pembelian');
+            $table->string('penjual_id');
             $table->string('pupuk_id');
             $table->string('jumlah');
             $table->string('harga');

@@ -100,7 +100,7 @@
                     <label for="name"><strong>Nama Petani</strong></label>
                 </div>
                 <div class="col-md-10">
-                    <td>: {{ $data->petani->nama }} </td>
+                    <td>: {{ $datapetani->nama }} </td>
                 </div>
             </div>
             <div class="row">
@@ -108,7 +108,7 @@
                     <label for="name"><strong>Total Produk </strong></label>
                 </div>
                 <div class="col-md-10">
-                    <td>: 12 item </td>
+                    <td>: {{ $totalberatproduk }} item </td>
                 </div>
             </div>
             <div class="row">

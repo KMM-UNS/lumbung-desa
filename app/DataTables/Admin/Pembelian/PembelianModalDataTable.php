@@ -54,6 +54,10 @@ class PembelianModalDataTable extends DataTable
     {
         return $this->builder()
         ->setTableId('pembelianmodal-table')
+        ->parameters([
+            'responsive' => true,
+            'autoWidth' => false
+        ])
         ->columns($this->getColumns())
         ->minifiedAjax()
         // ->dom('<"dataTables_wrapper dt-bootstrap"B<"row"<"col-xl-7 d-block d-sm-flex d-xl-block justify-content-center"<"d-block d-lg-inline-flex"l>><"col-xl-5 d-flex d-xl-block justify-content-center"fr>>t<"row"<"col-sm-5"i><"col-sm-7"p>>>')
@@ -77,7 +81,7 @@ class PembelianModalDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
             // Column::make('musim_panen_id'),
-            // Column::make('musim_panen_id')->data('musim.musim_panen'),
+            Column::make('musim.musim_panen', 'musim.musim_panen')->title('Musim Panen'),
             Column::make('petani.nama', 'petani.nama')->title('Petani'),
             // Column::make('petani_id'),
             Column::make('tanaman.nama', 'tanaman.nama')->title('Produk'),

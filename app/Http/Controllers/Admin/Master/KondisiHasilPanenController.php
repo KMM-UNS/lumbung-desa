@@ -51,7 +51,8 @@ class KondisiHasilPanenController extends Controller
             }
 
             return redirect(route('admin.master-data.kondisi-hasil-panen.index'))->withToastSuccess('Data tersimpan');
-        }    }
+        }
+    }
 
     /**
      * Display the specified resource.
@@ -73,7 +74,8 @@ class KondisiHasilPanenController extends Controller
     public function edit($id)
     {
         $data = KondisiHasilPanen::findOrFail($id);
-        return view('pages.admin.master.kondisi-hasil-panen.add-edit', ['data' => $data]);    }
+        return view('pages.admin.master.kondisi-hasil-panen.add-edit', ['data' => $data]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -99,7 +101,8 @@ class KondisiHasilPanenController extends Controller
             return back()->withInput()->withToastError('Something went wrong');
         }
 
-        return redirect(route('admin.master-data.kondisi-hasil-panen.index'))->withToastSuccess('Data tersimpan');    }
+        return redirect(route('admin.master-data.kondisi-hasil-panen.index'))->withToastSuccess('Data tersimpan');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -113,5 +116,6 @@ class KondisiHasilPanenController extends Controller
             KondisiHasilPanen::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
-        }    }
+        }
+    }
 }

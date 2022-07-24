@@ -74,7 +74,7 @@
                 <h1>LUMBUNG DESA</h1>
                 <h3>Memenuhi Kebutuhan Pangan Desamu</h3>
                 <p>
-                    We have created a multi-purpose theme that take the form of One-Page or Multi-Page Version.<br />
+
                     Use our <a href="#">theme panel</a> to select your favorite theme color.
                 </p>
                 <a href="#" class="btn btn-outline">Gabung </a><br />
@@ -179,137 +179,6 @@
             <!-- end container -->
         </div>
         <!-- end #about -->
-
-        <!-- begin #milestone -->
-        <div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
-            <!-- begin content-bg -->
-            <div class="content-bg">
-                <img src="{{ asset('assets') }}/img/bg/bg-milestone.jpg" alt="Milestone" />
-            </div>
-            <!-- end content-bg -->
-            <!-- begin container -->
-            <div class="container">
-                <!-- begin row -->
-                <div class="row">
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="1292">1,292</div>
-                            <div class="title">Themes & Template</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="9039">9,039</div>
-                            <div class="title">Registered Members</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="89291">89,291</div>
-                            <div class="title">Items Sold</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="129">129</div>
-                            <div class="title">Theme Authors</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container -->
-        </div>
-        <!-- end #milestone -->
-
-        <!-- begin #team -->
-        <div id="team" class="content" data-scrollview="true">
-            <!-- begin container -->
-            <div class="container">
-                <h2 class="content-title">Our Team</h2>
-                <p class="content-desc">
-                    Phasellus suscipit nisi hendrerit metus pharetra dignissim. Nullam nunc ante, viverra quis<br />
-                    ex non, porttitor iaculis nisi.
-                </p>
-                <!-- begin row -->
-                <div class="row">
-                    <!-- begin col-4 -->
-                    <div class="col-md-4 col-sm-4">
-                        <!-- begin team -->
-                        <div class="team">
-                            <div class="image" data-animation="true" data-animation-type="flipInX">
-                                <img src="{{ asset('assets') }}/img/user/user-1.jpg" alt="Ryan Teller" />
-                            </div>
-                            <div class="info">
-                                <h3 class="name">Ryan Teller</h3>
-                                <div class="title text-theme">FOUNDER</div>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                                <div class="social">
-                                    <a href="#"><i class="fa fa-facebook fa-lg fa-fw"></i></a>
-                                    <a href="#"><i class="fa fa-twitter fa-lg fa-fw"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus fa-lg fa-fw"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end team -->
-                    </div>
-                    <!-- end col-4 -->
-                    <!-- begin col-4 -->
-                    <div class="col-md-4 col-sm-4">
-                        <!-- begin team -->
-                        <div class="team">
-                            <div class="image" data-animation="true" data-animation-type="flipInX">
-                                <img src="{{ asset('assets') }}/img/user/user-2.jpg" alt="Jonny Cash" />
-                            </div>
-                            <div class="info">
-                                <h3 class="name">Johnny Cash</h3>
-                                <div class="title text-theme">WEB DEVELOPER</div>
-                                <p>Donec quam felis, ultricies nec, pellentesque eu sem. Nulla consequat massa quis enim.</p>
-                                <div class="social">
-                                    <a href="#"><i class="fa fa-facebook fa-lg fa-fw"></i></a>
-                                    <a href="#"><i class="fa fa-twitter fa-lg fa-fw"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus fa-lg fa-fw"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end team -->
-                    </div>
-                    <!-- end col-4 -->
-                    <!-- begin col-4 -->
-                    <div class="col-md-4 col-sm-4">
-                        <!-- begin team -->
-                        <div class="team">
-                            <div class="image" data-animation="true" data-animation-type="flipInX">
-                                <img src="{{ asset('assets') }}/img/user/user-3.jpg" alt="Mia Donovan" />
-                            </div>
-                            <div class="info">
-                                <h3 class="name">Mia Donovan</h3>
-                                <div class="title text-theme">WEB DESIGNER</div>
-                                <p>Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. </p>
-                                <div class="social">
-                                    <a href="#"><i class="fa fa-facebook fa-lg fa-fw"></i></a>
-                                    <a href="#"><i class="fa fa-twitter fa-lg fa-fw"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus fa-lg fa-fw"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end team -->
-                    </div>
-                    <!-- end col-4 -->
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container -->
-        </div>
-        <!-- end #team -->
 
         <!-- begin #quote -->
         <div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
@@ -459,216 +328,11 @@
         </div>
         <!-- end #action-box -->
 
-        <!-- begin #work -->
-        <div id="work" class="content" data-scrollview="true">
-            <!-- begin container -->
-            <div class="container" data-animation="true" data-animation-type="fadeInDown">
-                <h2 class="content-title">Our Latest Work</h2>
-                <p class="content-desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-                    sed bibendum turpis luctus eget
-                </p>
-                <!-- begin row -->
-                <div class="row row-space-10">
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="{{ asset('assets') }}/img/work/work-img-1.jpg" alt="Work 1" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Aliquam molestie</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="{{ asset('assets') }}/img/work/work-img-2.jpg" alt="Work 2" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Quisque at pulvinar lacus</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="{{ asset('assets') }}/img/work/work-img-3.jpg" alt="Work 3" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Vestibulum et erat ornare</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="{{ asset('assets') }}/img/work/work-img-4.jpg" alt="Work 4" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Sed vitae mollis magna</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                </div>
-                <!-- end row -->
-                <!-- begin row -->
-                <div class="row row-space-10">
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="{{ asset('assets') }}/img/work/work-img-5.jpg" alt="Work 5" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Suspendisse at mattis odio</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="{{ asset('assets') }}/img/work/work-img-6.jpg" alt="Work 6" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Aliquam vitae commodo diam</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="{{ asset('assets') }}/img/work/work-img-7.jpg" alt="Work 7" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Phasellus eu vehicula lorem</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="{{ asset('assets') }}/img/work/work-img-8.jpg" alt="Work 8" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Morbi bibendum pellentesque</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end container -->
-        </div>
-        <!-- end #work -->
-
-        <!-- begin #client -->
-        <div id="client" class="content has-bg bg-green" data-scrollview="true">
-            <!-- begin content-bg -->
-            <div class="content-bg">
-                <img src="{{ asset('assets') }}/img/bg/bg-client.jpg" alt="Client" />
-            </div>
-            <!-- end content-bg -->
-            <!-- begin container -->
-            <div class="container" data-animation="true" data-animation-type="fadeInUp">
-                <h2 class="content-title">Our Client Testimonials</h2>
-                <!-- begin carousel -->
-                <div class="carousel testimonials slide" data-ride="carousel" id="testimonials">
-                    <!-- begin carousel-inner -->
-                    <div class="carousel-inner text-center">
-                        <!-- begin item -->
-                        <div class="item active">
-                            <blockquote>
-                                <i class="fa fa-quote-left"></i>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce viverra, nulla ut interdum fringilla,<br />
-                                urna massa cursus lectus, eget rutrum lectus neque non ex.
-                                <i class="fa fa-quote-right"></i>
-                            </blockquote>
-                            <div class="name"> — <span class="text-theme">Mark Doe</span>, Designer</div>
-                        </div>
-                        <!-- end item -->
-                        <!-- begin item -->
-                        <div class="item">
-                            <blockquote>
-                                <i class="fa fa-quote-left"></i>
-                                Donec cursus ligula at ante vulputate laoreet. Nulla egestas sit amet lorem non bibendum.<br />
-                                Nulla eget risus velit. Pellentesque tincidunt velit vitae tincidunt finibus.
-                                <i class="fa fa-quote-right"></i>
-                            </blockquote>
-                            <div class="name"> — <span class="text-theme">Joe Smith</span>, Developer</div>
-                        </div>
-                        <!-- end item -->
-                        <!-- begin item -->
-                        <div class="item">
-                            <blockquote>
-                                <i class="fa fa-quote-left"></i>
-                                Sed tincidunt quis est sed ultrices. Sed feugiat auctor ipsum, sit amet accumsan elit vestibulum<br />
-                                fringilla. In sollicitudin ac ligula eget vestibulum.
-                                <i class="fa fa-quote-right"></i>
-                            </blockquote>
-                            <div class="name"> — <span class="text-theme">Linda Adams</span>, Programmer</div>
-                        </div>
-                        <!-- end item -->
-                    </div>
-                    <!-- end carousel-inner -->
-                    <!-- begin carousel-indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#testimonials" data-slide-to="0" class="active"></li>
-                        <li data-target="#testimonials" data-slide-to="1" class=""></li>
-                        <li data-target="#testimonials" data-slide-to="2" class=""></li>
-                    </ol>
-                    <!-- end carousel-indicators -->
-                </div>
-                <!-- end carousel -->
-            </div>
-            <!-- end containter -->
-        </div>
-        <!-- end #client -->
-
         <!-- begin #pricing -->
         <div id="pricing" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container">
-                <h2 class="content-title">Our Price</h2>
+                <h2 class="content-title">Produk</h2>
                 <p class="content-desc">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
                     sed bibendum turpis luctus eget
@@ -676,90 +340,34 @@
                 <!-- begin pricing-table -->
                 <ul class="pricing-table col-4">
                     <li data-animation="true" data-animation-type="fadeInUp">
+                    </li>
+                    <li data-animation="true" data-animation-type="fadeInUp">
                         <div class="pricing-container">
-                            <h3>Starter</h3>
-                            <div class="price">
-                                <div class="price-figure">
-                                    <span class="price-number">FREE</span>
-                                </div>
-                            </div>
+                            <h3>Produk</h3>
                             <ul class="features">
-                                <li>1GB Storage</li>
-                                <li>2 Clients</li>
-                                <li>5 Active Projects</li>
-                                <li>5 Colors</li>
-                                <li>Free Goodies</li>
-                                <li>24/7 Email support</li>
+                                <li>Padi A</li>
+                                <li>Padi B</li>
+                                <li>Beras A</li>
+                                <li>Beras B</li>
+                                <li>Jagung A</li>
+                                <li>Jagung B</li>
                             </ul>
-                            <div class="footer">
-                                <a href="#" class="btn btn-inverse btn-block">Buy Now</a>
-                            </div>
                         </div>
                     </li>
                     <li data-animation="true" data-animation-type="fadeInUp">
                         <div class="pricing-container">
-                            <h3>Basic</h3>
-                            <div class="price">
-                                <div class="price-figure">
-                                    <span class="price-number">$9.99</span>
-                                    <span class="price-tenure">per month</span>
-                                </div>
-                            </div>
+                            <h3>Pupuk</h3>
                             <ul class="features">
-                                <li>2GB Storage</li>
-                                <li>5 Clients</li>
-                                <li>10 Active Projects</li>
-                                <li>10 Colors</li>
-                                <li>Free Goodies</li>
-                                <li>24/7 Email support</li>
+                                <li>SP-36</li>
+                                <li>KCl</li>
+                                <li>NPK Phonska</li>
+                                <li>Dolomite</li>
+                                <li>ZK (Zwavelzure Kali)</li>
+                                <li>Pupuk Kandang</li>
                             </ul>
-                            <div class="footer">
-                                <a href="#" class="btn btn-inverse btn-block">Buy Now</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="highlight" data-animation="true" data-animation-type="fadeInUp">
-                        <div class="pricing-container">
-                            <h3>Premium</h3>
-                            <div class="price">
-                                <div class="price-figure">
-                                    <span class="price-number">$19.99</span>
-                                    <span class="price-tenure">per month</span>
-                                </div>
-                            </div>
-                            <ul class="features">
-                                <li>5GB Storage</li>
-                                <li>10 Clients</li>
-                                <li>20 Active Projects</li>
-                                <li>20 Colors</li>
-                                <li>Free Goodies</li>
-                                <li>24/7 Email support</li>
-                            </ul>
-                            <div class="footer">
-                                <a href="#" class="btn btn-theme btn-block">Buy Now</a>
-                            </div>
                         </div>
                     </li>
                     <li data-animation="true" data-animation-type="fadeInUp">
-                        <div class="pricing-container">
-                            <h3>Lifetime</h3>
-                            <div class="price">
-                                <div class="price-figure">
-                                    <span class="price-number">$999</span>
-                                </div>
-                            </div>
-                            <ul class="features">
-                                <li>Unlimited Storage</li>
-                                <li>Unlimited Clients</li>
-                                <li>Unlimited Projects</li>
-                                <li>Unlimited Colors</li>
-                                <li>Free Goodies</li>
-                                <li>24/7 Email support</li>
-                            </ul>
-                            <div class="footer">
-                                <a href="#" class="btn btn-inverse btn-block">Buy Now</a>
-                            </div>
-                        </div>
                     </li>
                 </ul>
             </div>
@@ -771,59 +379,24 @@
         <div id="contact" class="content bg-silver-lighter" data-scrollview="true">
             <!-- begin container -->
             <div class="container">
-                <h2 class="content-title">Contact Us</h2>
+                <h2 class="content-title">Tentang</h2>
                 <p class="content-desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-                    sed bibendum turpis luctus eget
+                    Lumbung Desa merupakan program ketahanan pangan dalam bentuk gerakan pembentukan usaha produktif yang berbasis kepada potensi lokal pedesaan, seperti: sawah, kebun, ternak maupun home industry. Upaya ini diwujudkan melalui proses peningkatan produksi.
                 </p>
                 <!-- begin row -->
                 <div class="row">
                     <!-- begin col-6 -->
                     <div class="col-md-6" data-animation="true" data-animation-type="fadeInLeft">
-                        <h3>If you have a project you would like to discuss, get in touch with us.</h3>
+                        <h3>Lumbung Desa.</h3>
                         <p>
-                            Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus.
+                            <strong>Alamat</strong><br />
+                            Perumnas Palur, Jl. Jeruk 2 No.26<br />
+                            Jawa Tengah 57731<br />
                         </p>
                         <p>
-                            <strong>SeanTheme Studio, Inc</strong><br />
-                            795 Folsom Ave, Suite 600<br />
-                            San Francisco, CA 94107<br />
-                            P: (123) 456-7890<br />
+                            <span class="phone">+62 813 4343 5656</span><br />
+                            <a href="lumbungdesa@email.com">lumbungdesa@email.com</a>
                         </p>
-                        <p>
-                            <span class="phone">+11 (0) 123 456 78</span><br />
-                            <a href="mailto:hello@emailaddress.com">seanthemes@support.com</a>
-                        </p>
-                    </div>
-                    <!-- end col-6 -->
-                    <!-- begin col-6 -->
-                    <div class="col-md-6 form-col" data-animation="true" data-animation-type="fadeInRight">
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Name <span class="text-theme">*</span></label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Email <span class="text-theme">*</span></label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3">Message <span class="text-theme">*</span></label>
-                                <div class="col-md-9">
-                                    <textarea class="form-control" rows="10"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3"></label>
-                                <div class="col-md-9 text-left">
-                                    <button type="submit" class="btn btn-theme btn-block">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                     <!-- end col-6 -->
                 </div>
@@ -838,10 +411,10 @@
             <div class="container">
                 <div class="footer-brand">
                     <div class="footer-brand-logo"></div>
-                    Color Admin
+                    Lumbung Desa
                 </div>
                 <p>
-                    &copy; Copyright Color Admin 2017 <br />
+                    &copy; Copyright Lumbung Desa 2022 <br />
                     An admin & front end theme with serious impact. Created by <a href="#">SeanTheme</a>
                 </p>
                 <p class="social-list">

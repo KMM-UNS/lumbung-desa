@@ -2,14 +2,14 @@
 
 namespace App\DataTables\User;
 
-use App\Models\GudangPupuk;
+use App\Models\Pembelian;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class KetersediaanPupukDataTable extends DataTable
+class RiwayatPenjualanDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -30,12 +30,12 @@ class KetersediaanPupukDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\User/KetersediaanPupukDataTable $model
+     * @param \App\Models\User/RiwayatPenjualanDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(GudangPupuk $model)
+    public function query(Pembelian $model)
     {
-        return $model->select('gudang_pupuk.*')->with(['pupuk']);
+        return $model->select('pembelian.*')->with(['musim','tanaman','kondisi','petani']);
     }
 
     /**
@@ -46,7 +46,7 @@ class KetersediaanPupukDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('ketersediaanpupuk-table')
+                    ->setTableId('riwayatpenjualan-table')
                     ->parameters([
                         'responsive' => true,
                         'autoWidth' => false
@@ -73,8 +73,15 @@ class KetersediaanPupukDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false),
-            Column::make('pupuk.nama','pupuk.nama')->title('Pupuk'),
-            Column::make('stok', 'gudang-pupuk.stok')
+            Column::make('no_pembelian', 'pembelian.no_pembelian'),
+            Column::make('tanggal_pembelian', 'pembelian.tanggal_pembelian'),
+            Column::make('petani.nama', 'petani.nama')->title('Petani'),
+            Column::make('musim.musim_panen', 'musim.musim_panen')->title('Musim'),
+            Column::make('tanaman.nama', 'tanaman.nama')->title('Produk'),
+            Column::make('kondisi.nama', 'kondisi.nama')->title('Kondisi'),
+            Column::make('jumlah', 'pembelian.jumlah')->title('Jumlah (kg)'),
+            Column::make('harga', 'pembelian.harga'),
+            Column::make('total', 'pembelian.total'),
         ];
     }
 
@@ -85,6 +92,6 @@ class KetersediaanPupukDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'User/KetersediaanPupuk_' . date('YmdHis');
+        return 'User/RiwayatPenjualan_' . date('YmdHis');
     }
 }

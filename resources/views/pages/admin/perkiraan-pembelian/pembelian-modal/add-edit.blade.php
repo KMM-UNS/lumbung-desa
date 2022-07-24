@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-md-12">
                     {{-- <input type="text" id="musim_panen_id" name="musim_panen_id" class="form-control" autofocus data-parsley-required="true" value="{{{ isset($data) ? route('admin.pembelian.pembelian-modal.update', $data->musim_panen_id) : route('admin.pembelian.pembelian-modal.store', $id) }}}"> --}}
-                    <input type="hidden" id="musim_panen_id" name="musim_panen_id" class="form-control" autofocus data-parsley-required="true" value="{{ $id }}">
+                    <input type="text" id="musim_panen_id" name="musim_panen_id" class="form-control" autofocus data-parsley-required="true" value="{{ isset($data) ? $data->musim_panen_id : $id }}">
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                  <label for="name"><strong>Jumlah Pembelian</strong></label>
+                  <label for="name"><strong>Jumlah (/kg)</strong></label>
                 </div>
                 <div class="col-md-5">
                   <input type="number" id="jumlah" onkeyup="sum();" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">
@@ -105,10 +105,10 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                    <label for="name"><strong>Total</strong></label>
+                    <label for="name"><h4><strong>Total</strong></h4></label>
                 </div>
                 <div class="col-md-11">
-                    <input readonly type="number" id="total" onkeyup="sum();" name="total" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
+                    <input readonly type="number" id="total" onkeyup="sum();" name="total" class="form-control-plaintext" autofocus data-parsley-required="true" value="{{{ $data->total ?? old('total') }}}">
                 </div>
             </div>
         </div>

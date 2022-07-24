@@ -86,11 +86,11 @@
         <div class="widget widget-stats bg-red-darker">
             <div class="stats-icon"><i class="fa fa-desktop"></i></div>
             <div class="stats-info">
-                <h4>TOTAL PENGELUARAN PEMBELIAN</h4>
-                <p>3,291,922</p>
+                <h4>TOTAL PENGELUARAN PEMBELIAN PRODUK</h4>
+                <p> @currency($total_pengeluaran_pembelian_produk) </p>
             </div>
             <div class="stats-link">
-                <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                <a href="{{ route('admin.pembelian.pembelian-pupuk.index') }}">Lihat Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
             </div>
         </div>
     </div>
@@ -100,11 +100,11 @@
         <div class="widget widget-stats bg-green-darker">
             <div class="stats-icon"><i class="fa fa-desktop"></i></div>
             <div class="stats-info">
-                <h4>TOTAL PEMASUKAN PENJUALAN</h4>
-                <p>3,291,922</p>
+                <h4>TOTAL PENGELUARAN PEMBELIAN PUPUK</h4>
+                <p>@currency($total_pengeluaran_pembelian_pupuk)</p>
             </div>
             <div class="stats-link">
-                <a href="javascript:;">View Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
+                <a href="{{ route('admin.pembelian.pembelian.index') }}">Lihat Detail <i class="fa fa-arrow-alt-circle-right"></i></a>
             </div>
         </div>
     </div>

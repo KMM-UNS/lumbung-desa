@@ -10,6 +10,7 @@ use App\Models\PembelianModal;
 use App\Models\KondisiHasilPanen;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\Pembelian\PembelianModalDataTable;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class PembelianModalController extends Controller
 {
@@ -36,7 +37,7 @@ class PembelianModalController extends Controller
             dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
-        return redirect(route('admin.pembelian.perkiraan-pembelian.show'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.pembelian.perkiraan-pembelian.index'))->withToastSuccess('Data tersimpan');
     }
 
     // public function show(PembelianModalDataTable $dataTable, $id)
@@ -67,10 +68,10 @@ class PembelianModalController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            dd($request->all());
             $data = PembelianModal::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
-            dd($th);
             return back()->withInput()->withToastError('Something went wrong');
         }
 
@@ -84,5 +85,33 @@ class PembelianModalController extends Controller
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
+    }
+
+    public function cetak()
+    {
+        $data = PembelianModal::get();
+        $jumlahpetani = PembelianModal::count();
+        $totalproduk = PembelianModal::count();
+        $totalberatproduk = PembelianModal::sum('jumlah');
+        $perkiraanmodal = PembelianModal::sum('total');
+        // $pdf = PDF::loadview('pages.admin.perkiraan-pembelian.pembelian-modal.cetak', [
+        //     'musim_panen_id'=>$data->musim->musim_panen,
+        //     'tanaman_id'=>$data->tanaman->nama,
+        //     'petani_id'=>$data->petani->nama,
+        //     'luas_lahan'=>$data->luas_lahan,
+        //     'jumlah'=>$data->jumlah,
+        //     'kondisi_id'=>$data->kondisi->nama,
+        //     'harga'=>$data->harga,
+        //     'total'=>$data->total
+        // ]);
+        // return $pdf->download('invoice.pdf');
+        // dd($musim);
+        return view('pages.admin.perkiraan-pembelian.pembelian-modal.cetak', [
+            'data' => $data,
+            'jumlahpetani' => $jumlahpetani,
+            'totalproduk' => $totalproduk,
+            'totalberatproduk' => $totalberatproduk,
+            'perkiraanmodal' => $perkiraanmodal
+        ]);
     }
 }
