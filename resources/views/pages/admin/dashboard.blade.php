@@ -148,7 +148,7 @@
 <script src="/assets/plugins/raphael/raphael.min.js"></script>
 <script src="/assets/plugins/morris.js/morris.min.js"></script>
 <script src="/assets/js/demo/chart-morris.demo.js"></script>
-<script src="{{ $perbandinganHargaChart->cdn() }}"></script>
+{{-- <script src="{{ $perbandinganHargaChart->cdn() }}"></script>
 
-{{ $perbandinganHargaChart->script() }}
+{{ $perbandinganHargaChart->script() }} --}}
 @endpush

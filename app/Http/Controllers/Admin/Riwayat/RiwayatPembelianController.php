@@ -41,6 +41,8 @@ class RiwayatPembelianController extends Controller
         $totalberatproduk = Pembelian::where('petani_id', $datapetani->id)->get()->sum('jumlah',$datapetani->id);
         // $totalproduk = Pembelian::where('tanaman_id', $datapetani->id)->get()->where('kondisi_id', $kondisi_produk->id)->get()->count();
         // dd($pembelian_produk);
+        // total pembelian
+        $totalpembelian = Pembelian::where('petani_id', $datapetani->id)->get()->sum('total',$datapetani->id);
         return $dataTable->render('pages.admin.riwayat-transaksi.pembelian.show', [
         // return view('pages.admin.riwayat-transaksi.pembelian.show', [
             'id'=>$id,
@@ -48,7 +50,8 @@ class RiwayatPembelianController extends Controller
             'datapetani'=>$datapetani,
             'pembelian'=>$pembelian,
             'totalberatproduk'=>$totalberatproduk,
-            // 'totalproduk'=>$totalproduk
+            // 'totalproduk'=>$totalproduk,
+            'totalpembelian'=>$totalpembelian,
         ]);
     }
 }

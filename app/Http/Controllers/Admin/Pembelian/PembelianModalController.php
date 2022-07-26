@@ -68,7 +68,7 @@ class PembelianModalController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            dd($request->all());
+            // dd($request->all());
             $data = PembelianModal::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
