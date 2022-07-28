@@ -80,8 +80,8 @@ class DataPupukDataTable extends DataTable
             // Column::make('id'),
             Column::make('nama'),
             Column::make('jenis_pupuk'),
-            Column::make('berat')->title('Berat (/Kg)'),
-            Column::make('harga'),
+            Column::make('berat')->title('Berat (Kg)'),
+            Column::make('harga')->title('Harga (/Kg)'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

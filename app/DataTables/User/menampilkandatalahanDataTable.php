@@ -77,11 +77,11 @@ class MenampilkanDataLahanDataTable extends DataTable
             Column::make('petani_id')->data('namapetani.nama'), //namapetani itu nama fungsi di model, nama itu data yang diambil
             Column::make('jenis_lahan')->data('jenislahan.nama'),
             Column::make('luas_tanah'),
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+        //     Column::computed('action')
+        //           ->exportable(false)
+        //           ->printable(false)
+        //           ->width(60)
+        //           ->addClass('text-center'),
         ];
     }
 

@@ -84,19 +84,24 @@ class PenjualanProdukDataTable extends DataTable
     protected function getColumns()
     {
         return [
+
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             // Column::make('id'),
             Column::make('no_penjualan')->title('Nomor Penjualan'),
            Column::make('tgl_penjualan'),
-            Column::make('nama')->data('pembeli.nama')->title('Nama Pembeli'),
+            // Column::make('nama')->data('pembeli.nama')->title('Nama Pembeli'),
+            Column::make('pembeli.nama', 'pembeli.nama')->title('Nama Pembeli'),
            // Column::make('email'),
             //Column::make('no_hp'),
           //  Column::make('alamat'),
-            Column::make('produk_id')->data('produk.tanaman.nama')->title('Produk'), //produk itu nama fungsi di model, nama_tanaman_id itu data yang diambil
-            Column::make('kondisi')->data('kondisi.kondisi.nama'),
-            Column::make('keterangan')->data('keterangan.keterangangudang.nama'),
+            // Column::make('produk_id')->data('produk.tanaman.nama')->title('Produk'), //produk itu nama fungsi di model, nama_tanaman_id itu data yang diambil
+            Column::make('produk.tanaman.nama', 'produk.tanaman.nama')->title('Produk'),
+            // Column::make('kondisi')->data('kondisi.kondisi.nama'),
+            Column::make('kondisi.kondisi.nama', 'kondisi.kondisi.nama')->title('Kondisi'),
+            // Column::make('keterangan')->data('keterangan.keterangangudang.nama'),
+            Column::make('keterangan.keterangangudang.nama', 'keterangan.keterangangudang.nama')->title('Keterangan'),
            // Column::make('harga'),
-            Column::make('jumlah')->title('Jumlah (/Kg)'),
+            Column::make('jumlah')->title('Jumlah (Kg)'),
             //Column::make('kondisi')->data('kondisihasilpanen.kondisi'),
            Column::make('total'),
            Column::computed('action')

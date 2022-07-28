@@ -46,7 +46,7 @@ name="form" method="POST" data-parsley-validate="true">
         <x-form.Dropdown name="petani_id" :options="$namapetani" selected="{{{ old('petani_id') ?? ($data['petani_id'] ?? null) }}}" required />
         <label for="name">Jenis Lahan</label>
         <x-form.Dropdown name="jenis_lahan" :options="$jenislahan" selected="{{{ old('jenis_lahan') ?? ($data['jenis_lahan'] ?? null) }}}" required />
-        <label for="name">Luas Tanah</label>
+        <label for="name">Luas Tanah (m^2)</label>
         <input type="text" id="luas_tanah" name="luas_tanah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->luas_tanah ?? old('luas_tanah') }}}">
       </div>
     </div>

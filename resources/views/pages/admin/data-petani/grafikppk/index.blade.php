@@ -1,6 +1,6 @@
  @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Dashboard')
+@section('title', 'Grafik Penjualan Pupuk')
 
 @push('css')
 <link href="/assets/plugins/morris.js/morris.css" rel="stylesheet" />
@@ -43,7 +43,7 @@ Highcharts.chart('grafik', {
     },
     yAxis : {
         title: {
-            text : 'Nominal Pendapatan Bulanan'
+            text : 'Nominal Pendapatan'
         }
     },
     plotOptions: {
@@ -53,7 +53,7 @@ Highcharts.chart('grafik', {
     },
     series: [
         {
-            name: 'Nominal Pendapatan',
+            name: 'Bulan',
             data: pendapatan
         }
     ]

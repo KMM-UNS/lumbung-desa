@@ -51,7 +51,7 @@ enctype="multipart/form-data" data-parsley-validate="true">
 
         {{-- @php $no++ @endphp --}}
       <div class="form-group">
-        <label for="name">No.kk</label>
+        <label for="name">Nomor KK</label>
         <input disabled type="number" id="no_kk" name="no_kk" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_kk ?? old('no_kk') }}}">
         <label for="name">NIK</label>
         <input disabled type="number" id="nik" name="nik" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nik ?? old('nik') }}}">

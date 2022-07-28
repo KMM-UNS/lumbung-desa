@@ -93,21 +93,33 @@ class PenjualanPpkController extends Controller
 
 
                     // percabangan untuk cek apakah data gudang sudah ada atau belum
-                    if(isset($gudangLumbung)){
-                        $gudangLumbung->stok >= $penjualan->jumlah;
-                        $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
-                        // dd($pembelian);
-                        $gudangLumbung->save();
-//if positif, else negatif
-                    }
-                    else {
+//                     if(isset($gudangLumbung)){
+//                         $gudangLumbung->stok >= $penjualan->jumlah;
+//                         $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
+//                         // dd($pembelian);
+//                         $gudangLumbung->save();
+// //if positif, else negatif
+//                     }
+//                     else {
 
-                        // jika sudah maka update stok
-                        $gudangLumbung->stok < $penjualan->jumlah;
-                        // dd($penjualan->jumlah);
-                        return back()->withInput()->withToastError('Jumlah melebihi stok yang tersedia');
+//                         // jika sudah maka update stok
+//                         $gudangLumbung->stok < $penjualan->jumlah;
+//                         // dd($penjualan->jumlah);
+//                         return back()->withInput()->withToastError('Jumlah melebihi stok yang tersedia');
 
-                    }
+//                     }
+
+if($gudangLumbung->stok>0 && $gudangLumbung->stok >=$penjualan->jumlah)
+
+{
+    $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
+    //                         // dd($penjualan);
+    $gudangLumbung->save();
+    // dd($gudangLumbung);
+} else {
+    DB::rollback();
+    return back()->withInput()->withToastError('Jumlah melebihi stok yang tersedia');
+}
                 } catch (\Throwable $th) {
                     // dd($th);
                     DB::rollback();
@@ -167,7 +179,7 @@ class PenjualanPpkController extends Controller
     {
         try {
             $request->validate([
-                'nama' => 'required'
+                // 'nama' => 'required'
             ]);
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError($th->validator->messages()->all()[0]);

@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Penjualan Produk' : 'Create Penjualan Produk' )
+@section('title', isset($data) ? 'Tambah Penjualan Pupuk' : 'Tambah Penjualan Pupuk' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -10,12 +10,12 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Master Data</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Penjualan</a></li>
   <li class="breadcrumb-item active">@yield('title')</li>
 </ol>
 <!-- end breadcrumb -->
 <!-- begin page-header -->
-<h1 class="page-header">Master Data<small> @yield('title')</small></h1>
+<h1 class="page-header">Penjualan<small> @yield('title')</small></h1>
 <!-- end page-header -->
 
 
@@ -48,6 +48,7 @@
         <label for="name">Tanggal Penjualan</label>
         <input type="date" id="tgl_penjualan" name="tgl_penjualan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
         <label for="name">Nama Pembeli</label>
+        <div class="input-group">
         <x-form.Dropdown name="namapembelippk" :options="$pembeli" selected="{{{ old('namapembelippk') ?? ($data['namapembelippk'] ?? null) }}}" required />
         {{-- <label for="name">Email</label> --}}
         {{-- <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}"> --}}
@@ -58,6 +59,11 @@
         {{-- <label for="name">Kondisi</label>
         <x-form.Dropdown name="kondisi" :options="$kondisihasilpanen" selected="{{{ old('kondisihasilpanen') ?? ($data['kondisihasilpanen'] ?? null) }}}" required />
        --}}
+       <div class="input-group-append">
+        <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target=".modal-produk" >+ data pembeli</button>
+      </div>
+    </div>
+            </div>
        <label for="name">Produk</label>
        <x-form.Dropdown name="produk_id" :options="$produkppk" selected="{{{ old('produk_id') ?? ($data['produk_id'] ?? null) }}}" required />
        {{-- <label for="name">Kondisi</label> --}}
@@ -76,9 +82,9 @@
     <!-- end panel-body -->
     <!-- begin panel-footer -->
     <div class="panel-footer">
-    <button class="btn btn-success add-more" type="button">
+    {{-- <button class="btn btn-success add-more" type="button">
         <i class="glyphicon glyphicon-plus"></i> Add
-      </button>
+      </button> --}}
     </div>
     <div class="panel-footer">
       <button type="submit" class="btn btn-primary">Simpan</button>
@@ -143,7 +149,55 @@ saat tombol add-more ditekan, maka akan memunculkan div dengan class copy -->
 <a href="javascript:history.back(-1);" class="btn btn-success">
   <i class="fa fa-arrow-circle-left"></i> Kembali
 </a>
+{{-- Begin Modal Form Produk --}}
+<div class="modal fade modal-produk" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- begin panel -->
+    <form action="{{ route('admin.data-petani.datapembeli.simpan') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+    @csrf
 
+    <div class="panel panel-inverse">
+      <!-- begin panel-heading -->
+      <div class="panel-heading">
+        <h4 class="panel-title"> Tambah Data Pembeli</h4>
+      </div>
+      <!-- end panel-heading -->
+      <!-- begin panel-body -->
+      <div class="panel-body">
+          <div class="form-group">
+            <label for="name">Nama</label>
+            <input type="text"  id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
+            {{-- <label for="name">Jenis Kelamin</label>
+        </div>
+        <div class="col-md-3">
+            <x-form.genderRadio name="jenis_kelamin" selected="{{{ old('jenis_kelamin') ?? ($data['jenis_kelamin'] ?? null) }}}"/>
+            {{-- <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jenis_kelamin ?? old('jenis_kelamin') }}}">
+        </div> --}}
+        <label for="name">Instansi</label>
+        <input type="text" id="instansi" name="instansi" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->instansi ?? old('instansi') }}}">
+          <label for="name">Email</label>
+            <input type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}">
+            <label for="name">Nomor Telepon</label>
+            <input type="number" id="no_hp" name="no_hp" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->no_hp ?? old('no_hp') }}}">
+            <label for="name">Alamat</label>
+            <input type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}">
+      </div>
+    </div>
+      <!-- end panel-body -->
+      <!-- begin panel-footer -->
+      <div class="panel-footer">
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+    </div>
+      <!-- end panel-footer -->
+    </div>
+    <!-- end panel -->
+  </form>
+        </div>
+    </div>
+  </div>
+{{-- end modal form produk --}}
 @endsection
 
 @push('scripts')

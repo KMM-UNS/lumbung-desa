@@ -87,15 +87,17 @@ class PenjualanPpkDataTable extends DataTable
             // Column::make('id'),
             Column::make('no_penjualan')->title('Nomor Penjualan'),
            Column::make('tgl_penjualan'),
-            Column::make('nama')->data('pembelippk.nama')->title('Nama Pembeli'),
+            // Column::make('nama')->data('pembelippk.nama')->title('Nama Pembeli'),
+            Column::make('pembelippk.nama','pembelippk.nama')->title('Nama Pembeli'),
            // Column::make('email'),
             //Column::make('no_hp'),
           //  Column::make('alamat'),
-            Column::make('produk_id')->data('produkppk.ppk.nama')->title('Produk'), //produk itu nama fungsi di model, nama_tanaman_id itu data yang diambil
+            // Column::make('produk_id')->data('produkppk.ppk.nama')->title('Produk'), //produk itu nama fungsi di model, nama_tanaman_id itu data yang diambil
+            Column::make('produkppk.ppk.nama','produkppk.ppk.nama')->title('Produk'),
             // Column::make('kondisi')->data('kondisi.kondisi.nama'),
             // Column::make('keterangan')->data('keterangan.keterangangudang.nama'),
            // Column::make('harga'),
-            Column::make('jumlah')->title('Jumlah (/Kg)'),
+            Column::make('jumlah')->title('Jumlah (Kg)'),
             //Column::make('kondisi')->data('kondisihasilpanen.kondisi'),
            Column::make('total'),
            Column::computed('action')
