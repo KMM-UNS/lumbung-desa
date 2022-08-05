@@ -16,6 +16,7 @@ class CreateDataPupuksTable extends Migration
         Schema::create('data_pupuks', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('produsen');
             $table->string('jenis_pupuk');
             $table->string('berat');
             $table->string('harga');

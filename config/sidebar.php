@@ -50,7 +50,7 @@ return [
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Pembeli'
                 ],[
                     'url' => '/admin/data-petani/datapenjual',
-                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Penjual'
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Data Penjual Pupuk'
                 ],[
                     'url' => '/admin/data-petani/grafik',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Grafik Penjualan Produk'

@@ -269,4 +269,6 @@ public function grafik()
      return view('pages.admin.data-petani.grafik.index',compact('total_harga', 'bulan'));
     // return view('pages.admin.dashboard',compact('total_harga', 'bulan'));
 }
+
+
 }

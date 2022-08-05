@@ -79,6 +79,7 @@ class DataPupukDataTable extends DataTable
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
             // Column::make('id'),
             Column::make('nama'),
+            Column::make('produsen'),
             Column::make('jenis_pupuk'),
             Column::make('berat')->title('Berat (Kg)'),
             Column::make('harga')->title('Harga (/Kg)'),

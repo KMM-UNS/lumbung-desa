@@ -16,7 +16,7 @@ class DataPupuk extends Model
     protected $table = 'data_pupuks';
     protected $fillable =
     [
-        'id','nama','jenis_pupuk','berat', 'harga'
+        'id','nama','produsen','jenis_pupuk','berat', 'harga'
     ];
     public $timestamps = false;
 
