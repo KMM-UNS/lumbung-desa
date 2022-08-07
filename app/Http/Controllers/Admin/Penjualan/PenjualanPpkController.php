@@ -241,8 +241,10 @@ if($gudangLumbung->stok>0 && $gudangLumbung->stok >=$penjualan->jumlah)
          $bulan=PenjualanPpk::select(DB::raw("MONTHNAME(tgl_penjualan) as bulan"))
          ->GroupBy(DB::raw("MONTHNAME(tgl_penjualan)"))
          ->pluck('bulan')->toArray();
+
+         $all = DB::table('penjualan_ppks')->select('*')->whereNull('deleted_at')->get()->toArray();
     // dd($bulan);
-         return view('pages.admin.data-petani.grafikppk.index',compact('total_harga', 'bulan'));
+         return view('pages.admin.data-petani.grafikppk.index',compact('total_harga', 'bulan', 'all'));
         // return view('pages.admin.dashboard',compact('total_harga', 'bulan'));
     }
 }

@@ -29,6 +29,7 @@ class GrafikController extends Controller
         $bulan=PenjualanProduk::select(DB::raw("MONTHNAME(tgl_penjualan) as bulan"))
         ->GroupBy(DB::raw("MONTHNAME(tgl_penjualan)"))
         ->pluck('bulan');
+        // dd($allData);
 // dd($bulan);
         return view('pages.admin.data-petani.grafik.index',compact('total_harga', 'bulan'));
         // return view('pages.admin.dashboard',[

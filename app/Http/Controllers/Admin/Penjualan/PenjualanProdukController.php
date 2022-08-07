@@ -258,6 +258,7 @@ if($gudangLumbung->stok>0 && $gudangLumbung->stok >=$penjualan->jumlah)
 public function grafik()
 {
      // $data = PenjualanProduk::findOrFail($id);
+    //  $datapetani = DataPetani::get();
      $total_harga=PenjualanProduk::select(DB::raw("SUM(total) as total_harga"))
      ->GroupBy(DB::raw("Month(tgl_penjualan)"))
      ->pluck('total_harga')->toArray();
@@ -265,8 +266,11 @@ public function grafik()
      $bulan=PenjualanProduk::select(DB::raw("MONTHNAME(tgl_penjualan) as bulan"))
      ->GroupBy(DB::raw("MONTHNAME(tgl_penjualan)"))
      ->pluck('bulan')->toArray();
+
+     $all = DB::table('penjualan_produks')->select('*')->whereNull('deleted_at')->get()->toArray();
+
 // dd($bulan);
-     return view('pages.admin.data-petani.grafik.index',compact('total_harga', 'bulan'));
+     return view('pages.admin.data-petani.grafik.index',compact('total_harga', 'bulan', 'all'));
     // return view('pages.admin.dashboard',compact('total_harga', 'bulan'));
 }
 

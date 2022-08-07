@@ -94,6 +94,7 @@ class PenjualanPpkDataTable extends DataTable
           //  Column::make('alamat'),
             // Column::make('produk_id')->data('produkppk.ppk.nama')->title('Produk'), //produk itu nama fungsi di model, nama_tanaman_id itu data yang diambil
             Column::make('produkppk.ppk.nama','produkppk.ppk.nama')->title('Produk'),
+            // Column::make('produkppk.ppks.nama','produkppk.ppks.nama')->title('Produk'),
             // Column::make('kondisi')->data('kondisi.kondisi.nama'),
             // Column::make('keterangan')->data('keterangan.keterangangudang.nama'),
            // Column::make('harga'),
