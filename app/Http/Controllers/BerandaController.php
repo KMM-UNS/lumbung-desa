@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\GudangLumbung;
 use Illuminate\Support\Facades\DB;
 use App\Charts\PerbandinganHargaChart;
+use App\Models\DetailPembelianProduk;
+use App\Models\DetailPembelianPupuk;
 use App\Models\PembelianPupuk;
 
 class BerandaController extends Controller
@@ -24,8 +26,8 @@ class BerandaController extends Controller
         $total_pupuk = GudangPupuk::count();
         $total_pembelian_produk = Pembelian::count();
         $total_pembelian_pupuk = PembelianPupuk::count();
-        $total_pengeluaran_pembelian_produk = Pembelian::sum('total');
-        $total_pengeluaran_pembelian_pupuk = PembelianPupuk::sum('total');
+        $total_pengeluaran_pembelian_produk = DetailPembelianProduk::sum('total');
+        $total_pengeluaran_pembelian_pupuk = DetailPembelianPupuk::sum('total');
         if(auth()->user()->hasRole('user_petani')){
             return view('home');
         }

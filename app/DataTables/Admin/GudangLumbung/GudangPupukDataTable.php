@@ -80,7 +80,7 @@ class GudangPupukDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
-            Column::make('pupuk.nama')->data('pupuk.nama'),
+            Column::make('pupuk.nama')->data('pupuk.nama')->title('Pupuk'),
             Column::make('stok', 'gudang_pupuk.stok'),
             Column::make('keterangan', 'gudang_pupuk.keterangan'),
             Column::computed('action')

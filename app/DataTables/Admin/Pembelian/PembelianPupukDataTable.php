@@ -25,14 +25,24 @@ class PembelianPupukDataTable extends DataTable
             ->setRowId(function ($row) {
                 return $row->id;
             })
+            ->addColumn('detail', function ($row) {
+                $btn = '<div class="btn-group">';
+                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-pupuk.detail', $row->id) . '" class="btn btn-info buttons-show">Detail Pembelian</a>';
+                $btn = $btn . '</div>';
+                return $btn;
+            })
             ->addColumn('action', function ($row) {
                 $btn = '<div class="btn-group">';
-                $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-pupuk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+                // $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-pupuk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-pupuk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
                 $btn = $btn . '<a href="' . route('admin.pembelian.pembelian-pupuk.invoice', $row->id) . '" class="btn btn-warning buttons-invoice"><i class="fas fa-download fa-fw"></i></a>';
                 $btn = $btn . '</div>';
 
                 return $btn;
+            })
+            ->rawColumns(['detail', 'action'])
+            ->editColumn('tanggal_pembelian', function($row){
+                return $row->tanggal_pembelian->isoFormat('DD MMMM YYYY');
             });
     }
 
@@ -85,13 +95,19 @@ class PembelianPupukDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center')->width(40),
+            // Column::make('no_pembelian', 'pembelian_pupuk.no_pembelian'),
             Column::make('no_pembelian', 'pembelian_pupuk.no_pembelian'),
             Column::make('tanggal_pembelian', 'pembelian_pupuk.tanggal_pembelian'),
             Column::make('penjual.instansi', 'penjual.instansi')->title('Supplier'),
-            Column::make('pupuk.nama', 'pupuk.nama')->title('Pupuk'),
-            Column::make('jumlah', 'pembelian_pupuk.jumlah'),
-            Column::make('harga', 'pembelian_pupuk.harga'),
-            Column::make('total', 'pembelian_pupuk.total'),
+            // Column::make('pupuk.nama', 'pupuk.nama')->title('Pupuk'),
+            // Column::make('jumlah', 'pembelian_pupuk.jumlah'),
+            // Column::make('harga', 'pembelian_pupuk.harga'),
+            // Column::make('total', 'pembelian_pupuk.total'),
+            Column::computed('detail')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(240)
+                  ->addClass('text-center'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

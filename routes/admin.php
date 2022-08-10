@@ -1,9 +1,7 @@
 <?php
 
-use App\Models\PembelianModal;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PenjualanController;
-use App\Http\Controllers\Admin\DataPetani\TanamanController;
 use App\Http\Controllers\Admin\Pembelian\PembelianController;
 use App\Http\Controllers\admin\pembelian\PembelianModalController;
 use App\Http\Controllers\Admin\Pembelian\PembelianPupukController;
@@ -38,13 +36,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('pilih-pembelian', 'PilihPembelianController');
             // pembelian produk
             Route::resource('pembelian', 'PembelianController');
-            Route::get('invoice/{id}', [PembelianController::class, 'invoice'])->name('invoice');
-            Route::get('detail-invoice/{id}', [PembelianController::class, 'detail-invoice'])->name('detail-invoice');
+            Route::post('pembelian-produk/cart', 'PembelianController@addToCart')->name('pembelian-produk.add');
+            Route::get('pembelian-produk/hapus/{id}', 'PembelianController@hapus')->name('pembelian-produk.hapus');
+            Route::get('pembelian-produk/detail/{id}', 'PembelianController@detail')->name('pembelian-produk.detail');
+            Route::get('invoice/{id}','PembelianController@invoice')->name('invoice');
             // pembelian pupuk
             Route::resource('pembelian-pupuk', 'PembelianPupukController');
+            Route::get('pembelian-pupuk/detail/{id}', 'PembelianPupukController@detail')->name('pembelian-pupuk.detail');
             Route::post('pembelian-pupuk/cart', 'PembelianPupukController@addToCart')->name('pembelian-pupuk.add');
-            Route::get('invoice-pupuk/{id}', [PembelianPupukController::class, 'invoice'])->name('pembelian-pupuk.invoice');
-            Route::get('invoice-pupuk/inv', [PembelianPupukController::class, 'newinvoice'])->name('pembelian-pupuk.inv');
+            Route::get('pembelian-pupuk/hapus/{id}', 'PembelianPupukController@hapus')->name('pembelian-pupuk.hapus');
+            Route::get('invoice-pupuk/{id}', 'PembelianPupukController@invoice')->name('pembelian-pupuk.invoice');
             // perkiraan pembelian (modal)
             Route::resource('perkiraan-pembelian', 'PerkiraanPembelianController');
             Route::resource('pembelian-modal', 'PembelianModalController');
@@ -62,10 +63,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
             Route::resource('pilih-gudang', 'PilihGudangController');
             Route::resource('gudang-produk', 'GudangLumbungController');
             Route::resource('gudang-pupuk', 'GudangPupukController');
+            Route::resource('laporan', 'LaporanGudangController');
         });
 
         Route::group(['prefix' => '/riwayat', 'as' => 'riwayat.', 'namespace' => 'Riwayat'], function () {
             Route::resource('pembelian', 'RiwayatPembelianController');
+        });
+
+        Route::group(['prefix' => '/laporan-pembelian', 'as' => 'laporan-pembelian.', 'namespace' => 'Pembelian'], function () {
+            Route::get('laporan-pembelian-produk', 'PembelianController@laporanproduk')->name('produk');
+            Route::get('laporan-pembelian-pupuk', 'PembelianPupukController@laporanpupuk')->name('pupuk');
         });
 
         Route::resource('kas', 'KasController');

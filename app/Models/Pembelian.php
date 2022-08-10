@@ -2,37 +2,35 @@
 
 namespace App\Models;
 
-use App\Models\Musim;
-use App\Models\Satuan;
 use App\Models\Tanaman;
 use App\Models\DataLahan;
 use App\Models\DataPetani;
 use App\Models\KondisiHasilPanen;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Alfa6661\AutoNumber\AutoNumberTrait;
 
 class Pembelian extends Model
 {
     use HasFactory;
-    // use SoftDeletes;
     use AutoNumberTrait;
 
     public const ACTIVE = "aktif";
 
     protected $table = 'pembelian';
     protected $fillable = [
-        'musim_id',
-        'tanaman_id',
-        'petani_id',
         'no_pembelian',
         'tanggal_pembelian',
-        'jumlah',
-        'kondisi_id',
-        'harga',
-        'total'
+        'musim_id',
+        'petani_id',
+        'subtotal',
+        // 'tanaman_id',
+        // 'kondisi_id',
+        // 'jumlah',
+        // 'harga',
+        // 'total'
     ];
+    protected $dates = ['tanggal_pembelian'];
     public $timestamps = false;
 
     public function musim()
@@ -58,6 +56,11 @@ class Pembelian extends Model
     public function lahan()
     {
         return $this->belongsTo(DataLahan::class,'lahan_id');
+    }
+
+    public function detailpembelian()
+    {
+        return $this->hasMany(DetailPembelianProduk::class);
     }
 
     public function getAutoNumberOptions()

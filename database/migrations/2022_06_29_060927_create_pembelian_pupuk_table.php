@@ -18,11 +18,11 @@ class CreatePembelianPupukTable extends Migration
             $table->string('no_pembelian');
             $table->string('tanggal_pembelian');
             $table->string('penjual_id');
-            $table->string('pupuk_id');
-            $table->string('jumlah');
-            $table->string('harga');
-            $table->string('total');
-            $table->timestamps();
+            // $table->string('pupuk_id');
+            // $table->string('jumlah');
+            // $table->string('harga');
+            // $table->string('total');
+            // $table->timestamps();
         });
     }
 

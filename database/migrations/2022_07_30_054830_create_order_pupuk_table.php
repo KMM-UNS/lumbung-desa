@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDataPupuksTable extends Migration
+class CreateOrderPupukTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateDataPupuksTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_pupuks', function (Blueprint $table) {
+        Schema::create('order_pupuk', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('jenis_pupuk');
-            $table->string('berat');
+            $table->string('pupuk_order_id');
+            $table->string('jumlah');
             $table->string('harga');
+            $table->string('total');
+            $table->bigInteger('status')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -29,6 +31,6 @@ class CreateDataPupuksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_pupuks');
+        Schema::dropIfExists('order_pupuk');
     }
 }

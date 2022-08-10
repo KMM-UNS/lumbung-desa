@@ -18,25 +18,32 @@ class PembelianPupuk extends Model
         'no_pembelian',
         'tanggal_pembelian',
         'penjual_id',
-        'pupuk_id',
-        'jumlah',
-        'harga',
-        'total'
+        'subtotal'
+        // 'pupuk_id',
+        // 'jumlah',
+        // 'harga',
+        // 'total'
     ];
+    protected $dates = ['tanggal_pembelian'];
 
     public function pupuk()
     {
         return $this->belongsTo(DataPupuk::class,'pupuk_id');
     }
 
-    public function pembelianpupuk()
-    {
-        return $this->hasMany(DataPupuk::class,'pupuk_id');
-    }
+    // public function pembelianpupuk()
+    // {
+    //     return $this->hasMany(DataPupuk::class,'pupuk_id');
+    // }
 
     public function penjual()
     {
         return $this->belongsTo(DataPenjual::class, 'penjual_id');
+    }
+
+    public function detailpembelian()
+    {
+        return $this->hasMany(DetailPembelianPupuk::class);
     }
 
     public function getAutoNumberOptions()

@@ -9,6 +9,7 @@ use App\Models\PembelianPupuk;
 use App\Http\Controllers\Controller;
 use App\DataTables\Admin\RiwayatPembelian\RiwayatPembelianDataTable;
 use App\DataTables\Admin\RiwayatPembelian\DetailRiwayatPembelianDataTable;
+use App\Models\DetailPembelianProduk;
 use App\Models\KondisiHasilPanen;
 use App\Models\Tanaman;
 
@@ -38,11 +39,20 @@ class RiwayatPembelianController extends Controller
             $pembelian=Pembelian::where('petani_id', $datapetani)->get();
         }
         // hitung total berat produk
-        $totalberatproduk = Pembelian::where('petani_id', $datapetani->id)->get()->sum('jumlah',$datapetani->id);
+        $totalberatproduk = Pembelian::where('petani_id', $datapetani->id)->get();
+
+        $totalberatproduk = DetailPembelianProduk::whereHas('pembelian',
+        function($query) use ($datapetani){
+            return $query->where('petani_id', $datapetani->id);
+        })->get()->sum('jumlah');
+        // dd($totalberatproduk);
         // $totalproduk = Pembelian::where('tanaman_id', $datapetani->id)->get()->where('kondisi_id', $kondisi_produk->id)->get()->count();
         // dd($pembelian_produk);
         // total pembelian
-        $totalpembelian = Pembelian::where('petani_id', $datapetani->id)->get()->sum('total',$datapetani->id);
+        $totalpembelian = DetailPembelianProduk::whereHas('pembelian',
+        function($query) use ($datapetani){
+            return $query->where('petani_id', $datapetani->id);
+        })->get()->sum('total');
         return $dataTable->render('pages.admin.riwayat-transaksi.pembelian.show', [
         // return view('pages.admin.riwayat-transaksi.pembelian.show', [
             'id'=>$id,

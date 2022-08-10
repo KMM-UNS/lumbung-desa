@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', 'Detail Pembelian Produk')
+@section('title', 'Detail Pembelian Pupuk')
 
 @push('css')
 <link href="/assets/plugins/morris.js/morris.css" rel="stylesheet" />
@@ -10,7 +10,7 @@
 <!-- begin breadcrumb -->
 <ol class="breadcrumb float-xl-right">
   <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-  <li class="breadcrumb-item"><a href="javascript:;">Pembelian Produk</a></li>
+  <li class="breadcrumb-item"><a href="javascript:;">Pembelian Pupuk</a></li>
   <li class="breadcrumb-item"><a href="javascript:;">@yield('title')</a></li>
 </ol>
 <!-- end breadcrumb -->
@@ -31,7 +31,7 @@
     <!-- end panel-heading -->
     <div class="panel-body">
         @foreach ($pembelian as $item)
-        <h3>Nomor Pembelian : {{ $item->no_pembelian }}</h3>
+        <h3>{{ $item->no_pembelian }}</h3>
         @endforeach
         @if ($data)
         <h5>Subtotal : @currency($data->sum('total'))</h5>

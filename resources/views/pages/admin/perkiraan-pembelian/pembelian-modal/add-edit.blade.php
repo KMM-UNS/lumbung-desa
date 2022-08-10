@@ -54,7 +54,7 @@
                     <x-form.Dropdown name="petani_id" :options="$petani" selected="{{{ old('petani_id') ?? ($data['petani_id'] ?? null) }}}" required />
                 </div>
                 <div class="col-md-1">
-                    <label for="name"><strong>Luas Tanam</strong></label>
+                    <label for="name"><strong>Luas Tanam</strong> (m2)</label>
                 </div>
                 <div class="col-md-5">
                     <input type="text" id="luas_lahan" name="luas_lahan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->luas_lahan ?? old('luas_lahan') }}}">
@@ -86,7 +86,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                  <label for="name"><strong>Jumlah (/kg)</strong></label>
+                  <label for="name"><strong>Jumlah </strong>(/kg)</label>
                 </div>
                 <div class="col-md-5">
                   <input type="number" id="jumlah" onkeyup="sum();" name="jumlah" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->jumlah ?? old('jumlah') }}}">

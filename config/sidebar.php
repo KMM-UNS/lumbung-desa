@@ -99,6 +99,22 @@ return [
                 // ]
             ]
         ],
+        [
+            'icon' => 'fa fa-cogs',
+            'title' => 'Laporan Pembelian',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [
+                [
+                    'url' => '/admin/laporan-pembelian/laporan-pembelian-produk',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Pembelian Produk'
+                ],
+                [
+                    'url' => '/admin/laporan-pembelian/laporan-pembelian-pupuk',
+                    'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Laporan Pembelian Pupuk'
+                ],
+            ]
+        ],
         // [
         //     'icon' => 'fa fa-users',
         //     'title' => 'Kas',

@@ -21,11 +21,14 @@
 <div class="row">
     <!-- begin col-3 -->
     <div class="col-lg-3 col-md-6">
-        <div class="widget widget-stats bg-purple">
+        <div href="{{ route('admin.gudang-lumbung.laporan.index') }}" class="widget widget-stats bg-purple">
             <div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
             <div class="stats-content">
                 <div class="stats-title">TOTAL PRODUK GUDANG LUMBUNG</div>
                 <div class="stats-number">{{ $total_produk }}</div>
+                <div class="stats-link">
+                    <a href="{{ route('admin.gudang-lumbung.laporan.index') }}" >Lihat Laporan <i class="fa fa-arrow-alt-circle-right"></i></a>
+                </div>
                 {{-- <div class="stats-progress progress">
                     <div class="progress-bar" style="width: 70.1%;"></div>
                 </div>

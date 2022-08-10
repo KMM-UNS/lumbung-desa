@@ -3,157 +3,166 @@
 namespace App\Http\Controllers\Admin\Pembelian;
 
 use App\Models\DataPupuk;
+use App\Models\Pembelian;
+use App\Models\OrderPupuk;
+use App\Models\DataPenjual;
 use App\Models\GudangPupuk;
-use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use App\Models\PembelianPupuk;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\DetailPembelianPupuk;
 use App\DataTables\Admin\Pembelian\PembelianPupukDataTable;
-use App\Models\DataPenjual;
-use App\Models\Pembelian;
+use App\DataTables\Admin\Pembelian\DetailPembelianPupukDataTable;
+use App\DataTables\Admin\LaporanPembelian\LaporanPembelianPupukDataTable;
+use App\DataTables\Admin\LaporanPembelian\LaporanPembelianProdukDataTable;
 
 class PembelianPupukController extends Controller
 {
     public function index(PembelianPupukDataTable $dataTable)
     {
-        return $dataTable->render('pages.admin.pembelian-pupuk.index');
+        $pembelian = Pembelian::select('no_pembelian')->groupBy('no_pembelian')->get();
+        return $dataTable->render('pages.admin.pembelian-pupuk.index', [
+            'pembelian' => $pembelian
+        ]);
     }
 
     public function create()
     {
-        // $cartItems = \Cart::getContent();
-        $pupuk = DataPupuk::pluck('nama','id');
-        $penjual = DataPenjual::pluck('instansi','id');
-        // $cart = PembelianPupuk::where('status', '0')->get();
+        $pupuk = DataPupuk::pluck('nama', 'id');
+        $penjual = DataPenjual::pluck('instansi', 'id');
+        $cart = OrderPupuk::where('status', '0')->get();
+        // dd($pupuks);
         return view('pages.admin.pembelian-pupuk.add-edit', [
-            'pupuk'=>$pupuk,
-            'penjual'=>$penjual,
-            // 'cartItems'=>$cartItems
-            // 'cart'=>$cart
+            'pupuk' => $pupuk,
+            'penjual' => $penjual,
+            'cart' => $cart
         ]);
     }
 
-    // public function addToCart(Request $request)
-    // {
-    //     \Cart::add([
-    //         'no_pembelian' => $request->no_pembelian,
-    //         'tanggal_pembelian' => $request->tanggal_pembelian,
-    //         'pupuk_id' => $request->pupuk_id,
-    //         'jumlah' => $request->jumlah,
-    //         'harga' => $request->harga,
-    //         'total' => $request->total
-    //     ]);
-    //     session()->flash('success', 'Produk Berhasil Ditambahkan !');
-
-    //     return redirect()->with('Data tersimpan');
-
-    //     melakukan pengecekan pada table order
-    //     $product_check = PembelianPupuk::where('id', $request->pupuk_id)->where('status','0')->first();
-    //     // kondisi pengecekan
-    //     if($product_check == null) {
-    //         $order = new PembelianPupuk();
-    //         $order->pupuk_id = $request->pupuk_id;
-    //         $order->jumlah = $request->jumlah;
-    //         $order->harga = $request->harga;
-    //     } else {
-    //         $order = PembelianPupuk::where('pupuk_id', $request->pupuk_id)->where('status','0')->first();
-    //         $order->pupuk_id = $request->pupuk_id;
-    //         $order->jumlah += $request->jumlah;
-    //     }
-    //     $order->total += $request->harga * $request->jumlah;
-    //     $order->tanggal_pembelian = $request->tanggal_pembelian;
-    //     $order->penjual_id = $request->penjual_id;
-    //     $order->save();
-    //     // dd($order);
-    //     return redirect()->route('admin.pembelian.pembelian-pupuk.create');
-    // }
+    public function addToCart(Request $request)
+    {
+        // melakukan pengecekan pada table order
+        $product_check = OrderPupuk::where('id', $request->pupuk_order_id)->where('status', '0')->first();
+        // kondisi pengecekan
+        if ($product_check == null) {
+            $order = new OrderPupuk();
+            $order->pupuk_order_id = $request->pupuk_order_id;
+            $order->jumlah = $request->jumlah;
+            $order->harga = $request->harga;
+        } else {
+            $order = OrderPupuk::where('pupuk_order_id', $request->pupuk_order_id)->where('status', '0')->first();
+            $order->pupuk_order_id = $request->pupuk_order_id;
+            $order->jumlah += $request->jumlah;
+        }
+        $order->total += $request->harga * $request->jumlah;
+        $order->save();
+        // dd($order);
+        return redirect()->route('admin.pembelian.pembelian-pupuk.create');
+    }
 
     public function store(Request $request)
     {
+        // dd($request->all());
         DB::transaction(function () use ($request) {
             try {
-                // \Cart::add([
-                //     'no_pembelian' => $request->no_pembelian,
-                //     'tanggal_pembelian' => $request->tanggal_pembelian,
-                //     'id' => $request->id,
-                //     'name' => $request->pupuk_id,
-                //     'quantity' => $request->jumlah,
-                //     'price' => $request->harga,
-                //     'total' => $request->total
-                // ]);
-                // session()->flash('success', 'Produk Berhasil Ditambahkan !');
+                // dd($data);
+                // $pupuks = PembelianPupuk::orderBy('no_pembelian', 'DESC')->first();
 
-                // // melakukan pengecekan pada table order
-                // $product_check = PembelianPupuk::where('id', $request->pupuk_id)->first();
-                // //kondisi pengecekan
-                // if($product_check == null) {
-                //     $order = new PembelianPupuk();
-                //     $order->pupuk_id = $request->pupuk_id;
-                //     $order->jumlah = $request->jumlah;
-                //     $order->harga = $request->harga;
+                // if ($pupuks) {
+                //     $pecahData = explode('-', $pupuks->no_pembelian);
+
+                //     $nomorTerakhir = (int) ltrim($pecahData[1], "0");
+                //     $no_pembelian = 'LDC-' . sprintf("%08d", ($nomorTerakhir + 1));
                 // } else {
-                //     $order = PembelianPupuk::where('pupuk_id', $request->pupuk_id)->first();
-                //     $order->pupuk_id = $request->pupuk_id;
-                //     $order->jumlah += $request->jumlah;
+                //     $no_pembelian = 'LDC-' . sprintf("%08d", 1);
                 // }
-                // $order->total = $request->harga * $request->jumlah;
-                // $order->tanggal_pembelian = $request->tanggal_pembelian;
-                // $order->penjual_id = $request->penjual_id;
-                // // $order->save();
-                // // dd($order);
-                // // return redirect()->route('admin.pembelian.pembelian-pupuk.create');
+                $no_pembelian = $request->no_pembelian;
+                $tanggal_pembelian = $request->tanggal_pembelian;
+                $penjual_id = $request->penjual_id;
+                // dd($data);
+                $pembelian = PembelianPupuk::create([
+                    'no_pembelian' => $no_pembelian,
+                    'tanggal_pembelian' => $tanggal_pembelian,
+                    'penjual_id' => $penjual_id,
+                    'subtotal' => $request->subtotal,
+                ]);
+                $pembelian->save();
 
-                // menyimpan semua data pembelian yang diinputkan
-                $pembelian_pupuk=PembelianPupuk::create($request->all()); // get data pembelian dgn status 0
-                $pembelian_pupuk->save(); // ubah ststus 0 jadi 1
-                // get data gudang yang diinputkan
-                $gudangPupuk = GudangPupuk::where('nama_pupuk', $pembelian_pupuk->pupuk_id)->first();
-                // dd($gudangPupuk);
-                // percabangan untuk cek apakah data gudang sudah ada atau belum
-                if(isset($gudangPupuk)){
-                    // jika sudah maka update stok
-                    $gudangPupuk->stok = $gudangPupuk->stok + $pembelian_pupuk->jumlah;
-                    // dd($pembelian_pupuk);
-                    $gudangPupuk->save();
-                }
-                else {
-                    // jika belum maka create data baru
-                    $gudang2 = GudangPupuk::create([
-                        'nama_pupuk' => $pembelian_pupuk->pupuk_id,
-                        'stok'=>$pembelian_pupuk->jumlah,
-                        'keterangan' => '-',
+                foreach ($request->order_pupuk_id as $key => $data) {
+                    $detailpembelian = DetailPembelianPupuk::create([
+                        'pupuk_id' => $data,
+                        'pembelian_id' => $pembelian->id,
+                        'jumlah' => $request->jumlah[$key],
+                        'harga' => $request->harga[$key],
+                        'total' => $request->total[$key],
                     ]);
-                    $gudang2->save();
+
+                    $detailpembelian->save();
+                    // menyimpan semua data pembelian yang diinputkan
+                    // dd(request()->all());
+                    // $pembelian_pupuk=PembelianPupuk::create($request->all());
+                    // $pembelian_pupuk->save();
+                    // dd($pembelian_pupuk);
+                    // get data gudang yang diinputkan
+                    foreach ($request->order_pupuk_id as $key => $data) {
+                        $gudangPupuk = GudangPupuk::where('nama_pupuk', $data)->first();
+                        // $gudangPupuk = GudangPupuk::where('nama_pupuk', $pembelian_pupuk->pupuk_id)->first();
+                        // dd($gudangPupuk);
+                        // percabangan untuk cek apakah data gudang sudah ada atau belum
+
+                        if (isset($gudangPupuk)) {
+                            // jika sudah maka update stok
+                            $gudangPupuk->stok = $gudangPupuk->stok + $request->jumlah[$key];
+                            // dd($pembelian_pupuk);
+                            $gudangPupuk->save();
+                        } else {
+                            // foreach ($request->order_pupuk_id as $key => $data) {
+                            // jika belum maka create data baru
+                            $gudang2 = GudangPupuk::create([
+                                'nama_pupuk' => $data,
+                                'stok' => $request->jumlah[$key],
+                                'keterangan' => '-',
+                            ]);
+                            $gudang2->save();
+                        }
+                    }
                 }
+
+                DB::table('order_pupuk')->delete();
             } catch (\Throwable $th) {
-                // dd($th);
+                dd($th);
                 DB::rollback();
                 return back()->withInput()->withToastError('Something went wrong');
             }
         });
-        // return redirect()->route('admin.pembelian.pembelian-pupuk.create');
 
         return redirect(route('admin.pembelian.pembelian-pupuk.index'))->withToastSuccess('Data tersimpan');
     }
 
-    public function show(PembelianPupuk $pembelianPupuk)
+    public function detail(DetailPembelianPupukDataTable $dataTable, $id)
     {
-        //
+        $pembelian = PembelianPupuk::where('id',$id)->get();
+        $data = DetailPembelianPupuk::where('pembelian_id', $id)->get();
+        return $dataTable->render('pages.admin.pembelian-pupuk.show', [
+            'id' => $id,
+            'data' => $data,
+            'pembelian' => $pembelian
+        ]);
     }
 
-    public function edit($id)
+    public function edit($no_pembelian)
     {
-        $data = PembelianPupuk::findOrFail($id);
-        $pupuk = DataPupuk::pluck('nama','id');
+        $data = PembelianPupuk::findOrFail($no_pembelian);
+        $pupuk = DataPupuk::pluck('nama', 'id');
         $penjual = DataPenjual::pluck('instansi', 'id');
-        $cart = PembelianPupuk::where('status', '0')->get();
+        $cart = PembelianPupuk::where('no_pembelian', $no_pembelian)->get();
         return view('pages.admin.pembelian-pupuk.add-edit', [
-            'data'=>$data,
-            'pupuk'=>$pupuk,
-            'penjual'=>$penjual,
-            'cart'=>$cart
+            'data' => $data,
+            'pupuk' => $pupuk,
+            'penjual' => $penjual,
+            'cart' => $cart
         ]);
     }
 
@@ -178,49 +187,37 @@ class PembelianPupukController extends Controller
         }
     }
 
-    public function invoice($id)
+    public function hapus($id)
     {
-        $data = PembelianPupuk::findOrFail($id);
+        try {
+            OrderPupuk::find($id)->delete();
+            return redirect((route('admin.pembelian.pembelian-pupuk.create')));
+        } catch (\Throwable $th) {
+            return response(['error' => 'Something went wrong']);
+        }
+    }
+
+    public function invoice($no_pembelian)
+    {
+        $pembelianPupuk = PembelianPupuk::where('no_pembelian', $no_pembelian)->get();
+        $data = DetailPembelianPupuk::where('pembelian_id', $no_pembelian)->get();
         $pdf = PDF::loadview('pages.admin.pembelian-pupuk.invoice', [
-            'pupuk_id'=>$data->pupuk->nama,
-            'no_pembelian'=>$data->no_pembelian,
-            'tanggal_pembelian'=>$data->tanggal_pembelian,
-            'jumlah'=>$data->jumlah,
-            'harga'=>$data->harga,
-            'total'=>$data->total
+            'data' => $data,
+            'no_pembelian' => $no_pembelian,
+            'pembelianPupuk' => $pembelianPupuk
         ]);
         return $pdf->download('invoice-pembelian-pupuk.pdf');
+
+        // dd($pembelianPupuk);
         // return view('pages.admin.pembelian-pupuk.invoice', [
         //     'data' => $data,
-        //     'pupuk_id'=>$data->pupuk->nama,
-        //     'no_pembelian'=>$data->no_pembelian,
-        //     'tanggal_pembelian'=>$data->tanggal_pembelian,
-        //     'jumlah'=>$data->jumlah,
-        //     'harga'=>$data->harga,
-        //     'total'=>$data->total
+        //     'no_pembelian' => $no_pembelian,
+        //     'pembelianPupuk' => $pembelianPupuk
         // ]);
     }
 
-    public function newinvoice()
+    public function laporanpupuk(LaporanPembelianPupukDataTable $dataTable)
     {
-        $data = PembelianPupuk::where('status', '0')->get();
-        $pdf = PDF::loadview('pages.admin.pembelian-pupuk.inv', [
-            'pupuk_id'=>$data->pupuk->nama,
-            'no_pembelian'=>$data->no_pembelian,
-            'tanggal_pembelian'=>$data->tanggal_pembelian,
-            'jumlah'=>$data->jumlah,
-            'harga'=>$data->harga,
-            'total'=>$data->total
-        ]);
-        // return $pdf->download('invoice-pembelian-pupuk.pdf');
-        return view('pages.admin.pembelian-pupuk.inv', [
-            'data' => $data,
-            'pupuk_id'=>$data->pupuk->nama,
-            'no_pembelian'=>$data->no_pembelian,
-            'tanggal_pembelian'=>$data->tanggal_pembelian,
-            'jumlah'=>$data->jumlah,
-            'harga'=>$data->harga,
-            'total'=>$data->total
-        ]);
+        return $dataTable->render('pages.admin.laporan-pembelian.pupuk.index');
     }
 }

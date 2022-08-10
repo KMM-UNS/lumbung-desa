@@ -1,14 +1,15 @@
 <?php
 
-namespace App\DataTables\Admin\RiwayatPembelian;
+namespace App\DataTables\Admin\Pembelian;
 
 use App\Models\DetailPembelianProduk;
+use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class DetailRiwayatPembelianDataTable extends DataTable
+class DetailPembelianProdukDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,24 +21,19 @@ class DetailRiwayatPembelianDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addIndexColumn()
-            ->editColumn('pembelian.tanggal_pembelian', function($row){
-                return $row->tanggal_pembelian->isoFormat('DD MMMM YYYY');
-            });
+            ->addIndexColumn();
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Models\Admin/RiwayatPembelian/DetailRiwayatPembelianDataTable $model
+     * @param \App\Models\Admin/Pembelian/DetailPembelianProdukDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(DetailPembelianProduk $model)
     {
-        $id = request()->segment(4);
-        return $model->with('pembelian')->whereHas('pembelian', function($query)use($id){
-            return $query->where('petani_id', $id);
-        })->with(['detailproduk','detailkondisi','pembelian.musim']);
+        $pembelian_id = request()->segment(5);
+        return $model->select('detail_pembelian_produk.*')->with(['detailproduk','detailkondisi'])->where('pembelian_id', $pembelian_id);
     }
 
     /**
@@ -48,14 +44,22 @@ class DetailRiwayatPembelianDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('detailriwayatpembelian-table')
+                    ->setTableId('detailpembelianproduk-table')
                     ->parameters([
                         'responsive' => true,
                         'autoWidth' => false
                     ])
                     ->columns($this->getColumns())
                     ->minifiedAjax()
+                    // ->dom('Bfrtip')
                     ->orderBy(1);
+                    // ->buttons(
+                    //     Button::make('create'),
+                    //     Button::make('export'),
+                    //     Button::make('print'),
+                    //     Button::make('reset'),
+                    //     Button::make('reload')
+                    // );
     }
 
     /**
@@ -67,14 +71,11 @@ class DetailRiwayatPembelianDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
-            Column::make('pembelian.no_pembelian', 'pembelian.no_pembelian')->title('Nomor Pembelian'),
-            Column::make('pembelian.tanggal_pembelian', 'pembelian.tanggal_pembelian')->title('Tanggal Pembelian'),
-            Column::make('pembelian.musim.musim_panen', 'pembelian.musim.musim_panen')->title('Musim'),
             Column::make('detailproduk.nama', 'detailproduk.nama')->title('Produk'),
             Column::make('detailkondisi.nama', 'detailkondisi.nama')->title('Kondisi'),
-            Column::make('jumlah', 'detail_pembelian_produk.jumlah')->title('Jumlah (kg)'),
-            Column::make('harga', 'detail_pembelian_produk.harga'),
-            Column::make('total', 'detail_pembelian_produk.total'),
+            Column::make('jumlah')->title('Jumlah'),
+            Column::make('harga')->title('Harga'),
+            Column::make('total')->title('Total'),
         ];
     }
 
@@ -85,6 +86,6 @@ class DetailRiwayatPembelianDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin/RiwayatPembelian/DetailRiwayatPembelian_' . date('YmdHis');
+        return 'Admin/Pembelian/DetailPembelianProduk_' . date('YmdHis');
     }
 }

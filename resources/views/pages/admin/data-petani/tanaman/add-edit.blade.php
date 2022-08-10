@@ -1,6 +1,6 @@
 @extends('layouts.default', ['topMenu' => true, 'sidebarHide' => true])
 
-@section('title', isset($data) ? 'Edit Tanaman' : 'Create Tanaman' )
+@section('title', isset($data) ? 'Edit Tanaman' : 'Tambah Tanaman' )
 
 @push('css')
 <link href="{{ asset('/assets/plugins/smartwizard/dist/css/smart_wizard.css') }}" rel="stylesheet" />
@@ -41,13 +41,13 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                    <label for="name">Jenis Tanaman</label>
+                    <label for="name"><strong>Jenis Tanaman</strong></label>
                 </div>
                 <div class="col-md-5">
                     <x-form.Dropdown name="jenis_tanaman_id" :options="$jenistanaman" selected="{{{ old('jenis_tanaman_id') ?? ($data['jenis_tanaman_id'] ?? null) }}}" required />
                 </div>
                 <div class="col-md-1 my-auto">
-                    <label for="name">Nama</label>
+                    <label for="name"><strong>Nama</strong></label>
                 </div>
                 <div class="col-md-5 my-auto">
                     <input type="text" id="nama" name="nama" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->nama ?? old('nama') }}}">
@@ -57,13 +57,13 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                    <label for="name">Musim Tanam</label>
+                    <label for="name"><strong>Tanam</strong></label>
                 </div>
                 <div class="col-md-5">
                     <x-form.Dropdown name="musim_tanam_id" :options="$musimtanam" selected="{{{ old('musim_tanam_id') ?? ($data['musim_tanam_id'] ?? null) }}}" required />
                 </div>
                 <div class="col-md-1 my-auto">
-                    <label for="name">Waktu Tanam</label>
+                    <label for="name"><strong>Waktu Tanam</strong> (bulan)</label>
                 </div>
                 <div class="col-md-5">
                     <input type="text" id="waktu_tanam" name="waktu_tanam" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->waktu_tanam ?? old('waktu_tanam') }}}">
@@ -73,13 +73,13 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-1 my-auto">
-                    <label for="name">Pupuk</label>
+                    <label for="name"><strong>Pupuk</strong></label>
                 </div>
                 <div class="col-md-5">
                     <x-form.Dropdown name="jenis_pupuk_id" :options="$pupuk" selected="{{{ old('jenis_pupuk_id') ?? ($data['jenis_pupuk_id'] ?? null) }}}" required />
                 </div>
                 <div class="col-md-1 my-auto">
-                    <label for="name">Keterangan</label>
+                    <label for="name"><strong>Keterangan</strong></label>
                 </div>
                 <div class="col-md-5">
                     <input type="text" id="keterangan" name="keterangan" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->keterangan ?? old('waktu_tanam') }}}">

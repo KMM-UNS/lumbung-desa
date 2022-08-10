@@ -81,7 +81,7 @@ class PembelianModalDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false)->addClass('text-center'),
             // Column::make('musim_panen_id'),
-            Column::make('musim.musim_panen', 'musim.musim_panen')->title('Musim Panen'),
+            // Column::make('musim.musim_panen', 'musim.musim_panen')->title('Musim Panen'),
             Column::make('petani.nama', 'petani.nama')->title('Petani'),
             // Column::make('petani_id'),
             Column::make('tanaman.nama', 'tanaman.nama')->title('Produk'),
@@ -89,7 +89,7 @@ class PembelianModalDataTable extends DataTable
             Column::make('kondisi.nama', 'kondisi.nama')->title('Kondisi'),
             // Column::make('lahan_id')->data('lahan.nama')->title('Lahan'),
             // Column::make('lahan_id'),
-            Column::make('luas_lahan', 'pembelian_modal.luas_lahan'),
+            Column::make('luas_lahan', 'pembelian_modal.luas_lahan')->title('Luas Tanam (m2)'),
             Column::make('jumlah', 'pembelian_modal.jumlah'),
             // Column::make('kondisi_id'),
             Column::make('harga', 'pembelian_modal.harga'),

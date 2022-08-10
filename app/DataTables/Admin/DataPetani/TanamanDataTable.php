@@ -84,7 +84,7 @@ class TanamanDataTable extends DataTable
             Column::make('jenistanaman.nama', 'jenistanaman.nama')->title('Jenis Tanaman'), //jenistanaman nama fungsi relasi
             Column::make('nama', 'tanamen.nama'),
             Column::make('musimtanam.nama', 'musimtanam.nama')->title('Musim Tanam'),
-            Column::make('waktu_tanam', 'tanamen.waktu_tanam'),
+            Column::make('waktu_tanam', 'tanamen.waktu_tanam')->title('Waktu Tanam (bulan)'),
             Column::make('pupuk.nama', 'pupuk.nama')->title('Jenis Pupuk'),
             Column::make('keterangan', 'tanamen.keterangan'),
             Column::computed('action')

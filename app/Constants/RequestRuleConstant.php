@@ -96,9 +96,9 @@ class RequestRuleConstant
     {
         return [
             'no_pembelian' => 'nullable',
-            'jumlah' => 'nullable|integer',
-            'harga' => 'nullable|integer',
-            'total' => 'nullable|integer'
+            'jumlah' => 'nullable',
+            'harga' => 'nullable',
+            'total' => 'nullable'
         ];
     }
 }
