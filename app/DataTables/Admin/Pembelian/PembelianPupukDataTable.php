@@ -99,6 +99,7 @@ class PembelianPupukDataTable extends DataTable
             Column::make('no_pembelian', 'pembelian_pupuk.no_pembelian'),
             Column::make('tanggal_pembelian', 'pembelian_pupuk.tanggal_pembelian'),
             Column::make('penjual.instansi', 'penjual.instansi')->title('Supplier'),
+            Column::make('subtotal', 'pembelian_pupuk.subtotal'),
             // Column::make('pupuk.nama', 'pupuk.nama')->title('Pupuk'),
             // Column::make('jumlah', 'pembelian_pupuk.jumlah'),
             // Column::make('harga', 'pembelian_pupuk.harga'),
