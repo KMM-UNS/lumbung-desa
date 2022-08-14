@@ -38,7 +38,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="index.html" class="navbar-brand">
+                    <a href="#" class="navbar-brand">
                         <span class="brand-logo"></span>
                         <span class="brand-text">
                             <span class="text-theme">Lumbung</span> Desa
@@ -50,9 +50,9 @@
                 <div class="collapse navbar-collapse" id="header-navbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#home" data-click="scroll-to-target">HOME</a></li>
+                        <li><a href="#layanan" data-click="scroll-to-target">LAYANAN</a></li>
                         <li><a href="#about" data-click="scroll-to-target">TENTANG</a></li>
-                        <li><a href="#service" data-click="scroll-to-target">LAYANAN</a></li>
-                        <li><a href="#pricing" data-click="scroll-to-target">PRODUK</a></li>
+                        {{-- <li><a href="#pricing" data-click="scroll-to-target">PRODUK</a></li> --}}
                         <li><a href="/login">LOGIN</a></li>
                     </ul>
                 </div>
@@ -73,16 +73,13 @@
             <div class="container home-content">
                 <h1>LUMBUNG DESA</h1>
                 <h3>Memenuhi Kebutuhan Pangan Desamu</h3>
-                <p>
-
-                    Use our <a href="#">theme panel</a> to select your favorite theme color.
-                </p>
-                <a href="#" class="btn btn-outline">Gabung </a><br />
+                <p>Lumbung Desa Sebelas Maret</p>
+                {{-- <a href="#" class="btn btn-outline">Gabung </a><br /> --}}
             </div>
             <!-- end container -->
         </div>
         <!-- end #home -->
-
+{{--
         <!-- begin #about -->
         <div id="about" class="content" data-scrollview="true">
             <!-- begin container -->
@@ -204,16 +201,15 @@
             </div>
             <!-- end container -->
         </div>
-        <!-- end #quote -->
+        <!-- end #quote -->  --}}
 
-        <!-- beign #service -->
-        <div id="service" class="content" data-scrollview="true">
+        <!-- beign #layanan -->
+        <div id="layanan" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container">
-                <h2 class="content-title">Our Services</h2>
+                <h2 class="content-title">Layanan</h2>
                 <p class="content-desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur eros dolor,<br />
-                    sed bibendum turpis luctus eget
+                    Lumbung Desa Sebelas Maret melayani :
                 </p>
                 <!-- begin row -->
                 <div class="row">
@@ -222,45 +218,8 @@
                         <div class="service">
                             <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-cog"></i></div>
                             <div class="info">
-                                <h4 class="title">Easy to Customize</h4>
-                                <p class="desc">Duis in lorem placerat, iaculis nisi vitae, ultrices tortor. Vestibulum molestie ipsum nulla. Maecenas nec hendrerit eros, sit amet maximus leo.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end col-4 -->
-                    <!-- begin col-4 -->
-                    <div class="col-md-4 col-sm-4">
-                        <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-paint-brush"></i></div>
-                            <div class="info">
-                                <h4 class="title">Clean & Careful Design</h4>
-                                <p class="desc">Etiam nulla turpis, gravida et orci ac, viverra commodo ipsum. Donec nec mauris faucibus, congue nisi sit amet, lobortis arcu.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end col-4 -->
-                    <!-- begin col-4 -->
-                    <div class="col-md-4 col-sm-4">
-                        <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-file"></i></div>
-                            <div class="info">
-                                <h4 class="title">Well Documented</h4>
-                                <p class="desc">Ut vel laoreet tortor. Donec venenatis ex velit, eget bibendum purus accumsan cursus. Curabitur pulvinar iaculis diam.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end col-4 -->
-                </div>
-                <!-- end row -->
-                <!-- begin row -->
-                <div class="row">
-                    <!-- begin col-4 -->
-                    <div class="col-md-4 col-sm-4">
-                        <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-code"></i></div>
-                            <div class="info">
-                                <h4 class="title">Re-usable Code</h4>
-                                <p class="desc">Aenean et elementum dui. Aenean massa enim, suscipit ut molestie quis, pretium sed orci. Ut faucibus egestas mattis.</p>
+                                <h4 class="title">Pendataan Pra Panen</h4>
+                                <p class="desc">Melakukan pendataan untuk modal lumbung desa.</p>
                             </div>
                         </div>
                     </div>
@@ -270,8 +229,8 @@
                         <div class="service">
                             <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-shopping-cart"></i></div>
                             <div class="info">
-                                <h4 class="title">Online Shop</h4>
-                                <p class="desc">Quisque gravida metus in sollicitudin feugiat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                                <h4 class="title">Pembelian Hasil Panen</h4>
+                                <p class="desc">Membeli hasil panen dari para petani yang terdaftar menjadi anggota lumbung.</p>
                             </div>
                         </div>
                     </div>
@@ -279,10 +238,47 @@
                     <!-- begin col-4 -->
                     <div class="col-md-4 col-sm-4">
                         <div class="service">
-                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-heart"></i></div>
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-shopping-cart"></i></div>
                             <div class="info">
-                                <h4 class="title">Free Support</h4>
-                                <p class="desc">Integer consectetur, massa id mattis tincidunt, sapien erat malesuada turpis, nec vehicula lacus felis nec libero. Fusce non lorem nisl.</p>
+                                <h4 class="title">Pembelian Pupuk</h4>
+                                <p class="desc">Membeli produk pupuk dari suplier.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col-4 -->
+                </div>
+                <!-- end row -->
+                <!-- begin row -->
+                <div class="row">
+                    <!-- begin col-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="service">
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-cog"></i></div>
+                            <div class="info">
+                                <h4 class="title">Pengelolaan Hasil Panen</h4>
+                                <p class="desc">Melakukan pengolahan dari hasil panen yang dijualkan ke lumbung desa.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col-4 -->
+                    <!-- begin col-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="service">
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-shopping-cart"></i></div>
+                            <div class="info">
+                                <h4 class="title">Penjualan Produk Hasil Pertanian</h4>
+                                <p class="desc">Menjual produk hasil panen maupun produk pengolahan dari hasil panen.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end col-4 -->
+                    <!-- begin col-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="service">
+                            <div class="icon bg-theme" data-animation="true" data-animation-type="bounceIn"><i class="fa fa-shopping-cart"></i></div>
+                            <div class="info">
+                                <h4 class="title">Penjualan Pupuk</h4>
+                                <p class="desc">Menjual berbagai jenis pupuk yang dibutuhkan para petani.</p>
                             </div>
                         </div>
                     </div>
@@ -292,9 +288,9 @@
             </div>
             <!-- end container -->
         </div>
-        <!-- end #about -->
+        <!-- end #layanan -->
 
-        <!-- beign #action-box -->
+        {{-- <!-- beign #action-box -->
         <div id="action-box" class="content has-bg" data-scrollview="true">
             <!-- begin content-bg -->
             <div class="content-bg">
@@ -373,13 +369,13 @@
             </div>
             <!-- end container -->
         </div>
-        <!-- end #pricing -->
+        <!-- end #pricing --> --}}
 
         <!-- begin #contact -->
         <div id="contact" class="content bg-silver-lighter" data-scrollview="true">
             <!-- begin container -->
             <div class="container">
-                <h2 class="content-title">Tentang</h2>
+                <h2 id="about" class="content-title">Tentang</h2>
                 <p class="content-desc">
                     Lumbung Desa merupakan program ketahanan pangan dalam bentuk gerakan pembentukan usaha produktif yang berbasis kepada potensi lokal pedesaan, seperti: sawah, kebun, ternak maupun home industry. Upaya ini diwujudkan melalui proses peningkatan produksi.
                 </p>
@@ -415,15 +411,15 @@
                 </div>
                 <p>
                     &copy; Copyright Lumbung Desa 2022 <br />
-                    An admin & front end theme with serious impact. Created by <a href="#">SeanTheme</a>
+                    {{-- An admin & front end theme with serious impact. Created by <a href="#">SeanTheme</a> --}}
                 </p>
-                <p class="social-list">
+                {{-- <p class="social-list">
                     <a href="#"><i class="fa fa-facebook fa-fw"></i></a>
                     <a href="#"><i class="fa fa-instagram fa-fw"></i></a>
                     <a href="#"><i class="fa fa-twitter fa-fw"></i></a>
                     <a href="#"><i class="fa fa-google-plus fa-fw"></i></a>
                     <a href="#"><i class="fa fa-dribbble fa-fw"></i></a>
-                </p>
+                </p> --}}
             </div>
         </div>
         <!-- end #footer -->

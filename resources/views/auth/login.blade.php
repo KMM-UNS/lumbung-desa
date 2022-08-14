@@ -61,14 +61,14 @@
 				<div class="login-buttons">
 					<button type="submit" class="btn btn-success btn-block btn-lg">Login</button>
 				</div>
-				@if(!request()->routeIs('admin*'))
+				{{-- @if(!request()->routeIs('admin*'))
 				<p>
 					<br />
 					Belum punya akun? <a href="{{ route('register') }}">Mendaftar</a>
 					<br />
 					Lupa kata sandi? <a href="{{ route('password.request') }}">Dapatkan kembali</a>
 				</p>
-				@endif
+				@endif --}}
 				<hr />
 				<p class="text-center text-grey-darker">
 					&copy; <?= date('Y') ?> Mandiri Solusindo </p>

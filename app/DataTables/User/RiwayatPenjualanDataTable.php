@@ -3,6 +3,7 @@
 namespace App\DataTables\User;
 
 use App\Models\Pembelian;
+use App\Models\DataPetani;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -24,7 +25,14 @@ class RiwayatPenjualanDataTable extends DataTable
         ->addIndexColumn()
         ->addColumn('No', function ($row) {
             return $row->id;
+        })
+        ->addColumn('action', function ($row) {
+            $btn = '<div class="btn-group">'; $btn = $btn . '<a href="' . route('user.riwayat-penjualan.show', $row->id) . '" class="btn btn-info buttons-show">Detail</a>';
+            return $btn;
         });
+        // ->editColumn('tanggal_pembelian', function($row){
+        //     return $row->tanggal_pembelian->isoFormat('DD MMMM YYYY');
+        // });
     }
 
     /**
@@ -33,10 +41,14 @@ class RiwayatPenjualanDataTable extends DataTable
      * @param \App\Models\User/RiwayatPenjualanDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Pembelian $model)
+    public function query(DataPetani $model)
     {
-        return $model->select('pembelian.*')->with(['musim','tanaman','kondisi','petani']);
+        return $model->newQuery();
     }
+    // public function query(Pembelian $model)
+    // {
+    //     return $model->select('pembelian.*')->with(['musim','tanaman','kondisi','petani']);
+    // }
 
     /**
      * Optional method if you want to use html builder.
@@ -53,15 +65,7 @@ class RiwayatPenjualanDataTable extends DataTable
                     ])
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    // ->dom('Bfrtip')
                     ->orderBy(1);
-                    // ->buttons(
-                    //     Button::make('create'),
-                    //     Button::make('export'),
-                    //     Button::make('print'),
-                    //     Button::make('reset'),
-                    //     Button::make('reload')
-                    // );
     }
 
     /**
@@ -73,15 +77,22 @@ class RiwayatPenjualanDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('No')->orderable(false)->searchable(false),
-            Column::make('no_pembelian', 'pembelian.no_pembelian'),
-            Column::make('tanggal_pembelian', 'pembelian.tanggal_pembelian'),
-            Column::make('petani.nama', 'petani.nama')->title('Petani'),
-            Column::make('musim.musim_panen', 'musim.musim_panen')->title('Musim'),
-            Column::make('tanaman.nama', 'tanaman.nama')->title('Produk'),
-            Column::make('kondisi.nama', 'kondisi.nama')->title('Kondisi'),
-            Column::make('jumlah', 'pembelian.jumlah')->title('Jumlah (kg)'),
-            Column::make('harga', 'pembelian.harga'),
-            Column::make('total', 'pembelian.total'),
+            Column::make('nik', 'data_petanis.nik')->title('NIK'),
+            Column::make('nama', 'data_petanis.nama'),
+            // Column::make('no_pembelian', 'pembelian.no_pembelian'),
+            // Column::make('tanggal_pembelian', 'pembelian.tanggal_pembelian'),
+            // Column::make('petani.nama', 'petani.nama')->title('Petani'),
+            // Column::make('musim.musim_panen', 'musim.musim_panen')->title('Musim'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                //   ->width(60)
+                  ->addClass('text-center'),
+            // Column::make('tanaman.nama', 'tanaman.nama')->title('Produk'),
+            // Column::make('kondisi.nama', 'kondisi.nama')->title('Kondisi'),
+            // Column::make('jumlah', 'pembelian.jumlah')->title('Jumlah (kg)'),
+            // Column::make('harga', 'pembelian.harga'),
+            // Column::make('total', 'pembelian.total'),
         ];
     }
 

@@ -192,18 +192,18 @@ return [
             'url' => '/user/riwayat-penjualan',
             'caret' => false
         ],
-        [
-            'icon' => 'fa fa-cogs',
-            'title' => 'Ganti Password',
-            'url' => '#',
-            'caret' => false
-        ],
-        [
-            'icon' => 'fa fa-sign-out-alt',
-            'title' => 'Logout',
-            'url' => '#',
-            'caret' => false
-        ]
+        // [
+        //     'icon' => 'fa fa-cogs',
+        //     'title' => 'Ganti Password',
+        //     'url' => '#',
+        //     'caret' => false
+        // ],
+        // [
+        //     'icon' => 'fa fa-sign-out-alt',
+        //     'title' => 'Logout',
+        //     'url' => '#',
+        //     'caret' => false
+        // ]
     ],
 
     'menu_admin_gudang' => [

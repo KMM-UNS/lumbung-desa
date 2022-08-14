@@ -8,7 +8,7 @@ class RequestRuleConstant
     {
         return [
             'user_name' => 'required|min:3',
-            'user_email' => 'required|min:7|max:15',
+            'user_email' => 'required|min:7|max:35',
             'user_password' => 'sometimes|required|min:6|confirmed',
         ];
     }
@@ -85,20 +85,20 @@ class RequestRuleConstant
     public static function gudangTable()
     {
         return [
-            'nama_tanaman_id' =>'exist:tanamen,id',
-            'stok' => 'nullable|integer',
-            'kondisi_id' => 'exist:kondisi_hasil_panen,id',
-            'keterangan_id' => 'exist:keterangan_gudang,id'
+            'nama_tanaman_id' =>'required',
+            'stok' => 'equired|integer',
+            'kondisi_id' => 'required',
+            'keterangan_id' => 'required'
         ];
     }
 
     public static function pembelianTable()
     {
         return [
-            'no_pembelian' => 'nullable',
-            'jumlah' => 'nullable',
-            'harga' => 'nullable',
-            'total' => 'nullable'
+            'no_pembelian' => 'required',
+            'jumlah' => 'required',
+            'harga' => 'required',
+            'total' => 'required'
         ];
     }
 }
