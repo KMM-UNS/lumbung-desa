@@ -20,11 +20,9 @@ Route::get('/token', function () {
 // Route::view('/', 'pages.user.landingpage')->name('landingpage');
 Route::view('/', 'pages.user.landingpage')->name('landingpage');
 
-
 Route::group(['middleware' => 'auth:web', 'as' => 'user.'], function () {
-    Route::view('/', 'home')->name('home');
-
-    Route::group(['namespace' => 'User'], function () {
+    // Route::view('/', 'home')->name('home');
+  Route::group(['namespace' => 'User'], function () {
         Route::resource('menampilkandatapetani', 'MenampilkanDataPetaniController');
         Route::resource('menampilkandatalahan', 'MenampilkanDataLahanController');
         Route::resource('ketersediaan-produk', 'KetersediaanProdukController');

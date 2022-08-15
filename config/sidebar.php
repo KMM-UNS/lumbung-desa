@@ -96,12 +96,16 @@ return [
                 ]
                 // ,[
                 //     'url' => '/admin/penjualan/penjualanpupuk',
-                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penjualan Pupuk'
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penjualan Pupuk Lama'
                 // ]
                 ,[
                     'url' => '/admin/penjualan/penjualanppk',
                     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penjualan Pupuk'
                 ]
+                // ,[
+                //     'url' => '/admin/penjualan/penjualanpuks',
+                //     'title' => '<i class="fa fa-ellipsis-h"></i>&nbsp;Penjualan Puks'
+                // ]
             ]
                 ],
         // [

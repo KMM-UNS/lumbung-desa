@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Penjualan;
 
-use App\DataTables\Admin\Penjualan\PenjualanPpkDataTable;
+use App\DataTables\Admin\Penjualan\PenjualanPuksDataTable;
 use App\Models\Tanaman;
 use App\Models\DataPetani;
 use App\Models\DataPembeli;
 use App\Http\Controllers\Controller;
 use App\Models\KondisiHasilPanen;
-use App\Models\PenjualanPpk;
+use App\Models\PenjualanPuks;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\DB;
@@ -16,21 +16,21 @@ use App\Models\GudangLumbung;
 use App\Models\GudangPupuk;
 use App\Models\KeteranganGudang;
 
-class PenjualanPpkController extends Controller
+class PenjualanPuksController extends Controller
 {
-    public function index(PenjualanPpkDataTable $dataTable)
+    public function index(PenjualanPuksDataTable $dataTable)
     {
-       return $dataTable->render('pages.admin.datapenjualan.penjualanppk.index');
+       return $dataTable->render('pages.admin.datapenjualan.penjualanpuks.index');
     }
     public function create()
     {
-        $produkppk = GudangPupuk::with('pupuk')->get()->pluck('pupuk.nama','id');
+        $produkppk = GudangPupuk::with('puks:id,nama')->get()->pluck('puks.nama','puks.id');
         //tanaman nama relasi, id & nama itu yg diambil di tabel tanaman, nama itu yg menyimpan id yang diambil
         // $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
         // $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
         // $petani=DataPetani::pluck('nama','id');
         $pembeli=DataPembeli::pluck('nama','id');
-        return view('pages.admin.datapenjualan.penjualanppk.add-edit', [
+        return view('pages.admin.datapenjualan.penjualanpuks.add-edit', [
             'produkppk'=>$produkppk,
             // 'kondisi'=>$kondisi,
             // 'keterangan'=>$keterangan,
@@ -67,12 +67,11 @@ class PenjualanPpkController extends Controller
 
         // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
 
-        // return view('pages.admin.datapenjualan.penjualanppk.add-edit');
+        return view('pages.admin.datapenjualan.penjualanpuks.add-edit');
     }
 
     public function store(Request $request)
     {
-        // dd($request->all());
         try {
             $request->validate([
                 // 'nama' => 'required'
@@ -84,26 +83,44 @@ class PenjualanPpkController extends Controller
         DB::transaction(function () use ($request) {
             try {
 
-                $penjualan=PenjualanPpk::create($request->all());
+                $penjualan=PenjualanPuks::create($request->all());
                 $penjualan->save();
+                // dd($penjualan);
                 // get data gudang yang diinputkan
-                $gudangLumbung = GudangPupuk::where('id',$penjualan->produk_id)->first();
-                // dd($gudangLumbung);
+                $gudangLumbung = GudangPupuk::where('nama_pupuk',
+                $penjualan->produk_puks)->first();
+                //  dd($gudangLumbung);
 
-                    if($gudangLumbung->stok>0 && $gudangLumbung->stok >=$penjualan->jumlah)
 
-                    {
-                        $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
-                        //                         // dd($penjualan);
-                        $gudangLumbung->save();
-                        // dd($gudangLumbung);
-                    } else {
-                        DB::rollback();
-                        return back()->withInput()->withToastError('Jumlah melebihi stok yang tersedia');
-                    }
+                    // percabangan untuk cek apakah data gudang sudah ada atau belum
+//                     if(isset($gudangLumbung)){
+//                         $gudangLumbung->stok >= $penjualan->jumlah;
+//                         $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
+//                         // dd($pembelian);
+//                         $gudangLumbung->save();
+// //if positif, else negatif
+//                     }
+//                     else {
 
-                }
-                 catch (\Throwable $th) {
+//                         // jika sudah maka update stok
+//                         $gudangLumbung->stok < $penjualan->jumlah;
+//                         // dd($penjualan->jumlah);
+//                         return back()->withInput()->withToastError('Jumlah melebihi stok yang tersedia');
+
+//                     }
+
+if($gudangLumbung->stok>0 && $gudangLumbung->stok >=$penjualan->jumlah)
+
+{
+    $gudangLumbung->stok = $gudangLumbung->stok - $penjualan->jumlah;
+    //                         // dd($penjualan);
+    $gudangLumbung->save();
+    // dd($gudangLumbung);
+} else {
+    DB::rollback();
+    return back()->withInput()->withToastError('Jumlah melebihi stok yang tersedia');
+}
+                } catch (\Throwable $th) {
                     dd($th);
                     DB::rollback();
                     return back()->withInput()->withToastError('Something went wrong');
@@ -117,20 +134,20 @@ class PenjualanPpkController extends Controller
                 //     return back()->withInput()->withToastError('Something went wrong');
                 // }
 
-                return redirect(route('admin.penjualan.penjualanppk.index'))->withToastSuccess('Data tersimpan');
+                return redirect(route('admin.penjualan.penjualanpuks.index'))->withToastSuccess('Data tersimpan');
             }
 
             public function show($id)
             {
-                $data = PenjualanPpk::findOrFail($id);
-                $produkppk = GudangPupuk::with('pupuk')->get()->pluck('nama','id');
-                // $produkppk = GudangPupuk::with('ppk:id,nama')->get()->pluck('ppk.nama','ppk.id');
+                $data = PenjualanPuks::findOrFail($id);
+                $produkppk = GudangPupuk::with('puks:id,nama')->get()->pluck('puks.nama','ppk.id');
+
         //tanaman nama relasi, id & nama itu yg diambil di tabel tanaman, nama itu yg menyimpan id yang diambil
         // $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
         // $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
         // $petani=DataPetani::pluck('nama','id');
         $pembeli=DataPembeli::pluck('nama','id');
-                return view('pages.admin.datapenjualan.penjualanppk.show', [
+                return view('pages.admin.datapenjualan.penjualanpuks.show', [
                     'data' => $data,
                     'produkppk'=>$produkppk,
             // 'kondisi'=>$kondisi,
@@ -142,16 +159,15 @@ class PenjualanPpkController extends Controller
 
             public function edit($id)
             {
-                $data = PenjualanPpk::findOrFail($id);
+                $data = PenjualanPuks::findOrFail($id);
                 $pembeli=DataPembeli::pluck('nama','id');
                 // $produk=GudangLumbung::pluck('nama_tanaman_id','id');
-                $produkppk = GudangPupuk::with('ppk:id,nama')->get()->pluck('ppk.nama','id');
-                // $produkppk = GudangPupuk::with('ppk:id,nama')->get()->pluck('ppk.nama','ppk.id');
+                $produkppk = GudangPupuk::with('puks:id,nama')->get()->pluck('puks.nama','puks.id');
         //         $kondisi=GudangLumbung::with('kondisi:id,nama')->get()->pluck('kondisi.nama','kondisi.id');
         // $keterangan=GudangLumbung::with('keterangangudang:id,nama')->get()->pluck('keterangangudang.nama','keterangangudang.id');
 
                 // $kondisihasilpanen=KondisiHasilPanen::pluck('kondisi', 'id');
-                return view('pages.admin.datapenjualan.penjualanppk.add-edit', [
+                return view('pages.admin.datapenjualan.penjualanpuks.add-edit', [
                 'data' => $data,
                 'produkppk'=>$produkppk,
                 // 'kondisi'=>$kondisi,
@@ -171,20 +187,20 @@ class PenjualanPpkController extends Controller
         }
 
         try {
-            $data = PenjualanPpk::findOrFail($id);
+            $data = PenjualanPuks::findOrFail($id);
             $data->update($request->all());
         } catch (\Throwable $th) {
             return back()->withInput()->withToastError('Something went wrong');
         }
 
 
-        return redirect(route('admin.penjualan.penjualanppk.index'))->withToastSuccess('Data tersimpan');
+        return redirect(route('admin.penjualan.penjualanpuks.index'))->withToastSuccess('Data tersimpan');
     }
 
     public function destroy($id)
     {
         try {
-            PenjualanPpk::find($id)->delete();
+            PenjualanPuks::find($id)->delete();
         } catch (\Throwable $th) {
             return response(['error' => 'Something went wrong']);
         }
@@ -193,16 +209,16 @@ class PenjualanPpkController extends Controller
 
     public function invoice($id)
     {
-        $data = PenjualanPpk::findOrFail($id);
+        $data = PenjualanPuks::findOrFail($id);
 
 
-        $pdf = PDF::loadview('pages.admin.datapenjualan.penjualanppk.invoice',
+        $pdf = PDF::loadview('pages.admin.datapenjualan.penjualanpuks.invoice',
 
         [
 
         'no_penjualan'=>$data->no_penjualan,
         'tgl_penjualan'=>$data->tgl_penjualan,
-        'namapembelippk'=>$data->pembelippk->nama,
+        'namapembelipuks'=>$data->pembelipuks->nama,
         'email'=>$data->email,
         'no_hp'=>$data->no_hp,
         'alamat'=>$data->alamat,
@@ -219,17 +235,17 @@ class PenjualanPpkController extends Controller
     public function grafikppk()
     {
          // $data = PenjualanProduk::findOrFail($id);
-         $total_harga=PenjualanPpk::select(DB::raw("SUM(total) as total_harga"))
+         $total_harga=PenjualanPuks::select(DB::raw("SUM(total) as total_harga"))
          ->GroupBy(DB::raw("Month(tgl_penjualan)"))
          ->pluck('total_harga')->toArray();
     // dd($total_harga);
-         $bulan=PenjualanPpk::select(DB::raw("MONTHNAME(tgl_penjualan) as bulan"))
+         $bulan=PenjualanPuks::select(DB::raw("MONTHNAME(tgl_penjualan) as bulan"))
          ->GroupBy(DB::raw("MONTHNAME(tgl_penjualan)"))
          ->pluck('bulan')->toArray();
 
-         $all = DB::table('penjualan_ppks')->select('*')->whereNull('deleted_at')->get()->toArray();
+         $all = DB::table('penjualan_puks')->select('*')->whereNull('deleted_at')->get()->toArray();
     // dd($bulan);
-         return view('pages.admin.data-petani.grafikppk.index',compact('total_harga', 'bulan', 'all'));
+         return view('pages.admin.data-petani.grafikpuks.index',compact('total_harga', 'bulan', 'all'));
         // return view('pages.admin.dashboard',compact('total_harga', 'bulan'));
     }
 }

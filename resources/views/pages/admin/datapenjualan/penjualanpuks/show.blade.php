@@ -20,7 +20,7 @@
 
 
 <!-- begin panel -->
-<form action="{{ isset($data) ? route('admin.penjualan.penjualanppk.update', $data->id) : route('admin.penjualan.penjualanppk.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
+<form action="{{ isset($data) ? route('admin.penjualan.penjualanpuks.update', $data->id) : route('admin.penjualan.penjualanpuks.store') }}" id="form" name="form" method="POST" data-parsley-validate="true">
   @csrf
   @if(isset($data))
   {{ method_field('PUT') }}
@@ -44,7 +44,7 @@
         <label for="name">Tanggal Penjualan</label>
         <input disabled class="form-control" value="{{{ $data->tgl_penjualan ?? old('tgl_penjualan') }}}">
         <label for="name">Nama Pembeli</label>
-        <input disabled class="form-control" value="{{{ $data->pembelippk->nama ?? old('namapembelippk') }}}">
+        <input disabled class="form-control" value="{{{ $data->pembelipuks->nama ?? old('namapembelipuks') }}}">
         {{-- <label for="name">Email</label> --}}
         {{-- <input disabled type="text" id="email" name="email" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->email ?? old('email') }}}"> --}}
         {{-- <label for="name">Nomor Handphone</label> --}}
@@ -53,7 +53,7 @@
         {{-- <input disabled type="text" id="alamat" name="alamat" class="form-control" autofocus data-parsley-required="true" value="{{{ $data->alamat ?? old('alamat') }}}"> --}}
         <label for="name">Produk</label>
 
-        <input disabled type="text" id="produk_id" name="produk_id" class="form-control" value="{{{ $data->produkppk->ppk->nama ?? old('produk_id') }}}">
+        <input disabled type="text" id="produk_puks" name="produk_puks" class="form-control" value="{{{ $data->produkpuks->puks->nama ?? old('produk_puks') }}}">
 
         {{-- <label for="name">Kondisi</label>
         <input disabled class="form-control" id="kondisi_pr" value="{{{ $data->kondisi->kondisi->nama?? old('kondisi_pr') }}}">

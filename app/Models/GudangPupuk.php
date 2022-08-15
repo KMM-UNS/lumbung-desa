@@ -22,15 +22,19 @@ class GudangPupuk extends Model
         return $this->belongsTo(DataPupuk::class,'nama_pupuk');
     }
 
-    public function ppk()
-    {
-        return $this->belongsTo(DataPupuk::class,'nama_pupuk');
-    }
+    // public function ppk()
+    // {
+    //     return $this->belongsTo(DataPupuk::class,'nama_pupuk');
+    // }
 
-    public function ppks()
-    {
-        return $this->belongsTo(DataPupuk::class,'nama_pupuk');
-    }
+    // public function ppks()
+    // {
+    //     return $this->belongsTo(DataPupuk::class,'nama_pupuk');
+    // }
+    // public function puks()
+    // {
+    //     return $this->belongsTo(DataPupuk::class,'nama_pupuk');
+    // }
 
     public function penjualanpupuk()
     {

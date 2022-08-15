@@ -2,7 +2,7 @@
 
 namespace App\DataTables\Admin\Penjualan;
 
-use App\Models\PenjualanPpk;
+use App\Models\PenjualanPuks;
 use App\Models\DataPembeli;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -10,7 +10,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class PenjualanPpkDataTable extends DataTable
+class PenjualanPuksDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -28,10 +28,10 @@ class PenjualanPpkDataTable extends DataTable
             })
         ->addColumn('action', function ($row) {
             $btn = '<div class="btn-group">';
-            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanppk.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanppk.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.penjualan.invoiceppk', $row->id) . '" class="btn btn-warning buttons-invoice"><i class="fas fa-download fa-fw"></i></a>';
-            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanppk.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanpuks.edit', $row->id) . '" class="btn btn-dark buttons-edit"><i class="fas fa-edit"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanpuks.show', $row->id) . '" class="btn btn-info buttons-show"><i class="fas fa-info fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.penjualan.invoicepuks', $row->id) . '" class="btn btn-warning buttons-invoice"><i class="fas fa-download fa-fw"></i></a>';
+            $btn = $btn . '<a href="' . route('admin.penjualan.penjualanpuks.destroy', $row->id) . '" class="btn btn-danger buttons-delete"><i class="fas fa-trash fa-fw"></i></a>';
             $btn = $btn . '</div>';
             return $btn;
         });
@@ -43,11 +43,11 @@ class PenjualanPpkDataTable extends DataTable
      * @param \App\App\Models\Admin\PenjualanDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(PenjualanPpk $model)
+    public function query(PenjualanPuks $model)
     {
-        return $model->select('penjualan_ppks.*')->with([
-            'pembelippk',
-            'produkppk.pupuk',
+        return $model->select('penjualan_puks.*')->with([
+            'pembelipuks',
+            'produkpuks.puks',
 
 
         ]);
@@ -88,12 +88,12 @@ class PenjualanPpkDataTable extends DataTable
             Column::make('no_penjualan')->title('Nomor Penjualan'),
            Column::make('tgl_penjualan'),
             // Column::make('nama')->data('pembelippk.nama')->title('Nama Pembeli'),
-            Column::make('pembelippk.nama','pembelippk.nama')->title('Nama Pembeli'),
+            Column::make('pembelipuks.nama','pembelipuks.nama')->title('Nama Pembeli'),
            // Column::make('email'),
             //Column::make('no_hp'),
           //  Column::make('alamat'),
             // Column::make('produk_id')->data('produkppk.ppk.nama')->title('Produk'), //produk itu nama fungsi di model, nama_tanaman_id itu data yang diambil
-            Column::make('produkppk.pupuk.nama','produkppk.pupuk.nama')->title('Produk'),
+            Column::make('produkpuks.puks.nama','produkpuks.puks.nama')->title('Produk'),
             // Column::make('produkppk.ppks.nama','produkppk.ppks.nama')->title('Produk'),
             // Column::make('kondisi')->data('kondisi.kondisi.nama'),
             // Column::make('keterangan')->data('keterangan.keterangangudang.nama'),
@@ -116,7 +116,7 @@ class PenjualanPpkDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Penjualan\PenjualanPpk_' . date('YmdHis');
+        return 'Admin\Penjualan\PenjualanPuks_' . date('YmdHis');
     }
 
 }
